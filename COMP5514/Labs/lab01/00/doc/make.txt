@@ -1,0 +1,60 @@
+This is a C program example
+
+Make Utility that works on Windows:
+
+From:
+http://cs.nyu.edu/rgrimm/teaching/fa05-oop/windows-make.html
+
+Download:
+http://prdownloads.sourceforge.net/mingw/mingw32-make-3.80.0-3.exe?download
+
+-------------------------------------------------------------------------
+
+Get a Win32-compatible make. I had downloaded the make that was part of the Cygwin setup using Cygwin's Setup.exe. The key is that apparently this one doesn't play nice on Windows. Luckily, there's another one, available from MinGW (Minimalist GNU for Windows). Download mingw32-make-3.80.0-3.exe and run it. This is a Windows installer that will cleanly install mingw32-make for you (with prompts and all). 
+
+Setup cygwin.bat. You need to get Cygwin to recognize your environment variables. The cygwin.bat file is located in the main Cygwin directory (mine is C:\cygwin) and is where these variables should be. My default batch file was:
+
+-------------------------------------------------------------------------
+@echo off
+
+C:
+chdir C:\cygwin\bin
+
+bash --login -i
+-------------------------------------------------------------------------
+
+This doesn't have any env variables set. So open up your favorite text editor and we'll add the important ones.
+
+-------------------------------------------------------------------------
+@echo off
+
+set IS_UNIX=
+set DEV_ROOT=C:/cygwin/home/losacco/Work/oop
+set JAVA_HOME=C:/Progra~1/Java/jdk1.5.0_04
+set CLASSPATH=C:/cygwin/home/losacco/Work/oop/obj;C:/cygwin/home/losacco/Work/oop/lib/xtc.jar;C:/cygwin/home/losacco/Work/oop/lib/junit.jar
+
+C:
+chdir C:\cygwin\bin
+
+bash --login -i
+-------------------------------------------------------------------------
+
+Note that you'll have to replace my home directory (C:/cygwin/home/losacco) with your home directory, or wherever your OOP files are stored. And be careful to use forward slashes.
+
+Link to your new make. This just helps the new make to be a whole lot easier to use. Fire up Cygwin and navigate to your bin directory and create a link:
+
+-------------------------------------------------------------------------
+$ cd /bin
+$ ln -s /cygdrive/c/mingw/bin/mingw32-make.exe mymake.exe
+-------------------------------------------------------------------------
+
+You will need to verify that these are the proper path settings for your system as well. The app name mymake can be whatever you want it to be (but it should have a .exe extension).
+
+Make! We're all set. Go to your home directory (or wherever those OOP files are) and call the MinGW make with your linked command.
+
+
+-------------------------------------------------------------------------
+$ cd ~/Work/oop
+$ mymake
+-------------------------------------------------------------------------
+

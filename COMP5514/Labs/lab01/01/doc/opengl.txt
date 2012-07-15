@@ -1,0 +1,50 @@
+-------------------------------------------------------------
+OpenGL linking problems:
+1. do not link to -lglut; use -lglut32 instead
+2. do not use  ld for the loader; use gcc or g++
+-------------------------------------------------------------
+
+
+OpenGL
+
+Get it from:
+http://cygwin.com/cgi-bin2/package-grep.cgi?grep=OpenGL
+
+Installed in:
+/usr/include/w32api/GL
+gl.h glext.h glu.h glut.h
+
+Runtime:
+/usr/bin/glut32.dll
+
+-------------------------------------------------------------
+
+OpenGL installation in cygwin:
+
+Include files:
+C:\cygwin\usr\include\w32api\GL
+gl.h
+glext.h
+glu.h
+glut.h
+
+Library files:
+C:\cygwin\lib\w32api
+libglaux.a
+libglui.a
+libglu32.a
+libglut32.a   note: should link to -lglut32 - this is ok
+libopengl32.a
+libglut.a *** note: linking to -lglut may cause problems in load
+
+DLL files:
+C:\cygwin\bin\glut32.dll
+
+Executable examples in:
+C:\cygwin\lib\glui-examples
+example1
+example2
+example3
+example4
+example5
+example6
