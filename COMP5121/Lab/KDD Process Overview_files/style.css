@@ -1,0 +1,98 @@
+body {
+	background-image:url("../images/beige.jpg");
+}
+#wrapper {
+	width:100%;
+}
+#wrapper img {
+	border: 0;
+}
+#wrapper a {
+	color: #0000FF;
+}
+#wrapper a:visited {
+	color: #0000FF;
+}
+#wrapper a:hover {
+	color: #FF0000;
+}
+#wrapper table {
+	margin: auto;
+	background-color:#FDFBE8;
+	border-color:#000000;
+	border-style:solid;
+	border-width:1px;
+	border-spacing: 0px;
+	padding: 0px;
+}
+#content table td {
+	border-style: solid;
+	border-width: 1px;
+	width: 50px;
+	text-align: center;
+}
+#header {
+	
+}
+#footer {
+
+}
+#content {
+
+}
+h5 {
+	font-size:14px;
+}
+h2 {
+	font-size:16px;
+}
+.grouper {
+	text-align: center;
+	margin: auto;
+	border-width: 1px;
+}
+.grouper div {
+	text-align: center;
+	float: left;
+}
+.grouper table {
+	margin: 0px 0px 0px 0px;
+}
+.box {
+	background-color:#FDFBE8;
+	border-style: solid;
+	border-width: 1px;
+	margin: auto;
+	padding:5px;
+	padding-left: 25px;
+}
+.titlecol td {
+	font-weight: bold;
+	font-style: italic;
+}
+.indent {
+	margin: 0px 0px 0px 20px;
+	padding: 0px 0px 0px 0px;
+}
+.left {
+	text-align:left;
+	width: 10%;
+	float: left;
+}
+.mid {
+	text-align: center;
+	width: 80%;
+	float: left;
+}
+.right {
+	text-align: right;
+	width: 10%;
+	float: left;
+}
+#content {
+
+}
+.clear {
+	clear: both;
+	height: 0;
+}

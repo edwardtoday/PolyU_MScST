@@ -1,0 +1,7 @@
+Field,Mean (N),Mean (Y),Importance
+CallDurationInMinutes_Sum,2286.102,2549.131,0.99
+CallDurationInMinutes_Mean,83.138,82.956,0.182
+Charge_Sum,474.462,509.872,0.999
+Charge_Mean,207.018,211.871,0.966
+UnpaidPreviousCharge_Mean,130.382,121.924,0.941
+DueTime_Mean,16.247,14.822,0.995

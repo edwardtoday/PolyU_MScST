@@ -1,0 +1,653 @@
+citation()
+x <- c(10.4, 5.6, 3.1, 6.4, 21.7)
+x
+1/x
+y <- (x,0,x)
+y <- c(x,0,x)
+y
+v <- 2*x + y +1
+v <- 2*x + y + 1
+2*x
+2*x+y
+v
+y
+2*x
+mean(x)
+var(x)
+seq(2,10)
+temp = X>13
+temp = x>13
+temp
+z <- c(1:3, NA)
+z
+ind <- is.na(x)
+ind <- is.na(z)
+ind
+object()
+objects()
+mode(ind)
+mode(y)
+attributes(v)
+attributes(ind)
+z <- 0:9
+z
+digits <- as.character(z)
+digits
+d <- as.integer(digits)
+d
+2*pt(-2.43, df = 13)
+attach(faithful)
+summary(eruptions)#
+        Min. 1st Qu.  Median    Mean 3rd Qu.    Max.#
+       1.600   2.163   4.000   3.488   4.454   5.100
+summary(eruptions)
+fivenum(eruptions)
+stem(eruptions)
+hist(eruptions)
+hist(eruptions, seq(1.6, 5.2, 0.2), prob=TRUE)
+lines(density(eruptions, bw=0.1))
+rug(eruptions) # show the actual data points
+plot(ecdf(eruptions), do.points=FALSE, verticals=TRUE)
+long <- eruptions[eruptions > 3]
+plot(ecdf(long), do.points=FALSE, verticals=TRUE)
+x <- seq(3, 5.4, 0.01)
+lines(x, pnorm(x, mean=mean(long), sd=sqrt(var(long))), lty=3)
+par(pty="s")
+qqnorm(long); qqline(long)
+A <- scan()
+ B <- scan()
+boxplot(A, B)
+t.test(A, B)
+t.test(A, B, var.equal=TRUE)
+plot(ecdf(A), do.points=FALSE, verticals=TRUE, xlim=range(A, B))
+plot(ecdf(B), do.points=FALSE, verticals=TRUE, add=TRUE)
+help.start()
+X <- c(3,4,4,4,5,5,5,6)
+x
+X
+Y<-c(4,4,5,5,6,6,7,7)
+Y
+mean(X)
+mean(Y)
+var(x)
+var(X)
+var(Y)
+help.start()
+pooledvar <- function(x,y) {}
+pooledvar <- function(x,y) {
+((length(x)-1)*var(x)+(length(x)-1)*var(y))/(length(x)+length(y)-2)
+}
+pooledvar(X,Y)
+t
+t.test(X,Y)
+help(t.test)
+a = c(18.6, 12.8, 18.7, 14.2, 14.0, 15.5, 18.5, 28.5, 9.7, 19.1)
+b=c(6.4, 5.7, 7.1, 8.2, 5.5, 5.7, 5.4, 11.4, 8.5, 6.4)
+mean(a)
+mean(b)
+var(a)
+var(b)
+pooledvar(a,b)
+t.test(a,b)
+t.test(a,b,greater)
+help(t.test)
+t.test(a,b,"greater")
+t.test(a,b,"greater",var.equal=TRUE)
+t.test(a,b,"greater",var.equal=TRUE,paired=FALSE)
+t.test(a,b,"greater",var.equal=TRUE,paired=TRUE)
+t.test(a,b,"greater",var.equal=TRUE,paired=FALSE)
+plot(a,b)
+boxplot(a,b)
+require(graphics)
+plot(extra ~ group, data = sleep)
+with(sleep, t.test(extra[group == 1], extra[group == 2]))
+t.test(extra ~ group, data = sleep)
+help(coreelation)
+cor.test(x,y)
+cor.test(a,b)
+objects()
+dropdown = c(4,4,5,5,6,6,7,7)
+pie = c(3,4,4,4,5,5,5,6)
+mean(dropdown)
+mean(pie)
+pooledvar(dropdown,pie)
+t.test(dropdown,pie ,var.equal=TRUE,paired=FALSE)
+help(t.test)
+t.test(dropdown,pie ,var.equal=TRUE,paired=FALSE,conf.level=0.999)
+t.test(dropdown,pie ,var.equal=TRUE,paired=FALSE)
+drug=c(165.9,210.3,166.8,182.3,182.1,218,170)
+placebo=c(212.1,203.5,210.3,228.4,206.2,203.2,224.9,202.1)
+mean(drug)
+mean(placebo)
+pooledvar(drug,placebo)
+t.test(drug,placebo ,var.equal=TRUE,paired=FALSE)
+t.test(drug,placebo ,var.equal=TRUE,paired=FALSE,conf.level=0.2)
+t.test(drug,placebo ,var.equal=TRUE,paired=FALSE,conf.level=0)
+t.test(drug,placebo ,var.equal=TRUE,paired=FALSE,conf.level=1)
+t.test(drug,placebo ,var.equal=TRUE,paired=FALSE,conf.level=.9)
+t.test(drug,placebo ,var.equal=TRUE,paired=FALSE,conf.level=.99)
+t.test(drug,placebo ,var.equal=TRUE,paired=FALSE,conf.level=.95)
+prescore=c(70,62,58,61,73,82,70,88,40,66)
+postscore=c(78,70,63,68,75,95,85,87,73,70)
+mean(prescore)
+mean(postscore)
+t.test(prescore,postscore ,var.equal=TRUE,paired=TRUE,conf.level=.95)
+intA=c(11.7,15.8,12.3,18.9,9.7,10.2,20.3,11.4,12.6,13.5,14)
+intB=c(15.4,16.3,10.2,11.7,7.5,10.6,14.8,15.2,11.4,12.7,13.7)
+t.test(intA,intB,var.equal=TRUE,paird=FALSE)
+mType = c(35,42,32,25,30,30,30,36,36,30,34)
+eType = c(40,45,35,30,32,35,40,37,42,34,37)
+t.test(mType,eType,var.equal=TRUE,paired=TRUE)
+t.test(mType,eType,"less",var.equal=TRUE,paired=TRUE)
+t.test(mType,eType,"less",var.equal=FALSE,paired=TRUE)
+t.test(mType,eType,"less",var.equal=TRUE,paired=TRUE)
+t.test(mType,eType,"greater",var.equal=TRUE,paired=TRUE)
+t.test(mType,eType,"les",var.equal=TRUE,paired=TRUE)
+t.test(mType,eType,"less",var.equal=TRUE,paired=TRUE)
+t.test(mType,eType,"less",var.equal=TRUE,paired=TRUE,conf.level=0.9)
+t.test(mType,eType,"less",var.equal=TRUE,paired=TRUE,conf.level=0.8)
+t.test(mType,eType,"less",var.equal=TRUE,paired=TRUE,conf.level=0.7)
+t.test(mType,eType,"less",var.equal=TRUE,paired=TRUE,conf.level=0.5)
+t.test(mType,eType,"less",var.equal=TRUE,paired=TRUE,conf.level=0.3)
+t.test(mType,eType,"less",var.equal=TRUE,paired=TRUE,conf.level=0.2)
+t.test(mType,eType,"less",var.equal=TRUE,paired=TRUE,conf.level=0.1)
+t.test(mType,eType,"less",var.equal=TRUE,paired=TRUE,conf.level=0.01)
+x
+XZ
+X
+Y
+t.test(X,Y,paired=0)
+t.test(X,Y,paired=0,var.equal=1)
+objects
+objects()
+t.test(dropdown,pie,paired=0,var.equal=1)
+t.test(drug,placebo,paired=0,var.equal=1)
+boxplot(drug,placebo)
+t.test(prescore,postscore,paired=1,var.equal=1)
+length(t)
+length(eType)
+x <- runif(100, min = 1, max = 5)#
+y <- x^2 + runif(100)#
+#
+plot(x)    # plot x against index 1, 2, ... length(x)#
+plot(x, y) # bivariate 'scatter plot'#
+#
+## Create a list with components x and y. This can be plotted directly#
+#
+z1 <- list(x = x, y = y)#
+plot(z1)
+…x <- runif(100, min = 1, max = 5)#
+y <- x^2 + runif(100)#
+#
+plot(x)    # plot x against index 1, 2, ... length(x)#
+plot(x, y) # bivariate 'scatter plot'
+x <- runif(100, min = 1, max = 5)#
+y <- x^2 + runif(100)#
+#
+plot(x)    # plot x against index 1, 2, ... length(x)#
+plot(x, y) # bivariate 'scatter plot'
+## Different types#
+#
+plot(z1, type = "l")
+ord <- order(x)#
+z2 <- list(x = x[ord], y = y[ord])#
+#
+plot(z2, type = "l") # lines#
+plot(z2, type = "o") # points and lines overlayed#
+plot(z2, type = "s") # step#
+plot(z2, type = "h") # histogram-like
+plot(z2, type = "l") # lines
+#
+plot(z2, type = "o") # points and lines overlayed
+plot(z2, type = "s") # step
+plot(z2, type = "n") # no plotting! (useful for adding things later)
+points(z2)
+lines(z2$x, z2$x^2)
+plot(z2, type = "o", log = "x")
+plot(z2, type = "o", log = "y")
+plot(z2, type = "o", log = "xy")
+plot(z2, type = "o", col = 'red', pch = 16, cex = 2)
+plot(z2, col = c('red', 'blue'), pch = "+", cex = 2)
+a <- factor(sample(1:5, 100, replace = TRUE), levels = 1:5)#
+a#
+levels(a) <- LETTERS[1:5]#
+a#
+#
+plot(a) ## the same as:
+barplot(table(a))
+plot(a, x)#
+plot(y ~ a) # formula - used often for statistical modeling in R#
+plot(~ x + y + a)
+plot(a, x)
+plot(y ~ a) # formula - used often for statistical modeling in R
+plot(~ x + y + a)
+data(iris)#
+class(iris)#
+iris
+plot(iris)
+plot(iris[, 1:4])
+plot(iris[,1:4], col = as.numeric(iris$Species))
+plot(sin, from = -2 * pi, to = 2 * pi)#
+## new function
+damped.sin <- function(x) sin(5 * x) * exp(-x^2)#
+plot(damped.sin, from = -pi, to = pi)
+curve(damped.sin, from = -pi, to = pi)
+pairs(iris)#
+#
+## See example(pairs) for more complicated examples#
+#
+#
+## bar plots (from ?barplot)#
+#
+data(VADeaths)#
+barplot(VADeaths, plot = FALSE)#
+barplot(VADeaths, plot = FALSE, beside = TRUE)
+mp <- barplot(VADeaths) # default#
+barplot(VADeaths, beside = TRUE,#
+        col = c("lightblue", "mistyrose", "lightcyan",#
+        "lavender", "cornsilk"),#
+        legend = rownames(VADeaths), ylim = c(0, 100))#
+title(main = "Death Rates in Virginia", font.main = 4)
+boxplot(x)#
+boxplot(x ~ a)#
+boxplot(Sepal.Length ~ Species, iris)
+#
+stripchart(x ~ a)#
+stripchart(x ~ a, method = "jitter", jitter = .1)
+smp <- sample(20:40, 30, rep = TRUE)#
+stripchart(smp, method = "stack")#
+stripchart(smp, method = "stack", pch = 16)
+#
+stem(x)
+#
+hist(y)
+data(singer, package = "lattice")#
+str(singer)#
+hist(singer$height, freq = TRUE)  # frequency histogram#
+hist(singer$height, freq = FALSE) # density histogram
+## unequally spaces breakpoints#
+hist(singer$height,#
+     breaks = c(50, 60, 65, 68, 71, 75, 80),#
+     col = "cyan")
+#
+#
+## Density plots#
+## similar principle, more computation intensive#
+#
+plot(density(singer$height, kern = "rect"))
+#
+## Pie charts#
+#
+pie(table(a))
+#
+data(mtcars)#
+stars(mtcars[, 1:7], key.loc = c(14, 2),#
+      main = "Motor Trend Cars : stars(*, full = F)", full = FALSE)#
+stars(mtcars[, 1:7], key.loc = c(14, 1.5), #
+      main = "Motor Trend Cars : full stars()", flip.labels=FALSE)
+plot(x, y)#
+## left-click to select points, right-click to stop#
+identify(x, y)
+#
+#
+## click on 5 points to make a polygon out of them#
+polygon(locator(5))
+#
+#
+## click on 5 points to make a polygon out of them#
+polygon(locator(5))#
+data(volcano)#
+str(volcano)
+#
+#
+## click on 5 points to make a polygon out of them#
+polygon(locator(5))#
+data(volcano)#
+str(volcano)#
+#
+image(volcano)
+#
+#
+## click on 5 points to make a polygon out of them#
+polygon(locator(5))#
+data(volcano)#
+str(volcano)#
+#
+image(volcano)#
+#
+contour(volcano)
+#
+#
+## click on 5 points to make a polygon out of them#
+polygon(locator(5))#
+data(volcano)#
+str(volcano)#
+#
+image(volcano)#
+#
+contour(volcano)#
+#
+qqqq
+#
+image(volcano)#
+contour(volcano, add = TRUE)
+#
+## sophisticated version of image#
+filled.contour(volcano)
+#
+persp(volcano)
+demo(persp)
+par(bg = "white")
+drop-down = c(4,4,5,5,6,6,7,7)
+drop_down = c(4,4,5,5,6,6,7,7)
+drop_down
+pie = c(3,4,4,4,5,5,5,6)
+mean(drop_down)
+mean(pie)
+var(drop_down)
+var(pie)
+pv <- function(x1,x2) {}
+pv <- function(x1,x2) {
+((length(x1)-1)*var(x1)+(length(x2)-1)*var(x2))/(length(x1)+length(x2)-2)
+}
+pv(drop_down,pie)
+t.test(drop_down,pie)
+t.test(drop_down,pie,var.equal=1)
+drug = c(165.9)
+drug = c(165.9,
+210.3
+166.8
+182.3
+182.1
+218
+170
+drug = c(165.9,210.3,166.8,182.3,182.1,218,170)
+drug
+placebo=c(212.1,203.5,210.3,228.4,206.2,203.2,224.9,202.1)
+mean(drug)
+mean(placebo)
+var(drug)
+var(placebo)
+pv(drug,placebo)
+pv
+drug
+placebo
+pv(drug,placebo)
+t.test(drug,placebo,var.equal=1)
+pre=c(70,62,58,61,73,82,70,88,40,66)
+post=c(78,63,68,75,95,85,87,73,70)
+mean(pre)
+mean(post)
+var(pre)
+var(post)
+t.test(pre,post,var.equal=1,paired=1)
+post=c(78,70,63,68,75,95,85,87,73,70)
+mean(post)
+var(post)
+t.test(pre,post,var.equal=1,paired=1)
+pv(pre,post)
+inta=c(11.7,15.8,12.3,18.9,9.7,10.2,20.3,11.4,12.6,13.5,14)
+intb=c(15.4,16.3,10.2,11.7,7.5,10.6,14.8,15.2,11.4,12.7,13.7)
+manual=c(35,42,32,25,30,30,30,36,36,30,34)
+electric=c(40,45,35,30,32,35,40,37,42,34,37)
+mean(inta)
+mean(intb)
+var(inta)
+var(intb)
+pv(inta,intb)
+t.test(inta,intb,var.equal=1)
+mean(manual)
+mean(electric)
+var(manual)
+var(electric)
+pv(manual,electric)
+t.test(manual,electric,"less",paired=1,var.equal=1)
+boxplot(drop_down,pie)
+boxplot(drug,placebo)
+boxplot(pre,post)
+boxplot(inta,intb)
+boxplot(manual,electric)
+35+42+32+25+30+30+30+36+36+30+34
+360/11
+40+45+35+30+32+35+40+37+42+34+37
+407/11
+library(arules)
+a_list <- list()
+c("I1","I2","I5"),
+a_list <- list(
+c("I1","I2","I5"),
+c("I2","I4"),
+c("I2","I3"),
+c("I1","I2","I4"),
+c("I1","I3"),
+c("I2","I3"),
+c("I1","I3"),
+c("I1","I2","I3","I5"),
+c("I1","I2","I3")
+)
+names(a_list) <- paste("T",c(1:9), "00", sep = "")
+a_list
+table5_1 <- as(a_list, "transactions") # Force an Object to Belong to a Class >as (Object, Class)
+table5_1
+image(table5_1) # result- Figure 1 Level plot
+summary(table5_1)
+itemFrequency(table5_1, type = "relative")
+itemFrequency(table5_1, type = "absolute")
+ itemFrequencyPlot(table5_1)
+rules<- apriori(table5_1)
+inspect(table5_1)
+inspect(rules)
+library(arules)
+help(read.transactions)
+## create a demo file using basket format for the example#
+data <- paste("item1,item2","item1","item2,item3", sep="\n")#
+cat(data)#
+write(data, file = "demo_basket")
+## read demo data#
+tr <- read.transactions("demo_basket", format = "basket", sep=",")#
+inspect(tr)#
+#
+#
+## create a demo file using single format for the example#
+## column 1 contains the transaction ID and column 2 contains one item#
+data <- paste("trans1 item1", "trans2 item1","trans2 item2", sep ="\n")#
+cat(data)#
+write(data, file = "demo_single")
+## read demo data#
+tr <- read.transactions("demo_single", format = "single", cols = c(1,2))#
+inspect(tr)
+## tidy up#
+unlink("demo_basket")#
+unlink("demo_single")
+tr <- read.transactions("data-q1e.csv", format = "single", cols = c(1,2))
+tr <- read.transactions("data-q1e.csv", format = "single")
+tr <- read.transactions("data-q1e.csv", format = "single", cols = c(1,2), rm.duplicates= FALSE)
+tr <- read.transactions("data-q1e.csv", format = "single", cols = c(1,2), rm.duplicates= TRUE)
+inspect(tr)
+tr <- read.transactions("data-q1e.csv", format = "single", cols = c(1,2), rm.duplicates= TRUE, sep=",")
+inspect(tr)
+image(tr)
+itemFrequencyPlot(tr, support = 0.1)
+length(tr)
+rules <- apriori(tr, parameter= list(supp=0.5, conf=0.5))
+inspect(rules)
+## create a demo file using basket format for the example#
+data <- paste("bread,butter,noodles","butter,chips","butter,coke","bread,butter,chips","bread,coke","butter,coke","bread,coke","bread,butter,coke,noodles","bread,butter,coke", sep="\n")#
+cat(data)#
+write(data, file = "supnotes1")
+inspect(data)
+## read demo data#
+tr <- read.transactions("supnotes1", format = "basket")#
+inspect(tr)
+image(tr)
+itemFrequencyPlot(tr, support = 0.1)
+rules <- apriori(tr, parameter= list(supp=0.2, conf=0.5))
+rules <- apriori(data, parameter= list(supp=0.2, conf=0.5))
+## read demo data#
+tr <- read.transactions("supnotes1", format = "basket")#
+inspect(tr)
+rules <- apriori(tr, parameter= list(supp=0.2, conf=0.5))
+inspect(rules)
+itemFrequencyPlot(tr, support = 0.1)
+image(tr)
+summary(tr)
+## read demo data#
+tr <- read.transactions("supnotes1", format = "basket", sep=",")#
+inspect(tr)
+summary(tr)
+itemFrequencyPlot(tr, support = 0.1)
+rules <- apriori(tr, parameter= list(supp=0.2, conf=0.5))
+inspect(rules)
+rules <- apriori(tr, parameter= list(supp=0.1, conf=0.5))
+inspect(rules)
+rules <- apriori(tr, parameter= list(supp=0, conf=0))
+inspect(rules)
+rules <- apriori(tr, parameter= list(supp=0.1, conf=0.1))
+inspect(rules)
+summary(rules)
+rules <- apriori(tr, parameter= list(supp=0.2, conf=0.5))
+summary(rules)
+inspect(rules)
+q()
+tr
+tr<-read.transactions("assign1",format="basket",sep=",")
+tr
+inspect(tr)
+image(tr)
+itemFrequencyPlot(tr, support = 0.1)
+length(tr)
+rules <- apriori(tr, parameter= list(supp=0.14, conf=0.85))
+inspect(rules)
+rules <- apriori(tr, parameter= list(supp=0.14, conf=0.7))
+inspect(rules)
+help(apriori)
+rules <- apriori(tr)
+inspect(rules)
+rules <- apriori(tr, parameter= list(conf=0.85))
+inspect(rules)
+rules <- apriori(tr, parameter= list(supp=0.14, conf=0.85))
+rules <- apriori(tr, parameter= list(supp=0.1399, conf=0.8499))
+inspect(rules)
+tr<-read.transactions("assign1",format="basket",sep=",")
+tr
+tr<-read.transactions("assign1",format="basket",sep=",")
+tr
+inspect(tr)
+tr<-read.transactions("assign1",format="basket",sep=",")
+inspect(tr)
+rules <- apriori(tr, parameter= list(supp=0.1399, conf=0.8499))
+inspect(rules)
+image(tr)
+itemFrequencyPlot(tr, support = 0.1)
+summary(rules)
+interestMeasure(rules, c("support", "chiSquare", "confidence","conviction",      "cosine", "coverage", "leverage", "lift", "oddsRatio"), tr)
+quality(rules) <- cbind(quality(rules), hyperConfidence = interestMeasure(rules, method = "hyperConfidence", Income)) inspect(head(SORT(rules, by = "hyperConfidence")))
+quality(rules) <- cbind(quality(rules), hyperConfidence = interestMeasure(rules, method = "hyperConfidence", Income))
+inspect(rules)
+help(inspect)
+rules <- apriori(tr, parameter= list(supp=0.1399, conf=0.8499, target="rules"))
+inspect(rules)
+tr
+help(read.transactions)
+q1e
+q1e <- read.transactions(file="data-q1e-processed",format="single",sep=",",cols=c(1,2))
+inspect(q1e)
+q1e-rules <- apriori(q1e)
+q1e_rules <- apriori(q1e)
+inspect(q1e_rules)
+q1e_rules <- apriori(q1e,parameter= list(supp=0.08, conf=0.7))
+q1e_rules <- apriori(q1e,parameter= list(supp=0.08, conf=0.8))
+q1e_rules <- apriori(q1e,parameter= list(supp=0.1, conf=0.8))
+q1e_rules <- apriori(q1e,parameter= list(supp=0.09, conf=0.8))
+inspect(q1e_rules)
+q1e_rules <- apriori(q1e,parameter= list(supp=0.09, conf=0.81))
+inspect(q1e_rules)
+q1e_rules <- apriori(q1e,parameter= list(supp=0.09, conf=0.82))
+q1e_rules <- apriori(q1e,parameter= list(supp=0.09, conf=0.83))
+inspect(q1e_rules)
+help(read.transactions)
+write(q1e, file="demo_basket")
+data <- paste(q1e, sep="\n")
+WRITE(q1e,file="q1e_basket")
+WRITE(q1e,file="q1e_basket",sep=",")
+q1e_rules <- apriori(q1e,parameter= list(supp=0.09, conf=0.83))
+q1e_rules <- apriori(q1e,parameter= list(supp=0.09, conf=0.84))
+q1e_rules <- apriori(q1e,parameter= list(supp=0.09, conf=0.83))
+q1e_rules <- apriori(q1e,parameter= list(supp=0.08, conf=0.83))
+q1e_rules <- apriori(q1e,parameter= list(supp=0.08, conf=0.85))
+inspect(q1e_rules)
+interestMeasure(q1e_rules,c("confidence", "oddsRatio", "leverage"),q1e)
+interestMeasure(q1e_rules,c("support", "chiSquare", "confidence","conviction",      "cosine", "coverage", "leverage", "lift", "oddsRatio"),q1e)
+interestMeasure(q1e_rules,c("support", "chiSquare", "confidence","conviction","cosine", "coverage", "leverage", "lift", "oddsRatio"),q1e)
+interestMeasure(q1e,"allConfidence")
+interestMeasure(q1e,c("allConfidence"))
+interestMeasure(q1e,c("allConfidence"),q1e)
+interestMeasure(q1e,method="allConfidence",q1e)
+interestMeasure(q1e,method="allConfidence")
+interestMeasure(q1e,method="confidence")
+interestMeasure(q1e_rules,c("support", "confidence", "conviction", "cosine", "coverage", "leverage", "lift", "oddsRatio", "improvement"),q1e)
+interestMeasure(q1e_rules,c("support", "confidence", "lift", "conviction", "fishersExactTest", "coverage", "leverage", "oddsRatio", "improvement"),q1e)
+interestMeasure(q1e_rules,c("support", "confidence", "lift", "conviction", "coverage", "leverage", "oddsRatio", "improvement"),q1e)
+interestMeasure(q1e_rules,c("support", "confidence", "lift", "conviction", "coverage", "leverage", "oddsRatio"),q1e)
+interestMeasure(q1e_rules,c("support", "confidence", "lift", "conviction", "oddsRatio"),q1e)
+quality(q1e_rules)
+q1e
+q1e_rules <- apriori(q1e,parameter= list(supp=0.09, conf=0.83))
+inspect(q1e_rules)
+data-q1e <- read.transactions(file="data-q1e.csv",format="single",sep=",",cols=c(1,2))
+data_q1e <- read.transactions(file="data-q1e.csv",format="single",sep=",",cols=c(1,2))
+inspect(data_q1e)
+data_q1e <- read.transactions(file="data-q1e.csv",format="single",sep=",",cols=c(1,2))
+inspect(data_q1e)
+data_q1e <- read.transactions(file="data-q1e.csv",format="single",sep=",",cols=c(2,1))
+inspect(data_q1e)
+data_q1e <- read.transactions(file="data-q1e.csv",format="single",sep=",",cols=c(1,2))
+inspect(data_q1e)
+rules_q1e <- apriori(data_q1e,parameter= list(supp=0.09, conf=0.83))
+inspect(q1e_rules)
+q1e_rules
+rules <- inspect(q1e_rules)
+rules
+setwd('/Users/edwardtoday/Dropbox/Workspace/R')#
+Sweave('/Users/edwardtoday/Dropbox/Workspace/R/Apriori-q1e.R')#
+date()
+setwd('/Users/edwardtoday/Dropbox/Workspace/R')#
+Sweave('/Users/edwardtoday/Dropbox/Workspace/R/example-2.Snw')#
+date()
+q()
+help(read.transactions)
+help(read)
+library(arules)
+help(read.transactions)
+library(arules)
+help(inspect)
+library(arules)
+help(inspect)
+help(apriori)
+help(read.transactions)
+df
+dir
+dir)()
+ls()
+library(arules)
+help(read.transactions)
+transcross <- read.transactions(file="data-q1e-cross.csv", format="single", sep=",", cols=c(1,2), rm.duplicates=T)#
+rulescross <- apriori(transcross, parameter=list(supp=0.23, conf=0.8))
+transcross <- read.transactions(file="data-q1e-cross.csv", format="single", sep=",", cols=c(1,2), rm.duplicates=T)#
+rulescross <- apriori(transcross, parameter=list(supp=0.23, conf=0.8))
+transcross <- read.transactions(file="data-q1e-cross.csv", format="single", sep=",", cols=c(1,2), rm.duplicates=T)#
+rulescross <- apriori(transcross, parameter=list(supp=0.23, conf=0.8))
+inspect(sort(rulescross, by = "lift")[1:8])
+inspect(sort(rulescross, by = "lift"))
+help(sort)
+inspect(sort(rulescross, decreasing = FALSE, by = "confidence"))
+transcross <- read.transactions(file="data-q1e-cross.csv", format="single", sep=",", cols=c(1,2), rm.duplicates=T)#
+rulescross <- apriori(transcross, parameter=list(supp=0.2, conf=0.8))
+inspect(sort(rulescross, decreasing = FALSE, by = "confidence")[1:10])
+inspect(sort(rulescross, decreasing = FALSE, by = "confidence"))
+transcross <- read.transactions(file="data-q1e-cross.csv", format="single", sep=",", cols=c(1,2), rm.duplicates=T)#
+rulescross <- apriori(transcross, parameter=list(supp=0.3, conf=0.6))
+inspect(sort(rulescross, decreasing = FALSE, by = "confidence"))
+transcross <- read.transactions(file="data-q1e-cross.csv", format="single", sep=",", cols=c(1,2), rm.duplicates=T)#
+rulescross <- apriori(transcross, parameter=list(supp=0.3, conf=0.5))
+inspect(sort(rulescross, decreasing = FALSE, by = "confidence"))

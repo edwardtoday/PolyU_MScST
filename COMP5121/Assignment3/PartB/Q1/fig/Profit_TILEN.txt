@@ -1,0 +1,508 @@
+Rule 1 - estimated accuracy 80.97% [boost 83.9%]
+	Charge_Mean_SDBIN in [ -1 ] [ Mode: 1 ] => 1 
+	Charge_Mean_SDBIN in [ 0 1 ] [ Mode: 2 ] 
+		Sex = F [ Mode: 2 ] 
+			Method <= 3 [ Mode: 2 ] 
+				JoinFrom = AnF [ Mode: 2 ] 
+					DueTime_Mean_SDBIN in [ -1 0 ] [ Mode: 2 ] 
+						SpecialOffer_A_Mean = Y [ Mode: 2 ] 
+							SpecialOffer_C_Mean = Y [ Mode: 2 ] => 2 
+							SpecialOffer_C_Mean = N [ Mode: 2 ] 
+								SpecialOffer_Count <= 1 [ Mode: 2 ] => 2 
+								SpecialOffer_Count > 1 [ Mode: 2 ] 
+									DueTime_Mean_SDBIN in [ -1 ] [ Mode: 1 ] => 1 
+									DueTime_Mean_SDBIN in [ 0 ] [ Mode: 2 ] => 2 
+						SpecialOffer_A_Mean = N [ Mode: 1 ] 
+							DueTime_Mean_SDBIN in [ -1 ] [ Mode: 1 ] => 1 
+							DueTime_Mean_SDBIN in [ 0 ] [ Mode: 2 ] => 2 
+					DueTime_Mean_SDBIN in [ 1 ] [ Mode: 2 ] => 2 
+				JoinFrom = Other [ Mode: 2 ] 
+					EducationLevel = Other [ Mode: 2 ] 
+						Method <= 2 [ Mode: 1 ] 
+							Method <= 1 [ Mode: 2 ] => 2 
+							Method > 1 [ Mode: 1 ] => 1 
+						Method > 2 [ Mode: 2 ] => 2 
+					EducationLevel = TD [ Mode: 2 ] => 2 
+			Method > 3 [ Mode: 2 ] 
+				SpecialOffer_Count <= 2 [ Mode: 2 ] => 2 
+				SpecialOffer_Count > 2 [ Mode: 1 ] 
+					DueTime_Mean_SDBIN in [ -1 0 ] [ Mode: 2 ] 
+						SpecialOffer_B_Mean = Y [ Mode: 2 ] => 2 
+						SpecialOffer_B_Mean = N [ Mode: 1 ] => 1 
+					DueTime_Mean_SDBIN in [ 1 ] [ Mode: 1 ] => 1 
+		Sex = M [ Mode: 1 ] 
+			DueTime_Mean_SDBIN in [ -1 0 ] [ Mode: 2 ] 
+				PhoneNo_BIN = 2 [ Mode: 1 ] 
+					DueTime_Mean_SDBIN in [ -1 ] [ Mode: 1 ] => 1 
+					DueTime_Mean_SDBIN in [ 0 ] [ Mode: 2 ] 
+						Method <= 2 [ Mode: 1 ] => 1 
+						Method > 2 [ Mode: 2 ] => 2 
+				PhoneNo_BIN = 1 [ Mode: 2 ] 
+					Method <= 3 [ Mode: 2 ] 
+						JoinFrom = AnF [ Mode: 2 ] 
+							Age_TILEN = old [ Mode: 2 ] 
+								Method <= 2 [ Mode: 1 ] => 1 
+								Method > 2 [ Mode: 2 ] => 2 
+							Age_TILEN = young [ Mode: 2 ] => 2 
+						JoinFrom = Other [ Mode: 2 ] 
+							DueTime_Mean_SDBIN in [ -1 ] [ Mode: 1 ] => 1 
+							DueTime_Mean_SDBIN in [ 0 ] [ Mode: 2 ] => 2 
+					Method > 3 [ Mode: 1 ] 
+						EducationLevel = Other [ Mode: 1 ] => 1 
+						EducationLevel = TD [ Mode: 2 ] => 2 
+			DueTime_Mean_SDBIN in [ 1 ] [ Mode: 1 ] 
+				SpecialOffer_C_Mean = Y [ Mode: 1 ] 
+					Method <= 1 [ Mode: 1 ] => 1 
+					Method > 1 [ Mode: 1 ] 
+						Charge_Mean_SDBIN in [ 0 ] [ Mode: 2 ] => 2 
+						Charge_Mean_SDBIN in [ 1 ] [ Mode: 1 ] => 1 
+				SpecialOffer_C_Mean = N [ Mode: 1 ] 
+					JoinFrom = AnF [ Mode: 1 ] => 1 
+					JoinFrom = Other [ Mode: 1 ] 
+						SpecialOffer_A_Mean = Y [ Mode: 2 ] => 2 
+						SpecialOffer_A_Mean = N [ Mode: 1 ] => 1 
+Rule 2 - estimated accuracy 72.28% [boost 83.9%]
+	Charge_Mean_SDBIN in [ -1 ] [ Mode: 1 ] => 1 
+	Charge_Mean_SDBIN in [ 0 1 ] [ Mode: 2 ] 
+		DueTime_Mean_SDBIN in [ -1 0 ] [ Mode: 2 ] 
+			SpecialOffer_C_Mean = Y [ Mode: 1 ] 
+				DueTime_Mean_SDBIN in [ -1 ] [ Mode: 1 ] 
+					JoinFrom = AnF [ Mode: 1 ] => 1 
+					JoinFrom = Other [ Mode: 1 ] 
+						SpecialOffer_Count <= 5 [ Mode: 2 ] => 2 
+						SpecialOffer_Count > 5 [ Mode: 1 ] => 1 
+				DueTime_Mean_SDBIN in [ 0 ] [ Mode: 2 ] 
+					EducationLevel = Other [ Mode: 2 ] 
+						Age_TILEN = old [ Mode: 2 ] => 2 
+						Age_TILEN = young [ Mode: 1 ] => 1 
+					EducationLevel = TD [ Mode: 2 ] => 2 
+			SpecialOffer_C_Mean = N [ Mode: 2 ] 
+				Method <= 1 [ Mode: 2 ] => 2 
+				Method > 1 [ Mode: 2 ] 
+					EducationLevel = Other [ Mode: 2 ] 
+						SpecialOffer_A_Mean = Y [ Mode: 2 ] 
+							SpecialOffer_Count <= 1 [ Mode: 2 ] 
+								Sex = F [ Mode: 2 ] => 2 
+								Sex = M [ Mode: 2 ] 
+									Charge_Mean_SDBIN in [ 0 ] [ Mode: 1 ] => 1 
+									Charge_Mean_SDBIN in [ 1 ] [ Mode: 2 ] => 2 
+							SpecialOffer_Count > 1 [ Mode: 1 ] 
+								Method <= 3 [ Mode: 2 ] => 2 
+								Method > 3 [ Mode: 1 ] => 1 
+						SpecialOffer_A_Mean = N [ Mode: 1 ] => 1 
+					EducationLevel = TD [ Mode: 2 ] => 2 
+		DueTime_Mean_SDBIN in [ 1 ] [ Mode: 1 ] 
+			Sex = F [ Mode: 2 ] 
+				Method <= 3 [ Mode: 2 ] => 2 
+				Method > 3 [ Mode: 1 ] => 1 
+			Sex = M [ Mode: 1 ] 
+				SpecialOffer_Count <= 1 [ Mode: 1 ] => 1 
+				SpecialOffer_Count > 1 [ Mode: 1 ] 
+					Age_TILEN = old [ Mode: 1 ] => 1 
+					Age_TILEN = young [ Mode: 1 ] 
+						SpecialOffer_Count <= 2 [ Mode: 2 ] => 2 
+						SpecialOffer_Count > 2 [ Mode: 1 ] => 1 
+Rule 3 - estimated accuracy 68.51% [boost 83.9%]
+	Charge_Mean_SDBIN in [ -1 ] [ Mode: 1 ] 
+		EducationLevel = Other [ Mode: 1 ] 
+			Age_TILEN = old [ Mode: 1 ] 
+				SpecialOffer_B_Mean = Y [ Mode: 1 ] => 1 
+				SpecialOffer_B_Mean = N [ Mode: 2 ] 
+					Sex = F [ Mode: 1 ] => 1 
+					Sex = M [ Mode: 2 ] => 2 
+			Age_TILEN = young [ Mode: 1 ] => 1 
+		EducationLevel = TD [ Mode: 1 ] => 1 
+	Charge_Mean_SDBIN in [ 0 1 ] [ Mode: 1 ] 
+		Sex = F [ Mode: 2 ] 
+			JoinFrom = AnF [ Mode: 2 ] 
+				Charge_Mean_SDBIN in [ 0 ] [ Mode: 2 ] 
+					DueTime_Mean_SDBIN in [ -1 1 ] [ Mode: 2 ] 
+						SpecialOffer_Count <= 1 [ Mode: 2 ] => 2 
+						SpecialOffer_Count > 1 [ Mode: 2 ] 
+							SpecialOffer_B_Mean = Y [ Mode: 1 ] => 1 
+							SpecialOffer_B_Mean = N [ Mode: 2 ] => 2 
+					DueTime_Mean_SDBIN in [ 0 ] [ Mode: 1 ] => 1 
+				Charge_Mean_SDBIN in [ 1 ] [ Mode: 2 ] => 2 
+			JoinFrom = Other [ Mode: 1 ] 
+				PhoneNo_BIN = 2 [ Mode: 1 ] 
+					Method <= 1 [ Mode: 1 ] => 1 
+					Method > 1 [ Mode: 1 ] 
+						Method <= 2 [ Mode: 2 ] => 2 
+						Method > 2 [ Mode: 1 ] 
+							Method <= 3 [ Mode: 1 ] => 1 
+							Method > 3 [ Mode: 2 ] => 2 
+				PhoneNo_BIN = 1 [ Mode: 2 ] 
+					SpecialOffer_Count <= 1 [ Mode: 2 ] => 2 
+					SpecialOffer_Count > 1 [ Mode: 1 ] 
+						SpecialOffer_B_Mean = Y [ Mode: 2 ] => 2 
+						SpecialOffer_B_Mean = N [ Mode: 1 ] => 1 
+		Sex = M [ Mode: 1 ] 
+			DueTime_Mean_SDBIN in [ -1 1 ] [ Mode: 1 ] 
+				Method <= 2 [ Mode: 1 ] 
+					JoinFrom = AnF [ Mode: 1 ] => 1 
+					JoinFrom = Other [ Mode: 1 ] 
+						SpecialOffer_A_Mean = Y [ Mode: 2 ] => 2 
+						SpecialOffer_A_Mean = N [ Mode: 1 ] => 1 
+				Method > 2 [ Mode: 1 ] 
+					SpecialOffer_A_Mean = Y [ Mode: 1 ] 
+						Charge_Mean_SDBIN in [ 0 ] [ Mode: 1 ] => 1 
+						Charge_Mean_SDBIN in [ 1 ] [ Mode: 2 ] => 2 
+					SpecialOffer_A_Mean = N [ Mode: 1 ] => 1 
+			DueTime_Mean_SDBIN in [ 0 ] [ Mode: 2 ] 
+				SpecialOffer_A_Mean = Y [ Mode: 2 ] 
+					SpecialOffer_Count <= 1 [ Mode: 1 ] => 1 
+					SpecialOffer_Count > 1 [ Mode: 2 ] => 2 
+				SpecialOffer_A_Mean = N [ Mode: 2 ] => 2 
+Rule 4 - estimated accuracy 67.41% [boost 83.9%]
+	Charge_Mean_SDBIN in [ -1 ] [ Mode: 1 ] 
+		EducationLevel = Other [ Mode: 1 ] 
+			Age_TILEN = old [ Mode: 1 ] 
+				DueTime_Mean_SDBIN in [ -1 1 ] [ Mode: 2 ] 
+					JoinFrom = AnF [ Mode: 2 ] => 2 
+					JoinFrom = Other [ Mode: 1 ] => 1 
+				DueTime_Mean_SDBIN in [ 0 ] [ Mode: 1 ] => 1 
+			Age_TILEN = young [ Mode: 1 ] => 1 
+		EducationLevel = TD [ Mode: 1 ] => 1 
+	Charge_Mean_SDBIN in [ 0 1 ] [ Mode: 1 ] 
+		Sex = F [ Mode: 2 ] 
+			JoinFrom = AnF [ Mode: 2 ] 
+				Method <= 3 [ Mode: 2 ] 
+					SpecialOffer_A_Mean = Y [ Mode: 2 ] 
+						Method <= 1 [ Mode: 2 ] => 2 
+						Method > 1 [ Mode: 2 ] 
+							DueTime_Mean_SDBIN in [ -1 1 ] [ Mode: 1 ] => 1 
+							DueTime_Mean_SDBIN in [ 0 ] [ Mode: 2 ] => 2 
+					SpecialOffer_A_Mean = N [ Mode: 2 ] 
+						Method <= 2 [ Mode: 1 ] => 1 
+						Method > 2 [ Mode: 2 ] => 2 
+				Method > 3 [ Mode: 2 ] 
+					SpecialOffer_B_Mean = Y [ Mode: 2 ] => 2 
+					SpecialOffer_B_Mean = N [ Mode: 1 ] => 1 
+			JoinFrom = Other [ Mode: 1 ] 
+				PhoneNo_BIN = 2 [ Mode: 1 ] 
+					Method <= 1 [ Mode: 1 ] => 1 
+					Method > 1 [ Mode: 1 ] 
+						SpecialOffer_Count <= 3 [ Mode: 1 ] 
+							Age_TILEN = old [ Mode: 2 ] => 2 
+							Age_TILEN = young [ Mode: 1 ] => 1 
+						SpecialOffer_Count > 3 [ Mode: 1 ] => 1 
+				PhoneNo_BIN = 1 [ Mode: 2 ] 
+					SpecialOffer_Count <= 1 [ Mode: 2 ] => 2 
+					SpecialOffer_Count > 1 [ Mode: 1 ] 
+						DueTime_Mean_SDBIN in [ -1 ] [ Mode: 1 ] => 1 
+						DueTime_Mean_SDBIN in [ 0 1 ] [ Mode: 2 ] => 2 
+		Sex = M [ Mode: 1 ] 
+			SpecialOffer_Count <= 3 [ Mode: 1 ] 
+				DueTime_Mean_SDBIN in [ -1 1 ] [ Mode: 1 ] 
+					Method <= 3 [ Mode: 1 ] 
+						SpecialOffer_C_Mean = Y [ Mode: 2 ] 
+							Age_TILEN = old [ Mode: 1 ] => 1 
+							Age_TILEN = young [ Mode: 2 ] => 2 
+						SpecialOffer_C_Mean = N [ Mode: 1 ] 
+							Charge_Mean_SDBIN in [ 0 ] [ Mode: 1 ] => 1 
+							Charge_Mean_SDBIN in [ 1 ] [ Mode: 1 ] 
+								JoinFrom = AnF [ Mode: 1 ] => 1 
+								JoinFrom = Other [ Mode: 2 ] => 2 
+					Method > 3 [ Mode: 1 ] => 1 
+				DueTime_Mean_SDBIN in [ 0 ] [ Mode: 2 ] 
+					PhoneNo_BIN = 2 [ Mode: 1 ] => 1 
+					PhoneNo_BIN = 1 [ Mode: 2 ] => 2 
+			SpecialOffer_Count > 3 [ Mode: 2 ] 
+				Method <= 1 [ Mode: 1 ] => 1 
+				Method > 1 [ Mode: 2 ] => 2 
+Rule 5 - estimated accuracy 64.87% [boost 83.9%]
+	Charge_Mean_SDBIN in [ -1 ] [ Mode: 1 ] 
+		DueTime_Mean_SDBIN in [ -1 1 ] [ Mode: 1 ] 
+			EducationLevel = Other [ Mode: 1 ] 
+				Age_TILEN = old [ Mode: 1 ] 
+					Sex = F [ Mode: 2 ] => 2 
+					Sex = M [ Mode: 1 ] => 1 
+				Age_TILEN = young [ Mode: 1 ] => 1 
+			EducationLevel = TD [ Mode: 1 ] => 1 
+		DueTime_Mean_SDBIN in [ 0 ] [ Mode: 1 ] 
+			SpecialOffer_Count <= 4 [ Mode: 1 ] => 1 
+			SpecialOffer_Count > 4 [ Mode: 2 ] => 2 
+	Charge_Mean_SDBIN in [ 0 1 ] [ Mode: 2 ] 
+		Sex = F [ Mode: 2 ] 
+			JoinFrom = AnF [ Mode: 2 ] 
+				Method <= 3 [ Mode: 2 ] => 2 
+				Method > 3 [ Mode: 1 ] 
+					PhoneNo_BIN = 2 [ Mode: 1 ] => 1 
+					PhoneNo_BIN = 1 [ Mode: 2 ] => 2 
+			JoinFrom = Other [ Mode: 1 ] 
+				SpecialOffer_Count <= 3 [ Mode: 2 ] 
+					PhoneNo_BIN = 2 [ Mode: 1 ] 
+						SpecialOffer_A_Mean = Y [ Mode: 2 ] => 2 
+						SpecialOffer_A_Mean = N [ Mode: 1 ] => 1 
+					PhoneNo_BIN = 1 [ Mode: 2 ] => 2 
+				SpecialOffer_Count > 3 [ Mode: 1 ] 
+					DueTime_Mean_SDBIN in [ -1 1 ] [ Mode: 1 ] => 1 
+					DueTime_Mean_SDBIN in [ 0 ] [ Mode: 2 ] => 2 
+		Sex = M [ Mode: 1 ] 
+			DueTime_Mean_SDBIN in [ -1 0 ] [ Mode: 2 ] 
+				SpecialOffer_Count <= 2 [ Mode: 2 ] 
+					Method <= 3 [ Mode: 2 ] 
+						PhoneNo_BIN = 2 [ Mode: 1 ] => 1 
+						PhoneNo_BIN = 1 [ Mode: 2 ] 
+							SpecialOffer_A_Mean = Y [ Mode: 2 ] 
+								JoinFrom = AnF [ Mode: 2 ] 
+									Charge_Mean_SDBIN in [ 0 ] [ Mode: 2 ] => 2 
+									Charge_Mean_SDBIN in [ 1 ] [ Mode: 2 ] 
+										DueTime_Mean_SDBIN in [ -1 ] [ Mode: 2 ] => 2 
+										DueTime_Mean_SDBIN in [ 0 ] [ Mode: 1 ] => 1 
+								JoinFrom = Other [ Mode: 1 ] => 1 
+							SpecialOffer_A_Mean = N [ Mode: 2 ] => 2 
+					Method > 3 [ Mode: 2 ] => 2 
+				SpecialOffer_Count > 2 [ Mode: 1 ] 
+					EducationLevel = Other [ Mode: 1 ] 
+						Method <= 1 [ Mode: 2 ] => 2 
+						Method > 1 [ Mode: 1 ] => 1 
+					EducationLevel = TD [ Mode: 2 ] => 2 
+			DueTime_Mean_SDBIN in [ 1 ] [ Mode: 1 ] 
+				Method <= 1 [ Mode: 1 ] => 1 
+				Method > 1 [ Mode: 1 ] 
+					SpecialOffer_Count <= 1 [ Mode: 1 ] => 1 
+					SpecialOffer_Count > 1 [ Mode: 2 ] 
+						Method <= 3 [ Mode: 2 ] => 2 
+						Method > 3 [ Mode: 1 ] => 1 
+Rule 6 - estimated accuracy 62.83% [boost 83.9%]
+	Charge_Mean_SDBIN in [ -1 ] [ Mode: 1 ] 
+		DueTime_Mean_SDBIN in [ -1 1 ] [ Mode: 1 ] 
+			EducationLevel = Other [ Mode: 1 ] 
+				Age_TILEN = old [ Mode: 1 ] 
+					JoinFrom = AnF [ Mode: 2 ] => 2 
+					JoinFrom = Other [ Mode: 1 ] => 1 
+				Age_TILEN = young [ Mode: 1 ] => 1 
+			EducationLevel = TD [ Mode: 1 ] => 1 
+		DueTime_Mean_SDBIN in [ 0 ] [ Mode: 1 ] 
+			PhoneNo_BIN = 2 [ Mode: 2 ] => 2 
+			PhoneNo_BIN = 1 [ Mode: 1 ] => 1 
+	Charge_Mean_SDBIN in [ 0 1 ] [ Mode: 1 ] 
+		Sex = F [ Mode: 2 ] 
+			JoinFrom = AnF [ Mode: 2 ] 
+				EducationLevel = Other [ Mode: 2 ] 
+					Charge_Mean_SDBIN in [ 0 ] [ Mode: 2 ] 
+						Method <= 2 [ Mode: 1 ] => 1 
+						Method > 2 [ Mode: 2 ] => 2 
+					Charge_Mean_SDBIN in [ 1 ] [ Mode: 1 ] => 1 
+				EducationLevel = TD [ Mode: 2 ] 
+					Charge_Mean_SDBIN in [ 0 ] [ Mode: 2 ] 
+						DueTime_Mean_SDBIN in [ -1 ] [ Mode: 2 ] => 2 
+						DueTime_Mean_SDBIN in [ 0 1 ] [ Mode: 1 ] => 1 
+					Charge_Mean_SDBIN in [ 1 ] [ Mode: 2 ] => 2 
+			JoinFrom = Other [ Mode: 1 ] 
+				Method <= 2 [ Mode: 1 ] 
+					SpecialOffer_Count <= 1 [ Mode: 2 ] => 2 
+					SpecialOffer_Count > 1 [ Mode: 1 ] => 1 
+				Method > 2 [ Mode: 2 ] 
+					SpecialOffer_B_Mean = Y [ Mode: 2 ] 
+						DueTime_Mean_SDBIN in [ -1 1 ] [ Mode: 2 ] => 2 
+						DueTime_Mean_SDBIN in [ 0 ] [ Mode: 1 ] => 1 
+					SpecialOffer_B_Mean = N [ Mode: 1 ] => 1 
+		Sex = M [ Mode: 1 ] 
+			DueTime_Mean_SDBIN in [ -1 0 ] [ Mode: 1 ] 
+				SpecialOffer_A_Mean = Y [ Mode: 1 ] 
+					SpecialOffer_C_Mean = Y [ Mode: 1 ] 
+						EducationLevel = Other [ Mode: 1 ] => 1 
+						EducationLevel = TD [ Mode: 2 ] => 2 
+					SpecialOffer_C_Mean = N [ Mode: 1 ] 
+						Age_TILEN = old [ Mode: 1 ] => 1 
+						Age_TILEN = young [ Mode: 2 ] => 2 
+				SpecialOffer_A_Mean = N [ Mode: 2 ] 
+					SpecialOffer_Count <= 2 [ Mode: 2 ] 
+						DueTime_Mean_SDBIN in [ -1 ] [ Mode: 2 ] 
+							Method <= 1 [ Mode: 2 ] => 2 
+							Method > 1 [ Mode: 1 ] => 1 
+						DueTime_Mean_SDBIN in [ 0 ] [ Mode: 2 ] => 2 
+					SpecialOffer_Count > 2 [ Mode: 1 ] => 1 
+			DueTime_Mean_SDBIN in [ 1 ] [ Mode: 1 ] 
+				JoinFrom = AnF [ Mode: 1 ] => 1 
+				JoinFrom = Other [ Mode: 1 ] 
+					PhoneNo_BIN = 2 [ Mode: 1 ] => 1 
+					PhoneNo_BIN = 1 [ Mode: 2 ] => 2 
+Rule 7 - estimated accuracy 63.73% [boost 83.9%]
+	Charge_Mean_SDBIN in [ -1 ] [ Mode: 1 ] => 1 
+	Charge_Mean_SDBIN in [ 0 1 ] [ Mode: 2 ] 
+		Sex = F [ Mode: 2 ] 
+			Method <= 1 [ Mode: 2 ] => 2 
+			Method > 1 [ Mode: 2 ] 
+				Method <= 2 [ Mode: 1 ] 
+					SpecialOffer_A_Mean = Y [ Mode: 1 ] 
+						PhoneNo_BIN = 2 [ Mode: 2 ] => 2 
+						PhoneNo_BIN = 1 [ Mode: 1 ] => 1 
+					SpecialOffer_A_Mean = N [ Mode: 1 ] => 1 
+				Method > 2 [ Mode: 2 ] 
+					EducationLevel = Other [ Mode: 2 ] 
+						Charge_Mean_SDBIN in [ 0 ] [ Mode: 2 ] 
+							SpecialOffer_Count <= 1 [ Mode: 2 ] => 2 
+							SpecialOffer_Count > 1 [ Mode: 1 ] => 1 
+						Charge_Mean_SDBIN in [ 1 ] [ Mode: 1 ] 
+							DueTime_Mean_SDBIN in [ -1 1 ] [ Mode: 1 ] => 1 
+							DueTime_Mean_SDBIN in [ 0 ] [ Mode: 2 ] => 2 
+					EducationLevel = TD [ Mode: 2 ] 
+						SpecialOffer_Count <= 1 [ Mode: 1 ] => 1 
+						SpecialOffer_Count > 1 [ Mode: 2 ] => 2 
+		Sex = M [ Mode: 1 ] 
+			DueTime_Mean_SDBIN in [ -1 0 ] [ Mode: 2 ] 
+				SpecialOffer_C_Mean = Y [ Mode: 1 ] 
+					SpecialOffer_A_Mean = Y [ Mode: 1 ] => 1 
+					SpecialOffer_A_Mean = N [ Mode: 2 ] => 2 
+				SpecialOffer_C_Mean = N [ Mode: 2 ] 
+					SpecialOffer_Count <= 2 [ Mode: 2 ] 
+						Method <= 2 [ Mode: 1 ] => 1 
+						Method > 2 [ Mode: 2 ] 
+							Method <= 3 [ Mode: 2 ] 
+								Charge_Mean_SDBIN in [ 0 ] [ Mode: 1 ] => 1 
+								Charge_Mean_SDBIN in [ 1 ] [ Mode: 2 ] => 2 
+							Method > 3 [ Mode: 2 ] => 2 
+					SpecialOffer_Count > 2 [ Mode: 1 ] 
+						Method <= 2 [ Mode: 2 ] => 2 
+						Method > 2 [ Mode: 1 ] => 1 
+			DueTime_Mean_SDBIN in [ 1 ] [ Mode: 1 ] 
+				SpecialOffer_Count <= 1 [ Mode: 1 ] => 1 
+				SpecialOffer_Count > 1 [ Mode: 1 ] 
+					Method <= 1 [ Mode: 1 ] => 1 
+					Method > 1 [ Mode: 1 ] 
+						SpecialOffer_A_Mean = Y [ Mode: 2 ] 
+							SpecialOffer_Count <= 2 [ Mode: 2 ] => 2 
+							SpecialOffer_Count > 2 [ Mode: 1 ] => 1 
+						SpecialOffer_A_Mean = N [ Mode: 1 ] => 1 
+Rule 8 - estimated accuracy 66.37% [boost 83.9%]
+	Charge_Mean_SDBIN in [ -1 ] [ Mode: 1 ] 
+		JoinFrom = AnF [ Mode: 1 ] 
+			Age_TILEN = old [ Mode: 1 ] 
+				PhoneNo_BIN = 2 [ Mode: 2 ] 
+					DueTime_Mean_SDBIN in [ 0 ] [ Mode: 1 ] => 1 
+					DueTime_Mean_SDBIN in [ -1 1 ] [ Mode: 2 ] => 2 
+				PhoneNo_BIN = 1 [ Mode: 1 ] => 1 
+			Age_TILEN = young [ Mode: 1 ] => 1 
+		JoinFrom = Other [ Mode: 1 ] => 1 
+	Charge_Mean_SDBIN in [ 0 1 ] [ Mode: 2 ] 
+		DueTime_Mean_SDBIN in [ -1 1 ] [ Mode: 1 ] 
+			Sex = F [ Mode: 2 ] 
+				SpecialOffer_Count <= 1 [ Mode: 2 ] 
+					SpecialOffer_A_Mean = Y [ Mode: 2 ] => 2 
+					SpecialOffer_A_Mean = N [ Mode: 2 ] 
+						DueTime_Mean_SDBIN in [ -1 ] [ Mode: 1 ] => 1 
+						DueTime_Mean_SDBIN in [ 1 ] [ Mode: 2 ] => 2 
+				SpecialOffer_Count > 1 [ Mode: 1 ] 
+					Method <= 1 [ Mode: 2 ] => 2 
+					Method > 1 [ Mode: 1 ] 
+						SpecialOffer_Count <= 3 [ Mode: 2 ] 
+							SpecialOffer_A_Mean = Y [ Mode: 1 ] 
+								Charge_Mean_SDBIN in [ 0 ] [ Mode: 2 ] => 2 
+								Charge_Mean_SDBIN in [ 1 ] [ Mode: 1 ] => 1 
+							SpecialOffer_A_Mean = N [ Mode: 2 ] => 2 
+						SpecialOffer_Count > 3 [ Mode: 1 ] => 1 
+			Sex = M [ Mode: 1 ] 
+				Method <= 2 [ Mode: 1 ] 
+					JoinFrom = AnF [ Mode: 1 ] => 1 
+					JoinFrom = Other [ Mode: 1 ] 
+						SpecialOffer_A_Mean = Y [ Mode: 2 ] => 2 
+						SpecialOffer_A_Mean = N [ Mode: 1 ] => 1 
+				Method > 2 [ Mode: 1 ] 
+					Method <= 3 [ Mode: 2 ] 
+						JoinFrom = AnF [ Mode: 2 ] 
+							DueTime_Mean_SDBIN in [ -1 ] [ Mode: 2 ] 
+								SpecialOffer_A_Mean = Y [ Mode: 2 ] => 2 
+								SpecialOffer_A_Mean = N [ Mode: 1 ] => 1 
+							DueTime_Mean_SDBIN in [ 1 ] [ Mode: 1 ] => 1 
+						JoinFrom = Other [ Mode: 2 ] => 2 
+					Method > 3 [ Mode: 1 ] 
+						SpecialOffer_Count <= 2 [ Mode: 1 ] => 1 
+						SpecialOffer_Count > 2 [ Mode: 2 ] => 2 
+		DueTime_Mean_SDBIN in [ 0 ] [ Mode: 2 ] 
+			EducationLevel = Other [ Mode: 2 ] 
+				SpecialOffer_Count <= 1 [ Mode: 1 ] => 1 
+				SpecialOffer_Count > 1 [ Mode: 2 ] 
+					Charge_Mean_SDBIN in [ 0 ] [ Mode: 2 ] 
+						Method <= 1 [ Mode: 2 ] => 2 
+						Method > 1 [ Mode: 2 ] 
+							SpecialOffer_B_Mean = Y [ Mode: 2 ] => 2 
+							SpecialOffer_B_Mean = N [ Mode: 1 ] => 1 
+					Charge_Mean_SDBIN in [ 1 ] [ Mode: 1 ] => 1 
+			EducationLevel = TD [ Mode: 2 ] 
+				Charge_Mean_SDBIN in [ 0 ] [ Mode: 2 ] 
+					Method <= 1 [ Mode: 1 ] => 1 
+					Method > 1 [ Mode: 2 ] => 2 
+				Charge_Mean_SDBIN in [ 1 ] [ Mode: 2 ] => 2 
+Rule 9 - estimated accuracy 72.34% [boost 83.9%]
+	Charge_Mean_SDBIN in [ -1 ] [ Mode: 1 ] => 1 
+	Charge_Mean_SDBIN in [ 0 1 ] [ Mode: 2 ] 
+		DueTime_Mean_SDBIN in [ -1 1 ] [ Mode: 2 ] 
+			SpecialOffer_Count <= 1 [ Mode: 2 ] 
+				JoinFrom = AnF [ Mode: 2 ] => 2 
+				JoinFrom = Other [ Mode: 1 ] 
+					Sex = F [ Mode: 2 ] => 2 
+					Sex = M [ Mode: 1 ] => 1 
+			SpecialOffer_Count > 1 [ Mode: 1 ] 
+				EducationLevel = Other [ Mode: 1 ] 
+					JoinFrom = AnF [ Mode: 1 ] => 1 
+					JoinFrom = Other [ Mode: 1 ] 
+						SpecialOffer_Count <= 4 [ Mode: 1 ] 
+							SpecialOffer_B_Mean = Y [ Mode: 2 ] => 2 
+							SpecialOffer_B_Mean = N [ Mode: 1 ] => 1 
+						SpecialOffer_Count > 4 [ Mode: 1 ] => 1 
+				EducationLevel = TD [ Mode: 1 ] 
+					SpecialOffer_B_Mean = Y [ Mode: 1 ] 
+						Sex = F [ Mode: 2 ] 
+							SpecialOffer_Count <= 2 [ Mode: 2 ] => 2 
+							SpecialOffer_Count > 2 [ Mode: 1 ] => 1 
+						Sex = M [ Mode: 1 ] => 1 
+					SpecialOffer_B_Mean = N [ Mode: 2 ] => 2 
+		DueTime_Mean_SDBIN in [ 0 ] [ Mode: 2 ] 
+			EducationLevel = Other [ Mode: 2 ] 
+				SpecialOffer_B_Mean = Y [ Mode: 2 ] 
+					Method <= 1 [ Mode: 2 ] => 2 
+					Method > 1 [ Mode: 2 ] 
+						SpecialOffer_Count <= 3 [ Mode: 2 ] 
+							Method <= 2 [ Mode: 1 ] => 1 
+							Method > 2 [ Mode: 2 ] => 2 
+						SpecialOffer_Count > 3 [ Mode: 2 ] => 2 
+				SpecialOffer_B_Mean = N [ Mode: 2 ] => 2 
+			EducationLevel = TD [ Mode: 2 ] => 2 
+Rule 10 - estimated accuracy 78.4% [boost 83.9%]
+	Charge_Mean_SDBIN in [ -1 ] [ Mode: 1 ] => 1 
+	Charge_Mean_SDBIN in [ 0 1 ] [ Mode: 2 ] 
+		PhoneNo_BIN = 2 [ Mode: 1 ] 
+			Sex = F [ Mode: 2 ] 
+				SpecialOffer_Count <= 2 [ Mode: 2 ] 
+					DueTime_Mean_SDBIN in [ -1 0 ] [ Mode: 2 ] 
+						SpecialOffer_B_Mean = Y [ Mode: 1 ] 
+							Method <= 1 [ Mode: 2 ] => 2 
+							Method > 1 [ Mode: 1 ] => 1 
+						SpecialOffer_B_Mean = N [ Mode: 2 ] => 2 
+					DueTime_Mean_SDBIN in [ 1 ] [ Mode: 2 ] => 2 
+				SpecialOffer_Count > 2 [ Mode: 1 ] 
+					DueTime_Mean_SDBIN in [ -1 1 ] [ Mode: 1 ] => 1 
+					DueTime_Mean_SDBIN in [ 0 ] [ Mode: 2 ] => 2 
+			Sex = M [ Mode: 1 ] 
+				Charge_Mean_SDBIN in [ 0 ] [ Mode: 1 ] 
+					SpecialOffer_C_Mean = Y [ Mode: 2 ] 
+						Method <= 1 [ Mode: 1 ] => 1 
+						Method > 1 [ Mode: 2 ] => 2 
+					SpecialOffer_C_Mean = N [ Mode: 1 ] => 1 
+				Charge_Mean_SDBIN in [ 1 ] [ Mode: 1 ] => 1 
+		PhoneNo_BIN = 1 [ Mode: 2 ] 
+			Method <= 3 [ Mode: 2 ] 
+				JoinFrom = AnF [ Mode: 2 ] 
+					Method <= 2 [ Mode: 2 ] 
+						SpecialOffer_Count <= 3 [ Mode: 1 ] 
+							Charge_Mean_SDBIN in [ 0 ] [ Mode: 2 ] => 2 
+							Charge_Mean_SDBIN in [ 1 ] [ Mode: 1 ] => 1 
+						SpecialOffer_Count > 3 [ Mode: 2 ] => 2 
+					Method > 2 [ Mode: 2 ] 
+						SpecialOffer_C_Mean = Y [ Mode: 1 ] => 1 
+						SpecialOffer_C_Mean = N [ Mode: 2 ] => 2 
+				JoinFrom = Other [ Mode: 2 ] 
+					SpecialOffer_Count <= 5 [ Mode: 1 ] 
+						SpecialOffer_A_Mean = Y [ Mode: 1 ] 
+							EducationLevel = Other [ Mode: 1 ] => 1 
+							EducationLevel = TD [ Mode: 2 ] => 2 
+						SpecialOffer_A_Mean = N [ Mode: 2 ] => 2 
+					SpecialOffer_Count > 5 [ Mode: 2 ] => 2 
+			Method > 3 [ Mode: 1 ] 
+				EducationLevel = Other [ Mode: 1 ] 
+					JoinFrom = AnF [ Mode: 1 ] => 1 
+					JoinFrom = Other [ Mode: 2 ] => 2 
+				EducationLevel = TD [ Mode: 2 ] => 2 

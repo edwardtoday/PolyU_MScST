@@ -1,0 +1,7 @@
+Field,Mean (N),Mean (Y),Importance,,,Field,special offer A,special offer B,special offer C
+CallDurationInMinutes_Sum,2512.324,2418.658,0.653,,,CallDurationInMinutes_Sum,£Ö,£Ö,
+CallDurationInMinutes_Mean,83.102,83.352,0.255,,,CallDurationInMinutes_Mean,,,
+Charge_Sum,519.055,477.607,1,,,Charge_Sum,,£Ö,£Ö
+Charge_Mean,215.208,205.711,1,,,Charge_Mean,,£Ö,£Ö
+UnpaidPreviousCharge_Mean,129.089,121.805,0.906,,,UnpaidPreviousCharge_Mean,£Ö,£Ö,£Ö
+DueTime_Mean,15.115,15.567,0.635,,,DueTime_Mean,,,

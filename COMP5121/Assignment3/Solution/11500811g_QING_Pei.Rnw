@@ -1,0 +1,289 @@
+\documentclass[a4paper]{article}
+% \usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{rotating}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{algorithmic}
+\usepackage[section]{placeins}
+\usepackage{etex}
+\reserveinserts{18}
+\usepackage{morefloats}
+
+\setlength{\parindent}{0pt}
+
+%separation between floats and text
+\setlength\dbltextfloatsep{9pt plus 5pt minus 3pt }
+
+\title{Solution to COMP5121 Assignment 3}
+\author{QING Pei, 11500811G}
+
+\begin{document}
+
+\maketitle
+
+%\setcounter{tocdepth}{2}
+%\tableofcontents
+% \vspace*{1cm}
+
+\section{Part A (Individual)} % (fold)
+\label{sec:part_a_individual_}
+In any later distance calculations, the data should be normalized. The Mahalanobis distance is used here, which is defined as:
+
+\begin{equation}
+d(\vec{x},\vec{y})=\sqrt{\Sigma_{i=1}^{N}{(x_{i}-y_{i})^{2}\over \sigma_{i}^{2}}}
+\label{eqn:distance}
+\end{equation}
+
+$\sigma_{i}^{2}$ is the variance of the $i^{th}$ item in the vector.
+
+First, calculate the variance of each column in the data table.
+\input{tab/data}
+The last row in Table~\ref{tab:data} is variance of the corresponding column.
+
+The k-means algorithm is described as:
+\begin{algorithmic}
+	\STATE Make an initial guess of the partition.
+\WHILE{Any one of the centroids moves from its last position}
+	\STATE Place each point in the space represented by the closest centroid;
+	\STATE Update centroid position as the mean of all points in its space.
+\ENDWHILE
+\end{algorithmic}
+\subsection{Manual k-means, k=2} % (fold)
+\label{sub:k_means_k_2}
+
+\input{tab/mean_a1}
+\input{tab/cluster_a1}
+\input{tab/mean_a2}
+\input{tab/cluster_a2}
+\input{tab/mean_a3}
+\input{tab/cluster_a3}
+\input{tab/mean_a4}
+\input{tab/cluster_a4}
+
+Take the first two points as initial centroids shown in Table~\ref{tab:mean_a1}.
+
+Calculate the distance square (a sqrt() is saved here since we only need to know which is closer but not the actual distance) to means, shown in Table~\ref{tab:cluster_a1} and assign each point to a cluster.
+
+The temporary partition at each step is shown in Table~\ref{tab:cluster_a2},\ref{tab:cluster_a3} and \ref{tab:cluster_a4}. The updated centroid positions are shown in Table~\ref{tab:mean_a2},\ref{tab:mean_a3} and \ref{tab:mean_a4}.
+
+\input{tab/cluster_a}
+
+The centroid stay unchanged in the last step. The clustering result is shown in Table~\ref{tab:cluster_a}.
+% subsection k_means_k_2 (end)
+
+\subsection{Manual k-means, k=3} % (fold)
+\label{sub:k_means_k_3}
+\input{tab/mean_b1}
+\input{tab/cluster_b1}
+\input{tab/mean_b2}
+\input{tab/cluster_b2}
+\input{tab/mean_b3}
+\input{tab/cluster_b3}
+\input{tab/mean_b4}
+\input{tab/cluster_b4}
+
+Take the last three points as initial centroids shown in Table~\ref{tab:mean_b1}:
+
+Calculate the distance square to means, shown in Table~\ref{tab:cluster_b1} and assign each point to a cluster.
+
+\input{tab/mean_b5}
+\input{tab/cluster_b5}
+\input{tab/mean_b6}
+\input{tab/cluster_b6}
+The temporary partition at each step is shown in Table~\ref{tab:cluster_b2},\ref{tab:cluster_b3},\ref{tab:cluster_b4},\ref{tab:cluster_b5} and \ref{tab:cluster_b6}. The updated centroid positions are shown in Table~\ref{tab:mean_b2},\ref{tab:mean_b3},\ref{tab:mean_b4},\ref{tab:mean_b5} and \ref{tab:mean_b6}.
+
+\input{tab/cluster_b}
+
+The centroid stay unchanged in the last step. The clustering result is shown in Table~\ref{tab:cluster_b}.
+% subsection k_means_k_3 (end)
+
+\subsection{Software k-means, k=2\&3} % (fold)
+\label{sub:software_k_means_k_2&3}
+<<echo=FALSE, results=hide>>=
+library(pvclust)
+library(cluster)
+library(fpc)
+@
+
+Read the date file:
+<<>>=
+cars <- read.csv("question1_data.csv")
+cars
+@
+
+Normalize the figures:
+<<>>=
+options(digits=2)
+cars.scale <- scale(cars)
+cars.scale
+@
+
+How within-group sum of squares change with the number of clusters:
+<<fig=TRUE>>=
+wss <- (nrow(cars.scale)-1)*sum(apply(cars.scale,2,var))
+for (i in 1:14) wss[i] <- sum(kmeans(cars.scale,centers=i)$withinss)
+plot(1:14,wss,type="b",	xlab="num of clusters",	ylab="wss")
+@
+
+K-means, k=2:
+<<>>=
+fit2 <- kmeans(cars.scale,2)
+aggregate(cars.scale,by=list(fit2$cluster),FUN=mean)
+two_cluster <- data.frame(cars.scale,fit2$cluster)
+two_cluster
+@
+
+K-means, k=3:
+<<>>=
+fit3 <- kmeans(cars.scale,3)
+aggregate(cars.scale,by=list(fit3$cluster),FUN=mean)
+three_cluster <- data.frame(cars.scale,fit3$cluster)
+three_cluster
+@
+% subsection software_k_means_k_2&3 (end)
+
+\subsection{Review of k-means results} % (fold)
+\label{sub:review_of_k_means_results}
+First thing to note is that manual and software k-means give the same clustering results, which proves k-means is relatively stable.
+
+Visualize the 2-cluster and 3-cluster partition, we can see the difference.
+
+<<fig=TRUE,echo=FALSE>>=
+clusplot(cars.scale,fit2$cluster,color=TRUE,shade=TRUE,labels=2,lines=0)
+@
+
+<<fig=TRUE,echo=FALSE>>=
+clusplot(cars.scale,fit3$cluster,color=TRUE,shade=TRUE,labels=2,lines=0)
+@
+
+To compare the two clustering results, we need to check some attributes:
+
+<<>>=
+fit2$withinss/fit2$betweenss
+fit3$withinss/fit3$betweenss
+@
+
+The within/between distance ratio shows that the 3-cluster result is better. However, there are some better criteria for comparison. E.g. the Calinski and Harabasz index.
+
+B(k) = between cluster sum of squares
+
+W(k) = within cluster sum of squares
+
+Maximize CH(k) over the clusters:
+
+\begin{equation}
+	CH(k)={{B(k)/(k-1)}\over{W(k)/(n-k)}}
+\end{equation}
+
+
+With the help of GNU/R, we can obtain different measures of attributes of the partitions. Try increase the number of clusters and we can see the Calinski and Harabasz index reaches maximum at k=3.
+
+<<fig=TRUE,echo=FALSE>>=
+d <- dist(cars.scale,method="euclidean")
+ch <- c(0)
+for (i in 2:7) {
+	fit <- kmeans(cars.scale,i)
+	stat_fit <- cluster.stats(d,fit$cluster)
+	ch[i] <- stat_fit$ch
+}
+plot(ch,type="b",xlab="num of clusters",ylab="Calinski and Harabasz index")
+@
+
+Therefore, for this dataset, k=3 is an optimal parameter.
+% subsection review_of_k_means_results (end)
+
+\subsection{Hierarchical Agglomerative Single-Linkage} % (fold)
+\label{sub:hierarchical_agglomerative_single_linkage}
+The initial distance matrix is shown in Table~\ref{tab:d0}.
+\input{tab/d0}
+
+2 and 9 are closest to each other, so assign them to the same cluster.
+Now the partition is {2,9} and the rest are individual points. Update the distance matrix and it becomes Table~\ref{tab:d1}.
+\input{tab/d1}
+
+5 and 15 are closest to each other, so assign them to the same cluster.
+Now the partition is {2,9}, {5,15} and the rest are individual points. Update the distance matrix and it becomes Table~\ref{tab:d2}.
+\input{tab/d2}
+
+6 and 8 are closest to each other, so assign them to the same cluster.
+Now the partition is {2,9}, {5,15}, {6,8} and the rest are individual points. Update the distance matrix and it becomes Table~\ref{tab:d3}.
+\input{tab/d3}
+
+{2,9} and 3 are closest to each other, so assign them to the same cluster.
+Now the partition is {2,3,9}, {5,15}, {6,8} and the rest are individual points. Update the distance matrix and it becomes Table~\ref{tab:d4}.
+\input{tab/d4}
+
+{5,15} and 12 are closest to each other, so assign them to the same cluster.
+Now the partition is {2,3,9}, {5,12,15}, {6,8} and the rest are individual points. Update the distance matrix and it becomes Table~\ref{tab:d5}.
+\input{tab/d5}
+
+{5,12,15} and 4 are closest to each other, so assign them to the same cluster.
+Now the partition is {2,3,9}, {4,5,12,15}, {6,8} and the rest are individual points. Update the distance matrix and it becomes Table~\ref{tab:d6}.
+\input{tab/d6}
+
+{4,5,12,15} and 11 are closest to each other, so assign them to the same cluster.
+Now the partition is {2,3,9}, {4,5,11,12,15}, {6,8} and the rest are individual points. Update the distance matrix and it becomes Table~\ref{tab:d7}.
+\input{tab/d7}
+
+{2,3,9} and 1 are closest to each other, so assign them to the same cluster.
+Now the partition is {1,2,3,9}, {4,5,11,12,15}, {6,8} and the rest are individual points. Update the distance matrix and it becomes Table~\ref{tab:d8}.
+\input{tab/d8}
+
+{6,8} and 7 are closest to each other, so assign them to the same cluster.
+Now the partition is {1,2,3,9}, {4,5,11,12,15}, {6,7,8} and the rest are individual points. Update the distance matrix and it becomes Table~\ref{tab:d9}.
+\input{tab/d9}
+
+{4,5,11,12,15} and 13 are closest to each other, so assign them to the same cluster.
+Now the partition is {1,2,3,9}, {4,5,11,12,13,15}, {6,7,8} and the rest are individual points. Update the distance matrix and it becomes Table~\ref{tab:d10}.
+\input{tab/d10}
+
+{6,7,8} and 14 are closest to each other, so assign them to the same cluster.
+Now the partition is {1,2,3,9}, {4,5,11,12,13,15}, {6,7,8,14} and the rest are individual points. Update the distance matrix and it becomes Table~\ref{tab:d11}.
+\input{tab/d11}
+
+{4,5,11,12,13,15} and 10 are closest to each other, so assign them to the same cluster.
+Now the partition is {1,2,3,9}, {4,5,10,11,12,13,15} and {6,7,8,14}. Update the distance matrix and it becomes Table~\ref{tab:d12}.
+\input{tab/d12}
+
+{4,5,10,11,12,13,15} and {6,7,8,14} are closest to each other, so assign them to the same cluster.
+Now the partition is {1,2,3,9} and {4,5,6,7,8,10,11,12,13,14,15}. Update the distance matrix and it becomes Table~\ref{tab:d13}.
+\input{tab/d13}
+
+The final dendrogram with 2 clusters:
+
+<<fig=TRUE,echo=FALSE>>=
+fit_hagg <-hclust(d,method="ward")
+plot(fit_hagg)
+groups <- cutree(fit_hagg,k=2)
+rect.hclust(fit_hagg,k=2)
+@
+
+The final dendrogram with 3 clusters:
+
+<<fig=TRUE,echo=FALSE>>=
+plot(fit_hagg)
+groups <- cutree(fit_hagg,k=3)
+rect.hclust(fit_hagg,k=3)
+@
+
+The difference from k-means partitioning is the belonging of 7, 14 for 2-cluster and 13 for 3-cluster.
+
+Recap the k-means plots:
+
+<<fig=TRUE,echo=FALSE>>=
+clusplot(cars.scale,fit2$cluster,color=TRUE,shade=TRUE,labels=2,lines=0)
+@
+
+<<fig=TRUE,echo=FALSE>>=
+clusplot(cars.scale,fit3$cluster,color=TRUE,shade=TRUE,labels=2,lines=0)
+@
+
+In the first plot, 7 and 14 are closer to 6, 8 rather than the 11, 12, etc. In the second plot, 13 is closer to 10 than 14. However, the goal of k-means is to minimize the within-cluster sum of squares (WCSS) instead of just to put closer points together. What's more is that k-means require an input of k. The parameter affect the clustering quality. That k can be obtained from the dendrogram. As shown in the two dendrograms, separating the points into only 2 clusters will make one of the cluster consisting of two groups relatively far from each other. From this point of view, hierarchical clustering algorithm is helpful to decide the optimal k for k-means.
+
+% subsection hierarchical_agglomerative_single_linkage (end)
+
+% section part_a_individual_ (end)
+\end{document}

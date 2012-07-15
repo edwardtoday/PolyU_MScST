@@ -1,0 +1,21 @@
+Item,Sex,Age,Married,Income,Plan,Renew Contract
+1,F,Y,Y,H,A,Y
+2,M,M,N,H,A,Y
+3,F,S,N,M,A,Y
+4,M,S,N,M,C,Y
+5,F,S,Y,M,C,Y
+6,F,Y,Y,L,B,N
+7,F,Y,N,H,C,N
+8,F,Y,Y,L,B,Y
+9,M,Y,N,L,A,N
+10,F,M,Y,L,C,Y
+11,F,M,Y,L,C,N
+12,F,M,Y,H,B,Y
+13,M,Y,Y,H,B,Y
+14,M,S,N,M,A,N
+15,F,S,Y,M,A,Y
+16,F,Y,N,M,C,Y
+17,M,Y,N,H,C,N
+18,M,Y,Y,H,B,Y
+19,M,M,Y,M,B,Y
+20,F,S,Y,L,A,N

@@ -1,0 +1,4532 @@
+Rule 1 - estimated accuracy 97.03% [boost 95.9%]
+	SpecialOffer_Count <= 1 [ Mode: -1 ] 
+		SpecialOffer_B_Mean = Y [ Mode: 1 ] 
+			Method <= 3 [ Mode: 1 ] 
+				Method <= 2 [ Mode: 0 ] 
+					JoinFrom = AnF [ Mode: 0 ] 
+						EducationLevel = Other [ Mode: 0 ] 
+							Method <= 1 [ Mode: -1 ] 
+								PhoneNo_BIN = 2 [ Mode: -1 ] 
+									Sex = F [ Mode: -1 ] => -1 
+									Sex = M [ Mode: 0 ] => 0 
+								PhoneNo_BIN = 1 [ Mode: 0 ] => 0 
+							Method > 1 [ Mode: 0 ] => 0 
+						EducationLevel = TD [ Mode: 0 ] => 0 
+					JoinFrom = Other [ Mode: 1 ] 
+						Sex = F [ Mode: -1 ] 
+							Method <= 1 [ Mode: 1 ] 
+								Age_TILEN = old [ Mode: 1 ] 
+									EducationLevel = Other [ Mode: 1 ] 
+										PhoneNo_BIN = 2 [ Mode: 0 ] => 0 
+										PhoneNo_BIN = 1 [ Mode: 1 ] => 1 
+									EducationLevel = TD [ Mode: 1 ] => 1 
+								Age_TILEN = young [ Mode: 0 ] => 0 
+							Method > 1 [ Mode: -1 ] 
+								Age_TILEN = old [ Mode: -1 ] 
+									PhoneNo_BIN = 2 [ Mode: -1 ] => -1 
+									PhoneNo_BIN = 1 [ Mode: 0 ] => 0 
+								Age_TILEN = young [ Mode: 0 ] => 0 
+						Sex = M [ Mode: 1 ] 
+							PhoneNo_BIN = 2 [ Mode: 1 ] 
+								Method <= 1 [ Mode: -1 ] 
+									EducationLevel = Other [ Mode: -1 ] => -1 
+									EducationLevel = TD [ Mode: 1 ] => 1 
+								Method > 1 [ Mode: 1 ] => 1 
+							PhoneNo_BIN = 1 [ Mode: 1 ] 
+								Method <= 1 [ Mode: 1 ] 
+									Age_TILEN = old [ Mode: 1 ] => 1 
+									Age_TILEN = young [ Mode: 0 ] => 0 
+								Method > 1 [ Mode: -1 ] 
+									EducationLevel = Other [ Mode: -1 ] => -1 
+									EducationLevel = TD [ Mode: 1 ] 
+										Age_TILEN = old [ Mode: 1 ] => 1 
+										Age_TILEN = young [ Mode: 0 ] => 0 
+				Method > 2 [ Mode: 1 ] 
+					Sex = F [ Mode: 1 ] 
+						EducationLevel = Other [ Mode: 1 ] 
+							JoinFrom = AnF [ Mode: 1 ] 
+								PhoneNo_BIN = 2 [ Mode: 1 ] => 1 
+								PhoneNo_BIN = 1 [ Mode: -1 ] => -1 
+							JoinFrom = Other [ Mode: 1 ] 
+								Age_TILEN = old [ Mode: 1 ] => 1 
+								Age_TILEN = young [ Mode: 0 ] => 0 
+						EducationLevel = TD [ Mode: 1 ] 
+							Age_TILEN = old [ Mode: 0 ] => 0 
+							Age_TILEN = young [ Mode: 1 ] 
+								JoinFrom = AnF [ Mode: 0 ] => 0 
+								JoinFrom = Other [ Mode: 1 ] => 1 
+					Sex = M [ Mode: 0 ] 
+						Age_TILEN = old [ Mode: 0 ] => 0 
+						Age_TILEN = young [ Mode: -1 ] 
+							EducationLevel = Other [ Mode: 0 ] => 0 
+							EducationLevel = TD [ Mode: -1 ] => -1 
+			Method > 3 [ Mode: -1 ] 
+				Sex = F [ Mode: -1 ] 
+					Age_TILEN = old [ Mode: -1 ] 
+						EducationLevel = Other [ Mode: 0 ] => 0 
+						EducationLevel = TD [ Mode: -1 ] => -1 
+					Age_TILEN = young [ Mode: 0 ] 
+						JoinFrom = AnF [ Mode: 0 ] => 0 
+						JoinFrom = Other [ Mode: -1 ] 
+							EducationLevel = Other [ Mode: -1 ] 
+								PhoneNo_BIN = 2 [ Mode: -1 ] => -1 
+								PhoneNo_BIN = 1 [ Mode: 0 ] => 0 
+							EducationLevel = TD [ Mode: 0 ] => 0 
+				Sex = M [ Mode: 1 ] 
+					PhoneNo_BIN = 2 [ Mode: 1 ] 
+						EducationLevel = Other [ Mode: 0 ] => 0 
+						EducationLevel = TD [ Mode: 1 ] => 1 
+					PhoneNo_BIN = 1 [ Mode: 0 ] 
+						EducationLevel = Other [ Mode: -1 ] 
+							Age_TILEN = old [ Mode: -1 ] 
+								JoinFrom = AnF [ Mode: -1 ] => -1 
+								JoinFrom = Other [ Mode: 0 ] => 0 
+							Age_TILEN = young [ Mode: -1 ] => -1 
+						EducationLevel = TD [ Mode: 0 ] => 0 
+		SpecialOffer_B_Mean = N [ Mode: -1 ] 
+			Method <= 2 [ Mode: -1 ] 
+				Age_TILEN = old [ Mode: -1 ] 
+					JoinFrom = AnF [ Mode: 0 ] 
+						Method <= 1 [ Mode: 0 ] => 0 
+						Method > 1 [ Mode: 1 ] 
+							Sex = F [ Mode: 1 ] => 1 
+							Sex = M [ Mode: -1 ] => -1 
+					JoinFrom = Other [ Mode: -1 ] 
+						EducationLevel = Other [ Mode: -1 ] 
+							SpecialOffer_A_Mean = Y [ Mode: 0 ] 
+								Method <= 1 [ Mode: 0 ] => 0 
+								Method > 1 [ Mode: -1 ] 
+									PhoneNo_BIN = 2 [ Mode: 0 ] => 0 
+									PhoneNo_BIN = 1 [ Mode: -1 ] 
+										Sex = F [ Mode: 0 ] => 0 
+										Sex = M [ Mode: -1 ] => -1 
+							SpecialOffer_A_Mean = N [ Mode: -1 ] 
+								Method <= 1 [ Mode: -1 ] 
+									Sex = F [ Mode: 1 ] => 1 
+									Sex = M [ Mode: -1 ] => -1 
+								Method > 1 [ Mode: -1 ] => -1 
+						EducationLevel = TD [ Mode: -1 ] 
+							SpecialOffer_A_Mean = Y [ Mode: -1 ] => -1 
+							SpecialOffer_A_Mean = N [ Mode: 1 ] 
+								Method <= 1 [ Mode: 1 ] => 1 
+								Method > 1 [ Mode: 0 ] => 0 
+				Age_TILEN = young [ Mode: 1 ] 
+					Method <= 1 [ Mode: -1 ] 
+						PhoneNo_BIN = 2 [ Mode: -1 ] 
+							EducationLevel = Other [ Mode: -1 ] 
+								Sex = F [ Mode: -1 ] => -1 
+								Sex = M [ Mode: 0 ] => 0 
+							EducationLevel = TD [ Mode: 1 ] => 1 
+						PhoneNo_BIN = 1 [ Mode: 1 ] 
+							SpecialOffer_A_Mean = Y [ Mode: 1 ] 
+								Sex = F [ Mode: 0 ] => 0 
+								Sex = M [ Mode: 1 ] => 1 
+							SpecialOffer_A_Mean = N [ Mode: 1 ] => 1 
+					Method > 1 [ Mode: 1 ] 
+						SpecialOffer_A_Mean = Y [ Mode: 1 ] 
+							PhoneNo_BIN = 2 [ Mode: 1 ] 
+								Sex = F [ Mode: 1 ] 
+									EducationLevel = Other [ Mode: 0 ] => 0 
+									EducationLevel = TD [ Mode: 1 ] => 1 
+								Sex = M [ Mode: 1 ] => 1 
+							PhoneNo_BIN = 1 [ Mode: 0 ] 
+								Sex = F [ Mode: 1 ] => 1 
+								Sex = M [ Mode: 0 ] => 0 
+						SpecialOffer_A_Mean = N [ Mode: -1 ] 
+							Sex = F [ Mode: 0 ] => 0 
+							Sex = M [ Mode: -1 ] => -1 
+			Method > 2 [ Mode: -1 ] 
+				JoinFrom = AnF [ Mode: -1 ] 
+					PhoneNo_BIN = 2 [ Mode: -1 ] 
+						Age_TILEN = old [ Mode: 0 ] => 0 
+						Age_TILEN = young [ Mode: -1 ] 
+							Sex = F [ Mode: -1 ] => -1 
+							Sex = M [ Mode: 0 ] => 0 
+					PhoneNo_BIN = 1 [ Mode: -1 ] 
+						Method <= 3 [ Mode: -1 ] => -1 
+						Method > 3 [ Mode: -1 ] 
+							Sex = F [ Mode: -1 ] => -1 
+							Sex = M [ Mode: 0 ] => 0 
+				JoinFrom = Other [ Mode: -1 ] 
+					Sex = F [ Mode: -1 ] 
+						Method <= 3 [ Mode: -1 ] 
+							Age_TILEN = old [ Mode: -1 ] => -1 
+							Age_TILEN = young [ Mode: 0 ] 
+								EducationLevel = Other [ Mode: 1 ] => 1 
+								EducationLevel = TD [ Mode: 0 ] => 0 
+						Method > 3 [ Mode: -1 ] 
+							Age_TILEN = old [ Mode: -1 ] 
+								EducationLevel = Other [ Mode: -1 ] => -1 
+								EducationLevel = TD [ Mode: 0 ] => 0 
+							Age_TILEN = young [ Mode: -1 ] => -1 
+					Sex = M [ Mode: 0 ] 
+						Method <= 3 [ Mode: 0 ] 
+							SpecialOffer_A_Mean = Y [ Mode: 0 ] 
+								Age_TILEN = old [ Mode: 0 ] => 0 
+								Age_TILEN = young [ Mode: 1 ] => 1 
+							SpecialOffer_A_Mean = N [ Mode: 0 ] => 0 
+						Method > 3 [ Mode: 0 ] 
+							SpecialOffer_A_Mean = Y [ Mode: 0 ] => 0 
+							SpecialOffer_A_Mean = N [ Mode: 1 ] 
+								Age_TILEN = old [ Mode: -1 ] 
+									PhoneNo_BIN = 2 [ Mode: -1 ] => -1 
+									PhoneNo_BIN = 1 [ Mode: 0 ] => 0 
+								Age_TILEN = young [ Mode: 1 ] => 1 
+	SpecialOffer_Count > 1 [ Mode: 1 ] 
+		SpecialOffer_Count <= 5 [ Mode: 1 ] 
+			Method <= 1 [ Mode: 1 ] 
+				SpecialOffer_A_Mean = Y [ Mode: 1 ] 
+					SpecialOffer_Count <= 4 [ Mode: 1 ] 
+						SpecialOffer_B_Mean = Y [ Mode: 1 ] 
+							JoinFrom = AnF [ Mode: 1 ] 
+								Age_TILEN = old [ Mode: 1 ] 
+									EducationLevel = Other [ Mode: 1 ] 
+										Sex = F [ Mode: 0 ] => 0 
+										Sex = M [ Mode: 1 ] 
+											PhoneNo_BIN = 2 [ Mode: 1 ] => 1 
+											PhoneNo_BIN = 1 [ Mode: -1 ] => -1 
+									EducationLevel = TD [ Mode: 1 ] => 1 
+								Age_TILEN = young [ Mode: 0 ] 
+									PhoneNo_BIN = 2 [ Mode: 0 ] 
+										SpecialOffer_C_Mean = Y [ Mode: -1 ] => -1 
+										SpecialOffer_C_Mean = N [ Mode: 0 ] => 0 
+									PhoneNo_BIN = 1 [ Mode: 0 ] 
+										Sex = F [ Mode: 1 ] 
+											EducationLevel = Other [ Mode: 1 ] => 1 
+											EducationLevel = TD [ Mode: 0 ] => 0 
+										Sex = M [ Mode: 0 ] => 0 
+							JoinFrom = Other [ Mode: -1 ] 
+								PhoneNo_BIN = 2 [ Mode: -1 ] 
+									SpecialOffer_Count <= 3 [ Mode: -1 ] 
+										Age_TILEN = old [ Mode: -1 ] => -1 
+										Age_TILEN = young [ Mode: 0 ] => 0 
+									SpecialOffer_Count > 3 [ Mode: 0 ] 
+										Age_TILEN = old [ Mode: 0 ] => 0 
+										Age_TILEN = young [ Mode: -1 ] 
+											Sex = F [ Mode: -1 ] => -1 
+											Sex = M [ Mode: 0 ] => 0 
+								PhoneNo_BIN = 1 [ Mode: 0 ] 
+									SpecialOffer_Count <= 3 [ Mode: 0 ] => 0 
+									SpecialOffer_Count > 3 [ Mode: 0 ] 
+										SpecialOffer_C_Mean = Y [ Mode: 0 ] 
+											Age_TILEN = old [ Mode: 0 ] => 0 
+											Age_TILEN = young [ Mode: 1 ] 
+												Sex = F [ Mode: 0 ] => 0 
+												Sex = M [ Mode: 1 ] => 1 
+										SpecialOffer_C_Mean = N [ Mode: -1 ] => -1 
+						SpecialOffer_B_Mean = N [ Mode: 1 ] 
+							PhoneNo_BIN = 2 [ Mode: 1 ] 
+								Age_TILEN = old [ Mode: 0 ] 
+									JoinFrom = AnF [ Mode: 1 ] 
+										SpecialOffer_Count <= 2 [ Mode: 1 ] => 1 
+										SpecialOffer_Count > 2 [ Mode: 0 ] => 0 
+									JoinFrom = Other [ Mode: 0 ] => 0 
+								Age_TILEN = young [ Mode: 1 ] 
+									EducationLevel = Other [ Mode: 1 ] => 1 
+									EducationLevel = TD [ Mode: 0 ] => 0 
+							PhoneNo_BIN = 1 [ Mode: 0 ] 
+								JoinFrom = AnF [ Mode: 0 ] => 0 
+								JoinFrom = Other [ Mode: 0 ] 
+									SpecialOffer_C_Mean = Y [ Mode: 0 ] => 0 
+									SpecialOffer_C_Mean = N [ Mode: 1 ] => 1 
+					SpecialOffer_Count > 4 [ Mode: 0 ] => 0 
+				SpecialOffer_A_Mean = N [ Mode: 0 ] 
+					Age_TILEN = old [ Mode: 0 ] 
+						PhoneNo_BIN = 2 [ Mode: 0 ] => 0 
+						PhoneNo_BIN = 1 [ Mode: 1 ] 
+							Sex = F [ Mode: -1 ] => -1 
+							Sex = M [ Mode: 1 ] 
+								SpecialOffer_Count <= 2 [ Mode: 0 ] 
+									EducationLevel = Other [ Mode: 0 ] => 0 
+									EducationLevel = TD [ Mode: 0 ] 
+										SpecialOffer_C_Mean = Y [ Mode: 0 ] => 0 
+										SpecialOffer_C_Mean = N [ Mode: -1 ] => -1 
+								SpecialOffer_Count > 2 [ Mode: 1 ] => 1 
+					Age_TILEN = young [ Mode: 0 ] 
+						EducationLevel = Other [ Mode: 0 ] => 0 
+						EducationLevel = TD [ Mode: 0 ] 
+							SpecialOffer_C_Mean = Y [ Mode: 0 ] 
+								Sex = F [ Mode: 1 ] => 1 
+								Sex = M [ Mode: 0 ] 
+									SpecialOffer_Count <= 2 [ Mode: 1 ] => 1 
+									SpecialOffer_Count > 2 [ Mode: 0 ] => 0 
+							SpecialOffer_C_Mean = N [ Mode: 0 ] => 0 
+			Method > 1 [ Mode: 1 ] 
+				SpecialOffer_A_Mean = Y [ Mode: -1 ] 
+					SpecialOffer_Count <= 4 [ Mode: -1 ] 
+						PhoneNo_BIN = 2 [ Mode: 0 ] 
+							EducationLevel = Other [ Mode: 1 ] 
+								Age_TILEN = old [ Mode: 1 ] 
+									SpecialOffer_Count <= 2 [ Mode: -1 ] 
+										SpecialOffer_C_Mean = Y [ Mode: -1 ] 
+											Method <= 2 [ Mode: 0 ] => 0 
+											Method > 2 [ Mode: -1 ] 
+												Sex = F [ Mode: -1 ] => -1 
+												Sex = M [ Mode: 0 ] => 0 
+										SpecialOffer_C_Mean = N [ Mode: 0 ] => 0 
+									SpecialOffer_Count > 2 [ Mode: 1 ] 
+										Method <= 3 [ Mode: 0 ] 
+											SpecialOffer_Count <= 3 [ Mode: 0 ] => 0 
+											SpecialOffer_Count > 3 [ Mode: 1 ] 
+												SpecialOffer_B_Mean = Y [ Mode: 1 ] 
+													Sex = F [ Mode: 1 ] 
+														Method <= 2 [ Mode: 1 ] => 1 
+														Method > 2 [ Mode: 0 ] => 0 
+													Sex = M [ Mode: -1 ] 
+														Method <= 2 [ Mode: -1 ] => -1 
+														Method > 2 [ Mode: 1 ] => 1 
+												SpecialOffer_B_Mean = N [ Mode: 0 ] => 0 
+										Method > 3 [ Mode: 1 ] 
+											SpecialOffer_Count <= 3 [ Mode: 1 ] 
+												Sex = F [ Mode: 1 ] 
+													JoinFrom = AnF [ Mode: 1 ] => 1 
+													JoinFrom = Other [ Mode: 0 ] => 0 
+												Sex = M [ Mode: 0 ] => 0 
+											SpecialOffer_Count > 3 [ Mode: 1 ] 
+												Sex = F [ Mode: 0 ] => 0 
+												Sex = M [ Mode: 1 ] => 1 
+								Age_TILEN = young [ Mode: -1 ] 
+									Method <= 2 [ Mode: 1 ] 
+										SpecialOffer_Count <= 3 [ Mode: 1 ] 
+											Sex = F [ Mode: -1 ] 
+												SpecialOffer_C_Mean = Y [ Mode: 1 ] => 1 
+												SpecialOffer_C_Mean = N [ Mode: -1 ] 
+													SpecialOffer_B_Mean = Y [ Mode: -1 ] 
+														JoinFrom = AnF [ Mode: -1 ] => -1 
+														JoinFrom = Other [ Mode: 0 ] => 0 
+													SpecialOffer_B_Mean = N [ Mode: -1 ] 
+														SpecialOffer_Count <= 2 [ Mode: 1 ] => 1 
+														SpecialOffer_Count > 2 [ Mode: -1 ] => -1 
+											Sex = M [ Mode: 1 ] 
+												SpecialOffer_B_Mean = Y [ Mode: 1 ] => 1 
+												SpecialOffer_B_Mean = N [ Mode: -1 ] => -1 
+										SpecialOffer_Count > 3 [ Mode: 0 ] => 0 
+									Method > 2 [ Mode: -1 ] 
+										JoinFrom = AnF [ Mode: -1 ] 
+											Method <= 3 [ Mode: 0 ] 
+												Sex = F [ Mode: -1 ] => -1 
+												Sex = M [ Mode: 0 ] => 0 
+											Method > 3 [ Mode: -1 ] 
+												Sex = F [ Mode: 0 ] => 0 
+												Sex = M [ Mode: -1 ] => -1 
+										JoinFrom = Other [ Mode: 1 ] 
+											Sex = F [ Mode: -1 ] 
+												SpecialOffer_C_Mean = Y [ Mode: -1 ] => -1 
+												SpecialOffer_C_Mean = N [ Mode: 0 ] => 0 
+											Sex = M [ Mode: 1 ] 
+												SpecialOffer_B_Mean = Y [ Mode: 1 ] => 1 
+												SpecialOffer_B_Mean = N [ Mode: 0 ] => 0 
+							EducationLevel = TD [ Mode: 0 ] 
+								Sex = F [ Mode: 0 ] 
+									JoinFrom = AnF [ Mode: 0 ] 
+										Method <= 3 [ Mode: 0 ] 
+											SpecialOffer_C_Mean = Y [ Mode: -1 ] 
+												Method <= 2 [ Mode: -1 ] => -1 
+												Method > 2 [ Mode: 0 ] => 0 
+											SpecialOffer_C_Mean = N [ Mode: 0 ] => 0 
+										Method > 3 [ Mode: 1 ] 
+											SpecialOffer_B_Mean = Y [ Mode: 1 ] 
+												Age_TILEN = old [ Mode: 0 ] => 0 
+												Age_TILEN = young [ Mode: 1 ] => 1 
+											SpecialOffer_B_Mean = N [ Mode: 0 ] => 0 
+									JoinFrom = Other [ Mode: -1 ] 
+										SpecialOffer_C_Mean = Y [ Mode: -1 ] 
+											Method <= 3 [ Mode: 0 ] => 0 
+											Method > 3 [ Mode: -1 ] 
+												Age_TILEN = old [ Mode: -1 ] => -1 
+												Age_TILEN = young [ Mode: 0 ] => 0 
+										SpecialOffer_C_Mean = N [ Mode: -1 ] => -1 
+								Sex = M [ Mode: 1 ] 
+									Age_TILEN = old [ Mode: 0 ] 
+										SpecialOffer_C_Mean = Y [ Mode: 0 ] 
+											SpecialOffer_Count <= 2 [ Mode: 0 ] => 0 
+											SpecialOffer_Count > 2 [ Mode: 1 ] 
+												Method <= 3 [ Mode: 0 ] => 0 
+												Method > 3 [ Mode: 1 ] 
+													SpecialOffer_B_Mean = Y [ Mode: 1 ] 
+														JoinFrom = AnF [ Mode: 1 ] => 1 
+														JoinFrom = Other [ Mode: 0 ] => 0 
+													SpecialOffer_B_Mean = N [ Mode: 1 ] => 1 
+										SpecialOffer_C_Mean = N [ Mode: -1 ] 
+											Method <= 3 [ Mode: 0 ] 
+												Method <= 2 [ Mode: -1 ] => -1 
+												Method > 2 [ Mode: 0 ] => 0 
+											Method > 3 [ Mode: -1 ] => -1 
+									Age_TILEN = young [ Mode: 1 ] 
+										Method <= 3 [ Mode: 1 ] => 1 
+										Method > 3 [ Mode: 0 ] 
+											JoinFrom = AnF [ Mode: 0 ] => 0 
+											JoinFrom = Other [ Mode: -1 ] => -1 
+						PhoneNo_BIN = 1 [ Mode: -1 ] 
+							Method <= 2 [ Mode: -1 ] 
+								SpecialOffer_B_Mean = Y [ Mode: -1 ] 
+									SpecialOffer_Count <= 2 [ Mode: 1 ] 
+										JoinFrom = AnF [ Mode: 1 ] 
+											EducationLevel = Other [ Mode: 1 ] 
+												Sex = F [ Mode: -1 ] => -1 
+												Sex = M [ Mode: 1 ] => 1 
+											EducationLevel = TD [ Mode: 0 ] => 0 
+										JoinFrom = Other [ Mode: -1 ] 
+											EducationLevel = Other [ Mode: -1 ] 
+												Sex = F [ Mode: 0 ] => 0 
+												Sex = M [ Mode: -1 ] => -1 
+											EducationLevel = TD [ Mode: -1 ] 
+												Age_TILEN = old [ Mode: -1 ] => -1 
+												Age_TILEN = young [ Mode: 1 ] => 1 
+									SpecialOffer_Count > 2 [ Mode: -1 ] 
+										JoinFrom = AnF [ Mode: -1 ] 
+											SpecialOffer_Count <= 3 [ Mode: -1 ] 
+												Sex = F [ Mode: -1 ] 
+													Age_TILEN = old [ Mode: 0 ] => 0 
+													Age_TILEN = young [ Mode: -1 ] => -1 
+												Sex = M [ Mode: 0 ] => 0 
+											SpecialOffer_Count > 3 [ Mode: 0 ] => 0 
+										JoinFrom = Other [ Mode: -1 ] 
+											SpecialOffer_Count <= 3 [ Mode: 0 ] => 0 
+											SpecialOffer_Count > 3 [ Mode: -1 ] 
+												EducationLevel = Other [ Mode: 0 ] 
+													Sex = F [ Mode: -1 ] => -1 
+													Sex = M [ Mode: 0 ] => 0 
+												EducationLevel = TD [ Mode: -1 ] 
+													Sex = F [ Mode: 0 ] => 0 
+													Sex = M [ Mode: -1 ] => -1 
+								SpecialOffer_B_Mean = N [ Mode: 1 ] 
+									SpecialOffer_C_Mean = Y [ Mode: 1 ] 
+										Age_TILEN = old [ Mode: 1 ] => 1 
+										Age_TILEN = young [ Mode: 1 ] 
+											Sex = F [ Mode: 0 ] => 0 
+											Sex = M [ Mode: 1 ] 
+												EducationLevel = Other [ Mode: 1 ] 
+													JoinFrom = AnF [ Mode: 1 ] => 1 
+													JoinFrom = Other [ Mode: 1 ] 
+														SpecialOffer_Count <= 3 [ Mode: 0 ] => 0 
+														SpecialOffer_Count > 3 [ Mode: 1 ] => 1 
+												EducationLevel = TD [ Mode: 0 ] => 0 
+									SpecialOffer_C_Mean = N [ Mode: -1 ] 
+										JoinFrom = AnF [ Mode: 0 ] => 0 
+										JoinFrom = Other [ Mode: -1 ] 
+											Age_TILEN = old [ Mode: 0 ] => 0 
+											Age_TILEN = young [ Mode: -1 ] => -1 
+							Method > 2 [ Mode: -1 ] 
+								Sex = F [ Mode: -1 ] 
+									Age_TILEN = old [ Mode: -1 ] 
+										JoinFrom = AnF [ Mode: -1 ] 
+											EducationLevel = Other [ Mode: -1 ] 
+												Method <= 3 [ Mode: -1 ] 
+													SpecialOffer_C_Mean = Y [ Mode: -1 ] => -1 
+													SpecialOffer_C_Mean = N [ Mode: 0 ] => 0 
+												Method > 3 [ Mode: -1 ] 
+													SpecialOffer_C_Mean = Y [ Mode: 0 ] => 0 
+													SpecialOffer_C_Mean = N [ Mode: -1 ] => -1 
+											EducationLevel = TD [ Mode: -1 ] => -1 
+										JoinFrom = Other [ Mode: -1 ] 
+											SpecialOffer_B_Mean = Y [ Mode: 0 ] 
+												SpecialOffer_C_Mean = Y [ Mode: 0 ] 
+													Method <= 3 [ Mode: 0 ] => 0 
+													Method > 3 [ Mode: 1 ] 
+														EducationLevel = Other [ Mode: 0 ] => 0 
+														EducationLevel = TD [ Mode: 1 ] => 1 
+												SpecialOffer_C_Mean = N [ Mode: -1 ] 
+													Method <= 3 [ Mode: -1 ] => -1 
+													Method > 3 [ Mode: 0 ] => 0 
+											SpecialOffer_B_Mean = N [ Mode: -1 ] 
+												SpecialOffer_C_Mean = Y [ Mode: -1 ] 
+													Method <= 3 [ Mode: -1 ] 
+														SpecialOffer_Count <= 2 [ Mode: -1 ] => -1 
+														SpecialOffer_Count > 2 [ Mode: 0 ] => 0 
+													Method > 3 [ Mode: -1 ] => -1 
+												SpecialOffer_C_Mean = N [ Mode: 0 ] => 0 
+									Age_TILEN = young [ Mode: 0 ] 
+										EducationLevel = Other [ Mode: 0 ] 
+											JoinFrom = AnF [ Mode: 0 ] => 0 
+											JoinFrom = Other [ Mode: 1 ] 
+												SpecialOffer_Count <= 3 [ Mode: 1 ] 
+													Method <= 3 [ Mode: 1 ] 
+														SpecialOffer_C_Mean = Y [ Mode: 1 ] => 1 
+														SpecialOffer_C_Mean = N [ Mode: -1 ] 
+															SpecialOffer_B_Mean = Y [ Mode: 1 ] => 1 
+															SpecialOffer_B_Mean = N [ Mode: -1 ] => -1 
+													Method > 3 [ Mode: 1 ] 
+														SpecialOffer_B_Mean = Y [ Mode: 0 ] => 0 
+														SpecialOffer_B_Mean = N [ Mode: 1 ] 
+															SpecialOffer_C_Mean = Y [ Mode: 0 ] => 0 
+															SpecialOffer_C_Mean = N [ Mode: 1 ] => 1 
+												SpecialOffer_Count > 3 [ Mode: 0 ] 
+													SpecialOffer_B_Mean = Y [ Mode: 1 ] 
+														SpecialOffer_C_Mean = Y [ Mode: 1 ] 
+															Method <= 3 [ Mode: 1 ] => 1 
+															Method > 3 [ Mode: -1 ] => -1 
+														SpecialOffer_C_Mean = N [ Mode: 0 ] => 0 
+													SpecialOffer_B_Mean = N [ Mode: 0 ] => 0 
+										EducationLevel = TD [ Mode: -1 ] 
+											SpecialOffer_Count <= 3 [ Mode: -1 ] 
+												Method <= 3 [ Mode: -1 ] 
+													SpecialOffer_B_Mean = Y [ Mode: -1 ] => -1 
+													SpecialOffer_B_Mean = N [ Mode: 0 ] => 0 
+												Method > 3 [ Mode: -1 ] 
+													SpecialOffer_B_Mean = Y [ Mode: 0 ] => 0 
+													SpecialOffer_B_Mean = N [ Mode: -1 ] => -1 
+											SpecialOffer_Count > 3 [ Mode: 0 ] => 0 
+								Sex = M [ Mode: 0 ] 
+									Method <= 3 [ Mode: 0 ] 
+										SpecialOffer_Count <= 3 [ Mode: 0 ] 
+											JoinFrom = AnF [ Mode: 0 ] => 0 
+											JoinFrom = Other [ Mode: 0 ] 
+												SpecialOffer_C_Mean = Y [ Mode: 0 ] => 0 
+												SpecialOffer_C_Mean = N [ Mode: -1 ] 
+													Age_TILEN = old [ Mode: 1 ] => 1 
+													Age_TILEN = young [ Mode: -1 ] => -1 
+										SpecialOffer_Count > 3 [ Mode: 1 ] 
+											SpecialOffer_C_Mean = Y [ Mode: 1 ] 
+												JoinFrom = AnF [ Mode: 1 ] => 1 
+												JoinFrom = Other [ Mode: 0 ] 
+													EducationLevel = Other [ Mode: 1 ] 
+														SpecialOffer_B_Mean = Y [ Mode: 0 ] => 0 
+														SpecialOffer_B_Mean = N [ Mode: 1 ] 
+															Age_TILEN = old [ Mode: 0 ] => 0 
+															Age_TILEN = young [ Mode: 1 ] => 1 
+													EducationLevel = TD [ Mode: 0 ] 
+														Age_TILEN = old [ Mode: 1 ] => 1 
+														Age_TILEN = young [ Mode: 0 ] => 0 
+											SpecialOffer_C_Mean = N [ Mode: -1 ] => -1 
+									Method > 3 [ Mode: -1 ] 
+										SpecialOffer_C_Mean = Y [ Mode: -1 ] 
+											SpecialOffer_B_Mean = Y [ Mode: 0 ] 
+												JoinFrom = AnF [ Mode: 0 ] => 0 
+												JoinFrom = Other [ Mode: 0 ] 
+													Age_TILEN = old [ Mode: 0 ] => 0 
+													Age_TILEN = young [ Mode: -1 ] => -1 
+											SpecialOffer_B_Mean = N [ Mode: -1 ] 
+												SpecialOffer_Count <= 3 [ Mode: -1 ] 
+													JoinFrom = AnF [ Mode: -1 ] 
+														Age_TILEN = old [ Mode: -1 ] => -1 
+														Age_TILEN = young [ Mode: -1 ] 
+															SpecialOffer_Count <= 2 [ Mode: 1 ] => 1 
+															SpecialOffer_Count > 2 [ Mode: -1 ] => -1 
+													JoinFrom = Other [ Mode: -1 ] 
+														EducationLevel = Other [ Mode: 0 ] => 0 
+														EducationLevel = TD [ Mode: -1 ] => -1 
+												SpecialOffer_Count > 3 [ Mode: 0 ] => 0 
+										SpecialOffer_C_Mean = N [ Mode: 1 ] 
+											SpecialOffer_Count <= 2 [ Mode: 0 ] => 0 
+											SpecialOffer_Count > 2 [ Mode: 1 ] => 1 
+					SpecialOffer_Count > 4 [ Mode: 1 ] 
+						SpecialOffer_C_Mean = Y [ Mode: -1 ] 
+							SpecialOffer_B_Mean = Y [ Mode: -1 ] 
+								Method <= 2 [ Mode: 1 ] 
+									EducationLevel = Other [ Mode: 0 ] 
+										Sex = F [ Mode: 0 ] => 0 
+										Sex = M [ Mode: -1 ] => -1 
+									EducationLevel = TD [ Mode: 1 ] => 1 
+								Method > 2 [ Mode: -1 ] 
+									Sex = F [ Mode: -1 ] 
+										Method <= 3 [ Mode: 0 ] => 0 
+										Method > 3 [ Mode: -1 ] => -1 
+									Sex = M [ Mode: -1 ] 
+										Method <= 3 [ Mode: -1 ] 
+											EducationLevel = Other [ Mode: 0 ] => 0 
+											EducationLevel = TD [ Mode: -1 ] => -1 
+										Method > 3 [ Mode: 0 ] => 0 
+							SpecialOffer_B_Mean = N [ Mode: 0 ] 
+								Method <= 2 [ Mode: 0 ] => 0 
+								Method > 2 [ Mode: 1 ] 
+									Method <= 3 [ Mode: 1 ] 
+										EducationLevel = Other [ Mode: 0 ] => 0 
+										EducationLevel = TD [ Mode: 1 ] => 1 
+									Method > 3 [ Mode: 0 ] 
+										EducationLevel = Other [ Mode: 1 ] => 1 
+										EducationLevel = TD [ Mode: 0 ] => 0 
+						SpecialOffer_C_Mean = N [ Mode: 1 ] 
+							Method <= 3 [ Mode: 0 ] => 0 
+							Method > 3 [ Mode: 1 ] 
+								JoinFrom = AnF [ Mode: -1 ] 
+									EducationLevel = Other [ Mode: -1 ] => -1 
+									EducationLevel = TD [ Mode: 0 ] => 0 
+								JoinFrom = Other [ Mode: 1 ] => 1 
+				SpecialOffer_A_Mean = N [ Mode: 1 ] 
+					Method <= 3 [ Mode: 1 ] 
+						SpecialOffer_B_Mean = Y [ Mode: -1 ] 
+							PhoneNo_BIN = 2 [ Mode: -1 ] 
+								SpecialOffer_Count <= 2 [ Mode: -1 ] 
+									Sex = F [ Mode: 0 ] => 0 
+									Sex = M [ Mode: -1 ] 
+										Method <= 2 [ Mode: -1 ] 
+											JoinFrom = AnF [ Mode: 0 ] => 0 
+											JoinFrom = Other [ Mode: -1 ] 
+												Age_TILEN = old [ Mode: -1 ] => -1 
+												Age_TILEN = young [ Mode: -1 ] 
+													EducationLevel = Other [ Mode: 0 ] => 0 
+													EducationLevel = TD [ Mode: -1 ] => -1 
+										Method > 2 [ Mode: -1 ] 
+											JoinFrom = AnF [ Mode: -1 ] => -1 
+											JoinFrom = Other [ Mode: -1 ] 
+												Age_TILEN = old [ Mode: -1 ] 
+													SpecialOffer_C_Mean = Y [ Mode: -1 ] => -1 
+													SpecialOffer_C_Mean = N [ Mode: 0 ] => 0 
+												Age_TILEN = young [ Mode: 0 ] => 0 
+								SpecialOffer_Count > 2 [ Mode: -1 ] 
+									Sex = F [ Mode: -1 ] 
+										SpecialOffer_Count <= 3 [ Mode: 0 ] => 0 
+										SpecialOffer_Count > 3 [ Mode: -1 ] => -1 
+									Sex = M [ Mode: 1 ] 
+										EducationLevel = Other [ Mode: 1 ] 
+											Age_TILEN = old [ Mode: 0 ] => 0 
+											Age_TILEN = young [ Mode: 1 ] => 1 
+										EducationLevel = TD [ Mode: 0 ] => 0 
+							PhoneNo_BIN = 1 [ Mode: 1 ] 
+								JoinFrom = AnF [ Mode: 0 ] => 0 
+								JoinFrom = Other [ Mode: 1 ] 
+									Sex = F [ Mode: 1 ] 
+										SpecialOffer_Count <= 2 [ Mode: 1 ] 
+											EducationLevel = Other [ Mode: 0 ] => 0 
+											EducationLevel = TD [ Mode: 1 ] 
+												SpecialOffer_C_Mean = Y [ Mode: 1 ] 
+													Method <= 2 [ Mode: 1 ] => 1 
+													Method > 2 [ Mode: -1 ] => -1 
+												SpecialOffer_C_Mean = N [ Mode: 1 ] => 1 
+										SpecialOffer_Count > 2 [ Mode: 0 ] 
+											Method <= 2 [ Mode: 0 ] 
+												EducationLevel = Other [ Mode: 1 ] => 1 
+												EducationLevel = TD [ Mode: 0 ] => 0 
+											Method > 2 [ Mode: 0 ] => 0 
+									Sex = M [ Mode: 0 ] 
+										SpecialOffer_Count <= 3 [ Mode: 0 ] 
+											SpecialOffer_C_Mean = Y [ Mode: 1 ] 
+												Age_TILEN = old [ Mode: 0 ] => 0 
+												Age_TILEN = young [ Mode: 1 ] => 1 
+											SpecialOffer_C_Mean = N [ Mode: 0 ] 
+												Method <= 2 [ Mode: 1 ] 
+													EducationLevel = Other [ Mode: 1 ] => 1 
+													EducationLevel = TD [ Mode: 0 ] => 0 
+												Method > 2 [ Mode: 0 ] => 0 
+										SpecialOffer_Count > 3 [ Mode: -1 ] 
+											Method <= 2 [ Mode: 0 ] 
+												EducationLevel = Other [ Mode: 0 ] => 0 
+												EducationLevel = TD [ Mode: -1 ] 
+													SpecialOffer_Count <= 4 [ Mode: -1 ] => -1 
+													SpecialOffer_Count > 4 [ Mode: 0 ] => 0 
+											Method > 2 [ Mode: -1 ] => -1 
+						SpecialOffer_B_Mean = N [ Mode: 1 ] 
+							Method <= 2 [ Mode: 1 ] 
+								EducationLevel = Other [ Mode: -1 ] 
+									PhoneNo_BIN = 2 [ Mode: 0 ] => 0 
+									PhoneNo_BIN = 1 [ Mode: -1 ] 
+										JoinFrom = AnF [ Mode: 1 ] => 1 
+										JoinFrom = Other [ Mode: -1 ] => -1 
+								EducationLevel = TD [ Mode: 1 ] => 1 
+							Method > 2 [ Mode: 1 ] 
+								Age_TILEN = old [ Mode: 0 ] => 0 
+								Age_TILEN = young [ Mode: 1 ] 
+									EducationLevel = Other [ Mode: 1 ] => 1 
+									EducationLevel = TD [ Mode: 0 ] => 0 
+					Method > 3 [ Mode: 1 ] 
+						EducationLevel = Other [ Mode: 1 ] 
+							SpecialOffer_Count <= 2 [ Mode: 1 ] 
+								Sex = F [ Mode: 1 ] 
+									Age_TILEN = old [ Mode: 0 ] => 0 
+									Age_TILEN = young [ Mode: 1 ] => 1 
+								Sex = M [ Mode: 1 ] 
+									JoinFrom = AnF [ Mode: 1 ] => 1 
+									JoinFrom = Other [ Mode: 0 ] => 0 
+							SpecialOffer_Count > 2 [ Mode: 0 ] 
+								Age_TILEN = old [ Mode: 0 ] => 0 
+								Age_TILEN = young [ Mode: 1 ] 
+									SpecialOffer_Count <= 3 [ Mode: 0 ] => 0 
+									SpecialOffer_Count > 3 [ Mode: 1 ] 
+										Sex = F [ Mode: -1 ] => -1 
+										Sex = M [ Mode: 1 ] => 1 
+						EducationLevel = TD [ Mode: 0 ] 
+							JoinFrom = AnF [ Mode: 0 ] => 0 
+							JoinFrom = Other [ Mode: 1 ] 
+								SpecialOffer_B_Mean = Y [ Mode: 1 ] 
+									SpecialOffer_C_Mean = Y [ Mode: 1 ] 
+										SpecialOffer_Count <= 2 [ Mode: 1 ] 
+											Sex = F [ Mode: 1 ] => 1 
+											Sex = M [ Mode: 1 ] 
+												Age_TILEN = old [ Mode: 0 ] => 0 
+												Age_TILEN = young [ Mode: 1 ] => 1 
+										SpecialOffer_Count > 2 [ Mode: 1 ] 
+											Age_TILEN = old [ Mode: 0 ] => 0 
+											Age_TILEN = young [ Mode: 1 ] 
+												SpecialOffer_Count <= 3 [ Mode: 0 ] => 0 
+												SpecialOffer_Count > 3 [ Mode: 1 ] => 1 
+									SpecialOffer_C_Mean = N [ Mode: 0 ] 
+										PhoneNo_BIN = 2 [ Mode: -1 ] => -1 
+										PhoneNo_BIN = 1 [ Mode: 0 ] => 0 
+								SpecialOffer_B_Mean = N [ Mode: 0 ] 
+									Sex = F [ Mode: -1 ] => -1 
+									Sex = M [ Mode: 0 ] => 0 
+		SpecialOffer_Count > 5 [ Mode: -1 ] 
+			Method <= 2 [ Mode: 0 ] 
+				Method <= 1 [ Mode: 1 ] 
+					PhoneNo_BIN = 2 [ Mode: 1 ] => 1 
+					PhoneNo_BIN = 1 [ Mode: 0 ] 
+						SpecialOffer_C_Mean = Y [ Mode: 0 ] 
+							Age_TILEN = old [ Mode: -1 ] => -1 
+							Age_TILEN = young [ Mode: 0 ] => 0 
+						SpecialOffer_C_Mean = N [ Mode: 1 ] 
+							Sex = F [ Mode: 1 ] => 1 
+							Sex = M [ Mode: 0 ] => 0 
+				Method > 1 [ Mode: 0 ] 
+					PhoneNo_BIN = 2 [ Mode: 0 ] 
+						SpecialOffer_C_Mean = Y [ Mode: 0 ] => 0 
+						SpecialOffer_C_Mean = N [ Mode: -1 ] => -1 
+					PhoneNo_BIN = 1 [ Mode: 0 ] 
+						Sex = F [ Mode: 0 ] 
+							Age_TILEN = old [ Mode: 1 ] => 1 
+							Age_TILEN = young [ Mode: 0 ] => 0 
+						Sex = M [ Mode: 0 ] => 0 
+			Method > 2 [ Mode: -1 ] 
+				SpecialOffer_B_Mean = Y [ Mode: -1 ] 
+					SpecialOffer_C_Mean = Y [ Mode: -1 ] 
+						Age_TILEN = old [ Mode: -1 ] 
+							Method <= 3 [ Mode: -1 ] => -1 
+							Method > 3 [ Mode: -1 ] 
+								SpecialOffer_A_Mean = Y [ Mode: -1 ] 
+									Sex = F [ Mode: -1 ] => -1 
+									Sex = M [ Mode: 0 ] => 0 
+								SpecialOffer_A_Mean = N [ Mode: -1 ] => -1 
+						Age_TILEN = young [ Mode: 0 ] 
+							SpecialOffer_Count <= 6 [ Mode: 0 ] 
+								Sex = F [ Mode: -1 ] 
+									Method <= 3 [ Mode: 0 ] => 0 
+									Method > 3 [ Mode: -1 ] => -1 
+								Sex = M [ Mode: 0 ] => 0 
+							SpecialOffer_Count > 6 [ Mode: -1 ] 
+								Method <= 3 [ Mode: -1 ] => -1 
+								Method > 3 [ Mode: 0 ] => 0 
+					SpecialOffer_C_Mean = N [ Mode: 0 ] 
+						PhoneNo_BIN = 2 [ Mode: -1 ] 
+							Method <= 3 [ Mode: -1 ] => -1 
+							Method > 3 [ Mode: 0 ] => 0 
+						PhoneNo_BIN = 1 [ Mode: 0 ] 
+							JoinFrom = AnF [ Mode: 0 ] 
+								Method <= 3 [ Mode: 0 ] => 0 
+								Method > 3 [ Mode: 1 ] => 1 
+							JoinFrom = Other [ Mode: 0 ] => 0 
+				SpecialOffer_B_Mean = N [ Mode: 1 ] 
+					Method <= 3 [ Mode: 0 ] => 0 
+					Method > 3 [ Mode: 1 ] => 1 
+Rule 2 - estimated accuracy 87.26% [boost 95.9%]
+	SpecialOffer_Count <= 1 [ Mode: -1 ] 
+		Age_TILEN = old [ Mode: -1 ] 
+			Method <= 2 [ Mode: 0 ] 
+				EducationLevel = Other [ Mode: 0 ] 
+					Method <= 1 [ Mode: 1 ] 
+						SpecialOffer_A_Mean = Y [ Mode: 0 ] => 0 
+						SpecialOffer_A_Mean = N [ Mode: 1 ] 
+							JoinFrom = AnF [ Mode: 0 ] => 0 
+							JoinFrom = Other [ Mode: 1 ] 
+								Sex = F [ Mode: 0 ] => 0 
+								Sex = M [ Mode: 1 ] 
+									PhoneNo_BIN = 2 [ Mode: -1 ] => -1 
+									PhoneNo_BIN = 1 [ Mode: 1 ] => 1 
+					Method > 1 [ Mode: 0 ] 
+						PhoneNo_BIN = 2 [ Mode: 0 ] 
+							SpecialOffer_B_Mean = Y [ Mode: 1 ] 
+								Sex = F [ Mode: -1 ] => -1 
+								Sex = M [ Mode: 1 ] => 1 
+							SpecialOffer_B_Mean = N [ Mode: 0 ] => 0 
+						PhoneNo_BIN = 1 [ Mode: 0 ] 
+							SpecialOffer_A_Mean = Y [ Mode: -1 ] => -1 
+							SpecialOffer_A_Mean = N [ Mode: 0 ] => 0 
+				EducationLevel = TD [ Mode: -1 ] 
+					SpecialOffer_A_Mean = Y [ Mode: -1 ] => -1 
+					SpecialOffer_A_Mean = N [ Mode: 0 ] 
+						JoinFrom = AnF [ Mode: 0 ] => 0 
+						JoinFrom = Other [ Mode: 1 ] => 1 
+			Method > 2 [ Mode: -1 ] 
+				SpecialOffer_C_Mean = Y [ Mode: 0 ] 
+					EducationLevel = Other [ Mode: 0 ] => 0 
+					EducationLevel = TD [ Mode: -1 ] => -1 
+				SpecialOffer_C_Mean = N [ Mode: -1 ] 
+					JoinFrom = AnF [ Mode: -1 ] 
+						PhoneNo_BIN = 2 [ Mode: 0 ] => 0 
+						PhoneNo_BIN = 1 [ Mode: -1 ] 
+							SpecialOffer_A_Mean = Y [ Mode: -1 ] => -1 
+							SpecialOffer_A_Mean = N [ Mode: -1 ] 
+								Method <= 3 [ Mode: 0 ] => 0 
+								Method > 3 [ Mode: -1 ] 
+									Sex = F [ Mode: -1 ] => -1 
+									Sex = M [ Mode: 0 ] => 0 
+					JoinFrom = Other [ Mode: -1 ] 
+						Sex = F [ Mode: -1 ] 
+							EducationLevel = Other [ Mode: -1 ] 
+								PhoneNo_BIN = 2 [ Mode: -1 ] => -1 
+								PhoneNo_BIN = 1 [ Mode: 1 ] 
+									SpecialOffer_A_Mean = Y [ Mode: -1 ] => -1 
+									SpecialOffer_A_Mean = N [ Mode: 1 ] => 1 
+							EducationLevel = TD [ Mode: 0 ] => 0 
+						Sex = M [ Mode: 1 ] 
+							PhoneNo_BIN = 2 [ Mode: 0 ] => 0 
+							PhoneNo_BIN = 1 [ Mode: 1 ] => 1 
+		Age_TILEN = young [ Mode: 1 ] 
+			Method <= 3 [ Mode: 1 ] 
+				Method <= 1 [ Mode: -1 ] 
+					SpecialOffer_C_Mean = Y [ Mode: 1 ] => 1 
+					SpecialOffer_C_Mean = N [ Mode: -1 ] 
+						JoinFrom = AnF [ Mode: 0 ] 
+							SpecialOffer_A_Mean = Y [ Mode: -1 ] => -1 
+							SpecialOffer_A_Mean = N [ Mode: 0 ] => 0 
+						JoinFrom = Other [ Mode: -1 ] 
+							SpecialOffer_A_Mean = Y [ Mode: -1 ] 
+								EducationLevel = Other [ Mode: 1 ] => 1 
+								EducationLevel = TD [ Mode: -1 ] => -1 
+							SpecialOffer_A_Mean = N [ Mode: 0 ] => 0 
+				Method > 1 [ Mode: 1 ] 
+					SpecialOffer_C_Mean = Y [ Mode: -1 ] 
+						EducationLevel = Other [ Mode: -1 ] => -1 
+						EducationLevel = TD [ Mode: 0 ] => 0 
+					SpecialOffer_C_Mean = N [ Mode: 1 ] 
+						PhoneNo_BIN = 2 [ Mode: 1 ] 
+							Method <= 2 [ Mode: 1 ] 
+								Sex = F [ Mode: 1 ] 
+									EducationLevel = Other [ Mode: 0 ] => 0 
+									EducationLevel = TD [ Mode: 1 ] 
+										SpecialOffer_A_Mean = Y [ Mode: 1 ] => 1 
+										SpecialOffer_A_Mean = N [ Mode: 0 ] => 0 
+								Sex = M [ Mode: 1 ] => 1 
+							Method > 2 [ Mode: 1 ] 
+								Sex = F [ Mode: 1 ] => 1 
+								Sex = M [ Mode: -1 ] => -1 
+						PhoneNo_BIN = 1 [ Mode: 0 ] 
+							SpecialOffer_A_Mean = Y [ Mode: 0 ] => 0 
+							SpecialOffer_A_Mean = N [ Mode: -1 ] => -1 
+			Method > 3 [ Mode: -1 ] 
+				Sex = F [ Mode: -1 ] 
+					SpecialOffer_B_Mean = Y [ Mode: 0 ] 
+						JoinFrom = AnF [ Mode: 0 ] => 0 
+						JoinFrom = Other [ Mode: -1 ] => -1 
+					SpecialOffer_B_Mean = N [ Mode: -1 ] => -1 
+				Sex = M [ Mode: 1 ] 
+					PhoneNo_BIN = 2 [ Mode: 1 ] 
+						JoinFrom = AnF [ Mode: 0 ] => 0 
+						JoinFrom = Other [ Mode: 1 ] => 1 
+					PhoneNo_BIN = 1 [ Mode: 0 ] => 0 
+	SpecialOffer_Count > 1 [ Mode: 0 ] 
+		SpecialOffer_Count <= 5 [ Mode: 1 ] 
+			Method <= 1 [ Mode: 1 ] 
+				SpecialOffer_B_Mean = Y [ Mode: 1 ] 
+					Age_TILEN = old [ Mode: 1 ] 
+						JoinFrom = AnF [ Mode: 1 ] 
+							SpecialOffer_A_Mean = Y [ Mode: 1 ] 
+								EducationLevel = Other [ Mode: 1 ] 
+									Sex = F [ Mode: 0 ] => 0 
+									Sex = M [ Mode: 1 ] => 1 
+								EducationLevel = TD [ Mode: 1 ] => 1 
+							SpecialOffer_A_Mean = N [ Mode: 0 ] => 0 
+						JoinFrom = Other [ Mode: 1 ] 
+							SpecialOffer_Count <= 4 [ Mode: 0 ] 
+								SpecialOffer_C_Mean = Y [ Mode: 0 ] => 0 
+								SpecialOffer_C_Mean = N [ Mode: -1 ] => -1 
+							SpecialOffer_Count > 4 [ Mode: 1 ] => 1 
+					Age_TILEN = young [ Mode: 0 ] 
+						SpecialOffer_Count <= 3 [ Mode: 1 ] 
+							EducationLevel = Other [ Mode: 0 ] => 0 
+							EducationLevel = TD [ Mode: 1 ] 
+								SpecialOffer_A_Mean = Y [ Mode: 0 ] => 0 
+								SpecialOffer_A_Mean = N [ Mode: 1 ] => 1 
+						SpecialOffer_Count > 3 [ Mode: 0 ] => 0 
+				SpecialOffer_B_Mean = N [ Mode: 0 ] 
+					SpecialOffer_A_Mean = Y [ Mode: 1 ] 
+						PhoneNo_BIN = 2 [ Mode: 1 ] 
+							Age_TILEN = old [ Mode: 0 ] 
+								JoinFrom = AnF [ Mode: 1 ] 
+									SpecialOffer_Count <= 2 [ Mode: 1 ] => 1 
+									SpecialOffer_Count > 2 [ Mode: 0 ] => 0 
+								JoinFrom = Other [ Mode: 0 ] => 0 
+							Age_TILEN = young [ Mode: 1 ] 
+								EducationLevel = Other [ Mode: 1 ] => 1 
+								EducationLevel = TD [ Mode: 0 ] => 0 
+						PhoneNo_BIN = 1 [ Mode: 0 ] 
+							JoinFrom = AnF [ Mode: 0 ] => 0 
+							JoinFrom = Other [ Mode: 0 ] 
+								SpecialOffer_C_Mean = Y [ Mode: 0 ] => 0 
+								SpecialOffer_C_Mean = N [ Mode: 1 ] => 1 
+					SpecialOffer_A_Mean = N [ Mode: 0 ] => 0 
+			Method > 1 [ Mode: 0 ] 
+				SpecialOffer_A_Mean = Y [ Mode: 0 ] 
+					Sex = F [ Mode: 0 ] 
+						EducationLevel = Other [ Mode: 0 ] 
+							Age_TILEN = old [ Mode: 1 ] 
+								SpecialOffer_Count <= 2 [ Mode: -1 ] 
+									Method <= 3 [ Mode: -1 ] => -1 
+									Method > 3 [ Mode: 0 ] => 0 
+								SpecialOffer_Count > 2 [ Mode: 1 ] 
+									SpecialOffer_C_Mean = Y [ Mode: 0 ] 
+										Method <= 2 [ Mode: 1 ] 
+											SpecialOffer_Count <= 4 [ Mode: 1 ] 
+												SpecialOffer_B_Mean = Y [ Mode: 1 ] => 1 
+												SpecialOffer_B_Mean = N [ Mode: 1 ] 
+													PhoneNo_BIN = 2 [ Mode: 0 ] => 0 
+													PhoneNo_BIN = 1 [ Mode: 1 ] => 1 
+											SpecialOffer_Count > 4 [ Mode: 0 ] => 0 
+										Method > 2 [ Mode: -1 ] 
+											PhoneNo_BIN = 2 [ Mode: 0 ] 
+												SpecialOffer_B_Mean = Y [ Mode: 0 ] 
+													SpecialOffer_Count <= 4 [ Mode: 0 ] => 0 
+													SpecialOffer_Count > 4 [ Mode: -1 ] => -1 
+												SpecialOffer_B_Mean = N [ Mode: 1 ] => 1 
+											PhoneNo_BIN = 1 [ Mode: -1 ] 
+												SpecialOffer_Count <= 3 [ Mode: -1 ] 
+													JoinFrom = AnF [ Mode: -1 ] => -1 
+													JoinFrom = Other [ Mode: 0 ] => 0 
+												SpecialOffer_Count > 3 [ Mode: -1 ] => -1 
+									SpecialOffer_C_Mean = N [ Mode: 1 ] 
+										Method <= 3 [ Mode: 0 ] => 0 
+										Method > 3 [ Mode: 1 ] => 1 
+							Age_TILEN = young [ Mode: 0 ] 
+								JoinFrom = AnF [ Mode: 0 ] 
+									Method <= 2 [ Mode: -1 ] 
+										PhoneNo_BIN = 2 [ Mode: -1 ] => -1 
+										PhoneNo_BIN = 1 [ Mode: 0 ] => 0 
+									Method > 2 [ Mode: 0 ] => 0 
+								JoinFrom = Other [ Mode: 0 ] 
+									Method <= 2 [ Mode: 1 ] 
+										SpecialOffer_B_Mean = Y [ Mode: 0 ] => 0 
+										SpecialOffer_B_Mean = N [ Mode: -1 ] 
+											SpecialOffer_C_Mean = Y [ Mode: 0 ] => 0 
+											SpecialOffer_C_Mean = N [ Mode: -1 ] 
+												SpecialOffer_Count <= 2 [ Mode: 1 ] => 1 
+												SpecialOffer_Count > 2 [ Mode: -1 ] => -1 
+									Method > 2 [ Mode: 0 ] 
+										SpecialOffer_B_Mean = Y [ Mode: -1 ] => -1 
+										SpecialOffer_B_Mean = N [ Mode: 0 ] 
+											SpecialOffer_C_Mean = Y [ Mode: 1 ] 
+												SpecialOffer_Count <= 3 [ Mode: 1 ] => 1 
+												SpecialOffer_Count > 3 [ Mode: 0 ] => 0 
+											SpecialOffer_C_Mean = N [ Mode: 0 ] => 0 
+						EducationLevel = TD [ Mode: 0 ] 
+							PhoneNo_BIN = 2 [ Mode: 0 ] 
+								SpecialOffer_Count <= 2 [ Mode: -1 ] => -1 
+								SpecialOffer_Count > 2 [ Mode: 0 ] 
+									SpecialOffer_Count <= 4 [ Mode: 0 ] 
+										SpecialOffer_B_Mean = Y [ Mode: 0 ] => 0 
+										SpecialOffer_B_Mean = N [ Mode: 0 ] 
+											Method <= 2 [ Mode: -1 ] => -1 
+											Method > 2 [ Mode: 0 ] => 0 
+									SpecialOffer_Count > 4 [ Mode: 1 ] => 1 
+							PhoneNo_BIN = 1 [ Mode: -1 ] 
+								Method <= 3 [ Mode: -1 ] 
+									SpecialOffer_Count <= 3 [ Mode: -1 ] 
+										SpecialOffer_B_Mean = Y [ Mode: -1 ] => -1 
+										SpecialOffer_B_Mean = N [ Mode: 0 ] => 0 
+									SpecialOffer_Count > 3 [ Mode: 0 ] => 0 
+								Method > 3 [ Mode: -1 ] 
+									Age_TILEN = old [ Mode: -1 ] => -1 
+									Age_TILEN = young [ Mode: -1 ] 
+										SpecialOffer_B_Mean = Y [ Mode: 0 ] => 0 
+										SpecialOffer_B_Mean = N [ Mode: -1 ] => -1 
+					Sex = M [ Mode: 1 ] 
+						SpecialOffer_Count <= 2 [ Mode: 1 ] 
+							Age_TILEN = old [ Mode: 0 ] 
+								Method <= 2 [ Mode: 1 ] 
+									PhoneNo_BIN = 2 [ Mode: 0 ] => 0 
+									PhoneNo_BIN = 1 [ Mode: 1 ] => 1 
+								Method > 2 [ Mode: 0 ] 
+									SpecialOffer_B_Mean = Y [ Mode: 0 ] => 0 
+									SpecialOffer_B_Mean = N [ Mode: -1 ] 
+										PhoneNo_BIN = 2 [ Mode: 0 ] => 0 
+										PhoneNo_BIN = 1 [ Mode: -1 ] 
+											Method <= 3 [ Mode: 0 ] => 0 
+											Method > 3 [ Mode: -1 ] => -1 
+							Age_TILEN = young [ Mode: 1 ] 
+								PhoneNo_BIN = 2 [ Mode: 1 ] 
+									Method <= 3 [ Mode: 1 ] => 1 
+									Method > 3 [ Mode: 0 ] => 0 
+								PhoneNo_BIN = 1 [ Mode: 0 ] 
+									SpecialOffer_B_Mean = Y [ Mode: -1 ] => -1 
+									SpecialOffer_B_Mean = N [ Mode: 0 ] 
+										JoinFrom = AnF [ Mode: 1 ] => 1 
+										JoinFrom = Other [ Mode: 0 ] => 0 
+						SpecialOffer_Count > 2 [ Mode: 1 ] 
+							Method <= 3 [ Mode: -1 ] 
+								SpecialOffer_B_Mean = Y [ Mode: -1 ] 
+									EducationLevel = Other [ Mode: -1 ] 
+										PhoneNo_BIN = 2 [ Mode: -1 ] 
+											Method <= 2 [ Mode: 1 ] 
+												Age_TILEN = old [ Mode: 0 ] 
+													JoinFrom = AnF [ Mode: 0 ] => 0 
+													JoinFrom = Other [ Mode: -1 ] => -1 
+												Age_TILEN = young [ Mode: 1 ] => 1 
+											Method > 2 [ Mode: -1 ] 
+												SpecialOffer_Count <= 3 [ Mode: -1 ] 
+													Age_TILEN = old [ Mode: 0 ] => 0 
+													Age_TILEN = young [ Mode: -1 ] => -1 
+												SpecialOffer_Count > 3 [ Mode: 1 ] => 1 
+										PhoneNo_BIN = 1 [ Mode: 0 ] => 0 
+									EducationLevel = TD [ Mode: -1 ] 
+										SpecialOffer_Count <= 3 [ Mode: 0 ] => 0 
+										SpecialOffer_Count > 3 [ Mode: -1 ] 
+											PhoneNo_BIN = 2 [ Mode: 1 ] 
+												JoinFrom = AnF [ Mode: 0 ] => 0 
+												JoinFrom = Other [ Mode: 1 ] 
+													Age_TILEN = old [ Mode: -1 ] => -1 
+													Age_TILEN = young [ Mode: 1 ] => 1 
+											PhoneNo_BIN = 1 [ Mode: -1 ] 
+												Method <= 2 [ Mode: -1 ] 
+													JoinFrom = AnF [ Mode: 0 ] => 0 
+													JoinFrom = Other [ Mode: -1 ] => -1 
+												Method > 2 [ Mode: -1 ] 
+													SpecialOffer_C_Mean = Y [ Mode: 1 ] => 1 
+													SpecialOffer_C_Mean = N [ Mode: -1 ] => -1 
+								SpecialOffer_B_Mean = N [ Mode: 0 ] 
+									EducationLevel = Other [ Mode: 1 ] => 1 
+									EducationLevel = TD [ Mode: 0 ] => 0 
+							Method > 3 [ Mode: 1 ] 
+								Age_TILEN = old [ Mode: 1 ] 
+									SpecialOffer_Count <= 3 [ Mode: 1 ] 
+										SpecialOffer_B_Mean = Y [ Mode: 1 ] 
+											EducationLevel = Other [ Mode: 1 ] => 1 
+											EducationLevel = TD [ Mode: 0 ] => 0 
+										SpecialOffer_B_Mean = N [ Mode: 1 ] => 1 
+									SpecialOffer_Count > 3 [ Mode: 0 ] 
+										PhoneNo_BIN = 2 [ Mode: 1 ] 
+											SpecialOffer_C_Mean = Y [ Mode: 1 ] 
+												SpecialOffer_Count <= 4 [ Mode: 1 ] 
+													EducationLevel = Other [ Mode: 1 ] 
+														SpecialOffer_B_Mean = Y [ Mode: 0 ] => 0 
+														SpecialOffer_B_Mean = N [ Mode: 1 ] => 1 
+													EducationLevel = TD [ Mode: 1 ] => 1 
+												SpecialOffer_Count > 4 [ Mode: 0 ] => 0 
+											SpecialOffer_C_Mean = N [ Mode: -1 ] => -1 
+										PhoneNo_BIN = 1 [ Mode: -1 ] => -1 
+								Age_TILEN = young [ Mode: -1 ] 
+									JoinFrom = AnF [ Mode: -1 ] 
+										EducationLevel = Other [ Mode: -1 ] 
+											SpecialOffer_Count <= 3 [ Mode: -1 ] => -1 
+											SpecialOffer_Count > 3 [ Mode: 0 ] => 0 
+										EducationLevel = TD [ Mode: 1 ] => 1 
+									JoinFrom = Other [ Mode: 1 ] 
+										SpecialOffer_Count <= 4 [ Mode: -1 ] => -1 
+										SpecialOffer_Count > 4 [ Mode: 1 ] => 1 
+				SpecialOffer_A_Mean = N [ Mode: 1 ] 
+					Method <= 3 [ Mode: 1 ] 
+						SpecialOffer_B_Mean = Y [ Mode: -1 ] 
+							JoinFrom = AnF [ Mode: -1 ] 
+								PhoneNo_BIN = 2 [ Mode: -1 ] 
+									Method <= 2 [ Mode: 0 ] 
+										SpecialOffer_Count <= 3 [ Mode: 0 ] => 0 
+										SpecialOffer_Count > 3 [ Mode: -1 ] => -1 
+									Method > 2 [ Mode: -1 ] 
+										Sex = F [ Mode: 0 ] => 0 
+										Sex = M [ Mode: -1 ] => -1 
+								PhoneNo_BIN = 1 [ Mode: 0 ] => 0 
+							JoinFrom = Other [ Mode: 1 ] 
+								SpecialOffer_Count <= 2 [ Mode: 1 ] 
+									Age_TILEN = old [ Mode: 1 ] 
+										EducationLevel = Other [ Mode: -1 ] 
+											Method <= 2 [ Mode: -1 ] => -1 
+											Method > 2 [ Mode: 0 ] => 0 
+										EducationLevel = TD [ Mode: 1 ] 
+											SpecialOffer_C_Mean = Y [ Mode: 1 ] 
+												Method <= 2 [ Mode: 1 ] => 1 
+												Method > 2 [ Mode: -1 ] => -1 
+											SpecialOffer_C_Mean = N [ Mode: 1 ] 
+												Sex = F [ Mode: 1 ] 
+													Method <= 2 [ Mode: 0 ] => 0 
+													Method > 2 [ Mode: 1 ] => 1 
+												Sex = M [ Mode: 0 ] => 0 
+									Age_TILEN = young [ Mode: 0 ] => 0 
+								SpecialOffer_Count > 2 [ Mode: 0 ] 
+									SpecialOffer_C_Mean = Y [ Mode: 0 ] 
+										SpecialOffer_Count <= 3 [ Mode: 1 ] => 1 
+										SpecialOffer_Count > 3 [ Mode: 0 ] => 0 
+									SpecialOffer_C_Mean = N [ Mode: 0 ] => 0 
+						SpecialOffer_B_Mean = N [ Mode: 1 ] 
+							Sex = F [ Mode: 1 ] 
+								EducationLevel = Other [ Mode: -1 ] => -1 
+								EducationLevel = TD [ Mode: 1 ] => 1 
+							Sex = M [ Mode: 1 ] 
+								Age_TILEN = old [ Mode: 0 ] => 0 
+								Age_TILEN = young [ Mode: 1 ] => 1 
+					Method > 3 [ Mode: 1 ] 
+						EducationLevel = Other [ Mode: 1 ] 
+							SpecialOffer_Count <= 2 [ Mode: 1 ] 
+								Sex = F [ Mode: 1 ] => 1 
+								Sex = M [ Mode: 1 ] 
+									JoinFrom = AnF [ Mode: 1 ] => 1 
+									JoinFrom = Other [ Mode: 0 ] => 0 
+							SpecialOffer_Count > 2 [ Mode: 0 ] => 0 
+						EducationLevel = TD [ Mode: 0 ] 
+							SpecialOffer_B_Mean = Y [ Mode: 1 ] 
+								SpecialOffer_C_Mean = Y [ Mode: 1 ] => 1 
+								SpecialOffer_C_Mean = N [ Mode: 0 ] => 0 
+							SpecialOffer_B_Mean = N [ Mode: 0 ] => 0 
+		SpecialOffer_Count > 5 [ Mode: 0 ] 
+			Method <= 2 [ Mode: 0 ] 
+				Method <= 1 [ Mode: 0 ] 
+					SpecialOffer_C_Mean = Y [ Mode: 0 ] => 0 
+					SpecialOffer_C_Mean = N [ Mode: 1 ] => 1 
+				Method > 1 [ Mode: 0 ] => 0 
+			Method > 2 [ Mode: -1 ] 
+				SpecialOffer_B_Mean = Y [ Mode: -1 ] 
+					SpecialOffer_C_Mean = Y [ Mode: -1 ] 
+						JoinFrom = AnF [ Mode: 0 ] => 0 
+						JoinFrom = Other [ Mode: -1 ] 
+							EducationLevel = Other [ Mode: 0 ] => 0 
+							EducationLevel = TD [ Mode: -1 ] => -1 
+					SpecialOffer_C_Mean = N [ Mode: 0 ] => 0 
+				SpecialOffer_B_Mean = N [ Mode: 1 ] => 1 
+Rule 3 - estimated accuracy 79.15% [boost 95.9%]
+	SpecialOffer_Count <= 1 [ Mode: -1 ] 
+		Age_TILEN = old [ Mode: -1 ] 
+			Method <= 2 [ Mode: 0 ] 
+				JoinFrom = AnF [ Mode: 0 ] => 0 
+				JoinFrom = Other [ Mode: -1 ] 
+					Method <= 1 [ Mode: -1 ] 
+						SpecialOffer_B_Mean = Y [ Mode: 1 ] => 1 
+						SpecialOffer_B_Mean = N [ Mode: -1 ] 
+							EducationLevel = Other [ Mode: -1 ] 
+								SpecialOffer_A_Mean = Y [ Mode: 0 ] => 0 
+								SpecialOffer_A_Mean = N [ Mode: -1 ] 
+									PhoneNo_BIN = 2 [ Mode: 0 ] => 0 
+									PhoneNo_BIN = 1 [ Mode: -1 ] => -1 
+							EducationLevel = TD [ Mode: -1 ] => -1 
+					Method > 1 [ Mode: 0 ] 
+						SpecialOffer_B_Mean = Y [ Mode: 0 ] 
+							EducationLevel = Other [ Mode: 0 ] 
+								PhoneNo_BIN = 2 [ Mode: 1 ] => 1 
+								PhoneNo_BIN = 1 [ Mode: 0 ] => 0 
+							EducationLevel = TD [ Mode: 1 ] => 1 
+						SpecialOffer_B_Mean = N [ Mode: 0 ] => 0 
+			Method > 2 [ Mode: -1 ] 
+				JoinFrom = AnF [ Mode: -1 ] 
+					PhoneNo_BIN = 2 [ Mode: 0 ] => 0 
+					PhoneNo_BIN = 1 [ Mode: -1 ] 
+						SpecialOffer_A_Mean = Y [ Mode: -1 ] => -1 
+						SpecialOffer_A_Mean = N [ Mode: -1 ] 
+							Method <= 3 [ Mode: 0 ] => 0 
+							Method > 3 [ Mode: -1 ] => -1 
+				JoinFrom = Other [ Mode: -1 ] 
+					Sex = F [ Mode: -1 ] 
+						Method <= 3 [ Mode: -1 ] 
+							EducationLevel = Other [ Mode: -1 ] 
+								SpecialOffer_C_Mean = Y [ Mode: 0 ] => 0 
+								SpecialOffer_C_Mean = N [ Mode: -1 ] 
+									PhoneNo_BIN = 2 [ Mode: -1 ] => -1 
+									PhoneNo_BIN = 1 [ Mode: 1 ] 
+										SpecialOffer_A_Mean = Y [ Mode: -1 ] => -1 
+										SpecialOffer_A_Mean = N [ Mode: 1 ] => 1 
+							EducationLevel = TD [ Mode: -1 ] => -1 
+						Method > 3 [ Mode: -1 ] 
+							PhoneNo_BIN = 2 [ Mode: -1 ] 
+								EducationLevel = Other [ Mode: -1 ] => -1 
+								EducationLevel = TD [ Mode: 0 ] => 0 
+							PhoneNo_BIN = 1 [ Mode: 0 ] => 0 
+					Sex = M [ Mode: 1 ] 
+						SpecialOffer_C_Mean = Y [ Mode: 0 ] => 0 
+						SpecialOffer_C_Mean = N [ Mode: 1 ] 
+							PhoneNo_BIN = 2 [ Mode: 0 ] => 0 
+							PhoneNo_BIN = 1 [ Mode: 1 ] 
+								Method <= 3 [ Mode: 1 ] 
+									SpecialOffer_A_Mean = Y [ Mode: 1 ] => 1 
+									SpecialOffer_A_Mean = N [ Mode: 0 ] => 0 
+								Method > 3 [ Mode: 1 ] => 1 
+		Age_TILEN = young [ Mode: 1 ] 
+			Method <= 3 [ Mode: 1 ] 
+				Method <= 1 [ Mode: -1 ] 
+					SpecialOffer_C_Mean = Y [ Mode: 1 ] => 1 
+					SpecialOffer_C_Mean = N [ Mode: -1 ] 
+						JoinFrom = AnF [ Mode: -1 ] 
+							EducationLevel = Other [ Mode: -1 ] 
+								PhoneNo_BIN = 2 [ Mode: -1 ] 
+									Sex = F [ Mode: -1 ] => -1 
+									Sex = M [ Mode: 0 ] => 0 
+								PhoneNo_BIN = 1 [ Mode: 0 ] => 0 
+							EducationLevel = TD [ Mode: 0 ] => 0 
+						JoinFrom = Other [ Mode: 1 ] => 1 
+				Method > 1 [ Mode: 1 ] 
+					SpecialOffer_C_Mean = Y [ Mode: -1 ] 
+						EducationLevel = Other [ Mode: -1 ] 
+							Sex = F [ Mode: -1 ] 
+								Method <= 2 [ Mode: 0 ] => 0 
+								Method > 2 [ Mode: -1 ] => -1 
+							Sex = M [ Mode: 0 ] => 0 
+						EducationLevel = TD [ Mode: 0 ] => 0 
+					SpecialOffer_C_Mean = N [ Mode: 1 ] 
+						PhoneNo_BIN = 2 [ Mode: 1 ] 
+							Method <= 2 [ Mode: 1 ] 
+								Sex = F [ Mode: 1 ] 
+									EducationLevel = Other [ Mode: 0 ] => 0 
+									EducationLevel = TD [ Mode: 1 ] => 1 
+								Sex = M [ Mode: 1 ] => 1 
+							Method > 2 [ Mode: 1 ] 
+								Sex = F [ Mode: 1 ] 
+									JoinFrom = AnF [ Mode: 1 ] 
+										EducationLevel = Other [ Mode: 1 ] => 1 
+										EducationLevel = TD [ Mode: 0 ] => 0 
+									JoinFrom = Other [ Mode: 0 ] 
+										EducationLevel = Other [ Mode: 0 ] => 0 
+										EducationLevel = TD [ Mode: 1 ] => 1 
+								Sex = M [ Mode: 0 ] => 0 
+						PhoneNo_BIN = 1 [ Mode: 0 ] 
+							SpecialOffer_A_Mean = Y [ Mode: 0 ] 
+								Sex = F [ Mode: 1 ] => 1 
+								Sex = M [ Mode: 0 ] => 0 
+							SpecialOffer_A_Mean = N [ Mode: -1 ] => -1 
+			Method > 3 [ Mode: -1 ] 
+				Sex = F [ Mode: -1 ] 
+					SpecialOffer_B_Mean = Y [ Mode: 0 ] => 0 
+					SpecialOffer_B_Mean = N [ Mode: -1 ] => -1 
+				Sex = M [ Mode: 1 ] 
+					PhoneNo_BIN = 2 [ Mode: 1 ] => 1 
+					PhoneNo_BIN = 1 [ Mode: -1 ] => -1 
+	SpecialOffer_Count > 1 [ Mode: 0 ] 
+		SpecialOffer_Count <= 5 [ Mode: 0 ] 
+			Method <= 1 [ Mode: 1 ] 
+				SpecialOffer_B_Mean = Y [ Mode: 1 ] 
+					SpecialOffer_Count <= 4 [ Mode: 1 ] 
+						JoinFrom = AnF [ Mode: 1 ] 
+							PhoneNo_BIN = 2 [ Mode: 0 ] 
+								Sex = F [ Mode: 0 ] => 0 
+								Sex = M [ Mode: 1 ] 
+									Age_TILEN = old [ Mode: 1 ] => 1 
+									Age_TILEN = young [ Mode: 1 ] 
+										SpecialOffer_Count <= 2 [ Mode: 1 ] => 1 
+										SpecialOffer_Count > 2 [ Mode: 0 ] => 0 
+							PhoneNo_BIN = 1 [ Mode: 1 ] 
+								EducationLevel = Other [ Mode: -1 ] 
+									Sex = F [ Mode: 1 ] => 1 
+									Sex = M [ Mode: -1 ] 
+										Age_TILEN = old [ Mode: -1 ] => -1 
+										Age_TILEN = young [ Mode: 0 ] => 0 
+								EducationLevel = TD [ Mode: 1 ] 
+									Age_TILEN = old [ Mode: 1 ] => 1 
+									Age_TILEN = young [ Mode: 0 ] => 0 
+						JoinFrom = Other [ Mode: -1 ] 
+							PhoneNo_BIN = 2 [ Mode: -1 ] 
+								SpecialOffer_A_Mean = Y [ Mode: -1 ] 
+									EducationLevel = Other [ Mode: -1 ] => -1 
+									EducationLevel = TD [ Mode: -1 ] 
+										SpecialOffer_C_Mean = Y [ Mode: -1 ] => -1 
+										SpecialOffer_C_Mean = N [ Mode: 0 ] => 0 
+								SpecialOffer_A_Mean = N [ Mode: 0 ] => 0 
+							PhoneNo_BIN = 1 [ Mode: 0 ] 
+								Sex = F [ Mode: 0 ] 
+									Age_TILEN = old [ Mode: -1 ] => -1 
+									Age_TILEN = young [ Mode: 0 ] => 0 
+								Sex = M [ Mode: 1 ] 
+									SpecialOffer_Count <= 2 [ Mode: 0 ] => 0 
+									SpecialOffer_Count > 2 [ Mode: 1 ] 
+										EducationLevel = Other [ Mode: 1 ] => 1 
+										EducationLevel = TD [ Mode: 0 ] => 0 
+					SpecialOffer_Count > 4 [ Mode: 1 ] 
+						Age_TILEN = old [ Mode: 1 ] => 1 
+						Age_TILEN = young [ Mode: 0 ] => 0 
+				SpecialOffer_B_Mean = N [ Mode: 0 ] 
+					SpecialOffer_A_Mean = Y [ Mode: 0 ] 
+						PhoneNo_BIN = 2 [ Mode: 1 ] 
+							Age_TILEN = old [ Mode: 0 ] 
+								JoinFrom = AnF [ Mode: 0 ] 
+									SpecialOffer_Count <= 2 [ Mode: 1 ] => 1 
+									SpecialOffer_Count > 2 [ Mode: 0 ] => 0 
+								JoinFrom = Other [ Mode: 0 ] => 0 
+							Age_TILEN = young [ Mode: 1 ] 
+								EducationLevel = Other [ Mode: 1 ] => 1 
+								EducationLevel = TD [ Mode: 0 ] => 0 
+						PhoneNo_BIN = 1 [ Mode: 0 ] => 0 
+					SpecialOffer_A_Mean = N [ Mode: 0 ] => 0 
+			Method > 1 [ Mode: 0 ] 
+				Method <= 3 [ Mode: 0 ] 
+					SpecialOffer_B_Mean = Y [ Mode: -1 ] 
+						JoinFrom = AnF [ Mode: 0 ] 
+							Age_TILEN = old [ Mode: 0 ] 
+								EducationLevel = Other [ Mode: 0 ] 
+									SpecialOffer_C_Mean = Y [ Mode: -1 ] => -1 
+									SpecialOffer_C_Mean = N [ Mode: 0 ] => 0 
+								EducationLevel = TD [ Mode: 0 ] => 0 
+							Age_TILEN = young [ Mode: -1 ] 
+								PhoneNo_BIN = 2 [ Mode: 0 ] 
+									SpecialOffer_A_Mean = Y [ Mode: 0 ] 
+										Method <= 2 [ Mode: -1 ] 
+											Sex = F [ Mode: -1 ] 
+												EducationLevel = Other [ Mode: -1 ] => -1 
+												EducationLevel = TD [ Mode: 0 ] => 0 
+											Sex = M [ Mode: 1 ] => 1 
+										Method > 2 [ Mode: 0 ] => 0 
+									SpecialOffer_A_Mean = N [ Mode: -1 ] 
+										Method <= 2 [ Mode: 0 ] => 0 
+										Method > 2 [ Mode: -1 ] => -1 
+								PhoneNo_BIN = 1 [ Mode: -1 ] 
+									Method <= 2 [ Mode: -1 ] 
+										Sex = F [ Mode: -1 ] => -1 
+										Sex = M [ Mode: 0 ] => 0 
+									Method > 2 [ Mode: -1 ] 
+										EducationLevel = Other [ Mode: 0 ] => 0 
+										EducationLevel = TD [ Mode: -1 ] 
+											SpecialOffer_C_Mean = Y [ Mode: 1 ] => 1 
+											SpecialOffer_C_Mean = N [ Mode: -1 ] => -1 
+						JoinFrom = Other [ Mode: -1 ] 
+							Method <= 2 [ Mode: -1 ] 
+								Sex = F [ Mode: 1 ] 
+									SpecialOffer_C_Mean = Y [ Mode: 1 ] 
+										Age_TILEN = old [ Mode: 0 ] 
+											EducationLevel = Other [ Mode: 0 ] => 0 
+											EducationLevel = TD [ Mode: 1 ] => 1 
+										Age_TILEN = young [ Mode: 1 ] => 1 
+									SpecialOffer_C_Mean = N [ Mode: -1 ] => -1 
+								Sex = M [ Mode: -1 ] 
+									Age_TILEN = old [ Mode: -1 ] 
+										SpecialOffer_Count <= 2 [ Mode: -1 ] 
+											SpecialOffer_A_Mean = Y [ Mode: 0 ] => 0 
+											SpecialOffer_A_Mean = N [ Mode: -1 ] 
+												PhoneNo_BIN = 2 [ Mode: -1 ] => -1 
+												PhoneNo_BIN = 1 [ Mode: 1 ] => 1 
+										SpecialOffer_Count > 2 [ Mode: -1 ] 
+											SpecialOffer_Count <= 4 [ Mode: -1 ] 
+												SpecialOffer_Count <= 3 [ Mode: 0 ] => 0 
+												SpecialOffer_Count > 3 [ Mode: -1 ] 
+													SpecialOffer_A_Mean = Y [ Mode: -1 ] => -1 
+													SpecialOffer_A_Mean = N [ Mode: 0 ] => 0 
+											SpecialOffer_Count > 4 [ Mode: 1 ] => 1 
+									Age_TILEN = young [ Mode: 1 ] 
+										EducationLevel = Other [ Mode: 1 ] 
+											PhoneNo_BIN = 2 [ Mode: 1 ] => 1 
+											PhoneNo_BIN = 1 [ Mode: -1 ] => -1 
+										EducationLevel = TD [ Mode: -1 ] => -1 
+							Method > 2 [ Mode: 0 ] 
+								SpecialOffer_C_Mean = Y [ Mode: 0 ] 
+									EducationLevel = Other [ Mode: 0 ] 
+										SpecialOffer_Count <= 4 [ Mode: 0 ] 
+											SpecialOffer_Count <= 3 [ Mode: 0 ] => 0 
+											SpecialOffer_Count > 3 [ Mode: 1 ] => 1 
+										SpecialOffer_Count > 4 [ Mode: -1 ] => -1 
+									EducationLevel = TD [ Mode: -1 ] 
+										SpecialOffer_Count <= 4 [ Mode: 0 ] 
+											SpecialOffer_A_Mean = Y [ Mode: 0 ] => 0 
+											SpecialOffer_A_Mean = N [ Mode: -1 ] 
+												PhoneNo_BIN = 2 [ Mode: 0 ] => 0 
+												PhoneNo_BIN = 1 [ Mode: -1 ] => -1 
+										SpecialOffer_Count > 4 [ Mode: -1 ] => -1 
+								SpecialOffer_C_Mean = N [ Mode: 1 ] 
+									SpecialOffer_Count <= 2 [ Mode: 1 ] 
+										SpecialOffer_A_Mean = Y [ Mode: 1 ] 
+											EducationLevel = Other [ Mode: 1 ] => 1 
+											EducationLevel = TD [ Mode: -1 ] => -1 
+										SpecialOffer_A_Mean = N [ Mode: 1 ] 
+											Sex = F [ Mode: 1 ] => 1 
+											Sex = M [ Mode: 0 ] => 0 
+									SpecialOffer_Count > 2 [ Mode: 0 ] 
+										SpecialOffer_A_Mean = Y [ Mode: 0 ] 
+											Sex = F [ Mode: 0 ] => 0 
+											Sex = M [ Mode: 1 ] => 1 
+										SpecialOffer_A_Mean = N [ Mode: 0 ] => 0 
+					SpecialOffer_B_Mean = N [ Mode: 1 ] 
+						SpecialOffer_C_Mean = Y [ Mode: 1 ] 
+							SpecialOffer_Count <= 2 [ Mode: 1 ] 
+								EducationLevel = Other [ Mode: 1 ] 
+									Age_TILEN = old [ Mode: -1 ] => -1 
+									Age_TILEN = young [ Mode: 1 ] 
+										PhoneNo_BIN = 2 [ Mode: -1 ] => -1 
+										PhoneNo_BIN = 1 [ Mode: 1 ] 
+											SpecialOffer_A_Mean = Y [ Mode: 0 ] => 0 
+											SpecialOffer_A_Mean = N [ Mode: 1 ] => 1 
+								EducationLevel = TD [ Mode: 1 ] 
+									Age_TILEN = old [ Mode: 1 ] 
+										Sex = F [ Mode: 1 ] 
+											Method <= 2 [ Mode: 1 ] => 1 
+											Method > 2 [ Mode: 0 ] => 0 
+										Sex = M [ Mode: 0 ] => 0 
+									Age_TILEN = young [ Mode: 1 ] => 1 
+							SpecialOffer_Count > 2 [ Mode: 0 ] 
+								Method <= 2 [ Mode: 1 ] 
+									PhoneNo_BIN = 2 [ Mode: 0 ] => 0 
+									PhoneNo_BIN = 1 [ Mode: 1 ] 
+										SpecialOffer_Count <= 3 [ Mode: 1 ] => 1 
+										SpecialOffer_Count > 3 [ Mode: 1 ] 
+											SpecialOffer_Count <= 4 [ Mode: 1 ] 
+												Sex = F [ Mode: 1 ] => 1 
+												Sex = M [ Mode: 0 ] => 0 
+											SpecialOffer_Count > 4 [ Mode: 0 ] => 0 
+								Method > 2 [ Mode: 0 ] 
+									SpecialOffer_Count <= 4 [ Mode: 0 ] => 0 
+									SpecialOffer_Count > 4 [ Mode: 1 ] => 1 
+						SpecialOffer_C_Mean = N [ Mode: -1 ] 
+							JoinFrom = AnF [ Mode: 0 ] => 0 
+							JoinFrom = Other [ Mode: -1 ] 
+								Method <= 2 [ Mode: -1 ] 
+									Age_TILEN = old [ Mode: 0 ] => 0 
+									Age_TILEN = young [ Mode: -1 ] => -1 
+								Method > 2 [ Mode: 0 ] => 0 
+				Method > 3 [ Mode: 1 ] 
+					EducationLevel = Other [ Mode: 1 ] 
+						SpecialOffer_A_Mean = Y [ Mode: 1 ] 
+							SpecialOffer_C_Mean = Y [ Mode: -1 ] 
+								PhoneNo_BIN = 2 [ Mode: 1 ] 
+									Sex = F [ Mode: -1 ] 
+										JoinFrom = AnF [ Mode: 1 ] => 1 
+										JoinFrom = Other [ Mode: -1 ] 
+											Age_TILEN = old [ Mode: 0 ] 
+												SpecialOffer_Count <= 2 [ Mode: -1 ] => -1 
+												SpecialOffer_Count > 2 [ Mode: 0 ] => 0 
+											Age_TILEN = young [ Mode: -1 ] => -1 
+									Sex = M [ Mode: 1 ] => 1 
+								PhoneNo_BIN = 1 [ Mode: -1 ] 
+									SpecialOffer_B_Mean = Y [ Mode: 0 ] 
+										SpecialOffer_Count <= 3 [ Mode: 0 ] => 0 
+										SpecialOffer_Count > 3 [ Mode: -1 ] => -1 
+									SpecialOffer_B_Mean = N [ Mode: -1 ] 
+										JoinFrom = AnF [ Mode: -1 ] => -1 
+										JoinFrom = Other [ Mode: 0 ] 
+											SpecialOffer_Count <= 3 [ Mode: 0 ] => 0 
+											SpecialOffer_Count > 3 [ Mode: -1 ] 
+												SpecialOffer_Count <= 4 [ Mode: -1 ] => -1 
+												SpecialOffer_Count > 4 [ Mode: 1 ] => 1 
+							SpecialOffer_C_Mean = N [ Mode: 1 ] 
+								SpecialOffer_B_Mean = Y [ Mode: 1 ] 
+									Age_TILEN = old [ Mode: 1 ] 
+										SpecialOffer_Count <= 2 [ Mode: -1 ] => -1 
+										SpecialOffer_Count > 2 [ Mode: 1 ] => 1 
+									Age_TILEN = young [ Mode: 1 ] 
+										JoinFrom = AnF [ Mode: -1 ] 
+											Sex = F [ Mode: 0 ] => 0 
+											Sex = M [ Mode: -1 ] => -1 
+										JoinFrom = Other [ Mode: 1 ] 
+											Sex = F [ Mode: 0 ] => 0 
+											Sex = M [ Mode: 1 ] => 1 
+								SpecialOffer_B_Mean = N [ Mode: 0 ] => 0 
+						SpecialOffer_A_Mean = N [ Mode: 1 ] 
+							SpecialOffer_Count <= 2 [ Mode: 1 ] 
+								JoinFrom = AnF [ Mode: 1 ] => 1 
+								JoinFrom = Other [ Mode: 1 ] 
+									Sex = F [ Mode: 1 ] => 1 
+									Sex = M [ Mode: 0 ] => 0 
+							SpecialOffer_Count > 2 [ Mode: 1 ] 
+								Sex = F [ Mode: 0 ] => 0 
+								Sex = M [ Mode: 1 ] 
+									SpecialOffer_Count <= 3 [ Mode: 0 ] => 0 
+									SpecialOffer_Count > 3 [ Mode: 1 ] 
+										SpecialOffer_Count <= 4 [ Mode: 1 ] => 1 
+										SpecialOffer_Count > 4 [ Mode: 0 ] => 0 
+					EducationLevel = TD [ Mode: 0 ] 
+						SpecialOffer_B_Mean = Y [ Mode: 0 ] 
+							Age_TILEN = old [ Mode: 0 ] 
+								JoinFrom = AnF [ Mode: -1 ] 
+									SpecialOffer_C_Mean = Y [ Mode: -1 ] 
+										Sex = F [ Mode: -1 ] => -1 
+										Sex = M [ Mode: 1 ] => 1 
+									SpecialOffer_C_Mean = N [ Mode: 0 ] => 0 
+								JoinFrom = Other [ Mode: 0 ] 
+									SpecialOffer_C_Mean = Y [ Mode: 1 ] 
+										Sex = F [ Mode: 1 ] => 1 
+										Sex = M [ Mode: 0 ] => 0 
+									SpecialOffer_C_Mean = N [ Mode: -1 ] => -1 
+							Age_TILEN = young [ Mode: 0 ] 
+								SpecialOffer_Count <= 2 [ Mode: 0 ] => 0 
+								SpecialOffer_Count > 2 [ Mode: 0 ] 
+									SpecialOffer_C_Mean = Y [ Mode: 0 ] 
+										SpecialOffer_Count <= 4 [ Mode: 0 ] 
+											SpecialOffer_Count <= 3 [ Mode: 0 ] => 0 
+											SpecialOffer_Count > 3 [ Mode: 0 ] 
+												SpecialOffer_A_Mean = Y [ Mode: 0 ] => 0 
+												SpecialOffer_A_Mean = N [ Mode: 1 ] => 1 
+										SpecialOffer_Count > 4 [ Mode: 1 ] => 1 
+									SpecialOffer_C_Mean = N [ Mode: 1 ] => 1 
+						SpecialOffer_B_Mean = N [ Mode: 0 ] 
+							Sex = F [ Mode: -1 ] 
+								SpecialOffer_Count <= 4 [ Mode: -1 ] 
+									PhoneNo_BIN = 2 [ Mode: -1 ] 
+										JoinFrom = AnF [ Mode: 0 ] => 0 
+										JoinFrom = Other [ Mode: -1 ] => -1 
+									PhoneNo_BIN = 1 [ Mode: -1 ] => -1 
+								SpecialOffer_Count > 4 [ Mode: 0 ] => 0 
+							Sex = M [ Mode: 0 ] 
+								SpecialOffer_Count <= 2 [ Mode: 0 ] => 0 
+								SpecialOffer_Count > 2 [ Mode: 1 ] => 1 
+		SpecialOffer_Count > 5 [ Mode: -1 ] 
+			JoinFrom = AnF [ Mode: 0 ] 
+				Method <= 3 [ Mode: 0 ] => 0 
+				Method > 3 [ Mode: 1 ] => 1 
+			JoinFrom = Other [ Mode: -1 ] 
+				Method <= 2 [ Mode: 0 ] 
+					PhoneNo_BIN = 2 [ Mode: 1 ] 
+						Method <= 1 [ Mode: 1 ] => 1 
+						Method > 1 [ Mode: 0 ] => 0 
+					PhoneNo_BIN = 1 [ Mode: 0 ] => 0 
+				Method > 2 [ Mode: -1 ] 
+					SpecialOffer_B_Mean = Y [ Mode: -1 ] 
+						SpecialOffer_C_Mean = Y [ Mode: -1 ] 
+							Method <= 3 [ Mode: -1 ] 
+								SpecialOffer_A_Mean = Y [ Mode: -1 ] => -1 
+								SpecialOffer_A_Mean = N [ Mode: 0 ] => 0 
+							Method > 3 [ Mode: -1 ] 
+								Sex = F [ Mode: -1 ] => -1 
+								Sex = M [ Mode: 0 ] => 0 
+						SpecialOffer_C_Mean = N [ Mode: 0 ] => 0 
+					SpecialOffer_B_Mean = N [ Mode: 1 ] => 1 
+Rule 4 - estimated accuracy 76.3% [boost 95.9%]
+	SpecialOffer_Count <= 1 [ Mode: -1 ] 
+		Method <= 3 [ Mode: -1 ] 
+			Age_TILEN = old [ Mode: -1 ] 
+				EducationLevel = Other [ Mode: -1 ] 
+					Sex = F [ Mode: 1 ] 
+						JoinFrom = AnF [ Mode: 1 ] 
+							Method <= 2 [ Mode: 1 ] 
+								Method <= 1 [ Mode: 0 ] => 0 
+								Method > 1 [ Mode: 1 ] => 1 
+							Method > 2 [ Mode: 0 ] => 0 
+						JoinFrom = Other [ Mode: -1 ] 
+							Method <= 1 [ Mode: 1 ] 
+								SpecialOffer_C_Mean = Y [ Mode: 1 ] => 1 
+								SpecialOffer_C_Mean = N [ Mode: 0 ] => 0 
+							Method > 1 [ Mode: -1 ] 
+								Method <= 2 [ Mode: -1 ] => -1 
+								Method > 2 [ Mode: 1 ] 
+									SpecialOffer_C_Mean = Y [ Mode: 0 ] => 0 
+									SpecialOffer_C_Mean = N [ Mode: 1 ] 
+										SpecialOffer_A_Mean = Y [ Mode: -1 ] => -1 
+										SpecialOffer_A_Mean = N [ Mode: 1 ] 
+											PhoneNo_BIN = 2 [ Mode: -1 ] => -1 
+											PhoneNo_BIN = 1 [ Mode: 1 ] => 1 
+					Sex = M [ Mode: -1 ] 
+						JoinFrom = AnF [ Mode: -1 ] 
+							Method <= 1 [ Mode: 0 ] => 0 
+							Method > 1 [ Mode: -1 ] 
+								SpecialOffer_A_Mean = Y [ Mode: -1 ] => -1 
+								SpecialOffer_A_Mean = N [ Mode: 0 ] => 0 
+						JoinFrom = Other [ Mode: -1 ] 
+							Method <= 2 [ Mode: -1 ] 
+								Method <= 1 [ Mode: -1 ] 
+									SpecialOffer_A_Mean = Y [ Mode: 0 ] => 0 
+									SpecialOffer_A_Mean = N [ Mode: -1 ] 
+										PhoneNo_BIN = 2 [ Mode: -1 ] => -1 
+										PhoneNo_BIN = 1 [ Mode: 1 ] 
+											SpecialOffer_B_Mean = Y [ Mode: 1 ] => 1 
+											SpecialOffer_B_Mean = N [ Mode: -1 ] => -1 
+								Method > 1 [ Mode: -1 ] 
+									PhoneNo_BIN = 2 [ Mode: 1 ] => 1 
+									PhoneNo_BIN = 1 [ Mode: -1 ] 
+										SpecialOffer_A_Mean = Y [ Mode: -1 ] => -1 
+										SpecialOffer_A_Mean = N [ Mode: -1 ] 
+											SpecialOffer_B_Mean = Y [ Mode: -1 ] => -1 
+											SpecialOffer_B_Mean = N [ Mode: 0 ] => 0 
+							Method > 2 [ Mode: 0 ] => 0 
+				EducationLevel = TD [ Mode: -1 ] 
+					SpecialOffer_B_Mean = Y [ Mode: 0 ] => 0 
+					SpecialOffer_B_Mean = N [ Mode: -1 ] 
+						SpecialOffer_A_Mean = Y [ Mode: -1 ] 
+							Method <= 1 [ Mode: -1 ] => -1 
+							Method > 1 [ Mode: -1 ] 
+								Method <= 2 [ Mode: -1 ] => -1 
+								Method > 2 [ Mode: 0 ] => 0 
+						SpecialOffer_A_Mean = N [ Mode: -1 ] => -1 
+			Age_TILEN = young [ Mode: 1 ] 
+				Method <= 1 [ Mode: -1 ] 
+					JoinFrom = AnF [ Mode: 0 ] 
+						EducationLevel = Other [ Mode: -1 ] 
+							PhoneNo_BIN = 2 [ Mode: -1 ] 
+								Sex = F [ Mode: -1 ] => -1 
+								Sex = M [ Mode: 0 ] => 0 
+							PhoneNo_BIN = 1 [ Mode: 1 ] => 1 
+						EducationLevel = TD [ Mode: 0 ] => 0 
+					JoinFrom = Other [ Mode: 1 ] 
+						EducationLevel = Other [ Mode: 0 ] => 0 
+						EducationLevel = TD [ Mode: 1 ] => 1 
+				Method > 1 [ Mode: 1 ] 
+					SpecialOffer_C_Mean = Y [ Mode: -1 ] 
+						EducationLevel = Other [ Mode: -1 ] 
+							Method <= 2 [ Mode: -1 ] 
+								Sex = F [ Mode: 0 ] => 0 
+								Sex = M [ Mode: -1 ] => -1 
+							Method > 2 [ Mode: -1 ] 
+								Sex = F [ Mode: -1 ] => -1 
+								Sex = M [ Mode: 0 ] => 0 
+						EducationLevel = TD [ Mode: 0 ] => 0 
+					SpecialOffer_C_Mean = N [ Mode: 1 ] 
+						JoinFrom = AnF [ Mode: 1 ] 
+							EducationLevel = Other [ Mode: 1 ] 
+								SpecialOffer_A_Mean = Y [ Mode: 1 ] 
+									Method <= 2 [ Mode: 1 ] 
+										Sex = F [ Mode: 0 ] => 0 
+										Sex = M [ Mode: 1 ] => 1 
+									Method > 2 [ Mode: -1 ] 
+										Sex = F [ Mode: -1 ] => -1 
+										Sex = M [ Mode: 0 ] => 0 
+								SpecialOffer_A_Mean = N [ Mode: 1 ] 
+									PhoneNo_BIN = 2 [ Mode: 1 ] 
+										Method <= 2 [ Mode: 0 ] => 0 
+										Method > 2 [ Mode: 1 ] 
+											Sex = F [ Mode: 1 ] => 1 
+											Sex = M [ Mode: 0 ] => 0 
+									PhoneNo_BIN = 1 [ Mode: -1 ] => -1 
+							EducationLevel = TD [ Mode: 0 ] => 0 
+						JoinFrom = Other [ Mode: 1 ] 
+							SpecialOffer_A_Mean = Y [ Mode: 1 ] 
+								Method <= 2 [ Mode: 1 ] 
+									Sex = F [ Mode: 1 ] => 1 
+									Sex = M [ Mode: 0 ] => 0 
+								Method > 2 [ Mode: 0 ] => 0 
+							SpecialOffer_A_Mean = N [ Mode: 1 ] 
+								EducationLevel = Other [ Mode: 0 ] => 0 
+								EducationLevel = TD [ Mode: 1 ] 
+									Method <= 2 [ Mode: 1 ] => 1 
+									Method > 2 [ Mode: -1 ] => -1 
+		Method > 3 [ Mode: -1 ] 
+			Sex = F [ Mode: -1 ] 
+				PhoneNo_BIN = 2 [ Mode: -1 ] 
+					JoinFrom = AnF [ Mode: 0 ] => 0 
+					JoinFrom = Other [ Mode: -1 ] 
+						SpecialOffer_B_Mean = Y [ Mode: -1 ] => -1 
+						SpecialOffer_B_Mean = N [ Mode: -1 ] 
+							Age_TILEN = old [ Mode: -1 ] 
+								EducationLevel = Other [ Mode: -1 ] => -1 
+								EducationLevel = TD [ Mode: 0 ] => 0 
+							Age_TILEN = young [ Mode: -1 ] => -1 
+				PhoneNo_BIN = 1 [ Mode: -1 ] 
+					EducationLevel = Other [ Mode: -1 ] 
+						SpecialOffer_B_Mean = Y [ Mode: 0 ] => 0 
+						SpecialOffer_B_Mean = N [ Mode: -1 ] => -1 
+					EducationLevel = TD [ Mode: -1 ] => -1 
+			Sex = M [ Mode: 0 ] 
+				SpecialOffer_A_Mean = Y [ Mode: 0 ] => 0 
+				SpecialOffer_A_Mean = N [ Mode: 0 ] 
+					EducationLevel = Other [ Mode: -1 ] 
+						JoinFrom = AnF [ Mode: -1 ] => -1 
+						JoinFrom = Other [ Mode: -1 ] 
+							Age_TILEN = old [ Mode: 0 ] 
+								SpecialOffer_B_Mean = Y [ Mode: 1 ] => 1 
+								SpecialOffer_B_Mean = N [ Mode: -1 ] => -1 
+							Age_TILEN = young [ Mode: -1 ] => -1 
+					EducationLevel = TD [ Mode: 0 ] 
+						PhoneNo_BIN = 2 [ Mode: 1 ] => 1 
+						PhoneNo_BIN = 1 [ Mode: 0 ] => 0 
+	SpecialOffer_Count > 1 [ Mode: 0 ] 
+		Method <= 1 [ Mode: 1 ] 
+			SpecialOffer_B_Mean = Y [ Mode: 1 ] 
+				JoinFrom = AnF [ Mode: 1 ] 
+					SpecialOffer_Count <= 4 [ Mode: 1 ] 
+						PhoneNo_BIN = 2 [ Mode: 0 ] 
+							SpecialOffer_Count <= 3 [ Mode: 0 ] 
+								Sex = F [ Mode: 0 ] => 0 
+								Sex = M [ Mode: 1 ] 
+									Age_TILEN = old [ Mode: 1 ] => 1 
+									Age_TILEN = young [ Mode: 0 ] 
+										SpecialOffer_Count <= 2 [ Mode: 1 ] => 1 
+										SpecialOffer_Count > 2 [ Mode: 0 ] => 0 
+							SpecialOffer_Count > 3 [ Mode: -1 ] => -1 
+						PhoneNo_BIN = 1 [ Mode: 1 ] 
+							EducationLevel = Other [ Mode: -1 ] 
+								Sex = F [ Mode: 1 ] 
+									Age_TILEN = old [ Mode: 0 ] => 0 
+									Age_TILEN = young [ Mode: 1 ] => 1 
+								Sex = M [ Mode: -1 ] 
+									Age_TILEN = old [ Mode: -1 ] => -1 
+									Age_TILEN = young [ Mode: 0 ] => 0 
+							EducationLevel = TD [ Mode: 1 ] 
+								Age_TILEN = old [ Mode: 1 ] => 1 
+								Age_TILEN = young [ Mode: 0 ] => 0 
+					SpecialOffer_Count > 4 [ Mode: 0 ] => 0 
+				JoinFrom = Other [ Mode: 0 ] 
+					SpecialOffer_Count <= 4 [ Mode: 0 ] 
+						PhoneNo_BIN = 2 [ Mode: -1 ] 
+							SpecialOffer_A_Mean = Y [ Mode: -1 ] 
+								EducationLevel = Other [ Mode: 0 ] 
+									SpecialOffer_C_Mean = Y [ Mode: 0 ] => 0 
+									SpecialOffer_C_Mean = N [ Mode: -1 ] => -1 
+								EducationLevel = TD [ Mode: -1 ] 
+									SpecialOffer_C_Mean = Y [ Mode: -1 ] => -1 
+									SpecialOffer_C_Mean = N [ Mode: 0 ] => 0 
+							SpecialOffer_A_Mean = N [ Mode: 0 ] => 0 
+						PhoneNo_BIN = 1 [ Mode: 0 ] 
+							Sex = F [ Mode: 0 ] 
+								SpecialOffer_Count <= 3 [ Mode: 0 ] => 0 
+								SpecialOffer_Count > 3 [ Mode: 0 ] 
+									SpecialOffer_C_Mean = Y [ Mode: 0 ] => 0 
+									SpecialOffer_C_Mean = N [ Mode: -1 ] => -1 
+							Sex = M [ Mode: 0 ] 
+								EducationLevel = Other [ Mode: 1 ] 
+									SpecialOffer_Count <= 2 [ Mode: 0 ] => 0 
+									SpecialOffer_Count > 2 [ Mode: 1 ] => 1 
+								EducationLevel = TD [ Mode: 0 ] => 0 
+					SpecialOffer_Count > 4 [ Mode: 1 ] 
+						PhoneNo_BIN = 2 [ Mode: 1 ] => 1 
+						PhoneNo_BIN = 1 [ Mode: 0 ] 
+							Age_TILEN = old [ Mode: 1 ] 
+								SpecialOffer_A_Mean = Y [ Mode: 0 ] 
+									SpecialOffer_C_Mean = Y [ Mode: 0 ] => 0 
+									SpecialOffer_C_Mean = N [ Mode: 1 ] => 1 
+								SpecialOffer_A_Mean = N [ Mode: 1 ] => 1 
+							Age_TILEN = young [ Mode: 0 ] => 0 
+			SpecialOffer_B_Mean = N [ Mode: 0 ] 
+				JoinFrom = AnF [ Mode: 0 ] => 0 
+				JoinFrom = Other [ Mode: 1 ] 
+					SpecialOffer_Count <= 3 [ Mode: 1 ] 
+						SpecialOffer_A_Mean = Y [ Mode: 1 ] 
+							EducationLevel = Other [ Mode: 1 ] 
+								SpecialOffer_C_Mean = Y [ Mode: 0 ] 
+									Sex = F [ Mode: 0 ] => 0 
+									Sex = M [ Mode: 1 ] => 1 
+								SpecialOffer_C_Mean = N [ Mode: 1 ] 
+									SpecialOffer_Count <= 2 [ Mode: 1 ] 
+										PhoneNo_BIN = 2 [ Mode: 0 ] => 0 
+										PhoneNo_BIN = 1 [ Mode: 1 ] => 1 
+									SpecialOffer_Count > 2 [ Mode: 1 ] => 1 
+							EducationLevel = TD [ Mode: 0 ] => 0 
+						SpecialOffer_A_Mean = N [ Mode: 0 ] => 0 
+					SpecialOffer_Count > 3 [ Mode: 0 ] => 0 
+		Method > 1 [ Mode: 0 ] 
+			Method <= 3 [ Mode: 0 ] 
+				SpecialOffer_B_Mean = Y [ Mode: -1 ] 
+					Method <= 2 [ Mode: -1 ] 
+						SpecialOffer_Count <= 2 [ Mode: -1 ] 
+							Sex = F [ Mode: 0 ] 
+								SpecialOffer_A_Mean = Y [ Mode: -1 ] 
+									EducationLevel = Other [ Mode: -1 ] 
+										JoinFrom = AnF [ Mode: -1 ] => -1 
+										JoinFrom = Other [ Mode: 0 ] => 0 
+									EducationLevel = TD [ Mode: -1 ] => -1 
+								SpecialOffer_A_Mean = N [ Mode: 0 ] 
+									PhoneNo_BIN = 2 [ Mode: 0 ] => 0 
+									PhoneNo_BIN = 1 [ Mode: 1 ] => 1 
+							Sex = M [ Mode: 1 ] 
+								JoinFrom = AnF [ Mode: 1 ] 
+									EducationLevel = Other [ Mode: 1 ] => 1 
+									EducationLevel = TD [ Mode: 0 ] => 0 
+								JoinFrom = Other [ Mode: -1 ] 
+									SpecialOffer_A_Mean = Y [ Mode: 1 ] => 1 
+									SpecialOffer_A_Mean = N [ Mode: -1 ] => -1 
+						SpecialOffer_Count > 2 [ Mode: -1 ] 
+							PhoneNo_BIN = 2 [ Mode: 1 ] 
+								EducationLevel = Other [ Mode: 1 ] 
+									SpecialOffer_C_Mean = Y [ Mode: 1 ] 
+										SpecialOffer_Count <= 4 [ Mode: 1 ] 
+											Age_TILEN = old [ Mode: 1 ] 
+												SpecialOffer_A_Mean = Y [ Mode: 1 ] 
+													Sex = F [ Mode: 1 ] => 1 
+													Sex = M [ Mode: -1 ] => -1 
+												SpecialOffer_A_Mean = N [ Mode: -1 ] => -1 
+											Age_TILEN = young [ Mode: 1 ] => 1 
+										SpecialOffer_Count > 4 [ Mode: 0 ] => 0 
+									SpecialOffer_C_Mean = N [ Mode: 0 ] 
+										SpecialOffer_Count <= 3 [ Mode: 1 ] => 1 
+										SpecialOffer_Count > 3 [ Mode: 0 ] => 0 
+								EducationLevel = TD [ Mode: 0 ] 
+									SpecialOffer_Count <= 4 [ Mode: 0 ] => 0 
+									SpecialOffer_Count > 4 [ Mode: 1 ] => 1 
+							PhoneNo_BIN = 1 [ Mode: -1 ] 
+								SpecialOffer_Count <= 5 [ Mode: -1 ] 
+									SpecialOffer_A_Mean = Y [ Mode: -1 ] 
+										EducationLevel = Other [ Mode: -1 ] 
+											Age_TILEN = old [ Mode: 0 ] => 0 
+											Age_TILEN = young [ Mode: -1 ] 
+												SpecialOffer_Count <= 4 [ Mode: -1 ] 
+													Sex = F [ Mode: -1 ] => -1 
+													Sex = M [ Mode: 0 ] => 0 
+												SpecialOffer_Count > 4 [ Mode: 0 ] => 0 
+										EducationLevel = TD [ Mode: -1 ] 
+											JoinFrom = AnF [ Mode: -1 ] 
+												SpecialOffer_Count <= 3 [ Mode: -1 ] => -1 
+												SpecialOffer_Count > 3 [ Mode: 0 ] => 0 
+											JoinFrom = Other [ Mode: -1 ] 
+												Sex = F [ Mode: 0 ] => 0 
+												Sex = M [ Mode: -1 ] => -1 
+									SpecialOffer_A_Mean = N [ Mode: 0 ] => 0 
+								SpecialOffer_Count > 5 [ Mode: 0 ] => 0 
+					Method > 2 [ Mode: 0 ] 
+						SpecialOffer_Count <= 5 [ Mode: 0 ] 
+							JoinFrom = AnF [ Mode: 0 ] 
+								SpecialOffer_Count <= 3 [ Mode: 0 ] 
+									SpecialOffer_A_Mean = Y [ Mode: 0 ] 
+										SpecialOffer_C_Mean = Y [ Mode: -1 ] => -1 
+										SpecialOffer_C_Mean = N [ Mode: 0 ] 
+											EducationLevel = Other [ Mode: 0 ] 
+												Age_TILEN = old [ Mode: 0 ] => 0 
+												Age_TILEN = young [ Mode: -1 ] => -1 
+											EducationLevel = TD [ Mode: 0 ] => 0 
+									SpecialOffer_A_Mean = N [ Mode: -1 ] 
+										EducationLevel = Other [ Mode: 0 ] => 0 
+										EducationLevel = TD [ Mode: -1 ] 
+											Sex = F [ Mode: 0 ] => 0 
+											Sex = M [ Mode: -1 ] => -1 
+								SpecialOffer_Count > 3 [ Mode: 0 ] 
+									SpecialOffer_C_Mean = Y [ Mode: 0 ] 
+										Age_TILEN = old [ Mode: 0 ] => 0 
+										Age_TILEN = young [ Mode: 1 ] => 1 
+									SpecialOffer_C_Mean = N [ Mode: -1 ] => -1 
+							JoinFrom = Other [ Mode: 0 ] 
+								SpecialOffer_Count <= 2 [ Mode: -1 ] 
+									SpecialOffer_C_Mean = Y [ Mode: -1 ] => -1 
+									SpecialOffer_C_Mean = N [ Mode: 1 ] 
+										SpecialOffer_A_Mean = Y [ Mode: -1 ] 
+											PhoneNo_BIN = 2 [ Mode: 1 ] => 1 
+											PhoneNo_BIN = 1 [ Mode: -1 ] => -1 
+										SpecialOffer_A_Mean = N [ Mode: 1 ] => 1 
+								SpecialOffer_Count > 2 [ Mode: 0 ] 
+									SpecialOffer_Count <= 4 [ Mode: 0 ] 
+										SpecialOffer_A_Mean = Y [ Mode: 0 ] 
+											Sex = F [ Mode: 0 ] => 0 
+											Sex = M [ Mode: 0 ] 
+												Age_TILEN = old [ Mode: 0 ] 
+													EducationLevel = Other [ Mode: 1 ] => 1 
+													EducationLevel = TD [ Mode: 0 ] => 0 
+												Age_TILEN = young [ Mode: 1 ] => 1 
+										SpecialOffer_A_Mean = N [ Mode: 0 ] => 0 
+									SpecialOffer_Count > 4 [ Mode: 0 ] 
+										EducationLevel = Other [ Mode: 0 ] => 0 
+										EducationLevel = TD [ Mode: -1 ] => -1 
+						SpecialOffer_Count > 5 [ Mode: -1 ] 
+							JoinFrom = AnF [ Mode: 0 ] => 0 
+							JoinFrom = Other [ Mode: -1 ] 
+								SpecialOffer_A_Mean = Y [ Mode: -1 ] 
+									EducationLevel = Other [ Mode: 0 ] 
+										SpecialOffer_Count <= 6 [ Mode: 0 ] => 0 
+										SpecialOffer_Count > 6 [ Mode: -1 ] => -1 
+									EducationLevel = TD [ Mode: -1 ] => -1 
+								SpecialOffer_A_Mean = N [ Mode: 0 ] => 0 
+				SpecialOffer_B_Mean = N [ Mode: 1 ] 
+					SpecialOffer_Count <= 3 [ Mode: 1 ] 
+						Method <= 2 [ Mode: 1 ] 
+							EducationLevel = Other [ Mode: -1 ] 
+								PhoneNo_BIN = 2 [ Mode: 0 ] 
+									Age_TILEN = old [ Mode: 0 ] => 0 
+									Age_TILEN = young [ Mode: -1 ] => -1 
+								PhoneNo_BIN = 1 [ Mode: -1 ] 
+									JoinFrom = AnF [ Mode: 1 ] => 1 
+									JoinFrom = Other [ Mode: -1 ] 
+										SpecialOffer_Count <= 2 [ Mode: -1 ] => -1 
+										SpecialOffer_Count > 2 [ Mode: 1 ] => 1 
+							EducationLevel = TD [ Mode: 1 ] 
+								SpecialOffer_Count <= 2 [ Mode: 1 ] 
+									Sex = F [ Mode: 1 ] => 1 
+									Sex = M [ Mode: 1 ] 
+										SpecialOffer_A_Mean = Y [ Mode: 1 ] => 1 
+										SpecialOffer_A_Mean = N [ Mode: 0 ] => 0 
+								SpecialOffer_Count > 2 [ Mode: -1 ] => -1 
+						Method > 2 [ Mode: 0 ] 
+							Age_TILEN = old [ Mode: 0 ] => 0 
+							Age_TILEN = young [ Mode: 1 ] 
+								SpecialOffer_C_Mean = Y [ Mode: 1 ] 
+									SpecialOffer_Count <= 2 [ Mode: 1 ] => 1 
+									SpecialOffer_Count > 2 [ Mode: 0 ] => 0 
+								SpecialOffer_C_Mean = N [ Mode: 0 ] => 0 
+					SpecialOffer_Count > 3 [ Mode: 0 ] 
+						EducationLevel = Other [ Mode: 0 ] 
+							PhoneNo_BIN = 2 [ Mode: 0 ] => 0 
+							PhoneNo_BIN = 1 [ Mode: 1 ] 
+								SpecialOffer_Count <= 4 [ Mode: 1 ] 
+									Sex = F [ Mode: 0 ] 
+										Age_TILEN = old [ Mode: 1 ] => 1 
+										Age_TILEN = young [ Mode: 0 ] => 0 
+									Sex = M [ Mode: 1 ] => 1 
+								SpecialOffer_Count > 4 [ Mode: 0 ] => 0 
+						EducationLevel = TD [ Mode: 0 ] => 0 
+			Method > 3 [ Mode: 1 ] 
+				EducationLevel = Other [ Mode: 1 ] 
+					SpecialOffer_Count <= 5 [ Mode: 1 ] 
+						SpecialOffer_A_Mean = Y [ Mode: 1 ] 
+							SpecialOffer_C_Mean = Y [ Mode: -1 ] 
+								SpecialOffer_Count <= 4 [ Mode: 0 ] 
+									SpecialOffer_Count <= 2 [ Mode: 1 ] 
+										Age_TILEN = old [ Mode: -1 ] => -1 
+										Age_TILEN = young [ Mode: 1 ] => 1 
+									SpecialOffer_Count > 2 [ Mode: 0 ] 
+										PhoneNo_BIN = 2 [ Mode: 1 ] 
+											Age_TILEN = old [ Mode: 1 ] 
+												Sex = F [ Mode: 0 ] => 0 
+												Sex = M [ Mode: 1 ] => 1 
+											Age_TILEN = young [ Mode: -1 ] => -1 
+										PhoneNo_BIN = 1 [ Mode: 0 ] 
+											SpecialOffer_B_Mean = Y [ Mode: 0 ] 
+												SpecialOffer_Count <= 3 [ Mode: 0 ] => 0 
+												SpecialOffer_Count > 3 [ Mode: -1 ] => -1 
+											SpecialOffer_B_Mean = N [ Mode: -1 ] 
+												JoinFrom = AnF [ Mode: -1 ] => -1 
+												JoinFrom = Other [ Mode: 0 ] 
+													Age_TILEN = old [ Mode: -1 ] => -1 
+													Age_TILEN = young [ Mode: 0 ] => 0 
+								SpecialOffer_Count > 4 [ Mode: -1 ] 
+									SpecialOffer_B_Mean = Y [ Mode: -1 ] 
+										Sex = F [ Mode: -1 ] => -1 
+										Sex = M [ Mode: 0 ] => 0 
+									SpecialOffer_B_Mean = N [ Mode: 1 ] => 1 
+							SpecialOffer_C_Mean = N [ Mode: 1 ] 
+								SpecialOffer_Count <= 4 [ Mode: 1 ] 
+									SpecialOffer_Count <= 3 [ Mode: 1 ] 
+										Age_TILEN = old [ Mode: 1 ] 
+											SpecialOffer_Count <= 2 [ Mode: 0 ] => 0 
+											SpecialOffer_Count > 2 [ Mode: 1 ] => 1 
+										Age_TILEN = young [ Mode: 1 ] 
+											SpecialOffer_Count <= 2 [ Mode: 1 ] 
+												JoinFrom = AnF [ Mode: 0 ] => 0 
+												JoinFrom = Other [ Mode: 1 ] 
+													Sex = F [ Mode: 1 ] 
+														SpecialOffer_B_Mean = Y [ Mode: 0 ] => 0 
+														SpecialOffer_B_Mean = N [ Mode: 1 ] 
+															PhoneNo_BIN = 2 [ Mode: 0 ] => 0 
+															PhoneNo_BIN = 1 [ Mode: 1 ] => 1 
+													Sex = M [ Mode: 1 ] => 1 
+											SpecialOffer_Count > 2 [ Mode: -1 ] 
+												Sex = F [ Mode: 0 ] => 0 
+												Sex = M [ Mode: -1 ] => -1 
+									SpecialOffer_Count > 3 [ Mode: 0 ] => 0 
+								SpecialOffer_Count > 4 [ Mode: 1 ] 
+									JoinFrom = AnF [ Mode: -1 ] => -1 
+									JoinFrom = Other [ Mode: 1 ] => 1 
+						SpecialOffer_A_Mean = N [ Mode: 1 ] 
+							SpecialOffer_Count <= 2 [ Mode: 1 ] 
+								JoinFrom = AnF [ Mode: 1 ] => 1 
+								JoinFrom = Other [ Mode: 1 ] 
+									Sex = F [ Mode: 1 ] 
+										Age_TILEN = old [ Mode: 0 ] => 0 
+										Age_TILEN = young [ Mode: 1 ] => 1 
+									Sex = M [ Mode: 0 ] => 0 
+							SpecialOffer_Count > 2 [ Mode: 1 ] 
+								Sex = F [ Mode: -1 ] => -1 
+								Sex = M [ Mode: 1 ] => 1 
+					SpecialOffer_Count > 5 [ Mode: 0 ] 
+						Sex = F [ Mode: -1 ] => -1 
+						Sex = M [ Mode: 0 ] => 0 
+				EducationLevel = TD [ Mode: 0 ] 
+					Age_TILEN = old [ Mode: 0 ] 
+						SpecialOffer_Count <= 3 [ Mode: 0 ] 
+							JoinFrom = AnF [ Mode: 0 ] => 0 
+							JoinFrom = Other [ Mode: 0 ] 
+								Sex = F [ Mode: 1 ] => 1 
+								Sex = M [ Mode: 0 ] 
+									SpecialOffer_Count <= 2 [ Mode: 0 ] => 0 
+									SpecialOffer_Count > 2 [ Mode: 1 ] => 1 
+						SpecialOffer_Count > 3 [ Mode: -1 ] 
+							JoinFrom = AnF [ Mode: -1 ] 
+								Sex = F [ Mode: -1 ] => -1 
+								Sex = M [ Mode: 1 ] => 1 
+							JoinFrom = Other [ Mode: 0 ] 
+								SpecialOffer_Count <= 5 [ Mode: 0 ] 
+									PhoneNo_BIN = 2 [ Mode: 0 ] 
+										SpecialOffer_C_Mean = Y [ Mode: 0 ] => 0 
+										SpecialOffer_C_Mean = N [ Mode: -1 ] => -1 
+									PhoneNo_BIN = 1 [ Mode: 0 ] 
+										SpecialOffer_A_Mean = Y [ Mode: 1 ] => 1 
+										SpecialOffer_A_Mean = N [ Mode: 0 ] => 0 
+								SpecialOffer_Count > 5 [ Mode: -1 ] => -1 
+					Age_TILEN = young [ Mode: 0 ] 
+						SpecialOffer_B_Mean = Y [ Mode: 1 ] 
+							JoinFrom = AnF [ Mode: 1 ] 
+								SpecialOffer_A_Mean = Y [ Mode: 1 ] 
+									SpecialOffer_C_Mean = Y [ Mode: 0 ] 
+										PhoneNo_BIN = 2 [ Mode: 1 ] => 1 
+										PhoneNo_BIN = 1 [ Mode: 0 ] => 0 
+									SpecialOffer_C_Mean = N [ Mode: 1 ] => 1 
+								SpecialOffer_A_Mean = N [ Mode: 0 ] => 0 
+							JoinFrom = Other [ Mode: 1 ] 
+								Sex = F [ Mode: 0 ] => 0 
+								Sex = M [ Mode: 1 ] => 1 
+						SpecialOffer_B_Mean = N [ Mode: 0 ] 
+							SpecialOffer_C_Mean = Y [ Mode: 0 ] => 0 
+							SpecialOffer_C_Mean = N [ Mode: -1 ] => -1 
+Rule 5 - estimated accuracy 74.85% [boost 95.9%]
+	SpecialOffer_Count <= 2 [ Mode: -1 ] 
+		SpecialOffer_Count <= 1 [ Mode: -1 ] 
+			Method <= 3 [ Mode: -1 ] 
+				Method <= 2 [ Mode: -1 ] 
+					JoinFrom = AnF [ Mode: 0 ] 
+						SpecialOffer_C_Mean = Y [ Mode: 1 ] => 1 
+						SpecialOffer_C_Mean = N [ Mode: 0 ] 
+							Method <= 1 [ Mode: 0 ] => 0 
+							Method > 1 [ Mode: 1 ] 
+								PhoneNo_BIN = 2 [ Mode: 1 ] 
+									SpecialOffer_A_Mean = Y [ Mode: 1 ] 
+										Sex = F [ Mode: 0 ] => 0 
+										Sex = M [ Mode: 1 ] => 1 
+									SpecialOffer_A_Mean = N [ Mode: 0 ] => 0 
+								PhoneNo_BIN = 1 [ Mode: -1 ] => -1 
+					JoinFrom = Other [ Mode: -1 ] 
+						Method <= 1 [ Mode: 1 ] 
+							SpecialOffer_B_Mean = Y [ Mode: 1 ] 
+								Age_TILEN = old [ Mode: 1 ] => 1 
+								Age_TILEN = young [ Mode: 0 ] => 0 
+							SpecialOffer_B_Mean = N [ Mode: -1 ] 
+								EducationLevel = Other [ Mode: 1 ] 
+									Sex = F [ Mode: 0 ] => 0 
+									Sex = M [ Mode: 1 ] 
+										PhoneNo_BIN = 2 [ Mode: -1 ] => -1 
+										PhoneNo_BIN = 1 [ Mode: 1 ] => 1 
+								EducationLevel = TD [ Mode: -1 ] 
+									SpecialOffer_A_Mean = Y [ Mode: -1 ] => -1 
+									SpecialOffer_A_Mean = N [ Mode: 1 ] => 1 
+						Method > 1 [ Mode: -1 ] 
+							Age_TILEN = old [ Mode: -1 ] 
+								SpecialOffer_B_Mean = Y [ Mode: -1 ] 
+									EducationLevel = Other [ Mode: -1 ] 
+										PhoneNo_BIN = 2 [ Mode: -1 ] 
+											Sex = F [ Mode: -1 ] => -1 
+											Sex = M [ Mode: 1 ] => 1 
+										PhoneNo_BIN = 1 [ Mode: -1 ] 
+											Sex = F [ Mode: 0 ] => 0 
+											Sex = M [ Mode: -1 ] => -1 
+									EducationLevel = TD [ Mode: 1 ] => 1 
+								SpecialOffer_B_Mean = N [ Mode: -1 ] 
+									EducationLevel = Other [ Mode: -1 ] => -1 
+									EducationLevel = TD [ Mode: -1 ] 
+										SpecialOffer_A_Mean = Y [ Mode: -1 ] => -1 
+										SpecialOffer_A_Mean = N [ Mode: 0 ] => 0 
+							Age_TILEN = young [ Mode: 1 ] 
+								SpecialOffer_C_Mean = Y [ Mode: -1 ] => -1 
+								SpecialOffer_C_Mean = N [ Mode: 1 ] 
+									PhoneNo_BIN = 2 [ Mode: 1 ] => 1 
+									PhoneNo_BIN = 1 [ Mode: 0 ] => 0 
+				Method > 2 [ Mode: 1 ] 
+					SpecialOffer_C_Mean = Y [ Mode: -1 ] 
+						JoinFrom = AnF [ Mode: -1 ] => -1 
+						JoinFrom = Other [ Mode: 0 ] => 0 
+					SpecialOffer_C_Mean = N [ Mode: 1 ] 
+						Sex = F [ Mode: 1 ] 
+							EducationLevel = Other [ Mode: 1 ] 
+								SpecialOffer_A_Mean = Y [ Mode: 1 ] 
+									Age_TILEN = old [ Mode: -1 ] => -1 
+									Age_TILEN = young [ Mode: 1 ] => 1 
+								SpecialOffer_A_Mean = N [ Mode: 1 ] 
+									Age_TILEN = old [ Mode: 1 ] => 1 
+									Age_TILEN = young [ Mode: 1 ] 
+										JoinFrom = AnF [ Mode: 1 ] => 1 
+										JoinFrom = Other [ Mode: 0 ] => 0 
+							EducationLevel = TD [ Mode: 1 ] 
+								SpecialOffer_A_Mean = Y [ Mode: 0 ] => 0 
+								SpecialOffer_A_Mean = N [ Mode: 1 ] 
+									Age_TILEN = old [ Mode: 0 ] => 0 
+									Age_TILEN = young [ Mode: 1 ] 
+										JoinFrom = AnF [ Mode: 0 ] => 0 
+										JoinFrom = Other [ Mode: 1 ] => 1 
+						Sex = M [ Mode: -1 ] 
+							JoinFrom = AnF [ Mode: -1 ] 
+								SpecialOffer_A_Mean = Y [ Mode: -1 ] 
+									Age_TILEN = old [ Mode: -1 ] => -1 
+									Age_TILEN = young [ Mode: 0 ] => 0 
+								SpecialOffer_A_Mean = N [ Mode: 0 ] => 0 
+							JoinFrom = Other [ Mode: 1 ] 
+								EducationLevel = Other [ Mode: 1 ] 
+									SpecialOffer_A_Mean = Y [ Mode: 1 ] => 1 
+									SpecialOffer_A_Mean = N [ Mode: 0 ] => 0 
+								EducationLevel = TD [ Mode: -1 ] => -1 
+			Method > 3 [ Mode: -1 ] 
+				Sex = F [ Mode: -1 ] 
+					PhoneNo_BIN = 2 [ Mode: -1 ] 
+						SpecialOffer_A_Mean = Y [ Mode: -1 ] 
+							Age_TILEN = old [ Mode: 0 ] => 0 
+							Age_TILEN = young [ Mode: -1 ] => -1 
+						SpecialOffer_A_Mean = N [ Mode: 0 ] 
+							JoinFrom = AnF [ Mode: 0 ] => 0 
+							JoinFrom = Other [ Mode: -1 ] 
+								EducationLevel = Other [ Mode: -1 ] 
+									Age_TILEN = old [ Mode: -1 ] 
+										SpecialOffer_B_Mean = Y [ Mode: 0 ] => 0 
+										SpecialOffer_B_Mean = N [ Mode: -1 ] => -1 
+									Age_TILEN = young [ Mode: -1 ] => -1 
+								EducationLevel = TD [ Mode: 0 ] => 0 
+					PhoneNo_BIN = 1 [ Mode: -1 ] 
+						EducationLevel = Other [ Mode: -1 ] 
+							SpecialOffer_B_Mean = Y [ Mode: 0 ] => 0 
+							SpecialOffer_B_Mean = N [ Mode: -1 ] => -1 
+						EducationLevel = TD [ Mode: -1 ] => -1 
+				Sex = M [ Mode: 0 ] 
+					SpecialOffer_A_Mean = Y [ Mode: 0 ] => 0 
+					SpecialOffer_A_Mean = N [ Mode: 0 ] 
+						JoinFrom = AnF [ Mode: 0 ] => 0 
+						JoinFrom = Other [ Mode: 0 ] 
+							Age_TILEN = old [ Mode: 0 ] 
+								SpecialOffer_B_Mean = Y [ Mode: 0 ] => 0 
+								SpecialOffer_B_Mean = N [ Mode: -1 ] => -1 
+							Age_TILEN = young [ Mode: 1 ] => 1 
+		SpecialOffer_Count > 1 [ Mode: 1 ] 
+			Method <= 1 [ Mode: 0 ] 
+				Age_TILEN = old [ Mode: 1 ] 
+					SpecialOffer_A_Mean = Y [ Mode: 1 ] 
+						EducationLevel = Other [ Mode: -1 ] 
+							Sex = F [ Mode: 1 ] 
+								SpecialOffer_B_Mean = Y [ Mode: 0 ] => 0 
+								SpecialOffer_B_Mean = N [ Mode: 1 ] => 1 
+							Sex = M [ Mode: -1 ] 
+								SpecialOffer_B_Mean = Y [ Mode: -1 ] => -1 
+								SpecialOffer_B_Mean = N [ Mode: 0 ] => 0 
+						EducationLevel = TD [ Mode: 1 ] => 1 
+					SpecialOffer_A_Mean = N [ Mode: 0 ] 
+						PhoneNo_BIN = 2 [ Mode: 0 ] => 0 
+						PhoneNo_BIN = 1 [ Mode: -1 ] => -1 
+				Age_TILEN = young [ Mode: 0 ] 
+					SpecialOffer_C_Mean = Y [ Mode: 1 ] 
+						PhoneNo_BIN = 2 [ Mode: 1 ] => 1 
+						PhoneNo_BIN = 1 [ Mode: 0 ] => 0 
+					SpecialOffer_C_Mean = N [ Mode: 0 ] => 0 
+			Method > 1 [ Mode: 1 ] 
+				Method <= 2 [ Mode: 1 ] 
+					JoinFrom = AnF [ Mode: 1 ] 
+						Sex = F [ Mode: -1 ] 
+							SpecialOffer_A_Mean = Y [ Mode: -1 ] => -1 
+							SpecialOffer_A_Mean = N [ Mode: 0 ] => 0 
+						Sex = M [ Mode: 1 ] 
+							SpecialOffer_A_Mean = Y [ Mode: 1 ] 
+								EducationLevel = Other [ Mode: 1 ] => 1 
+								EducationLevel = TD [ Mode: 1 ] 
+									Age_TILEN = old [ Mode: 0 ] => 0 
+									Age_TILEN = young [ Mode: 1 ] => 1 
+							SpecialOffer_A_Mean = N [ Mode: 0 ] => 0 
+					JoinFrom = Other [ Mode: 1 ] 
+						EducationLevel = Other [ Mode: -1 ] 
+							SpecialOffer_C_Mean = Y [ Mode: 0 ] 
+								SpecialOffer_A_Mean = Y [ Mode: 0 ] => 0 
+								SpecialOffer_A_Mean = N [ Mode: -1 ] => -1 
+							SpecialOffer_C_Mean = N [ Mode: 1 ] 
+								PhoneNo_BIN = 2 [ Mode: 1 ] 
+									Age_TILEN = old [ Mode: -1 ] => -1 
+									Age_TILEN = young [ Mode: 1 ] => 1 
+								PhoneNo_BIN = 1 [ Mode: -1 ] 
+									SpecialOffer_B_Mean = Y [ Mode: -1 ] 
+										Sex = F [ Mode: 0 ] => 0 
+										Sex = M [ Mode: -1 ] 
+											Age_TILEN = old [ Mode: 1 ] => 1 
+											Age_TILEN = young [ Mode: -1 ] => -1 
+									SpecialOffer_B_Mean = N [ Mode: -1 ] => -1 
+						EducationLevel = TD [ Mode: 1 ] 
+							SpecialOffer_B_Mean = Y [ Mode: 1 ] 
+								PhoneNo_BIN = 2 [ Mode: 1 ] 
+									Age_TILEN = old [ Mode: 1 ] => 1 
+									Age_TILEN = young [ Mode: -1 ] => -1 
+								PhoneNo_BIN = 1 [ Mode: 1 ] => 1 
+							SpecialOffer_B_Mean = N [ Mode: 1 ] 
+								Sex = F [ Mode: 1 ] => 1 
+								Sex = M [ Mode: 0 ] => 0 
+				Method > 2 [ Mode: 0 ] 
+					Method <= 3 [ Mode: 0 ] 
+						PhoneNo_BIN = 2 [ Mode: -1 ] 
+							Sex = F [ Mode: -1 ] 
+								SpecialOffer_A_Mean = Y [ Mode: -1 ] 
+									SpecialOffer_C_Mean = Y [ Mode: -1 ] => -1 
+									SpecialOffer_C_Mean = N [ Mode: 0 ] 
+										EducationLevel = Other [ Mode: 0 ] => 0 
+										EducationLevel = TD [ Mode: -1 ] => -1 
+								SpecialOffer_A_Mean = N [ Mode: 0 ] => 0 
+							Sex = M [ Mode: -1 ] 
+								SpecialOffer_A_Mean = Y [ Mode: 1 ] 
+									Age_TILEN = old [ Mode: 0 ] => 0 
+									Age_TILEN = young [ Mode: 1 ] => 1 
+								SpecialOffer_A_Mean = N [ Mode: -1 ] 
+									EducationLevel = Other [ Mode: 0 ] => 0 
+									EducationLevel = TD [ Mode: -1 ] => -1 
+						PhoneNo_BIN = 1 [ Mode: 0 ] 
+							Sex = F [ Mode: 1 ] 
+								JoinFrom = AnF [ Mode: 0 ] => 0 
+								JoinFrom = Other [ Mode: 1 ] 
+									Age_TILEN = old [ Mode: -1 ] 
+										SpecialOffer_C_Mean = Y [ Mode: -1 ] => -1 
+										SpecialOffer_C_Mean = N [ Mode: 1 ] => 1 
+									Age_TILEN = young [ Mode: 1 ] 
+										EducationLevel = Other [ Mode: 1 ] 
+											SpecialOffer_C_Mean = Y [ Mode: 1 ] => 1 
+											SpecialOffer_C_Mean = N [ Mode: 0 ] => 0 
+										EducationLevel = TD [ Mode: -1 ] => -1 
+							Sex = M [ Mode: 0 ] 
+								SpecialOffer_A_Mean = Y [ Mode: 0 ] => 0 
+								SpecialOffer_A_Mean = N [ Mode: 0 ] 
+									Age_TILEN = old [ Mode: 0 ] => 0 
+									Age_TILEN = young [ Mode: 1 ] => 1 
+					Method > 3 [ Mode: 1 ] 
+						Age_TILEN = old [ Mode: -1 ] 
+							SpecialOffer_A_Mean = Y [ Mode: -1 ] 
+								PhoneNo_BIN = 2 [ Mode: 0 ] => 0 
+								PhoneNo_BIN = 1 [ Mode: -1 ] 
+									SpecialOffer_B_Mean = Y [ Mode: -1 ] => -1 
+									SpecialOffer_B_Mean = N [ Mode: -1 ] 
+										Sex = F [ Mode: 0 ] => 0 
+										Sex = M [ Mode: -1 ] => -1 
+							SpecialOffer_A_Mean = N [ Mode: 1 ] 
+								PhoneNo_BIN = 2 [ Mode: 1 ] 
+									SpecialOffer_C_Mean = Y [ Mode: 1 ] => 1 
+									SpecialOffer_C_Mean = N [ Mode: -1 ] => -1 
+								PhoneNo_BIN = 1 [ Mode: 0 ] => 0 
+						Age_TILEN = young [ Mode: 1 ] 
+							EducationLevel = Other [ Mode: 1 ] 
+								SpecialOffer_A_Mean = Y [ Mode: 1 ] 
+									Sex = F [ Mode: 1 ] 
+										SpecialOffer_B_Mean = Y [ Mode: 0 ] => 0 
+										SpecialOffer_B_Mean = N [ Mode: 1 ] => 1 
+									Sex = M [ Mode: 1 ] 
+										SpecialOffer_B_Mean = Y [ Mode: 1 ] => 1 
+										SpecialOffer_B_Mean = N [ Mode: 1 ] 
+											JoinFrom = AnF [ Mode: 1 ] => 1 
+											JoinFrom = Other [ Mode: 0 ] => 0 
+								SpecialOffer_A_Mean = N [ Mode: 1 ] 
+									Sex = F [ Mode: 1 ] => 1 
+									Sex = M [ Mode: 0 ] => 0 
+							EducationLevel = TD [ Mode: 0 ] 
+								JoinFrom = AnF [ Mode: 0 ] => 0 
+								JoinFrom = Other [ Mode: 1 ] => 1 
+	SpecialOffer_Count > 2 [ Mode: 0 ] 
+		Method <= 1 [ Mode: 1 ] 
+			SpecialOffer_C_Mean = Y [ Mode: 0 ] 
+				SpecialOffer_B_Mean = Y [ Mode: 0 ] 
+					EducationLevel = Other [ Mode: 0 ] 
+						SpecialOffer_Count <= 5 [ Mode: 0 ] 
+							SpecialOffer_Count <= 4 [ Mode: 0 ] => 0 
+							SpecialOffer_Count > 4 [ Mode: 1 ] 
+								SpecialOffer_A_Mean = Y [ Mode: 0 ] 
+									PhoneNo_BIN = 2 [ Mode: 1 ] => 1 
+									PhoneNo_BIN = 1 [ Mode: 0 ] => 0 
+								SpecialOffer_A_Mean = N [ Mode: 1 ] => 1 
+						SpecialOffer_Count > 5 [ Mode: -1 ] => -1 
+					EducationLevel = TD [ Mode: -1 ] 
+						Sex = F [ Mode: 1 ] 
+							PhoneNo_BIN = 2 [ Mode: -1 ] 
+								SpecialOffer_Count <= 5 [ Mode: -1 ] => -1 
+								SpecialOffer_Count > 5 [ Mode: 1 ] => 1 
+							PhoneNo_BIN = 1 [ Mode: 1 ] 
+								JoinFrom = AnF [ Mode: 1 ] => 1 
+								JoinFrom = Other [ Mode: -1 ] 
+									SpecialOffer_Count <= 3 [ Mode: 1 ] => 1 
+									SpecialOffer_Count > 3 [ Mode: -1 ] => -1 
+						Sex = M [ Mode: -1 ] 
+							SpecialOffer_A_Mean = Y [ Mode: -1 ] 
+								JoinFrom = AnF [ Mode: 0 ] => 0 
+								JoinFrom = Other [ Mode: -1 ] => -1 
+							SpecialOffer_A_Mean = N [ Mode: 0 ] => 0 
+				SpecialOffer_B_Mean = N [ Mode: 0 ] => 0 
+			SpecialOffer_C_Mean = N [ Mode: 1 ] 
+				SpecialOffer_Count <= 3 [ Mode: 1 ] 
+					EducationLevel = Other [ Mode: 1 ] => 1 
+					EducationLevel = TD [ Mode: 0 ] => 0 
+				SpecialOffer_Count > 3 [ Mode: 0 ] 
+					Sex = F [ Mode: 1 ] => 1 
+					Sex = M [ Mode: 0 ] => 0 
+		Method > 1 [ Mode: 0 ] 
+			Method <= 3 [ Mode: 0 ] 
+				SpecialOffer_C_Mean = Y [ Mode: 0 ] 
+					SpecialOffer_B_Mean = Y [ Mode: -1 ] 
+						EducationLevel = Other [ Mode: 0 ] 
+							Method <= 2 [ Mode: 1 ] 
+								Sex = F [ Mode: 1 ] 
+									SpecialOffer_Count <= 3 [ Mode: 0 ] => 0 
+									SpecialOffer_Count > 3 [ Mode: 1 ] 
+										Age_TILEN = old [ Mode: 1 ] 
+											SpecialOffer_A_Mean = Y [ Mode: 1 ] => 1 
+											SpecialOffer_A_Mean = N [ Mode: -1 ] => -1 
+										Age_TILEN = young [ Mode: 0 ] => 0 
+								Sex = M [ Mode: 0 ] 
+									SpecialOffer_Count <= 3 [ Mode: 1 ] => 1 
+									SpecialOffer_Count > 3 [ Mode: 0 ] 
+										Age_TILEN = old [ Mode: -1 ] => -1 
+										Age_TILEN = young [ Mode: 0 ] => 0 
+							Method > 2 [ Mode: 0 ] 
+								SpecialOffer_Count <= 6 [ Mode: 0 ] 
+									Age_TILEN = old [ Mode: 0 ] 
+										PhoneNo_BIN = 2 [ Mode: 0 ] => 0 
+										PhoneNo_BIN = 1 [ Mode: -1 ] => -1 
+									Age_TILEN = young [ Mode: 0 ] => 0 
+								SpecialOffer_Count > 6 [ Mode: -1 ] => -1 
+						EducationLevel = TD [ Mode: -1 ] 
+							Sex = F [ Mode: -1 ] 
+								SpecialOffer_A_Mean = Y [ Mode: -1 ] 
+									SpecialOffer_Count <= 3 [ Mode: -1 ] => -1 
+									SpecialOffer_Count > 3 [ Mode: 0 ] 
+										PhoneNo_BIN = 2 [ Mode: -1 ] 
+											Age_TILEN = old [ Mode: -1 ] => -1 
+											Age_TILEN = young [ Mode: 0 ] 
+												Method <= 2 [ Mode: -1 ] 
+													JoinFrom = AnF [ Mode: -1 ] => -1 
+													JoinFrom = Other [ Mode: 0 ] => 0 
+												Method > 2 [ Mode: 0 ] => 0 
+										PhoneNo_BIN = 1 [ Mode: 0 ] => 0 
+								SpecialOffer_A_Mean = N [ Mode: 0 ] => 0 
+							Sex = M [ Mode: -1 ] 
+								SpecialOffer_Count <= 3 [ Mode: 1 ] 
+									PhoneNo_BIN = 2 [ Mode: 0 ] => 0 
+									PhoneNo_BIN = 1 [ Mode: 1 ] => 1 
+								SpecialOffer_Count > 3 [ Mode: -1 ] 
+									PhoneNo_BIN = 2 [ Mode: 0 ] => 0 
+									PhoneNo_BIN = 1 [ Mode: -1 ] 
+										SpecialOffer_A_Mean = Y [ Mode: -1 ] 
+											SpecialOffer_Count <= 5 [ Mode: -1 ] 
+												Method <= 2 [ Mode: -1 ] => -1 
+												Method > 2 [ Mode: 1 ] => 1 
+											SpecialOffer_Count > 5 [ Mode: -1 ] => -1 
+										SpecialOffer_A_Mean = N [ Mode: -1 ] => -1 
+					SpecialOffer_B_Mean = N [ Mode: 0 ] 
+						JoinFrom = AnF [ Mode: 0 ] 
+							PhoneNo_BIN = 2 [ Mode: -1 ] => -1 
+							PhoneNo_BIN = 1 [ Mode: 0 ] => 0 
+						JoinFrom = Other [ Mode: 0 ] 
+							Age_TILEN = old [ Mode: 0 ] 
+								Sex = F [ Mode: 0 ] 
+									PhoneNo_BIN = 2 [ Mode: 0 ] => 0 
+									PhoneNo_BIN = 1 [ Mode: 1 ] 
+										SpecialOffer_Count <= 4 [ Mode: 1 ] => 1 
+										SpecialOffer_Count > 4 [ Mode: 0 ] => 0 
+								Sex = M [ Mode: 0 ] => 0 
+							Age_TILEN = young [ Mode: 1 ] 
+								PhoneNo_BIN = 2 [ Mode: 1 ] => 1 
+								PhoneNo_BIN = 1 [ Mode: 0 ] 
+									Sex = F [ Mode: 0 ] => 0 
+									Sex = M [ Mode: 1 ] 
+										EducationLevel = Other [ Mode: 1 ] => 1 
+										EducationLevel = TD [ Mode: 0 ] => 0 
+				SpecialOffer_C_Mean = N [ Mode: 0 ] 
+					SpecialOffer_A_Mean = Y [ Mode: 0 ] 
+						Sex = F [ Mode: 0 ] 
+							Method <= 2 [ Mode: -1 ] 
+								JoinFrom = AnF [ Mode: -1 ] 
+									EducationLevel = Other [ Mode: -1 ] 
+										Age_TILEN = old [ Mode: 0 ] => 0 
+										Age_TILEN = young [ Mode: -1 ] 
+											SpecialOffer_B_Mean = Y [ Mode: -1 ] => -1 
+											SpecialOffer_B_Mean = N [ Mode: 0 ] => 0 
+									EducationLevel = TD [ Mode: 0 ] => 0 
+								JoinFrom = Other [ Mode: -1 ] => -1 
+							Method > 2 [ Mode: 0 ] => 0 
+						Sex = M [ Mode: 0 ] 
+							SpecialOffer_Count <= 4 [ Mode: 0 ] 
+								PhoneNo_BIN = 2 [ Mode: 0 ] 
+									Method <= 2 [ Mode: 0 ] 
+										Age_TILEN = old [ Mode: 0 ] => 0 
+										Age_TILEN = young [ Mode: 1 ] => 1 
+									Method > 2 [ Mode: 0 ] => 0 
+								PhoneNo_BIN = 1 [ Mode: -1 ] => -1 
+							SpecialOffer_Count > 4 [ Mode: 0 ] => 0 
+					SpecialOffer_A_Mean = N [ Mode: 0 ] => 0 
+			Method > 3 [ Mode: 0 ] 
+				SpecialOffer_B_Mean = Y [ Mode: 0 ] 
+					SpecialOffer_C_Mean = Y [ Mode: 0 ] 
+						SpecialOffer_Count <= 4 [ Mode: 0 ] 
+							SpecialOffer_Count <= 3 [ Mode: 0 ] => 0 
+							SpecialOffer_Count > 3 [ Mode: 0 ] 
+								PhoneNo_BIN = 2 [ Mode: 0 ] 
+									Sex = F [ Mode: 0 ] => 0 
+									Sex = M [ Mode: 1 ] => 1 
+								PhoneNo_BIN = 1 [ Mode: 0 ] 
+									JoinFrom = AnF [ Mode: -1 ] => -1 
+									JoinFrom = Other [ Mode: 0 ] 
+										Age_TILEN = old [ Mode: 0 ] => 0 
+										Age_TILEN = young [ Mode: 1 ] 
+											Sex = F [ Mode: 0 ] => 0 
+											Sex = M [ Mode: 1 ] => 1 
+						SpecialOffer_Count > 4 [ Mode: -1 ] 
+							SpecialOffer_A_Mean = Y [ Mode: -1 ] 
+								Sex = F [ Mode: -1 ] => -1 
+								Sex = M [ Mode: 0 ] => 0 
+							SpecialOffer_A_Mean = N [ Mode: -1 ] => -1 
+					SpecialOffer_C_Mean = N [ Mode: 1 ] 
+						Age_TILEN = old [ Mode: 1 ] 
+							EducationLevel = Other [ Mode: 1 ] 
+								Sex = F [ Mode: 1 ] => 1 
+								Sex = M [ Mode: 0 ] 
+									SpecialOffer_Count <= 4 [ Mode: 0 ] 
+										JoinFrom = AnF [ Mode: 0 ] => 0 
+										JoinFrom = Other [ Mode: 1 ] => 1 
+									SpecialOffer_Count > 4 [ Mode: 0 ] => 0 
+							EducationLevel = TD [ Mode: 0 ] => 0 
+						Age_TILEN = young [ Mode: 1 ] 
+							PhoneNo_BIN = 2 [ Mode: -1 ] 
+								Sex = F [ Mode: 1 ] => 1 
+								Sex = M [ Mode: -1 ] 
+									SpecialOffer_Count <= 3 [ Mode: -1 ] => -1 
+									SpecialOffer_Count > 3 [ Mode: 0 ] => 0 
+							PhoneNo_BIN = 1 [ Mode: 1 ] 
+								Sex = F [ Mode: 0 ] => 0 
+								Sex = M [ Mode: 1 ] => 1 
+				SpecialOffer_B_Mean = N [ Mode: -1 ] 
+					SpecialOffer_Count <= 4 [ Mode: -1 ] 
+						Sex = F [ Mode: -1 ] 
+							EducationLevel = Other [ Mode: 0 ] 
+								PhoneNo_BIN = 2 [ Mode: 1 ] => 1 
+								PhoneNo_BIN = 1 [ Mode: 0 ] 
+									Age_TILEN = old [ Mode: -1 ] => -1 
+									Age_TILEN = young [ Mode: 0 ] => 0 
+							EducationLevel = TD [ Mode: -1 ] 
+								PhoneNo_BIN = 2 [ Mode: -1 ] 
+									JoinFrom = AnF [ Mode: 0 ] => 0 
+									JoinFrom = Other [ Mode: -1 ] => -1 
+								PhoneNo_BIN = 1 [ Mode: -1 ] => -1 
+						Sex = M [ Mode: 0 ] 
+							JoinFrom = AnF [ Mode: -1 ] => -1 
+							JoinFrom = Other [ Mode: 0 ] => 0 
+					SpecialOffer_Count > 4 [ Mode: 1 ] => 1 
+Rule 6 - estimated accuracy 73.91% [boost 95.9%]
+	SpecialOffer_Count <= 1 [ Mode: -1 ] 
+		Method <= 3 [ Mode: -1 ] 
+			Method <= 2 [ Mode: -1 ] 
+				SpecialOffer_B_Mean = Y [ Mode: 0 ] 
+					JoinFrom = AnF [ Mode: 0 ] 
+						PhoneNo_BIN = 2 [ Mode: -1 ] 
+							Method <= 1 [ Mode: -1 ] 
+								EducationLevel = Other [ Mode: -1 ] 
+									Sex = F [ Mode: -1 ] => -1 
+									Sex = M [ Mode: 0 ] => 0 
+								EducationLevel = TD [ Mode: 0 ] => 0 
+							Method > 1 [ Mode: 0 ] => 0 
+						PhoneNo_BIN = 1 [ Mode: 0 ] => 0 
+					JoinFrom = Other [ Mode: 0 ] 
+						EducationLevel = Other [ Mode: 0 ] 
+							Age_TILEN = old [ Mode: 0 ] 
+								Method <= 1 [ Mode: 1 ] 
+									PhoneNo_BIN = 2 [ Mode: -1 ] => -1 
+									PhoneNo_BIN = 1 [ Mode: 1 ] => 1 
+								Method > 1 [ Mode: 0 ] 
+									PhoneNo_BIN = 2 [ Mode: -1 ] 
+										Sex = F [ Mode: -1 ] => -1 
+										Sex = M [ Mode: 1 ] => 1 
+									PhoneNo_BIN = 1 [ Mode: 0 ] => 0 
+							Age_TILEN = young [ Mode: 0 ] => 0 
+						EducationLevel = TD [ Mode: 1 ] => 1 
+				SpecialOffer_B_Mean = N [ Mode: -1 ] 
+					Method <= 1 [ Mode: -1 ] 
+						JoinFrom = AnF [ Mode: -1 ] 
+							SpecialOffer_A_Mean = Y [ Mode: -1 ] 
+								Age_TILEN = old [ Mode: 0 ] => 0 
+								Age_TILEN = young [ Mode: -1 ] => -1 
+							SpecialOffer_A_Mean = N [ Mode: 1 ] => 1 
+						JoinFrom = Other [ Mode: -1 ] 
+							EducationLevel = Other [ Mode: -1 ] 
+								SpecialOffer_A_Mean = Y [ Mode: 0 ] 
+									Age_TILEN = old [ Mode: 0 ] => 0 
+									Age_TILEN = young [ Mode: 1 ] => 1 
+								SpecialOffer_A_Mean = N [ Mode: -1 ] 
+									Age_TILEN = old [ Mode: -1 ] 
+										Sex = F [ Mode: 1 ] => 1 
+										Sex = M [ Mode: -1 ] => -1 
+									Age_TILEN = young [ Mode: 0 ] => 0 
+							EducationLevel = TD [ Mode: -1 ] 
+								SpecialOffer_A_Mean = Y [ Mode: -1 ] 
+									Age_TILEN = old [ Mode: -1 ] => -1 
+									Age_TILEN = young [ Mode: 1 ] => 1 
+								SpecialOffer_A_Mean = N [ Mode: 1 ] => 1 
+					Method > 1 [ Mode: 0 ] 
+						SpecialOffer_A_Mean = Y [ Mode: 1 ] 
+							Age_TILEN = old [ Mode: 0 ] 
+								JoinFrom = AnF [ Mode: 1 ] 
+									Sex = F [ Mode: 1 ] => 1 
+									Sex = M [ Mode: -1 ] => -1 
+								JoinFrom = Other [ Mode: -1 ] 
+									EducationLevel = Other [ Mode: 0 ] => 0 
+									EducationLevel = TD [ Mode: -1 ] => -1 
+							Age_TILEN = young [ Mode: 1 ] 
+								Sex = F [ Mode: 1 ] 
+									JoinFrom = AnF [ Mode: 0 ] => 0 
+									JoinFrom = Other [ Mode: 1 ] => 1 
+								Sex = M [ Mode: 1 ] => 1 
+						SpecialOffer_A_Mean = N [ Mode: -1 ] 
+							EducationLevel = Other [ Mode: -1 ] 
+								PhoneNo_BIN = 2 [ Mode: -1 ] => -1 
+								PhoneNo_BIN = 1 [ Mode: 0 ] => 0 
+							EducationLevel = TD [ Mode: 0 ] => 0 
+			Method > 2 [ Mode: -1 ] 
+				SpecialOffer_C_Mean = Y [ Mode: -1 ] 
+					Sex = F [ Mode: -1 ] => -1 
+					Sex = M [ Mode: 0 ] => 0 
+				SpecialOffer_C_Mean = N [ Mode: -1 ] 
+					JoinFrom = AnF [ Mode: -1 ] 
+						EducationLevel = Other [ Mode: -1 ] 
+							PhoneNo_BIN = 2 [ Mode: 1 ] 
+								Age_TILEN = old [ Mode: 0 ] => 0 
+								Age_TILEN = young [ Mode: 1 ] 
+									Sex = F [ Mode: 1 ] 
+										SpecialOffer_A_Mean = Y [ Mode: -1 ] => -1 
+										SpecialOffer_A_Mean = N [ Mode: 1 ] => 1 
+									Sex = M [ Mode: 0 ] => 0 
+							PhoneNo_BIN = 1 [ Mode: -1 ] => -1 
+						EducationLevel = TD [ Mode: 0 ] => 0 
+					JoinFrom = Other [ Mode: 1 ] 
+						SpecialOffer_A_Mean = Y [ Mode: 0 ] 
+							PhoneNo_BIN = 2 [ Mode: 0 ] => 0 
+							PhoneNo_BIN = 1 [ Mode: 0 ] 
+								Sex = F [ Mode: 1 ] 
+									Age_TILEN = old [ Mode: -1 ] => -1 
+									Age_TILEN = young [ Mode: 1 ] => 1 
+								Sex = M [ Mode: 0 ] => 0 
+						SpecialOffer_A_Mean = N [ Mode: 1 ] 
+							Sex = F [ Mode: 1 ] 
+								Age_TILEN = old [ Mode: 1 ] 
+									EducationLevel = Other [ Mode: 1 ] => 1 
+									EducationLevel = TD [ Mode: 0 ] => 0 
+								Age_TILEN = young [ Mode: 1 ] 
+									EducationLevel = Other [ Mode: 0 ] => 0 
+									EducationLevel = TD [ Mode: 1 ] => 1 
+							Sex = M [ Mode: -1 ] => -1 
+		Method > 3 [ Mode: -1 ] 
+			Sex = F [ Mode: -1 ] 
+				PhoneNo_BIN = 2 [ Mode: -1 ] 
+					EducationLevel = Other [ Mode: -1 ] 
+						SpecialOffer_A_Mean = Y [ Mode: -1 ] => -1 
+						SpecialOffer_A_Mean = N [ Mode: -1 ] 
+							JoinFrom = AnF [ Mode: 0 ] => 0 
+							JoinFrom = Other [ Mode: -1 ] => -1 
+					EducationLevel = TD [ Mode: 0 ] 
+						SpecialOffer_C_Mean = Y [ Mode: 0 ] => 0 
+						SpecialOffer_C_Mean = N [ Mode: 0 ] 
+							Age_TILEN = old [ Mode: -1 ] => -1 
+							Age_TILEN = young [ Mode: 0 ] => 0 
+				PhoneNo_BIN = 1 [ Mode: -1 ] 
+					EducationLevel = Other [ Mode: -1 ] 
+						SpecialOffer_B_Mean = Y [ Mode: 0 ] => 0 
+						SpecialOffer_B_Mean = N [ Mode: -1 ] => -1 
+					EducationLevel = TD [ Mode: -1 ] => -1 
+			Sex = M [ Mode: 0 ] 
+				SpecialOffer_A_Mean = Y [ Mode: 0 ] => 0 
+				SpecialOffer_A_Mean = N [ Mode: 0 ] 
+					EducationLevel = Other [ Mode: -1 ] 
+						JoinFrom = AnF [ Mode: -1 ] => -1 
+						JoinFrom = Other [ Mode: 0 ] 
+							Age_TILEN = old [ Mode: 0 ] => 0 
+							Age_TILEN = young [ Mode: -1 ] => -1 
+					EducationLevel = TD [ Mode: 0 ] 
+						PhoneNo_BIN = 2 [ Mode: 1 ] => 1 
+						PhoneNo_BIN = 1 [ Mode: 0 ] => 0 
+	SpecialOffer_Count > 1 [ Mode: 0 ] 
+		Method <= 1 [ Mode: 0 ] 
+			SpecialOffer_B_Mean = Y [ Mode: 0 ] 
+				JoinFrom = AnF [ Mode: 1 ] 
+					PhoneNo_BIN = 2 [ Mode: 0 ] 
+						SpecialOffer_Count <= 3 [ Mode: 0 ] 
+							Sex = F [ Mode: 0 ] => 0 
+							Sex = M [ Mode: 0 ] 
+								Age_TILEN = old [ Mode: 1 ] => 1 
+								Age_TILEN = young [ Mode: 0 ] => 0 
+						SpecialOffer_Count > 3 [ Mode: 0 ] 
+							EducationLevel = Other [ Mode: 0 ] => 0 
+							EducationLevel = TD [ Mode: -1 ] => -1 
+					PhoneNo_BIN = 1 [ Mode: 1 ] 
+						EducationLevel = Other [ Mode: -1 ] 
+							Sex = F [ Mode: 1 ] => 1 
+							Sex = M [ Mode: -1 ] => -1 
+						EducationLevel = TD [ Mode: 1 ] 
+							Age_TILEN = old [ Mode: 1 ] => 1 
+							Age_TILEN = young [ Mode: 0 ] => 0 
+				JoinFrom = Other [ Mode: 0 ] 
+					SpecialOffer_Count <= 4 [ Mode: 0 ] 
+						Age_TILEN = old [ Mode: 0 ] 
+							SpecialOffer_A_Mean = Y [ Mode: 0 ] 
+								SpecialOffer_Count <= 3 [ Mode: -1 ] 
+									PhoneNo_BIN = 2 [ Mode: -1 ] => -1 
+									PhoneNo_BIN = 1 [ Mode: 0 ] => 0 
+								SpecialOffer_Count > 3 [ Mode: 0 ] => 0 
+							SpecialOffer_A_Mean = N [ Mode: -1 ] 
+								Sex = F [ Mode: -1 ] => -1 
+								Sex = M [ Mode: 0 ] => 0 
+						Age_TILEN = young [ Mode: 0 ] 
+							Sex = F [ Mode: -1 ] 
+								SpecialOffer_Count <= 3 [ Mode: 0 ] => 0 
+								SpecialOffer_Count > 3 [ Mode: -1 ] => -1 
+							Sex = M [ Mode: 1 ] 
+								SpecialOffer_C_Mean = Y [ Mode: 1 ] 
+									SpecialOffer_A_Mean = Y [ Mode: 1 ] => 1 
+									SpecialOffer_A_Mean = N [ Mode: 0 ] => 0 
+								SpecialOffer_C_Mean = N [ Mode: 0 ] => 0 
+					SpecialOffer_Count > 4 [ Mode: 1 ] 
+						PhoneNo_BIN = 2 [ Mode: 1 ] 
+							SpecialOffer_Count <= 5 [ Mode: 0 ] => 0 
+							SpecialOffer_Count > 5 [ Mode: 1 ] => 1 
+						PhoneNo_BIN = 1 [ Mode: 0 ] 
+							SpecialOffer_A_Mean = Y [ Mode: 0 ] 
+								EducationLevel = Other [ Mode: 0 ] => 0 
+								EducationLevel = TD [ Mode: -1 ] => -1 
+							SpecialOffer_A_Mean = N [ Mode: 1 ] => 1 
+			SpecialOffer_B_Mean = N [ Mode: 0 ] 
+				SpecialOffer_A_Mean = Y [ Mode: 1 ] 
+					PhoneNo_BIN = 2 [ Mode: 1 ] 
+						Age_TILEN = old [ Mode: 0 ] 
+							JoinFrom = AnF [ Mode: 1 ] 
+								SpecialOffer_Count <= 2 [ Mode: 1 ] => 1 
+								SpecialOffer_Count > 2 [ Mode: 0 ] => 0 
+							JoinFrom = Other [ Mode: 0 ] => 0 
+						Age_TILEN = young [ Mode: 1 ] 
+							EducationLevel = Other [ Mode: 1 ] => 1 
+							EducationLevel = TD [ Mode: 0 ] => 0 
+					PhoneNo_BIN = 1 [ Mode: 0 ] 
+						JoinFrom = AnF [ Mode: 0 ] => 0 
+						JoinFrom = Other [ Mode: 1 ] 
+							SpecialOffer_C_Mean = Y [ Mode: 0 ] => 0 
+							SpecialOffer_C_Mean = N [ Mode: 1 ] => 1 
+				SpecialOffer_A_Mean = N [ Mode: 0 ] => 0 
+		Method > 1 [ Mode: 0 ] 
+			Method <= 3 [ Mode: 0 ] 
+				SpecialOffer_B_Mean = Y [ Mode: 0 ] 
+					JoinFrom = AnF [ Mode: 0 ] 
+						Age_TILEN = old [ Mode: 0 ] 
+							EducationLevel = Other [ Mode: 0 ] 
+								Sex = F [ Mode: -1 ] 
+									PhoneNo_BIN = 2 [ Mode: 1 ] 
+										SpecialOffer_A_Mean = Y [ Mode: 1 ] 
+											Method <= 2 [ Mode: 1 ] => 1 
+											Method > 2 [ Mode: 0 ] => 0 
+										SpecialOffer_A_Mean = N [ Mode: -1 ] => -1 
+									PhoneNo_BIN = 1 [ Mode: -1 ] => -1 
+								Sex = M [ Mode: 0 ] 
+									SpecialOffer_Count <= 2 [ Mode: 1 ] 
+										Method <= 2 [ Mode: 1 ] => 1 
+										Method > 2 [ Mode: 0 ] => 0 
+									SpecialOffer_Count > 2 [ Mode: 0 ] => 0 
+							EducationLevel = TD [ Mode: 0 ] => 0 
+						Age_TILEN = young [ Mode: 0 ] 
+							SpecialOffer_A_Mean = Y [ Mode: 0 ] 
+								Sex = F [ Mode: 0 ] 
+									EducationLevel = Other [ Mode: -1 ] 
+										SpecialOffer_Count <= 2 [ Mode: -1 ] => -1 
+										SpecialOffer_Count > 2 [ Mode: 0 ] 
+											Method <= 2 [ Mode: -1 ] => -1 
+											Method > 2 [ Mode: 0 ] => 0 
+									EducationLevel = TD [ Mode: 0 ] 
+										SpecialOffer_C_Mean = Y [ Mode: -1 ] 
+											SpecialOffer_Count <= 3 [ Mode: -1 ] => -1 
+											SpecialOffer_Count > 3 [ Mode: 0 ] 
+												Method <= 2 [ Mode: -1 ] => -1 
+												Method > 2 [ Mode: 0 ] => 0 
+										SpecialOffer_C_Mean = N [ Mode: 0 ] => 0 
+								Sex = M [ Mode: 0 ] 
+									Method <= 2 [ Mode: 0 ] 
+										SpecialOffer_Count <= 3 [ Mode: 1 ] => 1 
+										SpecialOffer_Count > 3 [ Mode: 0 ] => 0 
+									Method > 2 [ Mode: 0 ] 
+										SpecialOffer_C_Mean = Y [ Mode: 1 ] => 1 
+										SpecialOffer_C_Mean = N [ Mode: 0 ] 
+											SpecialOffer_Count <= 4 [ Mode: 0 ] 
+												SpecialOffer_Count <= 3 [ Mode: 0 ] => 0 
+												SpecialOffer_Count > 3 [ Mode: -1 ] => -1 
+											SpecialOffer_Count > 4 [ Mode: 0 ] => 0 
+							SpecialOffer_A_Mean = N [ Mode: -1 ] 
+								EducationLevel = Other [ Mode: 0 ] => 0 
+								EducationLevel = TD [ Mode: -1 ] 
+									Method <= 2 [ Mode: 0 ] => 0 
+									Method > 2 [ Mode: -1 ] 
+										Sex = F [ Mode: 0 ] => 0 
+										Sex = M [ Mode: -1 ] => -1 
+					JoinFrom = Other [ Mode: -1 ] 
+						SpecialOffer_Count <= 5 [ Mode: -1 ] 
+							EducationLevel = Other [ Mode: 0 ] 
+								SpecialOffer_Count <= 4 [ Mode: 0 ] 
+									SpecialOffer_Count <= 2 [ Mode: 0 ] 
+										Sex = F [ Mode: 0 ] => 0 
+										Sex = M [ Mode: -1 ] 
+											PhoneNo_BIN = 2 [ Mode: 1 ] 
+												SpecialOffer_A_Mean = Y [ Mode: 1 ] => 1 
+												SpecialOffer_A_Mean = N [ Mode: 0 ] => 0 
+											PhoneNo_BIN = 1 [ Mode: -1 ] 
+												Age_TILEN = old [ Mode: 1 ] 
+													Method <= 2 [ Mode: 1 ] => 1 
+													Method > 2 [ Mode: 0 ] => 0 
+												Age_TILEN = young [ Mode: -1 ] => -1 
+									SpecialOffer_Count > 2 [ Mode: 0 ] 
+										Method <= 2 [ Mode: 1 ] 
+											SpecialOffer_C_Mean = Y [ Mode: 1 ] 
+												SpecialOffer_Count <= 3 [ Mode: 1 ] => 1 
+												SpecialOffer_Count > 3 [ Mode: 0 ] 
+													Sex = F [ Mode: 1 ] => 1 
+													Sex = M [ Mode: 0 ] => 0 
+											SpecialOffer_C_Mean = N [ Mode: 0 ] => 0 
+										Method > 2 [ Mode: 0 ] 
+											SpecialOffer_A_Mean = Y [ Mode: 1 ] 
+												Sex = F [ Mode: 0 ] => 0 
+												Sex = M [ Mode: 1 ] 
+													Age_TILEN = old [ Mode: 1 ] => 1 
+													Age_TILEN = young [ Mode: 0 ] => 0 
+											SpecialOffer_A_Mean = N [ Mode: 0 ] => 0 
+								SpecialOffer_Count > 4 [ Mode: 0 ] 
+									Age_TILEN = old [ Mode: -1 ] => -1 
+									Age_TILEN = young [ Mode: 0 ] => 0 
+							EducationLevel = TD [ Mode: -1 ] 
+								SpecialOffer_Count <= 4 [ Mode: -1 ] 
+									Method <= 2 [ Mode: -1 ] 
+										SpecialOffer_Count <= 2 [ Mode: -1 ] 
+											Sex = F [ Mode: -1 ] 
+												SpecialOffer_A_Mean = Y [ Mode: -1 ] => -1 
+												SpecialOffer_A_Mean = N [ Mode: 0 ] => 0 
+											Sex = M [ Mode: -1 ] 
+												PhoneNo_BIN = 2 [ Mode: -1 ] => -1 
+												PhoneNo_BIN = 1 [ Mode: 0 ] => 0 
+										SpecialOffer_Count > 2 [ Mode: -1 ] 
+											SpecialOffer_Count <= 3 [ Mode: 0 ] => 0 
+											SpecialOffer_Count > 3 [ Mode: -1 ] 
+												Sex = F [ Mode: 0 ] => 0 
+												Sex = M [ Mode: -1 ] => -1 
+									Method > 2 [ Mode: 0 ] 
+										Age_TILEN = old [ Mode: 0 ] 
+											Sex = F [ Mode: 1 ] => 1 
+											Sex = M [ Mode: 0 ] 
+												PhoneNo_BIN = 2 [ Mode: 0 ] 
+													SpecialOffer_Count <= 2 [ Mode: -1 ] => -1 
+													SpecialOffer_Count > 2 [ Mode: 0 ] => 0 
+												PhoneNo_BIN = 1 [ Mode: 0 ] 
+													SpecialOffer_Count <= 3 [ Mode: 0 ] => 0 
+													SpecialOffer_Count > 3 [ Mode: 1 ] => 1 
+										Age_TILEN = young [ Mode: 1 ] 
+											Sex = F [ Mode: -1 ] => -1 
+											Sex = M [ Mode: 1 ] 
+												SpecialOffer_Count <= 3 [ Mode: 1 ] => 1 
+												SpecialOffer_Count > 3 [ Mode: 1 ] 
+													PhoneNo_BIN = 2 [ Mode: 1 ] => 1 
+													PhoneNo_BIN = 1 [ Mode: -1 ] => -1 
+								SpecialOffer_Count > 4 [ Mode: -1 ] 
+									Method <= 2 [ Mode: 1 ] => 1 
+									Method > 2 [ Mode: -1 ] => -1 
+						SpecialOffer_Count > 5 [ Mode: -1 ] 
+							Method <= 2 [ Mode: 0 ] => 0 
+							Method > 2 [ Mode: -1 ] 
+								SpecialOffer_A_Mean = Y [ Mode: -1 ] => -1 
+								SpecialOffer_A_Mean = N [ Mode: 0 ] => 0 
+				SpecialOffer_B_Mean = N [ Mode: 1 ] 
+					Sex = F [ Mode: 1 ] 
+						JoinFrom = AnF [ Mode: 0 ] 
+							SpecialOffer_Count <= 2 [ Mode: -1 ] => -1 
+							SpecialOffer_Count > 2 [ Mode: 0 ] => 0 
+						JoinFrom = Other [ Mode: 1 ] 
+							EducationLevel = Other [ Mode: -1 ] 
+								SpecialOffer_Count <= 3 [ Mode: -1 ] 
+									Method <= 2 [ Mode: 1 ] 
+										Age_TILEN = old [ Mode: 0 ] => 0 
+										Age_TILEN = young [ Mode: -1 ] 
+											SpecialOffer_C_Mean = Y [ Mode: -1 ] => -1 
+											SpecialOffer_C_Mean = N [ Mode: 1 ] 
+												SpecialOffer_Count <= 2 [ Mode: 1 ] => 1 
+												SpecialOffer_Count > 2 [ Mode: -1 ] => -1 
+									Method > 2 [ Mode: -1 ] 
+										SpecialOffer_A_Mean = Y [ Mode: -1 ] 
+											SpecialOffer_Count <= 2 [ Mode: -1 ] => -1 
+											SpecialOffer_Count > 2 [ Mode: 0 ] => 0 
+										SpecialOffer_A_Mean = N [ Mode: 1 ] => 1 
+								SpecialOffer_Count > 3 [ Mode: 0 ] => 0 
+							EducationLevel = TD [ Mode: 1 ] 
+								SpecialOffer_A_Mean = Y [ Mode: 1 ] => 1 
+								SpecialOffer_A_Mean = N [ Mode: 1 ] 
+									Method <= 2 [ Mode: 1 ] => 1 
+									Method > 2 [ Mode: 0 ] => 0 
+					Sex = M [ Mode: 1 ] 
+						SpecialOffer_C_Mean = Y [ Mode: 1 ] 
+							Age_TILEN = old [ Mode: 0 ] 
+								PhoneNo_BIN = 2 [ Mode: 0 ] => 0 
+								PhoneNo_BIN = 1 [ Mode: 1 ] 
+									EducationLevel = Other [ Mode: 0 ] => 0 
+									EducationLevel = TD [ Mode: 1 ] => 1 
+							Age_TILEN = young [ Mode: 1 ] 
+								SpecialOffer_Count <= 5 [ Mode: 1 ] 
+									JoinFrom = AnF [ Mode: 1 ] 
+										SpecialOffer_Count <= 2 [ Mode: 1 ] => 1 
+										SpecialOffer_Count > 2 [ Mode: 1 ] 
+											Method <= 2 [ Mode: 1 ] => 1 
+											Method > 2 [ Mode: 0 ] => 0 
+									JoinFrom = Other [ Mode: 0 ] 
+										PhoneNo_BIN = 2 [ Mode: -1 ] => -1 
+										PhoneNo_BIN = 1 [ Mode: 0 ] 
+											Method <= 2 [ Mode: 1 ] => 1 
+											Method > 2 [ Mode: 0 ] => 0 
+								SpecialOffer_Count > 5 [ Mode: 0 ] => 0 
+						SpecialOffer_C_Mean = N [ Mode: 0 ] => 0 
+			Method > 3 [ Mode: 0 ] 
+				SpecialOffer_C_Mean = Y [ Mode: 0 ] 
+					JoinFrom = AnF [ Mode: 1 ] 
+						PhoneNo_BIN = 2 [ Mode: 1 ] 
+							SpecialOffer_Count <= 2 [ Mode: 1 ] 
+								EducationLevel = Other [ Mode: 1 ] => 1 
+								EducationLevel = TD [ Mode: 0 ] => 0 
+							SpecialOffer_Count > 2 [ Mode: 1 ] 
+								SpecialOffer_A_Mean = Y [ Mode: 1 ] 
+									EducationLevel = Other [ Mode: 1 ] => 1 
+									EducationLevel = TD [ Mode: 1 ] 
+										SpecialOffer_B_Mean = Y [ Mode: 1 ] => 1 
+										SpecialOffer_B_Mean = N [ Mode: 0 ] => 0 
+								SpecialOffer_A_Mean = N [ Mode: 0 ] => 0 
+						PhoneNo_BIN = 1 [ Mode: -1 ] 
+							SpecialOffer_B_Mean = Y [ Mode: 0 ] 
+								Age_TILEN = old [ Mode: -1 ] => -1 
+								Age_TILEN = young [ Mode: 0 ] => 0 
+							SpecialOffer_B_Mean = N [ Mode: 1 ] 
+								SpecialOffer_A_Mean = Y [ Mode: 1 ] 
+									Age_TILEN = old [ Mode: -1 ] => -1 
+									Age_TILEN = young [ Mode: 1 ] => 1 
+								SpecialOffer_A_Mean = N [ Mode: 0 ] => 0 
+					JoinFrom = Other [ Mode: 0 ] 
+						Sex = F [ Mode: -1 ] 
+							SpecialOffer_Count <= 2 [ Mode: -1 ] 
+								PhoneNo_BIN = 2 [ Mode: -1 ] 
+									SpecialOffer_B_Mean = Y [ Mode: 1 ] => 1 
+									SpecialOffer_B_Mean = N [ Mode: -1 ] => -1 
+								PhoneNo_BIN = 1 [ Mode: 0 ] => 0 
+							SpecialOffer_Count > 2 [ Mode: -1 ] 
+								PhoneNo_BIN = 2 [ Mode: -1 ] 
+									SpecialOffer_Count <= 3 [ Mode: -1 ] => -1 
+									SpecialOffer_Count > 3 [ Mode: -1 ] 
+										Age_TILEN = old [ Mode: -1 ] 
+											SpecialOffer_Count <= 4 [ Mode: -1 ] 
+												EducationLevel = Other [ Mode: 0 ] => 0 
+												EducationLevel = TD [ Mode: -1 ] => -1 
+											SpecialOffer_Count > 4 [ Mode: -1 ] => -1 
+										Age_TILEN = young [ Mode: 0 ] => 0 
+								PhoneNo_BIN = 1 [ Mode: 0 ] 
+									EducationLevel = Other [ Mode: -1 ] 
+										SpecialOffer_Count <= 3 [ Mode: 0 ] => 0 
+										SpecialOffer_Count > 3 [ Mode: -1 ] => -1 
+									EducationLevel = TD [ Mode: 0 ] => 0 
+						Sex = M [ Mode: 0 ] 
+							PhoneNo_BIN = 2 [ Mode: 1 ] 
+								SpecialOffer_Count <= 4 [ Mode: 1 ] 
+									SpecialOffer_A_Mean = Y [ Mode: 1 ] 
+										SpecialOffer_Count <= 2 [ Mode: 0 ] => 0 
+										SpecialOffer_Count > 2 [ Mode: 1 ] 
+											SpecialOffer_B_Mean = Y [ Mode: 0 ] 
+												EducationLevel = Other [ Mode: 1 ] => 1 
+												EducationLevel = TD [ Mode: 0 ] => 0 
+											SpecialOffer_B_Mean = N [ Mode: 1 ] => 1 
+									SpecialOffer_A_Mean = N [ Mode: 0 ] => 0 
+								SpecialOffer_Count > 4 [ Mode: 0 ] => 0 
+							PhoneNo_BIN = 1 [ Mode: 0 ] 
+								Age_TILEN = old [ Mode: 0 ] 
+									EducationLevel = Other [ Mode: 0 ] => 0 
+									EducationLevel = TD [ Mode: -1 ] => -1 
+								Age_TILEN = young [ Mode: 1 ] 
+									SpecialOffer_Count <= 3 [ Mode: 0 ] => 0 
+									SpecialOffer_Count > 3 [ Mode: 1 ] => 1 
+				SpecialOffer_C_Mean = N [ Mode: 1 ] 
+					EducationLevel = Other [ Mode: 1 ] 
+						SpecialOffer_B_Mean = Y [ Mode: 1 ] 
+							SpecialOffer_Count <= 5 [ Mode: 1 ] 
+								JoinFrom = AnF [ Mode: 1 ] 
+									Age_TILEN = old [ Mode: 1 ] 
+										SpecialOffer_Count <= 2 [ Mode: -1 ] => -1 
+										SpecialOffer_Count > 2 [ Mode: 1 ] 
+											PhoneNo_BIN = 2 [ Mode: 1 ] => 1 
+											PhoneNo_BIN = 1 [ Mode: 0 ] => 0 
+									Age_TILEN = young [ Mode: -1 ] 
+										Sex = F [ Mode: 0 ] => 0 
+										Sex = M [ Mode: -1 ] => -1 
+								JoinFrom = Other [ Mode: 1 ] 
+									SpecialOffer_A_Mean = Y [ Mode: 1 ] => 1 
+									SpecialOffer_A_Mean = N [ Mode: 1 ] 
+										Sex = F [ Mode: 1 ] => 1 
+										Sex = M [ Mode: 0 ] => 0 
+							SpecialOffer_Count > 5 [ Mode: 0 ] => 0 
+						SpecialOffer_B_Mean = N [ Mode: 0 ] => 0 
+					EducationLevel = TD [ Mode: 0 ] 
+						SpecialOffer_B_Mean = Y [ Mode: 0 ] 
+							JoinFrom = AnF [ Mode: 0 ] 
+								SpecialOffer_Count <= 2 [ Mode: 0 ] => 0 
+								SpecialOffer_Count > 2 [ Mode: 1 ] => 1 
+							JoinFrom = Other [ Mode: -1 ] 
+								PhoneNo_BIN = 2 [ Mode: -1 ] => -1 
+								PhoneNo_BIN = 1 [ Mode: 0 ] => 0 
+						SpecialOffer_B_Mean = N [ Mode: -1 ] => -1 
+Rule 7 - estimated accuracy 73.1% [boost 95.9%]
+	SpecialOffer_Count <= 1 [ Mode: -1 ] 
+		Method <= 3 [ Mode: -1 ] 
+			Method <= 2 [ Mode: -1 ] 
+				SpecialOffer_B_Mean = Y [ Mode: 0 ] 
+					EducationLevel = Other [ Mode: 0 ] 
+						JoinFrom = AnF [ Mode: 0 ] 
+							PhoneNo_BIN = 2 [ Mode: 0 ] 
+								Method <= 1 [ Mode: -1 ] 
+									Sex = F [ Mode: -1 ] => -1 
+									Sex = M [ Mode: 0 ] => 0 
+								Method > 1 [ Mode: 0 ] => 0 
+							PhoneNo_BIN = 1 [ Mode: 0 ] => 0 
+						JoinFrom = Other [ Mode: 0 ] 
+							Method <= 1 [ Mode: 1 ] 
+								PhoneNo_BIN = 2 [ Mode: 0 ] => 0 
+								PhoneNo_BIN = 1 [ Mode: 1 ] 
+									Age_TILEN = old [ Mode: 1 ] => 1 
+									Age_TILEN = young [ Mode: 0 ] => 0 
+							Method > 1 [ Mode: -1 ] 
+								Age_TILEN = old [ Mode: -1 ] 
+									PhoneNo_BIN = 2 [ Mode: 0 ] 
+										Sex = F [ Mode: -1 ] => -1 
+										Sex = M [ Mode: 0 ] => 0 
+									PhoneNo_BIN = 1 [ Mode: -1 ] => -1 
+								Age_TILEN = young [ Mode: 0 ] => 0 
+					EducationLevel = TD [ Mode: 0 ] 
+						JoinFrom = AnF [ Mode: 0 ] => 0 
+						JoinFrom = Other [ Mode: 1 ] 
+							PhoneNo_BIN = 2 [ Mode: 1 ] => 1 
+							PhoneNo_BIN = 1 [ Mode: 0 ] => 0 
+				SpecialOffer_B_Mean = N [ Mode: -1 ] 
+					Method <= 1 [ Mode: -1 ] 
+						JoinFrom = AnF [ Mode: -1 ] 
+							SpecialOffer_A_Mean = Y [ Mode: -1 ] 
+								Age_TILEN = old [ Mode: 0 ] => 0 
+								Age_TILEN = young [ Mode: -1 ] => -1 
+							SpecialOffer_A_Mean = N [ Mode: 1 ] => 1 
+						JoinFrom = Other [ Mode: -1 ] 
+							EducationLevel = Other [ Mode: 1 ] 
+								SpecialOffer_A_Mean = Y [ Mode: 0 ] 
+									Age_TILEN = old [ Mode: 0 ] => 0 
+									Age_TILEN = young [ Mode: 1 ] => 1 
+								SpecialOffer_A_Mean = N [ Mode: -1 ] 
+									Age_TILEN = old [ Mode: -1 ] => -1 
+									Age_TILEN = young [ Mode: 0 ] => 0 
+							EducationLevel = TD [ Mode: -1 ] 
+								SpecialOffer_A_Mean = Y [ Mode: -1 ] 
+									Age_TILEN = old [ Mode: -1 ] => -1 
+									Age_TILEN = young [ Mode: 1 ] => 1 
+								SpecialOffer_A_Mean = N [ Mode: 1 ] => 1 
+					Method > 1 [ Mode: -1 ] 
+						SpecialOffer_A_Mean = Y [ Mode: 1 ] 
+							Age_TILEN = old [ Mode: 0 ] 
+								JoinFrom = AnF [ Mode: 1 ] 
+									Sex = F [ Mode: 1 ] => 1 
+									Sex = M [ Mode: -1 ] => -1 
+								JoinFrom = Other [ Mode: -1 ] 
+									PhoneNo_BIN = 2 [ Mode: -1 ] 
+										Sex = F [ Mode: -1 ] => -1 
+										Sex = M [ Mode: 0 ] => 0 
+									PhoneNo_BIN = 1 [ Mode: -1 ] => -1 
+							Age_TILEN = young [ Mode: 1 ] => 1 
+						SpecialOffer_A_Mean = N [ Mode: -1 ] 
+							JoinFrom = AnF [ Mode: 0 ] => 0 
+							JoinFrom = Other [ Mode: -1 ] 
+								EducationLevel = Other [ Mode: -1 ] => -1 
+								EducationLevel = TD [ Mode: 0 ] => 0 
+			Method > 2 [ Mode: -1 ] 
+				SpecialOffer_C_Mean = Y [ Mode: 0 ] 
+					JoinFrom = AnF [ Mode: -1 ] => -1 
+					JoinFrom = Other [ Mode: 0 ] 
+						Age_TILEN = old [ Mode: -1 ] => -1 
+						Age_TILEN = young [ Mode: 0 ] => 0 
+				SpecialOffer_C_Mean = N [ Mode: -1 ] 
+					Sex = F [ Mode: 1 ] 
+						EducationLevel = Other [ Mode: 1 ] 
+							PhoneNo_BIN = 2 [ Mode: 1 ] 
+								Age_TILEN = old [ Mode: -1 ] 
+									JoinFrom = AnF [ Mode: 0 ] => 0 
+									JoinFrom = Other [ Mode: -1 ] => -1 
+								Age_TILEN = young [ Mode: 1 ] 
+									JoinFrom = AnF [ Mode: 1 ] => 1 
+									JoinFrom = Other [ Mode: 0 ] => 0 
+							PhoneNo_BIN = 1 [ Mode: 1 ] 
+								JoinFrom = AnF [ Mode: -1 ] => -1 
+								JoinFrom = Other [ Mode: 1 ] => 1 
+						EducationLevel = TD [ Mode: 1 ] 
+							SpecialOffer_A_Mean = Y [ Mode: 0 ] => 0 
+							SpecialOffer_A_Mean = N [ Mode: 1 ] => 1 
+					Sex = M [ Mode: -1 ] 
+						JoinFrom = AnF [ Mode: -1 ] 
+							SpecialOffer_A_Mean = Y [ Mode: -1 ] 
+								Age_TILEN = old [ Mode: -1 ] => -1 
+								Age_TILEN = young [ Mode: 0 ] => 0 
+							SpecialOffer_A_Mean = N [ Mode: 0 ] => 0 
+						JoinFrom = Other [ Mode: 1 ] 
+							EducationLevel = Other [ Mode: 1 ] 
+								SpecialOffer_A_Mean = Y [ Mode: 1 ] => 1 
+								SpecialOffer_A_Mean = N [ Mode: 0 ] => 0 
+							EducationLevel = TD [ Mode: -1 ] => -1 
+		Method > 3 [ Mode: -1 ] 
+			Sex = F [ Mode: -1 ] 
+				Age_TILEN = old [ Mode: 0 ] 
+					SpecialOffer_A_Mean = Y [ Mode: 0 ] => 0 
+					SpecialOffer_A_Mean = N [ Mode: -1 ] 
+						EducationLevel = Other [ Mode: 0 ] => 0 
+						EducationLevel = TD [ Mode: -1 ] => -1 
+				Age_TILEN = young [ Mode: -1 ] 
+					SpecialOffer_B_Mean = Y [ Mode: 0 ] 
+						JoinFrom = AnF [ Mode: 0 ] => 0 
+						JoinFrom = Other [ Mode: -1 ] => -1 
+					SpecialOffer_B_Mean = N [ Mode: -1 ] => -1 
+			Sex = M [ Mode: 0 ] 
+				SpecialOffer_A_Mean = Y [ Mode: 0 ] => 0 
+				SpecialOffer_A_Mean = N [ Mode: 0 ] 
+					EducationLevel = Other [ Mode: -1 ] 
+						JoinFrom = AnF [ Mode: -1 ] => -1 
+						JoinFrom = Other [ Mode: 1 ] 
+							Age_TILEN = old [ Mode: 0 ] 
+								SpecialOffer_B_Mean = Y [ Mode: 0 ] => 0 
+								SpecialOffer_B_Mean = N [ Mode: -1 ] => -1 
+							Age_TILEN = young [ Mode: 1 ] => 1 
+					EducationLevel = TD [ Mode: 0 ] 
+						PhoneNo_BIN = 2 [ Mode: 1 ] => 1 
+						PhoneNo_BIN = 1 [ Mode: 0 ] => 0 
+	SpecialOffer_Count > 1 [ Mode: 0 ] 
+		Method <= 1 [ Mode: 0 ] 
+			SpecialOffer_B_Mean = Y [ Mode: 0 ] 
+				EducationLevel = Other [ Mode: 0 ] 
+					SpecialOffer_Count <= 2 [ Mode: 0 ] 
+						Age_TILEN = old [ Mode: -1 ] 
+							SpecialOffer_C_Mean = Y [ Mode: -1 ] => -1 
+							SpecialOffer_C_Mean = N [ Mode: 0 ] 
+								Sex = F [ Mode: 0 ] => 0 
+								Sex = M [ Mode: -1 ] => -1 
+						Age_TILEN = young [ Mode: 0 ] => 0 
+					SpecialOffer_Count > 2 [ Mode: 0 ] 
+						Sex = F [ Mode: 0 ] 
+							SpecialOffer_C_Mean = Y [ Mode: 0 ] => 0 
+							SpecialOffer_C_Mean = N [ Mode: 1 ] => 1 
+						Sex = M [ Mode: 0 ] 
+							JoinFrom = AnF [ Mode: 0 ] 
+								Age_TILEN = old [ Mode: 1 ] => 1 
+								Age_TILEN = young [ Mode: 0 ] => 0 
+							JoinFrom = Other [ Mode: 1 ] 
+								SpecialOffer_A_Mean = Y [ Mode: 0 ] 
+									Age_TILEN = old [ Mode: 0 ] => 0 
+									Age_TILEN = young [ Mode: 1 ] => 1 
+								SpecialOffer_A_Mean = N [ Mode: 1 ] 
+									Age_TILEN = old [ Mode: 1 ] => 1 
+									Age_TILEN = young [ Mode: 0 ] => 0 
+				EducationLevel = TD [ Mode: 1 ] 
+					JoinFrom = AnF [ Mode: 1 ] 
+						Age_TILEN = old [ Mode: 1 ] => 1 
+						Age_TILEN = young [ Mode: 0 ] 
+							SpecialOffer_A_Mean = Y [ Mode: 0 ] => 0 
+							SpecialOffer_A_Mean = N [ Mode: 1 ] => 1 
+					JoinFrom = Other [ Mode: -1 ] 
+						SpecialOffer_Count <= 5 [ Mode: 0 ] 
+							Age_TILEN = old [ Mode: 0 ] 
+								SpecialOffer_C_Mean = Y [ Mode: 0 ] 
+									SpecialOffer_Count <= 2 [ Mode: 0 ] => 0 
+									SpecialOffer_Count > 2 [ Mode: 0 ] 
+										SpecialOffer_A_Mean = Y [ Mode: 0 ] 
+											PhoneNo_BIN = 2 [ Mode: -1 ] => -1 
+											PhoneNo_BIN = 1 [ Mode: 0 ] => 0 
+										SpecialOffer_A_Mean = N [ Mode: -1 ] => -1 
+								SpecialOffer_C_Mean = N [ Mode: -1 ] => -1 
+							Age_TILEN = young [ Mode: 1 ] 
+								SpecialOffer_Count <= 3 [ Mode: 1 ] => 1 
+								SpecialOffer_Count > 3 [ Mode: -1 ] => -1 
+						SpecialOffer_Count > 5 [ Mode: 1 ] => 1 
+			SpecialOffer_B_Mean = N [ Mode: 0 ] 
+				SpecialOffer_A_Mean = Y [ Mode: 0 ] 
+					PhoneNo_BIN = 2 [ Mode: 1 ] 
+						Age_TILEN = old [ Mode: 0 ] 
+							JoinFrom = AnF [ Mode: 1 ] 
+								SpecialOffer_Count <= 2 [ Mode: 1 ] => 1 
+								SpecialOffer_Count > 2 [ Mode: 0 ] => 0 
+							JoinFrom = Other [ Mode: 0 ] => 0 
+						Age_TILEN = young [ Mode: 1 ] 
+							EducationLevel = Other [ Mode: 1 ] => 1 
+							EducationLevel = TD [ Mode: 0 ] => 0 
+					PhoneNo_BIN = 1 [ Mode: 0 ] 
+						SpecialOffer_C_Mean = Y [ Mode: 0 ] => 0 
+						SpecialOffer_C_Mean = N [ Mode: 0 ] 
+							Age_TILEN = old [ Mode: 1 ] => 1 
+							Age_TILEN = young [ Mode: 0 ] => 0 
+				SpecialOffer_A_Mean = N [ Mode: 0 ] => 0 
+		Method > 1 [ Mode: 0 ] 
+			SpecialOffer_Count <= 2 [ Mode: -1 ] 
+				Method <= 2 [ Mode: -1 ] 
+					EducationLevel = Other [ Mode: -1 ] 
+						SpecialOffer_C_Mean = Y [ Mode: 0 ] 
+							JoinFrom = AnF [ Mode: 1 ] => 1 
+							JoinFrom = Other [ Mode: 0 ] 
+								SpecialOffer_A_Mean = Y [ Mode: 0 ] => 0 
+								SpecialOffer_A_Mean = N [ Mode: -1 ] => -1 
+						SpecialOffer_C_Mean = N [ Mode: -1 ] 
+							PhoneNo_BIN = 2 [ Mode: -1 ] 
+								SpecialOffer_A_Mean = Y [ Mode: 1 ] 
+									JoinFrom = AnF [ Mode: -1 ] => -1 
+									JoinFrom = Other [ Mode: 1 ] => 1 
+								SpecialOffer_A_Mean = N [ Mode: -1 ] 
+									Age_TILEN = old [ Mode: -1 ] => -1 
+									Age_TILEN = young [ Mode: 0 ] => 0 
+							PhoneNo_BIN = 1 [ Mode: -1 ] 
+								JoinFrom = AnF [ Mode: 1 ] => 1 
+								JoinFrom = Other [ Mode: -1 ] 
+									SpecialOffer_B_Mean = Y [ Mode: -1 ] 
+										Sex = F [ Mode: 0 ] => 0 
+										Sex = M [ Mode: -1 ] => -1 
+									SpecialOffer_B_Mean = N [ Mode: -1 ] 
+										Age_TILEN = old [ Mode: 0 ] => 0 
+										Age_TILEN = young [ Mode: -1 ] => -1 
+					EducationLevel = TD [ Mode: 1 ] 
+						SpecialOffer_B_Mean = Y [ Mode: 1 ] 
+							Sex = F [ Mode: 1 ] 
+								PhoneNo_BIN = 2 [ Mode: 0 ] => 0 
+								PhoneNo_BIN = 1 [ Mode: 1 ] => 1 
+							Sex = M [ Mode: -1 ] 
+								PhoneNo_BIN = 2 [ Mode: -1 ] => -1 
+								PhoneNo_BIN = 1 [ Mode: 0 ] => 0 
+						SpecialOffer_B_Mean = N [ Mode: 1 ] => 1 
+				Method > 2 [ Mode: 0 ] 
+					Method <= 3 [ Mode: 0 ] 
+						SpecialOffer_B_Mean = Y [ Mode: -1 ] 
+							JoinFrom = AnF [ Mode: -1 ] 
+								Age_TILEN = old [ Mode: 0 ] => 0 
+								Age_TILEN = young [ Mode: -1 ] 
+									Sex = F [ Mode: 0 ] => 0 
+									Sex = M [ Mode: -1 ] => -1 
+							JoinFrom = Other [ Mode: -1 ] 
+								SpecialOffer_C_Mean = Y [ Mode: -1 ] 
+									Age_TILEN = old [ Mode: -1 ] => -1 
+									Age_TILEN = young [ Mode: 0 ] => 0 
+								SpecialOffer_C_Mean = N [ Mode: 0 ] 
+									SpecialOffer_A_Mean = Y [ Mode: -1 ] 
+										PhoneNo_BIN = 2 [ Mode: 0 ] => 0 
+										PhoneNo_BIN = 1 [ Mode: -1 ] => -1 
+									SpecialOffer_A_Mean = N [ Mode: 0 ] 
+										Sex = F [ Mode: 1 ] => 1 
+										Sex = M [ Mode: 0 ] => 0 
+						SpecialOffer_B_Mean = N [ Mode: 0 ] 
+							Sex = F [ Mode: -1 ] 
+								Age_TILEN = old [ Mode: -1 ] 
+									EducationLevel = Other [ Mode: -1 ] 
+										SpecialOffer_C_Mean = Y [ Mode: -1 ] => -1 
+										SpecialOffer_C_Mean = N [ Mode: 0 ] => 0 
+									EducationLevel = TD [ Mode: 0 ] => 0 
+								Age_TILEN = young [ Mode: 1 ] 
+									SpecialOffer_C_Mean = Y [ Mode: 1 ] => 1 
+									SpecialOffer_C_Mean = N [ Mode: -1 ] => -1 
+							Sex = M [ Mode: 0 ] 
+								Age_TILEN = old [ Mode: 0 ] => 0 
+								Age_TILEN = young [ Mode: 1 ] 
+									JoinFrom = AnF [ Mode: 1 ] 
+										SpecialOffer_C_Mean = Y [ Mode: 1 ] => 1 
+										SpecialOffer_C_Mean = N [ Mode: 0 ] => 0 
+									JoinFrom = Other [ Mode: 0 ] => 0 
+					Method > 3 [ Mode: 0 ] 
+						Age_TILEN = old [ Mode: 0 ] 
+							SpecialOffer_A_Mean = Y [ Mode: -1 ] 
+								SpecialOffer_C_Mean = Y [ Mode: -1 ] => -1 
+								SpecialOffer_C_Mean = N [ Mode: 0 ] 
+									Sex = F [ Mode: -1 ] => -1 
+									Sex = M [ Mode: 0 ] => 0 
+							SpecialOffer_A_Mean = N [ Mode: 0 ] 
+								PhoneNo_BIN = 2 [ Mode: 1 ] 
+									SpecialOffer_C_Mean = Y [ Mode: 1 ] => 1 
+									SpecialOffer_C_Mean = N [ Mode: 0 ] => 0 
+								PhoneNo_BIN = 1 [ Mode: 0 ] => 0 
+						Age_TILEN = young [ Mode: 1 ] 
+							SpecialOffer_A_Mean = Y [ Mode: 1 ] 
+								EducationLevel = Other [ Mode: 1 ] 
+									Sex = F [ Mode: 1 ] 
+										SpecialOffer_B_Mean = Y [ Mode: 0 ] => 0 
+										SpecialOffer_B_Mean = N [ Mode: 1 ] 
+											PhoneNo_BIN = 2 [ Mode: 0 ] => 0 
+											PhoneNo_BIN = 1 [ Mode: 1 ] => 1 
+									Sex = M [ Mode: 1 ] => 1 
+								EducationLevel = TD [ Mode: 0 ] => 0 
+							SpecialOffer_A_Mean = N [ Mode: 1 ] 
+								JoinFrom = AnF [ Mode: 0 ] => 0 
+								JoinFrom = Other [ Mode: 1 ] => 1 
+			SpecialOffer_Count > 2 [ Mode: 0 ] 
+				SpecialOffer_Count <= 5 [ Mode: 0 ] 
+					JoinFrom = AnF [ Mode: 0 ] 
+						Age_TILEN = old [ Mode: 0 ] 
+							PhoneNo_BIN = 2 [ Mode: 0 ] 
+								SpecialOffer_A_Mean = Y [ Mode: 0 ] 
+									EducationLevel = Other [ Mode: 0 ] 
+										Sex = F [ Mode: 1 ] 
+											Method <= 3 [ Mode: 0 ] 
+												Method <= 2 [ Mode: 1 ] => 1 
+												Method > 2 [ Mode: 0 ] => 0 
+											Method > 3 [ Mode: 1 ] 
+												SpecialOffer_Count <= 3 [ Mode: 1 ] => 1 
+												SpecialOffer_Count > 3 [ Mode: 0 ] => 0 
+										Sex = M [ Mode: 0 ] => 0 
+									EducationLevel = TD [ Mode: 0 ] => 0 
+								SpecialOffer_A_Mean = N [ Mode: 0 ] => 0 
+							PhoneNo_BIN = 1 [ Mode: 0 ] 
+								Method <= 2 [ Mode: 0 ] => 0 
+								Method > 2 [ Mode: -1 ] 
+									Sex = F [ Mode: -1 ] => -1 
+									Sex = M [ Mode: 0 ] => 0 
+						Age_TILEN = young [ Mode: 0 ] 
+							SpecialOffer_Count <= 3 [ Mode: 0 ] 
+								SpecialOffer_C_Mean = Y [ Mode: -1 ] 
+									Method <= 2 [ Mode: -1 ] 
+										Sex = F [ Mode: -1 ] => -1 
+										Sex = M [ Mode: 1 ] 
+											SpecialOffer_B_Mean = Y [ Mode: 0 ] => 0 
+											SpecialOffer_B_Mean = N [ Mode: 1 ] => 1 
+									Method > 2 [ Mode: -1 ] 
+										PhoneNo_BIN = 2 [ Mode: 0 ] => 0 
+										PhoneNo_BIN = 1 [ Mode: -1 ] 
+											SpecialOffer_B_Mean = Y [ Mode: 0 ] => 0 
+											SpecialOffer_B_Mean = N [ Mode: -1 ] 
+												Method <= 3 [ Mode: 0 ] => 0 
+												Method > 3 [ Mode: -1 ] => -1 
+								SpecialOffer_C_Mean = N [ Mode: 0 ] 
+									Method <= 3 [ Mode: 0 ] 
+										Method <= 2 [ Mode: 0 ] 
+											Sex = F [ Mode: 0 ] => 0 
+											Sex = M [ Mode: 1 ] => 1 
+										Method > 2 [ Mode: 0 ] 
+											Sex = F [ Mode: 0 ] => 0 
+											Sex = M [ Mode: -1 ] => -1 
+									Method > 3 [ Mode: -1 ] => -1 
+							SpecialOffer_Count > 3 [ Mode: 0 ] 
+								Method <= 2 [ Mode: 0 ] => 0 
+								Method > 2 [ Mode: 0 ] 
+									SpecialOffer_C_Mean = Y [ Mode: 1 ] 
+										Sex = F [ Mode: 1 ] 
+											Method <= 3 [ Mode: 0 ] => 0 
+											Method > 3 [ Mode: 1 ] 
+												PhoneNo_BIN = 2 [ Mode: 1 ] => 1 
+												PhoneNo_BIN = 1 [ Mode: 0 ] => 0 
+										Sex = M [ Mode: 1 ] => 1 
+									SpecialOffer_C_Mean = N [ Mode: -1 ] 
+										PhoneNo_BIN = 2 [ Mode: 0 ] => 0 
+										PhoneNo_BIN = 1 [ Mode: -1 ] => -1 
+					JoinFrom = Other [ Mode: 0 ] 
+						SpecialOffer_Count <= 3 [ Mode: 0 ] 
+							SpecialOffer_B_Mean = Y [ Mode: 0 ] 
+								Method <= 3 [ Mode: 0 ] 
+									SpecialOffer_C_Mean = Y [ Mode: 0 ] 
+										Age_TILEN = old [ Mode: 0 ] => 0 
+										Age_TILEN = young [ Mode: 1 ] => 1 
+									SpecialOffer_C_Mean = N [ Mode: 0 ] => 0 
+								Method > 3 [ Mode: 0 ] 
+									Sex = F [ Mode: -1 ] => -1 
+									Sex = M [ Mode: 0 ] => 0 
+							SpecialOffer_B_Mean = N [ Mode: 1 ] 
+								SpecialOffer_C_Mean = Y [ Mode: 1 ] 
+									Method <= 2 [ Mode: 1 ] 
+										PhoneNo_BIN = 2 [ Mode: 0 ] => 0 
+										PhoneNo_BIN = 1 [ Mode: 1 ] => 1 
+									Method > 2 [ Mode: 1 ] 
+										PhoneNo_BIN = 2 [ Mode: 1 ] => 1 
+										PhoneNo_BIN = 1 [ Mode: 0 ] => 0 
+								SpecialOffer_C_Mean = N [ Mode: -1 ] => -1 
+						SpecialOffer_Count > 3 [ Mode: 0 ] 
+							SpecialOffer_C_Mean = Y [ Mode: 0 ] 
+								EducationLevel = Other [ Mode: 0 ] 
+									SpecialOffer_Count <= 4 [ Mode: 1 ] 
+										SpecialOffer_B_Mean = Y [ Mode: 0 ] 
+											Method <= 2 [ Mode: -1 ] 
+												SpecialOffer_A_Mean = Y [ Mode: -1 ] 
+													Age_TILEN = old [ Mode: -1 ] 
+														Sex = F [ Mode: 1 ] => 1 
+														Sex = M [ Mode: -1 ] 
+															PhoneNo_BIN = 2 [ Mode: -1 ] => -1 
+															PhoneNo_BIN = 1 [ Mode: 0 ] => 0 
+													Age_TILEN = young [ Mode: -1 ] => -1 
+												SpecialOffer_A_Mean = N [ Mode: 1 ] => 1 
+											Method > 2 [ Mode: 0 ] 
+												PhoneNo_BIN = 2 [ Mode: 0 ] 
+													Sex = F [ Mode: 0 ] => 0 
+													Sex = M [ Mode: 1 ] 
+														SpecialOffer_A_Mean = Y [ Mode: 1 ] 
+															Method <= 3 [ Mode: 1 ] => 1 
+															Method > 3 [ Mode: 0 ] => 0 
+														SpecialOffer_A_Mean = N [ Mode: 0 ] => 0 
+												PhoneNo_BIN = 1 [ Mode: -1 ] 
+													Age_TILEN = old [ Mode: -1 ] => -1 
+													Age_TILEN = young [ Mode: 1 ] 
+														Method <= 3 [ Mode: 1 ] => 1 
+														Method > 3 [ Mode: 1 ] 
+															Sex = F [ Mode: -1 ] => -1 
+															Sex = M [ Mode: 1 ] => 1 
+										SpecialOffer_B_Mean = N [ Mode: 1 ] 
+											Method <= 3 [ Mode: 1 ] 
+												Age_TILEN = old [ Mode: 1 ] 
+													Sex = F [ Mode: 1 ] => 1 
+													Sex = M [ Mode: 0 ] => 0 
+												Age_TILEN = young [ Mode: 1 ] => 1 
+											Method > 3 [ Mode: 0 ] 
+												PhoneNo_BIN = 2 [ Mode: 1 ] => 1 
+												PhoneNo_BIN = 1 [ Mode: 0 ] => 0 
+									SpecialOffer_Count > 4 [ Mode: 0 ] 
+										SpecialOffer_B_Mean = Y [ Mode: 0 ] 
+											Method <= 3 [ Mode: 0 ] 
+												Sex = F [ Mode: 0 ] => 0 
+												Sex = M [ Mode: -1 ] => -1 
+											Method > 3 [ Mode: 0 ] 
+												Sex = F [ Mode: -1 ] => -1 
+												Sex = M [ Mode: 0 ] => 0 
+										SpecialOffer_B_Mean = N [ Mode: 1 ] => 1 
+								EducationLevel = TD [ Mode: 0 ] 
+									SpecialOffer_Count <= 4 [ Mode: 0 ] 
+										SpecialOffer_B_Mean = Y [ Mode: 0 ] 
+											Method <= 3 [ Mode: -1 ] 
+												Sex = F [ Mode: 0 ] => 0 
+												Sex = M [ Mode: -1 ] 
+													PhoneNo_BIN = 2 [ Mode: 0 ] => 0 
+													PhoneNo_BIN = 1 [ Mode: -1 ] => -1 
+											Method > 3 [ Mode: 0 ] 
+												SpecialOffer_A_Mean = Y [ Mode: 1 ] 
+													Sex = F [ Mode: 1 ] => 1 
+													Sex = M [ Mode: 0 ] => 0 
+												SpecialOffer_A_Mean = N [ Mode: 0 ] => 0 
+										SpecialOffer_B_Mean = N [ Mode: 0 ] => 0 
+									SpecialOffer_Count > 4 [ Mode: 1 ] => 1 
+							SpecialOffer_C_Mean = N [ Mode: 1 ] 
+								Age_TILEN = old [ Mode: -1 ] => -1 
+								Age_TILEN = young [ Mode: 1 ] 
+									Sex = F [ Mode: 0 ] => 0 
+									Sex = M [ Mode: 1 ] 
+										Method <= 3 [ Mode: 1 ] 
+											EducationLevel = Other [ Mode: 0 ] => 0 
+											EducationLevel = TD [ Mode: 1 ] => 1 
+										Method > 3 [ Mode: 1 ] 
+											EducationLevel = Other [ Mode: 1 ] => 1 
+											EducationLevel = TD [ Mode: -1 ] => -1 
+				SpecialOffer_Count > 5 [ Mode: 0 ] 
+					SpecialOffer_B_Mean = Y [ Mode: 0 ] 
+						JoinFrom = AnF [ Mode: 0 ] => 0 
+						JoinFrom = Other [ Mode: 0 ] 
+							Method <= 2 [ Mode: 0 ] => 0 
+							Method > 2 [ Mode: -1 ] 
+								SpecialOffer_C_Mean = Y [ Mode: -1 ] 
+									EducationLevel = Other [ Mode: 0 ] 
+										SpecialOffer_Count <= 6 [ Mode: 0 ] => 0 
+										SpecialOffer_Count > 6 [ Mode: -1 ] => -1 
+									EducationLevel = TD [ Mode: -1 ] 
+										Method <= 3 [ Mode: -1 ] 
+											SpecialOffer_A_Mean = Y [ Mode: -1 ] => -1 
+											SpecialOffer_A_Mean = N [ Mode: 0 ] => 0 
+										Method > 3 [ Mode: -1 ] => -1 
+								SpecialOffer_C_Mean = N [ Mode: 0 ] 
+									PhoneNo_BIN = 2 [ Mode: -1 ] => -1 
+									PhoneNo_BIN = 1 [ Mode: 0 ] => 0 
+					SpecialOffer_B_Mean = N [ Mode: 1 ] => 1 
+Rule 8 - estimated accuracy 74.51% [boost 95.9%]
+	SpecialOffer_Count <= 1 [ Mode: -1 ] 
+		Method <= 3 [ Mode: -1 ] 
+			PhoneNo_BIN = 2 [ Mode: -1 ] 
+				Method <= 1 [ Mode: -1 ] 
+					JoinFrom = AnF [ Mode: -1 ] 
+						SpecialOffer_A_Mean = Y [ Mode: -1 ] 
+							Age_TILEN = old [ Mode: 0 ] => 0 
+							Age_TILEN = young [ Mode: -1 ] => -1 
+						SpecialOffer_A_Mean = N [ Mode: 0 ] => 0 
+					JoinFrom = Other [ Mode: -1 ] 
+						EducationLevel = Other [ Mode: 0 ] 
+							Sex = F [ Mode: 1 ] => 1 
+							Sex = M [ Mode: -1 ] => -1 
+						EducationLevel = TD [ Mode: -1 ] 
+							SpecialOffer_A_Mean = Y [ Mode: -1 ] => -1 
+							SpecialOffer_A_Mean = N [ Mode: 1 ] => 1 
+				Method > 1 [ Mode: 1 ] 
+					SpecialOffer_C_Mean = Y [ Mode: -1 ] 
+						Method <= 2 [ Mode: -1 ] 
+							Age_TILEN = old [ Mode: 0 ] => 0 
+							Age_TILEN = young [ Mode: -1 ] => -1 
+						Method > 2 [ Mode: 0 ] => 0 
+					SpecialOffer_C_Mean = N [ Mode: 1 ] 
+						Method <= 2 [ Mode: 1 ] 
+							JoinFrom = AnF [ Mode: 0 ] 
+								Sex = F [ Mode: 0 ] => 0 
+								Sex = M [ Mode: 1 ] => 1 
+							JoinFrom = Other [ Mode: 1 ] 
+								Age_TILEN = old [ Mode: -1 ] 
+									Sex = F [ Mode: -1 ] => -1 
+									Sex = M [ Mode: 1 ] => 1 
+								Age_TILEN = young [ Mode: 1 ] 
+									EducationLevel = Other [ Mode: 0 ] => 0 
+									EducationLevel = TD [ Mode: 1 ] => 1 
+						Method > 2 [ Mode: 1 ] 
+							Sex = F [ Mode: 1 ] 
+								EducationLevel = Other [ Mode: 1 ] 
+									SpecialOffer_A_Mean = Y [ Mode: -1 ] 
+										Age_TILEN = old [ Mode: 0 ] => 0 
+										Age_TILEN = young [ Mode: -1 ] => -1 
+									SpecialOffer_A_Mean = N [ Mode: 1 ] 
+										Age_TILEN = old [ Mode: 1 ] => 1 
+										Age_TILEN = young [ Mode: 1 ] 
+											JoinFrom = AnF [ Mode: 1 ] => 1 
+											JoinFrom = Other [ Mode: 0 ] => 0 
+								EducationLevel = TD [ Mode: 1 ] 
+									SpecialOffer_A_Mean = Y [ Mode: 0 ] => 0 
+									SpecialOffer_A_Mean = N [ Mode: 1 ] => 1 
+							Sex = M [ Mode: 0 ] => 0 
+			PhoneNo_BIN = 1 [ Mode: -1 ] 
+				JoinFrom = AnF [ Mode: -1 ] 
+					SpecialOffer_B_Mean = Y [ Mode: 0 ] => 0 
+					SpecialOffer_B_Mean = N [ Mode: -1 ] 
+						Method <= 1 [ Mode: 1 ] => 1 
+						Method > 1 [ Mode: -1 ] => -1 
+				JoinFrom = Other [ Mode: 0 ] 
+					Age_TILEN = old [ Mode: -1 ] 
+						Method <= 1 [ Mode: 1 ] 
+							SpecialOffer_A_Mean = Y [ Mode: 0 ] => 0 
+							SpecialOffer_A_Mean = N [ Mode: 1 ] 
+								Sex = F [ Mode: 0 ] => 0 
+								Sex = M [ Mode: 1 ] => 1 
+						Method > 1 [ Mode: 0 ] 
+							EducationLevel = Other [ Mode: 0 ] 
+								Method <= 2 [ Mode: -1 ] 
+									Sex = F [ Mode: 0 ] => 0 
+									Sex = M [ Mode: -1 ] => -1 
+								Method > 2 [ Mode: 0 ] 
+									Sex = F [ Mode: -1 ] 
+										SpecialOffer_A_Mean = Y [ Mode: -1 ] => -1 
+										SpecialOffer_A_Mean = N [ Mode: 1 ] => 1 
+									Sex = M [ Mode: 0 ] => 0 
+							EducationLevel = TD [ Mode: 1 ] => 1 
+					Age_TILEN = young [ Mode: 0 ] 
+						SpecialOffer_B_Mean = Y [ Mode: 0 ] => 0 
+						SpecialOffer_B_Mean = N [ Mode: 0 ] 
+							Method <= 1 [ Mode: 1 ] => 1 
+							Method > 1 [ Mode: 0 ] => 0 
+		Method > 3 [ Mode: -1 ] 
+			Sex = F [ Mode: -1 ] 
+				Age_TILEN = old [ Mode: -1 ] 
+					SpecialOffer_A_Mean = Y [ Mode: 0 ] => 0 
+					SpecialOffer_A_Mean = N [ Mode: -1 ] => -1 
+				Age_TILEN = young [ Mode: -1 ] 
+					SpecialOffer_B_Mean = Y [ Mode: 0 ] => 0 
+					SpecialOffer_B_Mean = N [ Mode: -1 ] => -1 
+			Sex = M [ Mode: 0 ] 
+				SpecialOffer_A_Mean = Y [ Mode: 0 ] => 0 
+				SpecialOffer_A_Mean = N [ Mode: 0 ] 
+					EducationLevel = Other [ Mode: -1 ] 
+						JoinFrom = AnF [ Mode: -1 ] => -1 
+						JoinFrom = Other [ Mode: 1 ] 
+							Age_TILEN = old [ Mode: 0 ] 
+								SpecialOffer_B_Mean = Y [ Mode: 1 ] => 1 
+								SpecialOffer_B_Mean = N [ Mode: -1 ] => -1 
+							Age_TILEN = young [ Mode: -1 ] 
+								PhoneNo_BIN = 2 [ Mode: 1 ] => 1 
+								PhoneNo_BIN = 1 [ Mode: -1 ] => -1 
+					EducationLevel = TD [ Mode: 0 ] => 0 
+	SpecialOffer_Count > 1 [ Mode: 0 ] 
+		Method <= 1 [ Mode: 0 ] 
+			SpecialOffer_B_Mean = Y [ Mode: 0 ] 
+				SpecialOffer_Count <= 5 [ Mode: 0 ] 
+					SpecialOffer_Count <= 4 [ Mode: 0 ] 
+						JoinFrom = AnF [ Mode: 1 ] 
+							SpecialOffer_A_Mean = Y [ Mode: 1 ] 
+								PhoneNo_BIN = 2 [ Mode: 0 ] 
+									EducationLevel = Other [ Mode: 0 ] => 0 
+									EducationLevel = TD [ Mode: -1 ] => -1 
+								PhoneNo_BIN = 1 [ Mode: 1 ] 
+									EducationLevel = Other [ Mode: -1 ] 
+										Sex = F [ Mode: 0 ] => 0 
+										Sex = M [ Mode: -1 ] => -1 
+									EducationLevel = TD [ Mode: 1 ] 
+										Age_TILEN = old [ Mode: 1 ] => 1 
+										Age_TILEN = young [ Mode: 0 ] => 0 
+							SpecialOffer_A_Mean = N [ Mode: 0 ] => 0 
+						JoinFrom = Other [ Mode: 0 ] 
+							Sex = F [ Mode: 0 ] 
+								SpecialOffer_Count <= 3 [ Mode: 0 ] => 0 
+								SpecialOffer_Count > 3 [ Mode: -1 ] 
+									SpecialOffer_C_Mean = Y [ Mode: 0 ] 
+										EducationLevel = Other [ Mode: 0 ] => 0 
+										EducationLevel = TD [ Mode: -1 ] => -1 
+									SpecialOffer_C_Mean = N [ Mode: -1 ] => -1 
+							Sex = M [ Mode: 0 ] 
+								Age_TILEN = old [ Mode: 0 ] 
+									SpecialOffer_Count <= 3 [ Mode: 0 ] 
+										PhoneNo_BIN = 2 [ Mode: -1 ] => -1 
+										PhoneNo_BIN = 1 [ Mode: 0 ] 
+											EducationLevel = Other [ Mode: 0 ] 
+												SpecialOffer_Count <= 2 [ Mode: 0 ] => 0 
+												SpecialOffer_Count > 2 [ Mode: 1 ] => 1 
+											EducationLevel = TD [ Mode: 0 ] => 0 
+									SpecialOffer_Count > 3 [ Mode: 0 ] => 0 
+								Age_TILEN = young [ Mode: 1 ] 
+									SpecialOffer_C_Mean = Y [ Mode: 1 ] => 1 
+									SpecialOffer_C_Mean = N [ Mode: 0 ] => 0 
+					SpecialOffer_Count > 4 [ Mode: 0 ] 
+						Age_TILEN = old [ Mode: 1 ] 
+							EducationLevel = Other [ Mode: 1 ] => 1 
+							EducationLevel = TD [ Mode: 0 ] => 0 
+						Age_TILEN = young [ Mode: 0 ] => 0 
+				SpecialOffer_Count > 5 [ Mode: 1 ] 
+					PhoneNo_BIN = 2 [ Mode: 1 ] => 1 
+					PhoneNo_BIN = 1 [ Mode: -1 ] 
+						SpecialOffer_C_Mean = Y [ Mode: -1 ] 
+							SpecialOffer_A_Mean = Y [ Mode: -1 ] => -1 
+							SpecialOffer_A_Mean = N [ Mode: 0 ] => 0 
+						SpecialOffer_C_Mean = N [ Mode: 1 ] => 1 
+			SpecialOffer_B_Mean = N [ Mode: 0 ] 
+				SpecialOffer_A_Mean = Y [ Mode: 1 ] 
+					PhoneNo_BIN = 2 [ Mode: 1 ] 
+						Age_TILEN = old [ Mode: 1 ] 
+							JoinFrom = AnF [ Mode: 1 ] 
+								SpecialOffer_Count <= 2 [ Mode: 1 ] => 1 
+								SpecialOffer_Count > 2 [ Mode: 0 ] => 0 
+							JoinFrom = Other [ Mode: 0 ] => 0 
+						Age_TILEN = young [ Mode: 1 ] 
+							EducationLevel = Other [ Mode: 1 ] => 1 
+							EducationLevel = TD [ Mode: 0 ] => 0 
+					PhoneNo_BIN = 1 [ Mode: 0 ] 
+						JoinFrom = AnF [ Mode: 0 ] => 0 
+						JoinFrom = Other [ Mode: 1 ] 
+							SpecialOffer_C_Mean = Y [ Mode: 0 ] => 0 
+							SpecialOffer_C_Mean = N [ Mode: 1 ] => 1 
+				SpecialOffer_A_Mean = N [ Mode: 0 ] => 0 
+		Method > 1 [ Mode: 0 ] 
+			Method <= 3 [ Mode: 0 ] 
+				JoinFrom = AnF [ Mode: 0 ] 
+					SpecialOffer_B_Mean = Y [ Mode: 0 ] 
+						Age_TILEN = old [ Mode: 0 ] 
+							SpecialOffer_A_Mean = Y [ Mode: 0 ] 
+								Sex = F [ Mode: 0 ] 
+									PhoneNo_BIN = 2 [ Mode: 0 ] => 0 
+									PhoneNo_BIN = 1 [ Mode: -1 ] 
+										EducationLevel = Other [ Mode: -1 ] => -1 
+										EducationLevel = TD [ Mode: 0 ] => 0 
+								Sex = M [ Mode: 0 ] 
+									PhoneNo_BIN = 2 [ Mode: 0 ] => 0 
+									PhoneNo_BIN = 1 [ Mode: 0 ] 
+										Method <= 2 [ Mode: 1 ] => 1 
+										Method > 2 [ Mode: 0 ] => 0 
+							SpecialOffer_A_Mean = N [ Mode: -1 ] 
+								SpecialOffer_Count <= 3 [ Mode: 0 ] => 0 
+								SpecialOffer_Count > 3 [ Mode: -1 ] => -1 
+						Age_TILEN = young [ Mode: 0 ] 
+							Sex = F [ Mode: -1 ] 
+								SpecialOffer_A_Mean = Y [ Mode: -1 ] 
+									EducationLevel = Other [ Mode: -1 ] => -1 
+									EducationLevel = TD [ Mode: 0 ] 
+										SpecialOffer_C_Mean = Y [ Mode: -1 ] 
+											SpecialOffer_Count <= 3 [ Mode: -1 ] => -1 
+											SpecialOffer_Count > 3 [ Mode: 0 ] 
+												Method <= 2 [ Mode: -1 ] 
+													PhoneNo_BIN = 2 [ Mode: -1 ] => -1 
+													PhoneNo_BIN = 1 [ Mode: 0 ] => 0 
+												Method > 2 [ Mode: 0 ] => 0 
+										SpecialOffer_C_Mean = N [ Mode: 0 ] => 0 
+								SpecialOffer_A_Mean = N [ Mode: 0 ] => 0 
+							Sex = M [ Mode: 0 ] 
+								Method <= 2 [ Mode: 0 ] => 0 
+								Method > 2 [ Mode: 0 ] 
+									SpecialOffer_C_Mean = Y [ Mode: 0 ] => 0 
+									SpecialOffer_C_Mean = N [ Mode: 0 ] 
+										SpecialOffer_A_Mean = Y [ Mode: 0 ] 
+											SpecialOffer_Count <= 4 [ Mode: 0 ] 
+												SpecialOffer_Count <= 3 [ Mode: 0 ] => 0 
+												SpecialOffer_Count > 3 [ Mode: -1 ] => -1 
+											SpecialOffer_Count > 4 [ Mode: 0 ] => 0 
+										SpecialOffer_A_Mean = N [ Mode: -1 ] => -1 
+					SpecialOffer_B_Mean = N [ Mode: 0 ] 
+						Sex = F [ Mode: 0 ] 
+							PhoneNo_BIN = 2 [ Mode: -1 ] => -1 
+							PhoneNo_BIN = 1 [ Mode: 0 ] => 0 
+						Sex = M [ Mode: 1 ] 
+							Age_TILEN = old [ Mode: 0 ] => 0 
+							Age_TILEN = young [ Mode: 1 ] 
+								SpecialOffer_C_Mean = Y [ Mode: 1 ] 
+									PhoneNo_BIN = 2 [ Mode: 1 ] => 1 
+									PhoneNo_BIN = 1 [ Mode: 1 ] 
+										EducationLevel = Other [ Mode: 1 ] => 1 
+										EducationLevel = TD [ Mode: 0 ] => 0 
+								SpecialOffer_C_Mean = N [ Mode: 0 ] => 0 
+				JoinFrom = Other [ Mode: -1 ] 
+					SpecialOffer_Count <= 2 [ Mode: -1 ] 
+						Method <= 2 [ Mode: -1 ] 
+							SpecialOffer_C_Mean = Y [ Mode: 1 ] 
+								EducationLevel = Other [ Mode: 0 ] 
+									SpecialOffer_B_Mean = Y [ Mode: 0 ] => 0 
+									SpecialOffer_B_Mean = N [ Mode: -1 ] 
+										SpecialOffer_A_Mean = Y [ Mode: 0 ] => 0 
+										SpecialOffer_A_Mean = N [ Mode: -1 ] => -1 
+								EducationLevel = TD [ Mode: 1 ] 
+									SpecialOffer_A_Mean = Y [ Mode: 0 ] 
+										PhoneNo_BIN = 2 [ Mode: 0 ] => 0 
+										PhoneNo_BIN = 1 [ Mode: 1 ] => 1 
+									SpecialOffer_A_Mean = N [ Mode: 1 ] 
+										Sex = F [ Mode: 1 ] 
+											SpecialOffer_B_Mean = Y [ Mode: 1 ] 
+												PhoneNo_BIN = 2 [ Mode: 0 ] => 0 
+												PhoneNo_BIN = 1 [ Mode: 1 ] => 1 
+											SpecialOffer_B_Mean = N [ Mode: 1 ] => 1 
+										Sex = M [ Mode: 1 ] 
+											PhoneNo_BIN = 2 [ Mode: 1 ] 
+												Age_TILEN = old [ Mode: 1 ] => 1 
+												Age_TILEN = young [ Mode: -1 ] => -1 
+											PhoneNo_BIN = 1 [ Mode: 0 ] => 0 
+							SpecialOffer_C_Mean = N [ Mode: -1 ] 
+								PhoneNo_BIN = 2 [ Mode: -1 ] 
+									SpecialOffer_B_Mean = Y [ Mode: -1 ] 
+										EducationLevel = Other [ Mode: -1 ] 
+											SpecialOffer_A_Mean = Y [ Mode: 0 ] => 0 
+											SpecialOffer_A_Mean = N [ Mode: -1 ] 
+												Age_TILEN = old [ Mode: -1 ] => -1 
+												Age_TILEN = young [ Mode: 0 ] => 0 
+										EducationLevel = TD [ Mode: -1 ] => -1 
+									SpecialOffer_B_Mean = N [ Mode: 1 ] => 1 
+								PhoneNo_BIN = 1 [ Mode: -1 ] 
+									SpecialOffer_A_Mean = Y [ Mode: -1 ] 
+										Age_TILEN = old [ Mode: -1 ] => -1 
+										Age_TILEN = young [ Mode: -1 ] 
+											EducationLevel = Other [ Mode: -1 ] => -1 
+											EducationLevel = TD [ Mode: 1 ] => 1 
+									SpecialOffer_A_Mean = N [ Mode: 1 ] 
+										Sex = F [ Mode: 0 ] => 0 
+										Sex = M [ Mode: 1 ] => 1 
+						Method > 2 [ Mode: -1 ] 
+							Age_TILEN = old [ Mode: -1 ] 
+								SpecialOffer_C_Mean = Y [ Mode: -1 ] => -1 
+								SpecialOffer_C_Mean = N [ Mode: 0 ] 
+									Sex = F [ Mode: 1 ] => 1 
+									Sex = M [ Mode: 0 ] => 0 
+							Age_TILEN = young [ Mode: 1 ] 
+								EducationLevel = Other [ Mode: 1 ] 
+									PhoneNo_BIN = 2 [ Mode: 1 ] 
+										Sex = F [ Mode: 0 ] => 0 
+										Sex = M [ Mode: 1 ] 
+											SpecialOffer_A_Mean = Y [ Mode: 1 ] => 1 
+											SpecialOffer_A_Mean = N [ Mode: 0 ] => 0 
+									PhoneNo_BIN = 1 [ Mode: 0 ] 
+										Sex = F [ Mode: 1 ] 
+											SpecialOffer_C_Mean = Y [ Mode: 1 ] => 1 
+											SpecialOffer_C_Mean = N [ Mode: 0 ] 
+												SpecialOffer_B_Mean = Y [ Mode: 1 ] => 1 
+												SpecialOffer_B_Mean = N [ Mode: 0 ] => 0 
+										Sex = M [ Mode: 0 ] => 0 
+								EducationLevel = TD [ Mode: -1 ] => -1 
+					SpecialOffer_Count > 2 [ Mode: 0 ] 
+						SpecialOffer_B_Mean = Y [ Mode: 0 ] 
+							SpecialOffer_Count <= 3 [ Mode: 0 ] 
+								EducationLevel = Other [ Mode: 1 ] 
+									Age_TILEN = old [ Mode: 0 ] => 0 
+									Age_TILEN = young [ Mode: 1 ] => 1 
+								EducationLevel = TD [ Mode: 0 ] => 0 
+							SpecialOffer_Count > 3 [ Mode: -1 ] 
+								EducationLevel = Other [ Mode: 0 ] 
+									SpecialOffer_C_Mean = Y [ Mode: 0 ] 
+										SpecialOffer_Count <= 6 [ Mode: 0 ] 
+											Sex = F [ Mode: 1 ] 
+												PhoneNo_BIN = 2 [ Mode: 0 ] => 0 
+												PhoneNo_BIN = 1 [ Mode: 1 ] 
+													Age_TILEN = old [ Mode: 1 ] => 1 
+													Age_TILEN = young [ Mode: 0 ] 
+														SpecialOffer_Count <= 4 [ Mode: 1 ] => 1 
+														SpecialOffer_Count > 4 [ Mode: 0 ] => 0 
+											Sex = M [ Mode: 0 ] 
+												PhoneNo_BIN = 2 [ Mode: -1 ] 
+													Method <= 2 [ Mode: -1 ] => -1 
+													Method > 2 [ Mode: 1 ] => 1 
+												PhoneNo_BIN = 1 [ Mode: 0 ] => 0 
+										SpecialOffer_Count > 6 [ Mode: -1 ] => -1 
+									SpecialOffer_C_Mean = N [ Mode: 0 ] => 0 
+								EducationLevel = TD [ Mode: -1 ] 
+									Sex = F [ Mode: 0 ] 
+										PhoneNo_BIN = 2 [ Mode: -1 ] 
+											SpecialOffer_C_Mean = Y [ Mode: 0 ] => 0 
+											SpecialOffer_C_Mean = N [ Mode: -1 ] => -1 
+										PhoneNo_BIN = 1 [ Mode: 0 ] => 0 
+									Sex = M [ Mode: -1 ] 
+										SpecialOffer_C_Mean = Y [ Mode: -1 ] 
+											SpecialOffer_A_Mean = Y [ Mode: -1 ] 
+												SpecialOffer_Count <= 5 [ Mode: -1 ] 
+													Method <= 2 [ Mode: -1 ] 
+														PhoneNo_BIN = 2 [ Mode: 1 ] => 1 
+														PhoneNo_BIN = 1 [ Mode: -1 ] => -1 
+													Method > 2 [ Mode: -1 ] 
+														PhoneNo_BIN = 2 [ Mode: -1 ] => -1 
+														PhoneNo_BIN = 1 [ Mode: 1 ] => 1 
+												SpecialOffer_Count > 5 [ Mode: -1 ] => -1 
+											SpecialOffer_A_Mean = N [ Mode: -1 ] => -1 
+										SpecialOffer_C_Mean = N [ Mode: 1 ] 
+											Age_TILEN = old [ Mode: 0 ] => 0 
+											Age_TILEN = young [ Mode: 1 ] => 1 
+						SpecialOffer_B_Mean = N [ Mode: 1 ] 
+							SpecialOffer_C_Mean = Y [ Mode: 1 ] 
+								PhoneNo_BIN = 2 [ Mode: 0 ] 
+									Age_TILEN = old [ Mode: 0 ] => 0 
+									Age_TILEN = young [ Mode: 1 ] => 1 
+								PhoneNo_BIN = 1 [ Mode: 1 ] 
+									SpecialOffer_Count <= 4 [ Mode: 1 ] 
+										Method <= 2 [ Mode: 1 ] => 1 
+										Method > 2 [ Mode: 0 ] => 0 
+									SpecialOffer_Count > 4 [ Mode: 0 ] => 0 
+							SpecialOffer_C_Mean = N [ Mode: -1 ] => -1 
+			Method > 3 [ Mode: 0 ] 
+				SpecialOffer_B_Mean = Y [ Mode: 0 ] 
+					SpecialOffer_Count <= 4 [ Mode: 0 ] 
+						PhoneNo_BIN = 2 [ Mode: 1 ] 
+							Age_TILEN = old [ Mode: 1 ] 
+								EducationLevel = Other [ Mode: 1 ] 
+									SpecialOffer_Count <= 2 [ Mode: 0 ] => 0 
+									SpecialOffer_Count > 2 [ Mode: 1 ] 
+										Sex = F [ Mode: 1 ] 
+											SpecialOffer_C_Mean = Y [ Mode: 0 ] => 0 
+											SpecialOffer_C_Mean = N [ Mode: 1 ] => 1 
+										Sex = M [ Mode: 1 ] => 1 
+								EducationLevel = TD [ Mode: 0 ] 
+									SpecialOffer_C_Mean = Y [ Mode: 1 ] => 1 
+									SpecialOffer_C_Mean = N [ Mode: 0 ] => 0 
+							Age_TILEN = young [ Mode: 0 ] 
+								EducationLevel = Other [ Mode: -1 ] 
+									SpecialOffer_Count <= 2 [ Mode: 0 ] => 0 
+									SpecialOffer_Count > 2 [ Mode: -1 ] 
+										SpecialOffer_Count <= 3 [ Mode: -1 ] 
+											SpecialOffer_A_Mean = Y [ Mode: -1 ] => -1 
+											SpecialOffer_A_Mean = N [ Mode: 0 ] => 0 
+										SpecialOffer_Count > 3 [ Mode: 0 ] => 0 
+								EducationLevel = TD [ Mode: 1 ] 
+									JoinFrom = AnF [ Mode: 0 ] 
+										SpecialOffer_A_Mean = Y [ Mode: 1 ] 
+											SpecialOffer_Count <= 3 [ Mode: 1 ] => 1 
+											SpecialOffer_Count > 3 [ Mode: 0 ] => 0 
+										SpecialOffer_A_Mean = N [ Mode: 0 ] => 0 
+									JoinFrom = Other [ Mode: 1 ] => 1 
+						PhoneNo_BIN = 1 [ Mode: 0 ] 
+							JoinFrom = AnF [ Mode: 0 ] 
+								Sex = F [ Mode: 0 ] 
+									Age_TILEN = old [ Mode: -1 ] => -1 
+									Age_TILEN = young [ Mode: 0 ] => 0 
+								Sex = M [ Mode: 0 ] => 0 
+							JoinFrom = Other [ Mode: 1 ] 
+								EducationLevel = Other [ Mode: 1 ] 
+									SpecialOffer_Count <= 3 [ Mode: 1 ] 
+										SpecialOffer_C_Mean = Y [ Mode: 0 ] => 0 
+										SpecialOffer_C_Mean = N [ Mode: 1 ] 
+											SpecialOffer_Count <= 2 [ Mode: 1 ] 
+												SpecialOffer_A_Mean = Y [ Mode: 0 ] => 0 
+												SpecialOffer_A_Mean = N [ Mode: 1 ] => 1 
+											SpecialOffer_Count > 2 [ Mode: 1 ] => 1 
+									SpecialOffer_Count > 3 [ Mode: -1 ] 
+										SpecialOffer_A_Mean = Y [ Mode: -1 ] 
+											SpecialOffer_C_Mean = Y [ Mode: -1 ] => -1 
+											SpecialOffer_C_Mean = N [ Mode: 0 ] => 0 
+										SpecialOffer_A_Mean = N [ Mode: 1 ] => 1 
+								EducationLevel = TD [ Mode: 0 ] => 0 
+					SpecialOffer_Count > 4 [ Mode: 0 ] 
+						Age_TILEN = old [ Mode: 0 ] 
+							SpecialOffer_C_Mean = Y [ Mode: -1 ] 
+								Sex = F [ Mode: -1 ] => -1 
+								Sex = M [ Mode: 0 ] 
+									SpecialOffer_A_Mean = Y [ Mode: 0 ] => 0 
+									SpecialOffer_A_Mean = N [ Mode: -1 ] => -1 
+							SpecialOffer_C_Mean = N [ Mode: 0 ] => 0 
+						Age_TILEN = young [ Mode: 1 ] 
+							PhoneNo_BIN = 2 [ Mode: 0 ] => 0 
+							PhoneNo_BIN = 1 [ Mode: 1 ] 
+								Sex = F [ Mode: -1 ] => -1 
+								Sex = M [ Mode: 1 ] => 1 
+				SpecialOffer_B_Mean = N [ Mode: 0 ] 
+					SpecialOffer_Count <= 2 [ Mode: 0 ] 
+						EducationLevel = Other [ Mode: 0 ] 
+							JoinFrom = AnF [ Mode: 1 ] 
+								SpecialOffer_C_Mean = Y [ Mode: 1 ] => 1 
+								SpecialOffer_C_Mean = N [ Mode: 0 ] => 0 
+							JoinFrom = Other [ Mode: 0 ] 
+								PhoneNo_BIN = 2 [ Mode: 0 ] => 0 
+								PhoneNo_BIN = 1 [ Mode: 0 ] 
+									SpecialOffer_C_Mean = Y [ Mode: 0 ] => 0 
+									SpecialOffer_C_Mean = N [ Mode: 1 ] => 1 
+						EducationLevel = TD [ Mode: 0 ] 
+							Sex = F [ Mode: -1 ] => -1 
+							Sex = M [ Mode: 0 ] 
+								PhoneNo_BIN = 2 [ Mode: 0 ] => 0 
+								PhoneNo_BIN = 1 [ Mode: 0 ] 
+									SpecialOffer_A_Mean = Y [ Mode: -1 ] => -1 
+									SpecialOffer_A_Mean = N [ Mode: 0 ] => 0 
+					SpecialOffer_Count > 2 [ Mode: -1 ] 
+						SpecialOffer_Count <= 4 [ Mode: -1 ] 
+							Sex = F [ Mode: -1 ] 
+								SpecialOffer_Count <= 3 [ Mode: 0 ] 
+									EducationLevel = Other [ Mode: 0 ] => 0 
+									EducationLevel = TD [ Mode: -1 ] => -1 
+								SpecialOffer_Count > 3 [ Mode: -1 ] 
+									Age_TILEN = old [ Mode: -1 ] => -1 
+									Age_TILEN = young [ Mode: 0 ] => 0 
+							Sex = M [ Mode: -1 ] 
+								JoinFrom = AnF [ Mode: -1 ] => -1 
+								JoinFrom = Other [ Mode: 1 ] 
+									PhoneNo_BIN = 2 [ Mode: 1 ] => 1 
+									PhoneNo_BIN = 1 [ Mode: 0 ] => 0 
+						SpecialOffer_Count > 4 [ Mode: 1 ] => 1 
+Rule 9 - estimated accuracy 76.32% [boost 95.9%]
+	SpecialOffer_Count <= 1 [ Mode: -1 ] 
+		Method <= 3 [ Mode: -1 ] 
+			PhoneNo_BIN = 2 [ Mode: -1 ] 
+				Method <= 1 [ Mode: -1 ] 
+					EducationLevel = Other [ Mode: -1 ] 
+						JoinFrom = AnF [ Mode: -1 ] 
+							Age_TILEN = old [ Mode: 0 ] => 0 
+							Age_TILEN = young [ Mode: -1 ] 
+								Sex = F [ Mode: -1 ] => -1 
+								Sex = M [ Mode: 0 ] => 0 
+						JoinFrom = Other [ Mode: 0 ] => 0 
+					EducationLevel = TD [ Mode: 1 ] 
+						JoinFrom = AnF [ Mode: 0 ] => 0 
+						JoinFrom = Other [ Mode: 1 ] 
+							SpecialOffer_B_Mean = Y [ Mode: 1 ] => 1 
+							SpecialOffer_B_Mean = N [ Mode: 1 ] 
+								Age_TILEN = old [ Mode: -1 ] => -1 
+								Age_TILEN = young [ Mode: 1 ] => 1 
+				Method > 1 [ Mode: 1 ] 
+					SpecialOffer_C_Mean = Y [ Mode: -1 ] 
+						EducationLevel = Other [ Mode: -1 ] 
+							Method <= 2 [ Mode: -1 ] => -1 
+							Method > 2 [ Mode: 0 ] => 0 
+						EducationLevel = TD [ Mode: -1 ] => -1 
+					SpecialOffer_C_Mean = N [ Mode: 1 ] 
+						Method <= 2 [ Mode: 1 ] 
+							JoinFrom = AnF [ Mode: 1 ] 
+								SpecialOffer_A_Mean = Y [ Mode: 1 ] 
+									Sex = F [ Mode: 1 ] 
+										Age_TILEN = old [ Mode: 1 ] => 1 
+										Age_TILEN = young [ Mode: 0 ] => 0 
+									Sex = M [ Mode: 1 ] => 1 
+								SpecialOffer_A_Mean = N [ Mode: 0 ] => 0 
+							JoinFrom = Other [ Mode: 1 ] 
+								Age_TILEN = old [ Mode: -1 ] 
+									Sex = F [ Mode: -1 ] => -1 
+									Sex = M [ Mode: 1 ] => 1 
+								Age_TILEN = young [ Mode: 1 ] 
+									EducationLevel = Other [ Mode: 0 ] => 0 
+									EducationLevel = TD [ Mode: 1 ] => 1 
+						Method > 2 [ Mode: 1 ] 
+							Sex = F [ Mode: 1 ] 
+								EducationLevel = Other [ Mode: 1 ] 
+									Age_TILEN = old [ Mode: -1 ] 
+										JoinFrom = AnF [ Mode: 0 ] => 0 
+										JoinFrom = Other [ Mode: -1 ] => -1 
+									Age_TILEN = young [ Mode: 1 ] 
+										JoinFrom = AnF [ Mode: 1 ] 
+											SpecialOffer_A_Mean = Y [ Mode: -1 ] => -1 
+											SpecialOffer_A_Mean = N [ Mode: 1 ] => 1 
+										JoinFrom = Other [ Mode: 0 ] => 0 
+								EducationLevel = TD [ Mode: 1 ] => 1 
+							Sex = M [ Mode: -1 ] => -1 
+			PhoneNo_BIN = 1 [ Mode: -1 ] 
+				JoinFrom = AnF [ Mode: -1 ] 
+					Method <= 1 [ Mode: 0 ] 
+						SpecialOffer_C_Mean = Y [ Mode: 1 ] => 1 
+						SpecialOffer_C_Mean = N [ Mode: 0 ] => 0 
+					Method > 1 [ Mode: -1 ] 
+						SpecialOffer_B_Mean = Y [ Mode: 0 ] => 0 
+						SpecialOffer_B_Mean = N [ Mode: -1 ] => -1 
+				JoinFrom = Other [ Mode: 0 ] 
+					SpecialOffer_A_Mean = Y [ Mode: 1 ] 
+						Age_TILEN = old [ Mode: 1 ] 
+							Sex = F [ Mode: -1 ] => -1 
+							Sex = M [ Mode: 1 ] 
+								Method <= 2 [ Mode: -1 ] => -1 
+								Method > 2 [ Mode: 1 ] => 1 
+						Age_TILEN = young [ Mode: 1 ] => 1 
+					SpecialOffer_A_Mean = N [ Mode: -1 ] 
+						Method <= 1 [ Mode: -1 ] 
+							SpecialOffer_B_Mean = Y [ Mode: 1 ] => 1 
+							SpecialOffer_B_Mean = N [ Mode: -1 ] => -1 
+						Method > 1 [ Mode: 0 ] 
+							Sex = F [ Mode: 0 ] => 0 
+							Sex = M [ Mode: 0 ] 
+								EducationLevel = Other [ Mode: 0 ] => 0 
+								EducationLevel = TD [ Mode: -1 ] => -1 
+		Method > 3 [ Mode: -1 ] 
+			Sex = F [ Mode: -1 ] 
+				Age_TILEN = old [ Mode: -1 ] 
+					SpecialOffer_A_Mean = Y [ Mode: 0 ] => 0 
+					SpecialOffer_A_Mean = N [ Mode: -1 ] 
+						SpecialOffer_B_Mean = Y [ Mode: -1 ] 
+							EducationLevel = Other [ Mode: 0 ] => 0 
+							EducationLevel = TD [ Mode: -1 ] => -1 
+						SpecialOffer_B_Mean = N [ Mode: -1 ] 
+							EducationLevel = Other [ Mode: -1 ] => -1 
+							EducationLevel = TD [ Mode: 0 ] => 0 
+				Age_TILEN = young [ Mode: -1 ] 
+					SpecialOffer_B_Mean = Y [ Mode: -1 ] 
+						JoinFrom = AnF [ Mode: 0 ] => 0 
+						JoinFrom = Other [ Mode: -1 ] 
+							EducationLevel = Other [ Mode: -1 ] => -1 
+							EducationLevel = TD [ Mode: 0 ] => 0 
+					SpecialOffer_B_Mean = N [ Mode: -1 ] => -1 
+			Sex = M [ Mode: 1 ] 
+				SpecialOffer_A_Mean = Y [ Mode: 0 ] => 0 
+				SpecialOffer_A_Mean = N [ Mode: 1 ] 
+					JoinFrom = AnF [ Mode: 0 ] => 0 
+					JoinFrom = Other [ Mode: 1 ] 
+						EducationLevel = Other [ Mode: 0 ] 
+							Age_TILEN = old [ Mode: 0 ] 
+								SpecialOffer_B_Mean = Y [ Mode: 0 ] 
+									PhoneNo_BIN = 2 [ Mode: 0 ] => 0 
+									PhoneNo_BIN = 1 [ Mode: 1 ] => 1 
+								SpecialOffer_B_Mean = N [ Mode: 0 ] => 0 
+							Age_TILEN = young [ Mode: -1 ] => -1 
+						EducationLevel = TD [ Mode: 1 ] 
+							PhoneNo_BIN = 2 [ Mode: 1 ] => 1 
+							PhoneNo_BIN = 1 [ Mode: 0 ] => 0 
+	SpecialOffer_Count > 1 [ Mode: 0 ] 
+		Method <= 1 [ Mode: 0 ] 
+			SpecialOffer_B_Mean = Y [ Mode: 0 ] 
+				JoinFrom = AnF [ Mode: 1 ] 
+					SpecialOffer_Count <= 4 [ Mode: 1 ] 
+						SpecialOffer_A_Mean = Y [ Mode: 1 ] 
+							Age_TILEN = old [ Mode: 1 ] 
+								Sex = F [ Mode: 1 ] 
+									EducationLevel = Other [ Mode: 0 ] => 0 
+									EducationLevel = TD [ Mode: 1 ] => 1 
+								Sex = M [ Mode: 1 ] 
+									SpecialOffer_Count <= 2 [ Mode: 1 ] 
+										EducationLevel = Other [ Mode: -1 ] => -1 
+										EducationLevel = TD [ Mode: 1 ] => 1 
+									SpecialOffer_Count > 2 [ Mode: 1 ] => 1 
+							Age_TILEN = young [ Mode: 0 ] 
+								PhoneNo_BIN = 2 [ Mode: 0 ] 
+									SpecialOffer_C_Mean = Y [ Mode: -1 ] => -1 
+									SpecialOffer_C_Mean = N [ Mode: 0 ] => 0 
+								PhoneNo_BIN = 1 [ Mode: 1 ] => 1 
+						SpecialOffer_A_Mean = N [ Mode: 0 ] 
+							Sex = F [ Mode: 0 ] => 0 
+							Sex = M [ Mode: 1 ] 
+								EducationLevel = Other [ Mode: 0 ] => 0 
+								EducationLevel = TD [ Mode: 1 ] => 1 
+					SpecialOffer_Count > 4 [ Mode: 0 ] => 0 
+				JoinFrom = Other [ Mode: 0 ] 
+					SpecialOffer_Count <= 4 [ Mode: 0 ] 
+						Age_TILEN = old [ Mode: 0 ] 
+							SpecialOffer_C_Mean = Y [ Mode: 0 ] 
+								SpecialOffer_A_Mean = Y [ Mode: 0 ] 
+									SpecialOffer_Count <= 3 [ Mode: -1 ] => -1 
+									SpecialOffer_Count > 3 [ Mode: 0 ] => 0 
+								SpecialOffer_A_Mean = N [ Mode: 0 ] 
+									Sex = F [ Mode: -1 ] => -1 
+									Sex = M [ Mode: 0 ] => 0 
+							SpecialOffer_C_Mean = N [ Mode: 0 ] 
+								SpecialOffer_Count <= 2 [ Mode: -1 ] => -1 
+								SpecialOffer_Count > 2 [ Mode: 1 ] => 1 
+						Age_TILEN = young [ Mode: 0 ] 
+							SpecialOffer_C_Mean = Y [ Mode: 0 ] 
+								SpecialOffer_Count <= 3 [ Mode: 1 ] => 1 
+								SpecialOffer_Count > 3 [ Mode: 0 ] 
+									SpecialOffer_A_Mean = Y [ Mode: 1 ] => 1 
+									SpecialOffer_A_Mean = N [ Mode: 0 ] => 0 
+							SpecialOffer_C_Mean = N [ Mode: 0 ] => 0 
+					SpecialOffer_Count > 4 [ Mode: 0 ] 
+						PhoneNo_BIN = 2 [ Mode: 1 ] => 1 
+						PhoneNo_BIN = 1 [ Mode: 0 ] 
+							Age_TILEN = old [ Mode: 0 ] 
+								SpecialOffer_C_Mean = Y [ Mode: -1 ] 
+									SpecialOffer_A_Mean = Y [ Mode: -1 ] 
+										SpecialOffer_Count <= 5 [ Mode: 0 ] => 0 
+										SpecialOffer_Count > 5 [ Mode: -1 ] => -1 
+									SpecialOffer_A_Mean = N [ Mode: 1 ] => 1 
+								SpecialOffer_C_Mean = N [ Mode: 1 ] => 1 
+							Age_TILEN = young [ Mode: 0 ] => 0 
+			SpecialOffer_B_Mean = N [ Mode: 0 ] 
+				SpecialOffer_A_Mean = Y [ Mode: 1 ] 
+					SpecialOffer_Count <= 3 [ Mode: 1 ] 
+						PhoneNo_BIN = 2 [ Mode: 1 ] 
+							Age_TILEN = old [ Mode: 1 ] 
+								JoinFrom = AnF [ Mode: 1 ] => 1 
+								JoinFrom = Other [ Mode: 0 ] => 0 
+							Age_TILEN = young [ Mode: 1 ] => 1 
+						PhoneNo_BIN = 1 [ Mode: 0 ] 
+							JoinFrom = AnF [ Mode: 0 ] => 0 
+							JoinFrom = Other [ Mode: 1 ] 
+								SpecialOffer_C_Mean = Y [ Mode: 0 ] => 0 
+								SpecialOffer_C_Mean = N [ Mode: 1 ] => 1 
+					SpecialOffer_Count > 3 [ Mode: 0 ] => 0 
+				SpecialOffer_A_Mean = N [ Mode: 0 ] => 0 
+		Method > 1 [ Mode: 0 ] 
+			SpecialOffer_Count <= 5 [ Mode: 0 ] 
+				Method <= 2 [ Mode: -1 ] 
+					SpecialOffer_C_Mean = Y [ Mode: 1 ] 
+						SpecialOffer_B_Mean = Y [ Mode: -1 ] 
+							Age_TILEN = old [ Mode: -1 ] 
+								Sex = F [ Mode: 1 ] 
+									SpecialOffer_Count <= 3 [ Mode: 0 ] 
+										EducationLevel = Other [ Mode: 0 ] => 0 
+										EducationLevel = TD [ Mode: 1 ] => 1 
+									SpecialOffer_Count > 3 [ Mode: 1 ] 
+										SpecialOffer_A_Mean = Y [ Mode: 1 ] 
+											SpecialOffer_Count <= 4 [ Mode: 1 ] 
+												EducationLevel = Other [ Mode: 1 ] => 1 
+												EducationLevel = TD [ Mode: 0 ] => 0 
+											SpecialOffer_Count > 4 [ Mode: 0 ] => 0 
+										SpecialOffer_A_Mean = N [ Mode: -1 ] => -1 
+								Sex = M [ Mode: -1 ] 
+									JoinFrom = AnF [ Mode: 0 ] => 0 
+									JoinFrom = Other [ Mode: -1 ] 
+										PhoneNo_BIN = 2 [ Mode: -1 ] 
+											SpecialOffer_Count <= 2 [ Mode: -1 ] => -1 
+											SpecialOffer_Count > 2 [ Mode: -1 ] 
+												SpecialOffer_Count <= 4 [ Mode: -1 ] => -1 
+												SpecialOffer_Count > 4 [ Mode: 1 ] => 1 
+										PhoneNo_BIN = 1 [ Mode: -1 ] 
+											SpecialOffer_Count <= 3 [ Mode: 0 ] => 0 
+											SpecialOffer_Count > 3 [ Mode: -1 ] 
+												SpecialOffer_A_Mean = Y [ Mode: -1 ] => -1 
+												SpecialOffer_A_Mean = N [ Mode: 0 ] => 0 
+							Age_TILEN = young [ Mode: 0 ] 
+								EducationLevel = Other [ Mode: 0 ] 
+									JoinFrom = AnF [ Mode: 0 ] => 0 
+									JoinFrom = Other [ Mode: 1 ] 
+										PhoneNo_BIN = 2 [ Mode: 1 ] => 1 
+										PhoneNo_BIN = 1 [ Mode: -1 ] => -1 
+								EducationLevel = TD [ Mode: 0 ] 
+									SpecialOffer_Count <= 3 [ Mode: -1 ] => -1 
+									SpecialOffer_Count > 3 [ Mode: 0 ] => 0 
+						SpecialOffer_B_Mean = N [ Mode: 1 ] 
+							SpecialOffer_Count <= 3 [ Mode: 1 ] 
+								PhoneNo_BIN = 2 [ Mode: 0 ] 
+									Age_TILEN = old [ Mode: 0 ] 
+										Sex = F [ Mode: 1 ] 
+											EducationLevel = Other [ Mode: 0 ] => 0 
+											EducationLevel = TD [ Mode: 1 ] => 1 
+										Sex = M [ Mode: 0 ] => 0 
+									Age_TILEN = young [ Mode: -1 ] => -1 
+								PhoneNo_BIN = 1 [ Mode: 1 ] 
+									SpecialOffer_A_Mean = Y [ Mode: 1 ] 
+										Age_TILEN = old [ Mode: 1 ] => 1 
+										Age_TILEN = young [ Mode: 1 ] 
+											JoinFrom = AnF [ Mode: 1 ] => 1 
+											JoinFrom = Other [ Mode: 0 ] => 0 
+									SpecialOffer_A_Mean = N [ Mode: -1 ] 
+										Age_TILEN = old [ Mode: -1 ] => -1 
+										Age_TILEN = young [ Mode: 1 ] => 1 
+							SpecialOffer_Count > 3 [ Mode: 0 ] 
+								SpecialOffer_Count <= 4 [ Mode: 1 ] 
+									Age_TILEN = old [ Mode: 1 ] 
+										PhoneNo_BIN = 2 [ Mode: 0 ] => 0 
+										PhoneNo_BIN = 1 [ Mode: 1 ] 
+											Sex = F [ Mode: 1 ] => 1 
+											Sex = M [ Mode: 0 ] => 0 
+									Age_TILEN = young [ Mode: 0 ] => 0 
+								SpecialOffer_Count > 4 [ Mode: 0 ] => 0 
+					SpecialOffer_C_Mean = N [ Mode: -1 ] 
+						Sex = F [ Mode: -1 ] 
+							SpecialOffer_A_Mean = Y [ Mode: -1 ] 
+								EducationLevel = Other [ Mode: -1 ] 
+									JoinFrom = AnF [ Mode: -1 ] => -1 
+									JoinFrom = Other [ Mode: -1 ] 
+										SpecialOffer_B_Mean = Y [ Mode: 0 ] => 0 
+										SpecialOffer_B_Mean = N [ Mode: -1 ] 
+											Age_TILEN = old [ Mode: 0 ] => 0 
+											Age_TILEN = young [ Mode: -1 ] => -1 
+								EducationLevel = TD [ Mode: -1 ] 
+									JoinFrom = AnF [ Mode: 0 ] => 0 
+									JoinFrom = Other [ Mode: -1 ] => -1 
+							SpecialOffer_A_Mean = N [ Mode: 0 ] => 0 
+						Sex = M [ Mode: 1 ] 
+							EducationLevel = Other [ Mode: 1 ] 
+								SpecialOffer_A_Mean = Y [ Mode: 1 ] 
+									SpecialOffer_Count <= 3 [ Mode: 1 ] 
+										Age_TILEN = old [ Mode: 0 ] 
+											PhoneNo_BIN = 2 [ Mode: 0 ] => 0 
+											PhoneNo_BIN = 1 [ Mode: 1 ] => 1 
+										Age_TILEN = young [ Mode: 1 ] 
+											PhoneNo_BIN = 2 [ Mode: 1 ] => 1 
+											PhoneNo_BIN = 1 [ Mode: -1 ] => -1 
+									SpecialOffer_Count > 3 [ Mode: 0 ] => 0 
+								SpecialOffer_A_Mean = N [ Mode: -1 ] 
+									Age_TILEN = old [ Mode: -1 ] 
+										PhoneNo_BIN = 2 [ Mode: -1 ] => -1 
+										PhoneNo_BIN = 1 [ Mode: 1 ] => 1 
+									Age_TILEN = young [ Mode: 0 ] => 0 
+							EducationLevel = TD [ Mode: 0 ] 
+								SpecialOffer_Count <= 3 [ Mode: 0 ] => 0 
+								SpecialOffer_Count > 3 [ Mode: -1 ] => -1 
+				Method > 2 [ Mode: 0 ] 
+					Method <= 3 [ Mode: 0 ] 
+						SpecialOffer_Count <= 3 [ Mode: 0 ] 
+							JoinFrom = AnF [ Mode: 0 ] 
+								SpecialOffer_B_Mean = Y [ Mode: 0 ] 
+									SpecialOffer_A_Mean = Y [ Mode: 0 ] 
+										SpecialOffer_C_Mean = Y [ Mode: -1 ] => -1 
+										SpecialOffer_C_Mean = N [ Mode: 0 ] => 0 
+									SpecialOffer_A_Mean = N [ Mode: -1 ] => -1 
+								SpecialOffer_B_Mean = N [ Mode: 0 ] 
+									Age_TILEN = old [ Mode: 0 ] => 0 
+									Age_TILEN = young [ Mode: 0 ] 
+										SpecialOffer_A_Mean = Y [ Mode: 0 ] 
+											PhoneNo_BIN = 2 [ Mode: 1 ] => 1 
+											PhoneNo_BIN = 1 [ Mode: 0 ] => 0 
+										SpecialOffer_A_Mean = N [ Mode: 1 ] => 1 
+							JoinFrom = Other [ Mode: 0 ] 
+								SpecialOffer_Count <= 2 [ Mode: -1 ] 
+									Age_TILEN = old [ Mode: -1 ] 
+										SpecialOffer_C_Mean = Y [ Mode: -1 ] 
+											Sex = F [ Mode: -1 ] => -1 
+											Sex = M [ Mode: 0 ] 
+												SpecialOffer_B_Mean = Y [ Mode: -1 ] => -1 
+												SpecialOffer_B_Mean = N [ Mode: 0 ] => 0 
+										SpecialOffer_C_Mean = N [ Mode: 0 ] 
+											Sex = F [ Mode: 1 ] => 1 
+											Sex = M [ Mode: 0 ] => 0 
+									Age_TILEN = young [ Mode: 1 ] 
+										SpecialOffer_A_Mean = Y [ Mode: 1 ] 
+											EducationLevel = Other [ Mode: 1 ] 
+												PhoneNo_BIN = 2 [ Mode: 1 ] 
+													Sex = F [ Mode: 0 ] => 0 
+													Sex = M [ Mode: 1 ] => 1 
+												PhoneNo_BIN = 1 [ Mode: -1 ] 
+													SpecialOffer_C_Mean = Y [ Mode: 0 ] => 0 
+													SpecialOffer_C_Mean = N [ Mode: -1 ] => -1 
+											EducationLevel = TD [ Mode: -1 ] => -1 
+										SpecialOffer_A_Mean = N [ Mode: 0 ] => 0 
+								SpecialOffer_Count > 2 [ Mode: 0 ] 
+									PhoneNo_BIN = 2 [ Mode: 0 ] => 0 
+									PhoneNo_BIN = 1 [ Mode: 0 ] 
+										Sex = F [ Mode: 0 ] => 0 
+										Sex = M [ Mode: 0 ] 
+											EducationLevel = Other [ Mode: 1 ] => 1 
+											EducationLevel = TD [ Mode: 0 ] 
+												SpecialOffer_C_Mean = Y [ Mode: 1 ] => 1 
+												SpecialOffer_C_Mean = N [ Mode: 0 ] => 0 
+						SpecialOffer_Count > 3 [ Mode: 0 ] 
+							SpecialOffer_A_Mean = Y [ Mode: 1 ] 
+								SpecialOffer_Count <= 4 [ Mode: 1 ] 
+									Sex = F [ Mode: 0 ] => 0 
+									Sex = M [ Mode: 1 ] 
+										JoinFrom = AnF [ Mode: 1 ] 
+											SpecialOffer_C_Mean = Y [ Mode: 1 ] 
+												Age_TILEN = old [ Mode: 0 ] => 0 
+												Age_TILEN = young [ Mode: 1 ] => 1 
+											SpecialOffer_C_Mean = N [ Mode: -1 ] => -1 
+										JoinFrom = Other [ Mode: 1 ] 
+											Age_TILEN = old [ Mode: 1 ] 
+												SpecialOffer_C_Mean = Y [ Mode: 1 ] => 1 
+												SpecialOffer_C_Mean = N [ Mode: 0 ] => 0 
+											Age_TILEN = young [ Mode: 1 ] => 1 
+								SpecialOffer_Count > 4 [ Mode: 0 ] 
+									EducationLevel = Other [ Mode: 0 ] => 0 
+									EducationLevel = TD [ Mode: -1 ] => -1 
+							SpecialOffer_A_Mean = N [ Mode: 0 ] 
+								PhoneNo_BIN = 2 [ Mode: 0 ] => 0 
+								PhoneNo_BIN = 1 [ Mode: -1 ] => -1 
+					Method > 3 [ Mode: 0 ] 
+						SpecialOffer_B_Mean = Y [ Mode: 1 ] 
+							SpecialOffer_Count <= 4 [ Mode: 1 ] 
+								JoinFrom = AnF [ Mode: 0 ] 
+									PhoneNo_BIN = 2 [ Mode: 1 ] 
+										Age_TILEN = old [ Mode: 0 ] 
+											SpecialOffer_A_Mean = Y [ Mode: 1 ] 
+												Sex = F [ Mode: 1 ] => 1 
+												Sex = M [ Mode: 0 ] 
+													EducationLevel = Other [ Mode: 0 ] => 0 
+													EducationLevel = TD [ Mode: 1 ] => 1 
+											SpecialOffer_A_Mean = N [ Mode: 0 ] => 0 
+										Age_TILEN = young [ Mode: 1 ] 
+											Sex = F [ Mode: 1 ] => 1 
+											Sex = M [ Mode: -1 ] 
+												EducationLevel = Other [ Mode: -1 ] => -1 
+												EducationLevel = TD [ Mode: 0 ] => 0 
+									PhoneNo_BIN = 1 [ Mode: 0 ] 
+										Sex = F [ Mode: 0 ] 
+											SpecialOffer_Count <= 3 [ Mode: 0 ] 
+												SpecialOffer_Count <= 2 [ Mode: -1 ] => -1 
+												SpecialOffer_Count > 2 [ Mode: 0 ] => 0 
+											SpecialOffer_Count > 3 [ Mode: -1 ] => -1 
+										Sex = M [ Mode: 0 ] 
+											SpecialOffer_Count <= 3 [ Mode: 0 ] => 0 
+											SpecialOffer_Count > 3 [ Mode: 1 ] => 1 
+								JoinFrom = Other [ Mode: 1 ] 
+									SpecialOffer_Count <= 2 [ Mode: 1 ] 
+										Age_TILEN = old [ Mode: 0 ] 
+											Sex = F [ Mode: 1 ] => 1 
+											Sex = M [ Mode: 0 ] => 0 
+										Age_TILEN = young [ Mode: 1 ] 
+											SpecialOffer_C_Mean = Y [ Mode: 1 ] => 1 
+											SpecialOffer_C_Mean = N [ Mode: 1 ] 
+												EducationLevel = Other [ Mode: 1 ] => 1 
+												EducationLevel = TD [ Mode: 0 ] => 0 
+									SpecialOffer_Count > 2 [ Mode: 1 ] 
+										SpecialOffer_C_Mean = Y [ Mode: 1 ] 
+											SpecialOffer_Count <= 3 [ Mode: 0 ] 
+												Sex = F [ Mode: -1 ] => -1 
+												Sex = M [ Mode: 0 ] => 0 
+											SpecialOffer_Count > 3 [ Mode: 1 ] 
+												PhoneNo_BIN = 2 [ Mode: 1 ] 
+													Sex = F [ Mode: 0 ] => 0 
+													Sex = M [ Mode: 1 ] => 1 
+												PhoneNo_BIN = 1 [ Mode: 1 ] 
+													EducationLevel = Other [ Mode: -1 ] 
+														SpecialOffer_A_Mean = Y [ Mode: -1 ] 
+															Age_TILEN = old [ Mode: 0 ] => 0 
+															Age_TILEN = young [ Mode: -1 ] => -1 
+														SpecialOffer_A_Mean = N [ Mode: 1 ] => 1 
+													EducationLevel = TD [ Mode: 1 ] 
+														Sex = F [ Mode: 1 ] 
+															Age_TILEN = old [ Mode: 1 ] 
+																SpecialOffer_A_Mean = Y [ Mode: 1 ] => 1 
+																SpecialOffer_A_Mean = N [ Mode: 0 ] => 0 
+															Age_TILEN = young [ Mode: 0 ] => 0 
+														Sex = M [ Mode: 1 ] => 1 
+										SpecialOffer_C_Mean = N [ Mode: 1 ] 
+											SpecialOffer_Count <= 3 [ Mode: 1 ] => 1 
+											SpecialOffer_Count > 3 [ Mode: -1 ] => -1 
+							SpecialOffer_Count > 4 [ Mode: -1 ] 
+								Sex = F [ Mode: -1 ] => -1 
+								Sex = M [ Mode: 1 ] 
+									JoinFrom = AnF [ Mode: -1 ] => -1 
+									JoinFrom = Other [ Mode: 1 ] 
+										Age_TILEN = old [ Mode: 0 ] => 0 
+										Age_TILEN = young [ Mode: 1 ] => 1 
+						SpecialOffer_B_Mean = N [ Mode: 0 ] 
+							SpecialOffer_C_Mean = Y [ Mode: -1 ] 
+								EducationLevel = Other [ Mode: -1 ] 
+									SpecialOffer_A_Mean = Y [ Mode: -1 ] 
+										SpecialOffer_Count <= 4 [ Mode: -1 ] 
+											JoinFrom = AnF [ Mode: -1 ] 
+												Sex = F [ Mode: 1 ] => 1 
+												Sex = M [ Mode: -1 ] 
+													Age_TILEN = old [ Mode: -1 ] => -1 
+													Age_TILEN = young [ Mode: -1 ] 
+														SpecialOffer_Count <= 2 [ Mode: 1 ] => 1 
+														SpecialOffer_Count > 2 [ Mode: -1 ] => -1 
+											JoinFrom = Other [ Mode: -1 ] 
+												Age_TILEN = old [ Mode: -1 ] 
+													Sex = F [ Mode: -1 ] => -1 
+													Sex = M [ Mode: 1 ] => 1 
+												Age_TILEN = young [ Mode: 0 ] => 0 
+										SpecialOffer_Count > 4 [ Mode: 1 ] => 1 
+									SpecialOffer_A_Mean = N [ Mode: 1 ] => 1 
+								EducationLevel = TD [ Mode: 0 ] 
+									Age_TILEN = old [ Mode: 0 ] 
+										Sex = F [ Mode: -1 ] => -1 
+										Sex = M [ Mode: 0 ] 
+											SpecialOffer_Count <= 2 [ Mode: 0 ] => 0 
+											SpecialOffer_Count > 2 [ Mode: 1 ] => 1 
+									Age_TILEN = young [ Mode: 0 ] => 0 
+							SpecialOffer_C_Mean = N [ Mode: 0 ] 
+								EducationLevel = Other [ Mode: 0 ] => 0 
+								EducationLevel = TD [ Mode: -1 ] => -1 
+			SpecialOffer_Count > 5 [ Mode: 0 ] 
+				JoinFrom = AnF [ Mode: 0 ] 
+					SpecialOffer_C_Mean = Y [ Mode: 0 ] => 0 
+					SpecialOffer_C_Mean = N [ Mode: 1 ] => 1 
+				JoinFrom = Other [ Mode: -1 ] 
+					SpecialOffer_B_Mean = Y [ Mode: -1 ] 
+						Method <= 2 [ Mode: 0 ] 
+							SpecialOffer_C_Mean = Y [ Mode: 0 ] 
+								PhoneNo_BIN = 2 [ Mode: 0 ] => 0 
+								PhoneNo_BIN = 1 [ Mode: 1 ] => 1 
+							SpecialOffer_C_Mean = N [ Mode: -1 ] => -1 
+						Method > 2 [ Mode: -1 ] 
+							SpecialOffer_C_Mean = Y [ Mode: -1 ] 
+								Age_TILEN = old [ Mode: -1 ] => -1 
+								Age_TILEN = young [ Mode: 0 ] 
+									Method <= 3 [ Mode: 0 ] => 0 
+									Method > 3 [ Mode: -1 ] => -1 
+							SpecialOffer_C_Mean = N [ Mode: 0 ] => 0 
+					SpecialOffer_B_Mean = N [ Mode: 0 ] => 0 
+Rule 10 - estimated accuracy 79.12% [boost 95.9%]
+	Sex = F [ Mode: -1 ] 
+		SpecialOffer_Count <= 1 [ Mode: -1 ] 
+			Method <= 3 [ Mode: 1 ] 
+				JoinFrom = AnF [ Mode: -1 ] 
+					Age_TILEN = old [ Mode: 0 ] => 0 
+					Age_TILEN = young [ Mode: -1 ] 
+						EducationLevel = Other [ Mode: -1 ] 
+							Method <= 2 [ Mode: -1 ] 
+								Method <= 1 [ Mode: -1 ] 
+									PhoneNo_BIN = 2 [ Mode: -1 ] => -1 
+									PhoneNo_BIN = 1 [ Mode: 0 ] => 0 
+								Method > 1 [ Mode: 0 ] => 0 
+							Method > 2 [ Mode: 1 ] 
+								PhoneNo_BIN = 2 [ Mode: 1 ] => 1 
+								PhoneNo_BIN = 1 [ Mode: -1 ] => -1 
+						EducationLevel = TD [ Mode: 0 ] => 0 
+				JoinFrom = Other [ Mode: 1 ] 
+					Age_TILEN = old [ Mode: 1 ] 
+						SpecialOffer_A_Mean = Y [ Mode: -1 ] => -1 
+						SpecialOffer_A_Mean = N [ Mode: 1 ] 
+							PhoneNo_BIN = 2 [ Mode: 1 ] 
+								Method <= 1 [ Mode: 1 ] => 1 
+								Method > 1 [ Mode: 1 ] 
+									EducationLevel = Other [ Mode: 1 ] 
+										Method <= 2 [ Mode: -1 ] => -1 
+										Method > 2 [ Mode: 1 ] => 1 
+									EducationLevel = TD [ Mode: -1 ] => -1 
+							PhoneNo_BIN = 1 [ Mode: 1 ] => 1 
+					Age_TILEN = young [ Mode: 1 ] 
+						Method <= 1 [ Mode: 1 ] 
+							EducationLevel = Other [ Mode: 0 ] => 0 
+							EducationLevel = TD [ Mode: 1 ] => 1 
+						Method > 1 [ Mode: 1 ] 
+							SpecialOffer_C_Mean = Y [ Mode: 0 ] => 0 
+							SpecialOffer_C_Mean = N [ Mode: 1 ] => 1 
+			Method > 3 [ Mode: -1 ] 
+				PhoneNo_BIN = 2 [ Mode: -1 ] 
+					Age_TILEN = old [ Mode: -1 ] 
+						SpecialOffer_A_Mean = Y [ Mode: 0 ] => 0 
+						SpecialOffer_A_Mean = N [ Mode: -1 ] 
+							EducationLevel = Other [ Mode: -1 ] => -1 
+							EducationLevel = TD [ Mode: 0 ] => 0 
+					Age_TILEN = young [ Mode: -1 ] => -1 
+				PhoneNo_BIN = 1 [ Mode: -1 ] => -1 
+		SpecialOffer_Count > 1 [ Mode: 0 ] 
+			Method <= 3 [ Mode: -1 ] 
+				JoinFrom = AnF [ Mode: -1 ] 
+					Method <= 1 [ Mode: 0 ] 
+						SpecialOffer_Count <= 3 [ Mode: 0 ] 
+							EducationLevel = Other [ Mode: 0 ] 
+								Age_TILEN = old [ Mode: 0 ] => 0 
+								Age_TILEN = young [ Mode: 1 ] => 1 
+							EducationLevel = TD [ Mode: 0 ] => 0 
+						SpecialOffer_Count > 3 [ Mode: 1 ] => 1 
+					Method > 1 [ Mode: -1 ] 
+						Age_TILEN = old [ Mode: -1 ] 
+							SpecialOffer_Count <= 3 [ Mode: 0 ] 
+								SpecialOffer_Count <= 2 [ Mode: -1 ] => -1 
+								SpecialOffer_Count > 2 [ Mode: 0 ] => 0 
+							SpecialOffer_Count > 3 [ Mode: 1 ] 
+								SpecialOffer_A_Mean = Y [ Mode: 1 ] 
+									Method <= 2 [ Mode: 1 ] => 1 
+									Method > 2 [ Mode: 0 ] => 0 
+								SpecialOffer_A_Mean = N [ Mode: -1 ] => -1 
+						Age_TILEN = young [ Mode: -1 ] 
+							SpecialOffer_A_Mean = Y [ Mode: -1 ] 
+								SpecialOffer_B_Mean = Y [ Mode: -1 ] 
+									SpecialOffer_Count <= 3 [ Mode: -1 ] => -1 
+									SpecialOffer_Count > 3 [ Mode: -1 ] 
+										Method <= 2 [ Mode: -1 ] => -1 
+										Method > 2 [ Mode: 0 ] => 0 
+								SpecialOffer_B_Mean = N [ Mode: 0 ] => 0 
+							SpecialOffer_A_Mean = N [ Mode: 0 ] => 0 
+				JoinFrom = Other [ Mode: 0 ] 
+					SpecialOffer_C_Mean = Y [ Mode: 0 ] 
+						SpecialOffer_Count <= 5 [ Mode: 1 ] 
+							SpecialOffer_Count <= 2 [ Mode: 1 ] 
+								PhoneNo_BIN = 2 [ Mode: 0 ] 
+									Method <= 2 [ Mode: 0 ] => 0 
+									Method > 2 [ Mode: -1 ] => -1 
+								PhoneNo_BIN = 1 [ Mode: -1 ] 
+									SpecialOffer_A_Mean = Y [ Mode: 1 ] 
+										Method <= 2 [ Mode: 0 ] => 0 
+										Method > 2 [ Mode: 1 ] => 1 
+									SpecialOffer_A_Mean = N [ Mode: -1 ] 
+										EducationLevel = Other [ Mode: -1 ] 
+											Method <= 2 [ Mode: -1 ] => -1 
+											Method > 2 [ Mode: 1 ] => 1 
+										EducationLevel = TD [ Mode: 1 ] 
+											Method <= 2 [ Mode: 1 ] => 1 
+											Method > 2 [ Mode: -1 ] => -1 
+							SpecialOffer_Count > 2 [ Mode: 0 ] 
+								Method <= 1 [ Mode: 0 ] 
+									SpecialOffer_Count <= 4 [ Mode: 0 ] 
+										SpecialOffer_Count <= 3 [ Mode: 0 ] => 0 
+										SpecialOffer_Count > 3 [ Mode: 0 ] 
+											PhoneNo_BIN = 2 [ Mode: -1 ] => -1 
+											PhoneNo_BIN = 1 [ Mode: 0 ] => 0 
+									SpecialOffer_Count > 4 [ Mode: 1 ] => 1 
+								Method > 1 [ Mode: 1 ] 
+									SpecialOffer_B_Mean = Y [ Mode: 0 ] 
+										EducationLevel = Other [ Mode: 1 ] 
+											SpecialOffer_Count <= 4 [ Mode: 1 ] 
+												Method <= 2 [ Mode: 1 ] => 1 
+												Method > 2 [ Mode: 0 ] => 0 
+											SpecialOffer_Count > 4 [ Mode: 0 ] => 0 
+										EducationLevel = TD [ Mode: 0 ] => 0 
+									SpecialOffer_B_Mean = N [ Mode: 1 ] 
+										EducationLevel = Other [ Mode: 1 ] 
+											Age_TILEN = old [ Mode: 1 ] 
+												SpecialOffer_Count <= 4 [ Mode: 1 ] 
+													Method <= 2 [ Mode: 1 ] => 1 
+													Method > 2 [ Mode: 0 ] => 0 
+												SpecialOffer_Count > 4 [ Mode: 0 ] => 0 
+											Age_TILEN = young [ Mode: 0 ] => 0 
+										EducationLevel = TD [ Mode: 1 ] => 1 
+						SpecialOffer_Count > 5 [ Mode: -1 ] 
+							Method <= 2 [ Mode: 0 ] => 0 
+							Method > 2 [ Mode: -1 ] 
+								Age_TILEN = old [ Mode: -1 ] => -1 
+								Age_TILEN = young [ Mode: 0 ] => 0 
+					SpecialOffer_C_Mean = N [ Mode: -1 ] 
+						SpecialOffer_A_Mean = Y [ Mode: -1 ] 
+							Method <= 1 [ Mode: 1 ] 
+								SpecialOffer_Count <= 3 [ Mode: 1 ] => 1 
+								SpecialOffer_Count > 3 [ Mode: -1 ] => -1 
+							Method > 1 [ Mode: -1 ] 
+								Age_TILEN = old [ Mode: -1 ] 
+									EducationLevel = Other [ Mode: 0 ] => 0 
+									EducationLevel = TD [ Mode: -1 ] => -1 
+								Age_TILEN = young [ Mode: -1 ] 
+									SpecialOffer_Count <= 2 [ Mode: -1 ] 
+										SpecialOffer_B_Mean = Y [ Mode: 1 ] 
+											PhoneNo_BIN = 2 [ Mode: -1 ] 
+												EducationLevel = Other [ Mode: 0 ] => 0 
+												EducationLevel = TD [ Mode: -1 ] => -1 
+											PhoneNo_BIN = 1 [ Mode: 1 ] => 1 
+										SpecialOffer_B_Mean = N [ Mode: -1 ] 
+											PhoneNo_BIN = 2 [ Mode: 1 ] => 1 
+											PhoneNo_BIN = 1 [ Mode: -1 ] 
+												Method <= 2 [ Mode: -1 ] => -1 
+												Method > 2 [ Mode: 0 ] => 0 
+									SpecialOffer_Count > 2 [ Mode: 0 ] => 0 
+						SpecialOffer_A_Mean = N [ Mode: 0 ] => 0 
+			Method > 3 [ Mode: 0 ] 
+				Age_TILEN = old [ Mode: -1 ] 
+					SpecialOffer_C_Mean = Y [ Mode: -1 ] 
+						JoinFrom = AnF [ Mode: 0 ] 
+							SpecialOffer_B_Mean = Y [ Mode: 0 ] => 0 
+							SpecialOffer_B_Mean = N [ Mode: 1 ] => 1 
+						JoinFrom = Other [ Mode: -1 ] 
+							PhoneNo_BIN = 2 [ Mode: -1 ] => -1 
+							PhoneNo_BIN = 1 [ Mode: -1 ] 
+								SpecialOffer_Count <= 3 [ Mode: 0 ] => 0 
+								SpecialOffer_Count > 3 [ Mode: -1 ] 
+									SpecialOffer_A_Mean = Y [ Mode: -1 ] 
+										EducationLevel = Other [ Mode: -1 ] => -1 
+										EducationLevel = TD [ Mode: 1 ] => 1 
+									SpecialOffer_A_Mean = N [ Mode: 0 ] => 0 
+					SpecialOffer_C_Mean = N [ Mode: 0 ] => 0 
+				Age_TILEN = young [ Mode: 0 ] 
+					SpecialOffer_Count <= 5 [ Mode: 0 ] 
+						SpecialOffer_A_Mean = Y [ Mode: 0 ] 
+							SpecialOffer_Count <= 2 [ Mode: 1 ] 
+								SpecialOffer_B_Mean = Y [ Mode: 0 ] => 0 
+								SpecialOffer_B_Mean = N [ Mode: 1 ] => 1 
+							SpecialOffer_Count > 2 [ Mode: 0 ] 
+								JoinFrom = AnF [ Mode: 0 ] 
+									PhoneNo_BIN = 2 [ Mode: 0 ] 
+										SpecialOffer_C_Mean = Y [ Mode: 0 ] => 0 
+										SpecialOffer_C_Mean = N [ Mode: 1 ] => 1 
+									PhoneNo_BIN = 1 [ Mode: 0 ] => 0 
+								JoinFrom = Other [ Mode: 0 ] 
+									SpecialOffer_Count <= 3 [ Mode: -1 ] => -1 
+									SpecialOffer_Count > 3 [ Mode: 0 ] => 0 
+						SpecialOffer_A_Mean = N [ Mode: 1 ] => 1 
+					SpecialOffer_Count > 5 [ Mode: 1 ] => 1 
+	Sex = M [ Mode: 0 ] 
+		SpecialOffer_A_Mean = Y [ Mode: 0 ] 
+			SpecialOffer_Count <= 4 [ Mode: 0 ] 
+				Method <= 3 [ Mode: 0 ] 
+					Method <= 2 [ Mode: 1 ] 
+						Age_TILEN = old [ Mode: 0 ] 
+							JoinFrom = AnF [ Mode: 1 ] 
+								SpecialOffer_Count <= 1 [ Mode: 0 ] 
+									Method <= 1 [ Mode: 0 ] => 0 
+									Method > 1 [ Mode: -1 ] => -1 
+								SpecialOffer_Count > 1 [ Mode: 1 ] 
+									Method <= 1 [ Mode: 1 ] => 1 
+									Method > 1 [ Mode: 0 ] => 0 
+							JoinFrom = Other [ Mode: 0 ] 
+								Method <= 1 [ Mode: 0 ] => 0 
+								Method > 1 [ Mode: 0 ] 
+									EducationLevel = Other [ Mode: 0 ] 
+										SpecialOffer_Count <= 1 [ Mode: -1 ] => -1 
+										SpecialOffer_Count > 1 [ Mode: 0 ] 
+											PhoneNo_BIN = 2 [ Mode: -1 ] => -1 
+											PhoneNo_BIN = 1 [ Mode: 0 ] => 0 
+									EducationLevel = TD [ Mode: -1 ] 
+										SpecialOffer_C_Mean = Y [ Mode: 0 ] => 0 
+										SpecialOffer_C_Mean = N [ Mode: -1 ] => -1 
+						Age_TILEN = young [ Mode: 1 ] 
+							PhoneNo_BIN = 2 [ Mode: 1 ] 
+								Method <= 1 [ Mode: 0 ] => 0 
+								Method > 1 [ Mode: 1 ] 
+									SpecialOffer_Count <= 3 [ Mode: 1 ] 
+										JoinFrom = AnF [ Mode: 1 ] => 1 
+										JoinFrom = Other [ Mode: 1 ] 
+											SpecialOffer_B_Mean = Y [ Mode: 1 ] => 1 
+											SpecialOffer_B_Mean = N [ Mode: -1 ] => -1 
+									SpecialOffer_Count > 3 [ Mode: 0 ] => 0 
+							PhoneNo_BIN = 1 [ Mode: 0 ] 
+								EducationLevel = Other [ Mode: 0 ] 
+									SpecialOffer_Count <= 3 [ Mode: 0 ] 
+										SpecialOffer_B_Mean = Y [ Mode: 0 ] => 0 
+										SpecialOffer_B_Mean = N [ Mode: 0 ] 
+											SpecialOffer_Count <= 2 [ Mode: 0 ] => 0 
+											SpecialOffer_Count > 2 [ Mode: 1 ] => 1 
+									SpecialOffer_Count > 3 [ Mode: 1 ] => 1 
+								EducationLevel = TD [ Mode: 0 ] => 0 
+					Method > 2 [ Mode: 0 ] 
+						SpecialOffer_Count <= 3 [ Mode: 0 ] 
+							JoinFrom = AnF [ Mode: 0 ] => 0 
+							JoinFrom = Other [ Mode: 0 ] 
+								SpecialOffer_B_Mean = Y [ Mode: 1 ] 
+									EducationLevel = Other [ Mode: 1 ] 
+										PhoneNo_BIN = 2 [ Mode: 1 ] => 1 
+										PhoneNo_BIN = 1 [ Mode: -1 ] => -1 
+									EducationLevel = TD [ Mode: 0 ] => 0 
+								SpecialOffer_B_Mean = N [ Mode: 0 ] => 0 
+						SpecialOffer_Count > 3 [ Mode: 0 ] 
+							JoinFrom = AnF [ Mode: 1 ] => 1 
+							JoinFrom = Other [ Mode: 0 ] 
+								PhoneNo_BIN = 2 [ Mode: 1 ] 
+									SpecialOffer_B_Mean = Y [ Mode: 1 ] => 1 
+									SpecialOffer_B_Mean = N [ Mode: 0 ] => 0 
+								PhoneNo_BIN = 1 [ Mode: 0 ] 
+									EducationLevel = Other [ Mode: 0 ] 
+										SpecialOffer_B_Mean = Y [ Mode: 0 ] => 0 
+										SpecialOffer_B_Mean = N [ Mode: 1 ] => 1 
+									EducationLevel = TD [ Mode: 0 ] 
+										Age_TILEN = old [ Mode: 1 ] => 1 
+										Age_TILEN = young [ Mode: 0 ] => 0 
+				Method > 3 [ Mode: 1 ] 
+					PhoneNo_BIN = 2 [ Mode: 1 ] 
+						SpecialOffer_Count <= 2 [ Mode: 0 ] 
+							Age_TILEN = old [ Mode: 0 ] => 0 
+							Age_TILEN = young [ Mode: 1 ] => 1 
+						SpecialOffer_Count > 2 [ Mode: 1 ] 
+							Age_TILEN = old [ Mode: 1 ] 
+								EducationLevel = Other [ Mode: 1 ] => 1 
+								EducationLevel = TD [ Mode: 1 ] 
+									SpecialOffer_C_Mean = Y [ Mode: 1 ] => 1 
+									SpecialOffer_C_Mean = N [ Mode: -1 ] => -1 
+							Age_TILEN = young [ Mode: -1 ] => -1 
+					PhoneNo_BIN = 1 [ Mode: -1 ] 
+						SpecialOffer_C_Mean = Y [ Mode: -1 ] 
+							SpecialOffer_Count <= 3 [ Mode: -1 ] 
+								SpecialOffer_B_Mean = Y [ Mode: 0 ] => 0 
+								SpecialOffer_B_Mean = N [ Mode: -1 ] 
+									Age_TILEN = old [ Mode: -1 ] => -1 
+									Age_TILEN = young [ Mode: -1 ] 
+										SpecialOffer_Count <= 2 [ Mode: 1 ] => 1 
+										SpecialOffer_Count > 2 [ Mode: -1 ] => -1 
+							SpecialOffer_Count > 3 [ Mode: 0 ] 
+								EducationLevel = Other [ Mode: 0 ] 
+									SpecialOffer_B_Mean = Y [ Mode: -1 ] => -1 
+									SpecialOffer_B_Mean = N [ Mode: 0 ] => 0 
+								EducationLevel = TD [ Mode: 0 ] => 0 
+						SpecialOffer_C_Mean = N [ Mode: 1 ] 
+							SpecialOffer_Count <= 2 [ Mode: 0 ] => 0 
+							SpecialOffer_Count > 2 [ Mode: 1 ] => 1 
+			SpecialOffer_Count > 4 [ Mode: 0 ] 
+				SpecialOffer_Count <= 6 [ Mode: 0 ] 
+					SpecialOffer_Count <= 5 [ Mode: 0 ] 
+						Method <= 1 [ Mode: 0 ] => 0 
+						Method > 1 [ Mode: -1 ] 
+							Age_TILEN = old [ Mode: -1 ] => -1 
+							Age_TILEN = young [ Mode: 0 ] 
+								Method <= 3 [ Mode: 0 ] => 0 
+								Method > 3 [ Mode: 1 ] => 1 
+					SpecialOffer_Count > 5 [ Mode: 0 ] 
+						Method <= 1 [ Mode: 0 ] => 0 
+						Method > 1 [ Mode: 0 ] 
+							Method <= 3 [ Mode: 0 ] => 0 
+							Method > 3 [ Mode: 0 ] 
+								SpecialOffer_C_Mean = Y [ Mode: 0 ] 
+									SpecialOffer_B_Mean = Y [ Mode: 0 ] => 0 
+									SpecialOffer_B_Mean = N [ Mode: 1 ] => 1 
+								SpecialOffer_C_Mean = N [ Mode: 1 ] => 1 
+				SpecialOffer_Count > 6 [ Mode: -1 ] => -1 
+		SpecialOffer_A_Mean = N [ Mode: 0 ] 
+			Age_TILEN = old [ Mode: -1 ] 
+				SpecialOffer_C_Mean = Y [ Mode: -1 ] 
+					SpecialOffer_Count <= 2 [ Mode: -1 ] 
+						Method <= 2 [ Mode: -1 ] 
+							Method <= 1 [ Mode: -1 ] 
+								SpecialOffer_Count <= 1 [ Mode: -1 ] => -1 
+								SpecialOffer_Count > 1 [ Mode: 0 ] => 0 
+							Method > 1 [ Mode: -1 ] 
+								SpecialOffer_B_Mean = Y [ Mode: -1 ] => -1 
+								SpecialOffer_B_Mean = N [ Mode: -1 ] 
+									EducationLevel = Other [ Mode: -1 ] 
+										PhoneNo_BIN = 2 [ Mode: 0 ] => 0 
+										PhoneNo_BIN = 1 [ Mode: -1 ] => -1 
+									EducationLevel = TD [ Mode: 0 ] => 0 
+						Method > 2 [ Mode: 0 ] 
+							PhoneNo_BIN = 2 [ Mode: 0 ] 
+								EducationLevel = Other [ Mode: 0 ] => 0 
+								EducationLevel = TD [ Mode: -1 ] => -1 
+							PhoneNo_BIN = 1 [ Mode: 0 ] => 0 
+					SpecialOffer_Count > 2 [ Mode: 0 ] => 0 
+				SpecialOffer_C_Mean = N [ Mode: 0 ] 
+					SpecialOffer_Count <= 2 [ Mode: 0 ] 
+						JoinFrom = AnF [ Mode: 0 ] 
+							Method <= 3 [ Mode: 0 ] => 0 
+							Method > 3 [ Mode: -1 ] => -1 
+						JoinFrom = Other [ Mode: 0 ] 
+							Method <= 2 [ Mode: -1 ] 
+								Method <= 1 [ Mode: 0 ] 
+									PhoneNo_BIN = 2 [ Mode: -1 ] => -1 
+									PhoneNo_BIN = 1 [ Mode: 0 ] => 0 
+								Method > 1 [ Mode: -1 ] 
+									EducationLevel = Other [ Mode: -1 ] 
+										PhoneNo_BIN = 2 [ Mode: -1 ] 
+											SpecialOffer_Count <= 1 [ Mode: 1 ] => 1 
+											SpecialOffer_Count > 1 [ Mode: -1 ] => -1 
+										PhoneNo_BIN = 1 [ Mode: -1 ] 
+											SpecialOffer_Count <= 1 [ Mode: -1 ] => -1 
+											SpecialOffer_Count > 1 [ Mode: 1 ] => 1 
+									EducationLevel = TD [ Mode: 1 ] => 1 
+							Method > 2 [ Mode: 0 ] => 0 
+					SpecialOffer_Count > 2 [ Mode: 0 ] => 0 
+			Age_TILEN = young [ Mode: 0 ] 
+				SpecialOffer_Count <= 1 [ Mode: 1 ] 
+					JoinFrom = AnF [ Mode: 0 ] => 0 
+					JoinFrom = Other [ Mode: 1 ] 
+						Method <= 3 [ Mode: -1 ] 
+							Method <= 1 [ Mode: 0 ] => 0 
+							Method > 1 [ Mode: -1 ] => -1 
+						Method > 3 [ Mode: 1 ] 
+							PhoneNo_BIN = 2 [ Mode: 1 ] => 1 
+							PhoneNo_BIN = 1 [ Mode: -1 ] => -1 
+				SpecialOffer_Count > 1 [ Mode: 0 ] 
+					SpecialOffer_Count <= 3 [ Mode: 0 ] 
+						EducationLevel = Other [ Mode: 0 ] 
+							SpecialOffer_B_Mean = Y [ Mode: 0 ] => 0 
+							SpecialOffer_B_Mean = N [ Mode: 1 ] => 1 
+						EducationLevel = TD [ Mode: 0 ] 
+							SpecialOffer_C_Mean = Y [ Mode: 1 ] 
+								SpecialOffer_Count <= 2 [ Mode: 1 ] => 1 
+								SpecialOffer_Count > 2 [ Mode: 0 ] 
+									PhoneNo_BIN = 2 [ Mode: 0 ] => 0 
+									PhoneNo_BIN = 1 [ Mode: 1 ] 
+										Method <= 1 [ Mode: 0 ] => 0 
+										Method > 1 [ Mode: 1 ] 
+											SpecialOffer_B_Mean = Y [ Mode: 1 ] => 1 
+											SpecialOffer_B_Mean = N [ Mode: 0 ] => 0 
+							SpecialOffer_C_Mean = N [ Mode: 0 ] => 0 
+					SpecialOffer_Count > 3 [ Mode: 1 ] 
+						Method <= 3 [ Mode: 0 ] 
+							Method <= 2 [ Mode: 0 ] => 0 
+							Method > 2 [ Mode: -1 ] => -1 
+						Method > 3 [ Mode: 1 ] => 1 

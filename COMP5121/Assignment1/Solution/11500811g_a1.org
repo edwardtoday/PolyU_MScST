@@ -1,0 +1,241 @@
+#+TITLE: Solution to COMP5121 Assignment 1
+#+AUTHOR: QING Pei
+#+EMAIL: edwardtoday@gmail.com
+#+STARTUP: hidestars
+#+TEXT: QING Pei, 11500811G
+* Part A
+"Maintenance" should be EXCLUDED from the analysis.
+There are 10 transactions containing "maintenance". None of them involve any other items. If the sample of transactional data is representative and unbiased, it is natural to assume that customers coming for maintenance would not bother purchasing any items in his store. Thus the support for "Maintenance" plus any item would be pretty low. Actually, in this specific case, that support is 0% for any item set of 2 or more items, one of which is "maintenance". The mining of potential association rules involving "maintenance" is therefore filtered out for lack of support.
+
+* Part B
+The Minimum Support is 14%, i.e. 50*14% = 7 appearences.
+The Minimum Confidence is 85%.
+Assign aliases for the items for convenience:
+#+CAPTION: Item Aliases
+#+LABEL: tbl:alias
+#+ATTR_HTML: border="2" rules="all" frame="all"
+| Item         | Alias |
+|--------------+-------|
+| Display Card | G     |
+| Speaker      | S     |
+| Desktop      | D     |
+| Case         | C     |
+| Mouse        | M     |
+Group the entries in the original sample data by TransID as the following, using aliases and removing "maintenance" transactions, as Table \ref{tbl:aliasdata}:
+#+CAPTION: Data with Aliases
+#+LABEL: tbl:aliasdata
+#+ATTR_HTML: border="2" rules="all" frame="all"
+| TransID | Items     |
+|---------+-----------|
+|       1 | G,S       |
+|       2 | D,G       |
+|       3 | C,S       |
+|       4 | S         |
+|       5 | G,M       |
+|       7 | M,D       |
+|       8 | C         |
+|       9 | D         |
+|      10 | M         |
+|      12 | C         |
+|      13 | C,D,G,M,S |
+|      14 | G         |
+|      16 | M         |
+|      18 | G         |
+|      19 | C,D,G,M,S |
+|      21 | C         |
+|      22 | C,G       |
+|      23 | D,G,M,S   |
+|      24 | D,G       |
+|      25 | C,D,G,M,S |
+|      26 | C,G,S     |
+|      27 | C,D,G     |
+|      28 | C,D,G,M,S |
+|      29 | D         |
+|      30 | G         |
+|      31 | G         |
+|      33 | C         |
+|      35 | C         |
+|      36 | G         |
+|      37 | C,D,M     |
+|      38 | D,C       |
+|      40 | D         |
+|      41 | C         |
+|      42 | D         |
+|      44 | C         |
+|      45 | G         |
+|      46 | D,G,M     |
+|      47 | C         |
+|      49 | C,G,S     |
+|      50 | C,D,G,M,S |
+Scan Table \ref{tbl:aliasdata} to count the support for each item as Table \ref{tbl:C1}:
+#+CAPTION: Table C1(L1)
+#+LABEL: tbl:C1
+#+ATTR_HTML: border="2" rules="all" frame="all"
+| Item | Support |
+| G    | 21      |
+| S    | 11      |
+| D    | 17      |
+| C    | 20      |
+| M    | 12      |
+As all the supports are greater than 7, Table L1 is the same as Table \ref{tbl:C1}.
+Scan Table \ref{tbl:aliasdata} again counting 2-item pairs as Table \ref{tbl:C2}:
+#+CAPTION: Table C2
+#+LABEL: tbl:C2
+#+ATTR_HTML: border="2" rules="all" frame="all"
+| Item  | Support |
+|-------+---------|
+| {G,S} |       9 |
+| {G,D} |      10 |
+| {G,C} |       9 |
+| {G,M} |       8 |
+| {S,D} |       6 |
+| {S,C} |       8 |
+| {S,M} |       6 |
+| {D,C} |       7 |
+| {D,M} |       9 |
+| {C,M} |       6 |
+Removing rows with support lower than 7 to get Table \ref{tbl:L2}:
+#+CAPTION: Table L2
+#+LABEL: tbl:L2
+#+ATTR_HTML: border="2" rules="all" frame="all"
+| Item  | Support |
+|-------+---------|
+| {G,S} |       9 |
+| {G,D} |      10 |
+| {G,C} |       9 |
+| {G,M} |       8 |
+| {S,C} |       8 |
+| {D,C} |       7 |
+| {D,M} |       9 |
+Continue to Table \ref{tbl:C3} for 3-item sets:
+#+CAPTION: Table C3
+#+LABEL: tbl:C3
+#+ATTR_HTML: border="2" rules="all" frame="all"
+| Item    | Support |
+|---------+---------|
+| {G,S,C} |       7 |
+| {G,D,C} |       6 |
+| {G,D,M} |       7 |
+Table \ref{tbl:L3} should be:
+#+CAPTION: Table L3
+#+LABEL: tbl:L3
+#+ATTR_HTML: border="2" rules="all" frame="all"
+| Item    | Support |
+|---------+---------|
+| {G,S,C} |       7 |
+| {G,D,M} |       7 |
+No more possible item-sets of 4 or more items to be considered.
+The item-sets with sufficient support are found in Table \ref{tbl:L2} and Table \ref{tbl:L3} now. Go on to calculate the confidence:
+#+CAPTION: Rules & Confidences
+#+LABEL: tbl:calcconf
+#+ATTR_HTML: border="2" rules="all" frame="all"
+| LHS   | RHS   | Supp(All) | Supp(LHS) | Supp(All) / Supp(LHS) | Interesting? |
+|-------+-------+-----------+-----------+-----------------------+--------------|
+| C     | D     |         7 |        20 |                  0.35 |              |
+| C     | D,G   |         6 |        20 |                   0.3 |              |
+| C     | D,M   |         6 |        20 |                   0.3 |              |
+| C     | G     |         9 |        20 |                  0.45 |              |
+| C     | G,S   |         7 |        20 |                  0.35 |              |
+| C     | S     |         8 |        20 |                   0.4 |              |
+| C,D   | G     |         6 |         7 |            0.85714286 | Yes          |
+| C,D   | M     |         6 |         7 |            0.85714286 | Yes          |
+| C,G   | D     |         6 |         9 |            0.66666667 |              |
+| C,G   | S     |         7 |         9 |            0.77777778 |              |
+| C,M   | D     |         6 |         6 |                     1 | Yes          |
+| C,S   | G     |         7 |         8 |                 0.875 | Yes          |
+| D     | C     |         7 |        17 |            0.41176471 |              |
+| D     | C,G   |         6 |        17 |            0.35294118 |              |
+| D     | C,M   |         6 |        17 |            0.35294118 |              |
+| D     | G     |        10 |        17 |            0.58823529 |              |
+| D     | G,M   |         7 |        17 |            0.41176471 |              |
+| D     | G,M,S |         6 |        17 |            0.35294118 |              |
+| D     | G,S   |         6 |        17 |            0.35294118 |              |
+| D     | M     |         9 |        17 |            0.52941176 |              |
+| D     | M,S   |         6 |        17 |            0.35294118 |              |
+| D,G   | C     |         6 |        10 |                   0.6 |              |
+| D,G   | G,S   |         6 |        10 |                   0.6 |              |
+| D,G   | M     |         7 |        10 |                   0.7 |              |
+| D,G   | M,S   |         6 |        10 |                   0.6 |              |
+| D,G   | S     |         6 |        10 |                   0.6 |              |
+| D,G,M | S     |         6 |         7 |            0.85714286 | Yes          |
+| D,G,S | M     |         6 |         6 |                     1 | Yes          |
+| D,M   | C     |         6 |         9 |            0.66666667 |              |
+| D,M   | G     |         7 |         9 |            0.77777778 |              |
+| D,M   | S     |         6 |         9 |            0.66666667 |              |
+| D,M,S | G     |         6 |         6 |                     1 | Yes          |
+| D,S   | G     |         6 |         6 |                     1 | Yes          |
+| D,S   | G,M   |         6 |         6 |                     1 | Yes          |
+| D,S   | M     |         6 |         6 |                     1 | Yes          |
+| G     | C     |         9 |        21 |            0.42857143 |              |
+| G     | C,D   |         6 |        21 |            0.28571429 |              |
+| G     | C,S   |         7 |        21 |            0.33333333 |              |
+| G     | D     |        10 |        21 |            0.47619048 |              |
+| G     | D,M   |         7 |        21 |            0.33333333 |              |
+| G     | D,M,S |         6 |        21 |            0.28571429 |              |
+| G     | D,S   |         6 |        21 |            0.28571429 |              |
+| G     | M     |         8 |        21 |            0.38095238 |              |
+| G     | M,S   |         6 |        21 |            0.28571429 |              |
+| G     | S     |         9 |        21 |            0.42857143 |              |
+| G,M   | D     |         7 |         8 |                 0.875 | Yes          |
+| G,M   | D,S   |         6 |         8 |                  0.75 |              |
+| G,M   | S     |         6 |         8 |                  0.75 |              |
+| G,M,S | D     |         6 |         6 |                     1 | Yes          |
+| G,S   | C     |         7 |         9 |            0.77777778 |              |
+| G,S   | D     |         6 |         9 |            0.66666667 |              |
+| G,S   | D,M   |         6 |         9 |            0.66666667 |              |
+| G,S   | M     |         6 |         9 |            0.66666667 |              |
+| M     | C,D   |         6 |        12 |                   0.5 |              |
+| M     | D     |         9 |        12 |                  0.75 |              |
+| M     | D,G   |         7 |        12 |            0.58333333 |              |
+| M     | D,G,S |         6 |        12 |                   0.5 |              |
+| M     | D,S   |         6 |        12 |                   0.5 |              |
+| M     | G     |         8 |        12 |            0.66666667 |              |
+| M     | G,S   |         6 |        12 |                   0.5 |              |
+| M,S   | D     |         6 |         6 |                     1 | Yes          |
+| M,S   | D,G   |         6 |         6 |                     1 | Yes          |
+| M,S   | G     |         6 |         6 |                     1 | Yes          |
+| S     | C     |         8 |        11 |            0.72727273 |              |
+| S     | C,G   |         7 |        11 |            0.63636364 |              |
+| S     | D,G   |         6 |        11 |            0.54545455 |              |
+| S     | D,G,M |         6 |        11 |            0.54545455 |              |
+| S     | D,M   |         6 |        11 |            0.54545455 |              |
+| S     | G     |         9 |        11 |            0.81818182 |              |
+| S     | G,M   |         6 |        11 |            0.54545455 |              |
+#+TBLFM: $5=$3/$4::$6=if($5>=0.85,Yes,string(""))
+
+With Minimum Confidence set to 85%, the interesting rules are:
+ - C,S->G: "Case, Speaker -> Display Card" with a confidence of 87.5%
+ - G,M->D: "Display Card, Mouse -> Desktop" with a confidence of 87.5%
+
+* Part C
+For the interesting rules found in Part B, calculate their Lift Ratio:
+#+CAPTION: Interesting Rules
+#+LABEL: tbl:intrules
+#+ATTR_HTML: border="2" rules="all" frame="all"
+| LHS   | RHS | Exp Conf * 40 |       Conf | Lift Ratio | Lift>2? |
+|-------+-----+---------------+------------+------------+---------|
+| C,S   | G   |            21 |        7/8 |  1.6666667 |         |
+| G,M   | D   |            17 |        7/8 |  2.0588235 | Yes     |
+| C,D   | G   |            21 | 0.85714286 |  1.6326531 |         |
+| C,D   | M   |            12 | 0.85714286 |  2.8571429 | Yes     |
+| C,M   | D   |            17 |          1 |  2.3529412 | Yes     |
+| C,S   | G   |            21 |      0.875 |  1.6666667 |         |
+| D,G,M | S   |            11 | 0.85714286 |  3.1168831 | Yes     |
+| D,G,S | M   |            12 |          1 |  3.3333333 | Yes     |
+| D,M,S | G   |            21 |          1 |  1.9047619 |         |
+| D,S   | G   |            21 |          1 |  1.9047619 |         |
+| D,S   | G,M |             8 |          1 |         5. | Yes     |
+| D,S   | M   |            12 |          1 |  3.3333333 | Yes     |
+| G,M   | D   |            17 |      0.875 |  2.0588235 | Yes     |
+| G,M,S | D   |            17 |          1 |  2.3529412 | Yes     |
+| M,S   | D   |            17 |          1 |  2.3529412 | Yes     |
+| M,S   | D,G |            10 |          1 |         4. | Yes     |
+| M,S   | G   |            21 |          1 |  1.9047619 |         |
+#+TBLFM: $5=$4/($3/40)::$6=if($5>=2,Yes,string(""))
+
+
+Lift ratios of both rules are greater than the minimum lift ratio of 2. Both rules found in Part B are still interesting.
+
+NOTE: In Table \ref{tbl:intrules}, the Expected Confidence is calulated with the original data table, which has 50 transactions. The reason for not using the 40-entry Table \ref{tle:table2} is that even if we know maintenance has nothing to do with association rules, its existence DOES affect the ratio of customers who would come and purchase something else, i.e. the expected confidence of an item set.
+
+

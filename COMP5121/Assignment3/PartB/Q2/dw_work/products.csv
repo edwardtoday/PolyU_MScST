@@ -1,0 +1,78 @@
+ProductID,ProductName,SupplierID,CategoryID,QuantityPerUnit,UnitPrice,UnitsInStock,UnitsOnOrder,ReorderLevel,Discontinued
+1,Chai,1,1,10 boxes x 20 bags,HK$18.00 ,39,0,10,FALSE
+2,Chang,1,1,24 - 12 oz bottles,HK$19.00 ,17,40,25,FALSE
+3,Aniseed Syrup,1,2,12 - 550 ml bottles,HK$10.00 ,13,70,25,FALSE
+4,Chef Anton's Cajun Seasoning,2,2,48 - 6 oz jars,HK$22.00 ,53,0,0,FALSE
+5,Chef Anton's Gumbo Mix,2,2,36 boxes,HK$21.35 ,0,0,0,TRUE
+6,Grandma's Boysenberry Spread,3,2,12 - 8 oz jars,HK$25.00 ,120,0,25,FALSE
+7,Uncle Bob's Organic Dried Pears,3,7,12 - 1 lb pkgs.,HK$30.00 ,15,0,10,FALSE
+8,Northwoods Cranberry Sauce,3,2,12 - 12 oz jars,HK$40.00 ,6,0,0,FALSE
+9,Mishi Kobe Niku,4,6,18 - 500 g pkgs.,HK$97.00 ,29,0,0,TRUE
+10,Ikura,4,8,12 - 200 ml jars,HK$31.00 ,31,0,0,FALSE
+11,Queso Cabrales,5,4,1 kg pkg.,HK$21.00 ,22,30,30,FALSE
+12,Queso Manchego La Pastora,5,4,10 - 500 g pkgs.,HK$38.00 ,86,0,0,FALSE
+13,Konbu,6,8,2 kg box,HK$6.00 ,24,0,5,FALSE
+14,Tofu,6,7,40 - 100 g pkgs.,HK$23.25 ,35,0,0,FALSE
+15,Genen Shouyu,6,2,24 - 250 ml bottles,HK$15.50 ,39,0,5,FALSE
+16,Pavlova,7,3,32 - 500 g boxes,HK$17.45 ,29,0,10,FALSE
+17,Alice Mutton,7,6,20 - 1 kg tins,HK$39.00 ,0,0,0,TRUE
+18,Carnarvon Tigers,7,8,16 kg pkg.,HK$62.50 ,42,0,0,FALSE
+19,Teatime Chocolate Biscuits,8,3,10 boxes x 12 pieces,HK$9.20 ,25,0,5,FALSE
+20,Sir Rodney's Marmalade,8,3,30 gift boxes,HK$81.00 ,40,0,0,FALSE
+21,Sir Rodney's Scones,8,3,24 pkgs. x 4 pieces,HK$10.00 ,3,40,5,FALSE
+22,Gustaf's Kn?ckebr?d,9,5,24 - 500 g pkgs.,HK$21.00 ,104,0,25,FALSE
+23,Tunnbr?d,9,5,12 - 250 g pkgs.,HK$9.00 ,61,0,25,FALSE
+24,Guaran? Fant?stica,10,1,12 - 355 ml cans,HK$4.50 ,20,0,0,TRUE
+25,NuNuCa Nu?-Nougat-Creme,11,3,20 - 450 g glasses,HK$14.00 ,76,0,30,FALSE
+26,Gumb?r Gummib?rchen,11,3,100 - 250 g bags,HK$31.23 ,15,0,0,FALSE
+27,Schoggi Schokolade,11,3,100 - 100 g pieces,HK$43.90 ,49,0,30,FALSE
+28,R?ssle Sauerkraut,12,7,25 - 825 g cans,HK$45.60 ,26,0,0,TRUE
+29,Th?ringer Rostbratwurst,12,6,50 bags x 30 sausgs.,HK$123.79 ,0,0,0,TRUE
+30,Nord-Ost Matjeshering,13,8,10 - 200 g glasses,HK$25.89 ,10,0,15,FALSE
+31,Gorgonzola Telino,14,4,12 - 100 g pkgs,HK$12.50 ,0,70,20,FALSE
+32,Mascarpone Fabioli,14,4,24 - 200 g pkgs.,HK$32.00 ,9,40,25,FALSE
+33,Geitost,15,4,500 g,HK$2.50 ,112,0,20,FALSE
+34,Sasquatch Ale,16,1,24 - 12 oz bottles,HK$14.00 ,111,0,15,FALSE
+35,Steeleye Stout,16,1,24 - 12 oz bottles,HK$18.00 ,20,0,15,FALSE
+36,Inlagd Sill,17,8,24 - 250 g  jars,HK$19.00 ,112,0,20,FALSE
+37,Gravad lax,17,8,12 - 500 g pkgs.,HK$26.00 ,11,50,25,FALSE
+38,C?te de Blaye,18,1,12 - 75 cl bottles,HK$263.50 ,17,0,15,FALSE
+39,Chartreuse verte,18,1,750 cc per bottle,HK$18.00 ,69,0,5,FALSE
+40,Boston Crab Meat,19,8,24 - 4 oz tins,HK$18.40 ,123,0,30,FALSE
+41,Jack's New England Clam Chowder,19,8,12 - 12 oz cans,HK$9.65 ,85,0,10,FALSE
+42,Singaporean Hokkien Fried Mee,20,5,32 - 1 kg pkgs.,HK$14.00 ,26,0,0,TRUE
+43,Ipoh Coffee,20,1,16 - 500 g tins,HK$46.00 ,17,10,25,FALSE
+44,Gula Malacca,20,2,20 - 2 kg bags,HK$19.45 ,27,0,15,FALSE
+45,R?gede sild,21,8,1k pkg.,HK$9.50 ,5,70,15,FALSE
+46,Spegesild,21,8,4 - 450 g glasses,HK$12.00 ,95,0,0,FALSE
+47,Zaanse koeken,22,3,10 - 4 oz boxes,HK$9.50 ,36,0,0,FALSE
+48,Chocolade,22,3,10 pkgs.,HK$12.75 ,15,70,25,FALSE
+49,Maxilaku,23,3,24 - 50 g pkgs.,HK$20.00 ,10,60,15,FALSE
+50,Valkoinen suklaa,23,3,12 - 100 g bars,HK$16.25 ,65,0,30,FALSE
+51,Manjimup Dried Apples,24,7,50 - 300 g pkgs.,HK$53.00 ,20,0,10,FALSE
+52,Filo Mix,24,5,16 - 2 kg boxes,HK$7.00 ,38,0,25,FALSE
+53,Perth Pasties,24,6,48 pieces,HK$32.80 ,0,0,0,TRUE
+54,Tourti?re,25,6,16 pies,HK$7.45 ,21,0,10,FALSE
+55,P?t? chinois,25,6,24 boxes x 2 pies,HK$24.00 ,115,0,20,FALSE
+56,Gnocchi di nonna Alice,26,5,24 - 250 g pkgs.,HK$38.00 ,21,10,30,FALSE
+57,Ravioli Angelo,26,5,24 - 250 g pkgs.,HK$19.50 ,36,0,20,FALSE
+58,Escargots de Bourgogne,27,8,24 pieces,HK$13.25 ,62,0,20,FALSE
+59,Raclette Courdavault,28,4,5 kg pkg.,HK$55.00 ,79,0,0,FALSE
+60,Camembert Pierrot,28,4,15 - 300 g rounds,HK$34.00 ,19,0,0,FALSE
+61,Sirop d'?rable,29,2,24 - 500 ml bottles,HK$28.50 ,113,0,25,FALSE
+62,Tarte au sucre,29,3,48 pies,HK$49.30 ,17,0,0,FALSE
+63,Vegie-spread,7,2,15 - 625 g jars,HK$43.90 ,24,0,5,FALSE
+64,Wimmers gute Semmelkn?del,12,5,20 bags x 4 pieces,HK$33.25 ,22,80,30,FALSE
+65,Louisiana Fiery Hot Pepper Sauce,2,2,32 - 8 oz bottles,HK$21.05 ,76,0,0,FALSE
+66,Louisiana Hot Spiced Okra,2,2,24 - 8 oz jars,HK$17.00 ,4,100,20,FALSE
+67,Laughing Lumberjack Lager,16,1,24 - 12 oz bottles,HK$14.00 ,52,0,10,FALSE
+68,Scottish Longbreads,8,3,10 boxes x 8 pieces,HK$12.50 ,6,10,15,FALSE
+69,Gudbrandsdalsost,15,4,10 kg pkg.,HK$36.00 ,26,0,15,FALSE
+70,Outback Lager,7,1,24 - 355 ml bottles,HK$15.00 ,15,10,30,FALSE
+71,Fl?temysost,15,4,10 - 500 g pkgs.,HK$21.50 ,26,0,0,FALSE
+72,Mozzarella di Giovanni,14,4,24 - 200 g pkgs.,HK$34.80 ,14,0,0,FALSE
+73,R?d Kaviar,17,8,24 - 150 g jars,HK$15.00 ,101,0,5,FALSE
+74,Longlife Tofu,4,7,5 kg pkg.,HK$10.00 ,4,20,5,FALSE
+75,Rh?nbr?u Klosterbier,12,1,24 - 0.5 l bottles,HK$7.75 ,125,0,25,FALSE
+76,Lakkalik??ri,23,1,500 ml,HK$18.00 ,57,0,20,FALSE
+77,Original Frankfurter gr?ne So?e,12,2,12 boxes,HK$13.00 ,32,0,15,FALSE

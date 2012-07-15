@@ -1,0 +1,872 @@
+\documentclass[a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{natbib}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{float}
+\usepackage{wrapfig}
+\usepackage{soul}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{hyperref}
+
+\setlength{\parindent}{0pt}
+
+% 2 more centimeters for text
+\addtolength{\hoffset}{-1cm}
+\addtolength{\textwidth}{2cm}
+
+%two column float page must be 90% full
+\renewcommand\dblfloatpagefraction{.90}
+%two column top float can cover up to 80% of page
+\renewcommand\dbltopfraction{.80}
+%float page must be 90% full
+\renewcommand\floatpagefraction{.90}
+%top float can cover up to 80% of page
+\renewcommand\topfraction{.80}
+%bottom float can cover up to 80% of page
+\renewcommand\bottomfraction{.80}
+%at least 10% of a normal page must contain text
+\renewcommand\textfraction{.1}
+
+%separation between floats and text
+\setlength\dbltextfloatsep{9pt plus 5pt minus 3pt }
+%separation between two column floats and text
+\setlength\textfloatsep{10pt plus 4pt minus 3pt}
+
+\setlength{\columnsep}{.25in}
+
+
+\title{Solution to COMP5121 Assignment 1}
+\author{QING Pei, 11500811G}
+
+\begin{document}
+
+\maketitle
+
+\setcounter{tocdepth}{2}
+\tableofcontents
+% \vspace*{1cm}
+
+\section{Part A}
+\label{sec-1}
+``Maintenance'' should be EXCLUDED from the analysis.
+
+\subsection{The Isolated "Mantenance"} % (fold)
+\label{ssub:the_isolated_mantenance_}
+There are 10 transactions containing ``maintenance''. None of them involve any other items. If the sample of transactional data is representative and unbiased, it is natural to assume that customers coming for maintenance would not bother purchasing any items in his store. Thus the support for an item set of more than just ``Maintenance'' would be pretty low. Actually, in this specific case, that support is always 0\%. The mining of potential association rules involving ``maintenance'' is therefore filtered out for lack of support.
+% subsection the_isolated_mantenance_ (end)
+
+\subsection{Impact of the Removal of "Maintenance"} % (fold)
+\label{ssub:impact_of_the_removal_of_maintenance_}
+Removing data entries of "Maintenance" has both positive and negative consequences.
+
+The good news is that we only have to process 80 percent of the original dataset. Even if the algorithm is O(N), this saves a lot of time. (E.g. Scanning through the table for support of a given item set in Part B.) Not to mention if the algorithm is more complex.
+
+The bad news, however, is that the support and confidence values will change slightly from the \textbf{real} values. This is not a primary concern, so we just accept that little sacrifice in accuracy.
+% subsection impact_of_the_removal_of_maintenance_ (end)
+
+\section{Part B}
+\label{sec-2}
+
+The Minimum Support is 14\%, i.e. 40*14\% = 5.6 appearances.
+
+The Minimum Confidence is 85\%.
+
+\subsection{Simpler Notation} % (fold)
+\label{ssub:simpler_notation}
+Table \ref{tbl:alias} shows the aliases for the items for faster manual work. The items will appear in tables as C,D,G,M and S.
+
+\begin{table}[!h]
+\caption{\label{tbl:alias}Item Aliases}
+\begin{center}
+\begin{tabular}{|l|l|}
+	\hline
+ Item          &  Alias  \\
+\hline
+ Display Card  &  G      \\
+ Speaker       &  S      \\
+ Desktop       &  D      \\
+ Case          &  C      \\
+ Mouse         &  M      \\
+	\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+% subsection simpler_notation (end)
+
+\subsection{The Sample Data For Calculation} % (fold)
+\label{ssub:the_sample_data_for_calculation}
+Group the entries in the original sample data by TransID as the following, using aliases and removing ``maintenance'' transactions, as Table \ref{tbl:aliasdata}.
+
+\begin{table}[!h]
+\caption{\label{tbl:aliasdata}Data with Aliases}
+\begin{center}
+\begin{tabular}{|r|l|r|l|}
+	\hline
+     TID  &  Items      &      TID cont.  &  Item cont.  \\
+	\hline
+       1  &  G,S        &             26  &  C,G,S       \\
+       2  &  D,G        &             27  &  C,D,G       \\
+       3  &  C,S        &             28  &  C,D,G,M,S   \\
+       4  &  S          &             29  &  D           \\
+       5  &  G,M        &             30  &  G           \\
+       7  &  M,D        &             31  &  G           \\
+       8  &  C          &             33  &  C           \\
+       9  &  D          &             35  &  C           \\
+      10  &  M          &             36  &  G           \\
+      12  &  C          &             37  &  C,D,M       \\
+      13  &  C,D,G,M,S  &             38  &  D,C         \\
+      14  &  G          &             40  &  D           \\
+      16  &  M          &             41  &  C           \\
+      18  &  G          &             42  &  D           \\
+      19  &  C,D,G,M,S  &             44  &  C           \\
+      21  &  C          &             45  &  G           \\
+      22  &  C,G        &             46  &  D,G,M       \\
+      23  &  D,G,M,S    &             47  &  C           \\
+      24  &  D,G        &             49  &  C,G,S       \\
+      25  &  C,D,G,M,S  &             50  &  C,D,G,M,S   \\
+	\hline
+\end{tabular}
+\end{center}
+\end{table}
+% subsection the_sample_data_for_calculation (end)
+
+\subsection{Unit of Support} % (fold)
+\label{ssub:unit_of_support}
+As the support of an item is always $appearances/40$, we may just count the appearances and use that as a NOMINAL SUPPORT, with a unit of $1/40$.
+
+% subsection unit_of_support (end)
+
+\subsection{Support of Single Items} % (fold)
+\label{ssub:support_of_single_items}
+Scan Table \ref{tbl:aliasdata} to count the support for each item as Table \ref{tbl:C1}. 
+
+\begin{table}[!h]
+\caption{\label{tbl:C1} Support of 1-item sets, with supp>5.6.}
+\begin{center}
+\begin{tabular}{|l|r|}
+	\hline
+ Item  &  Support  \\
+\hline
+ G     &       21  \\
+ S     &       11  \\
+ D     &       17  \\
+ C     &       20  \\
+ M     &       12  \\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+As all the supports are greater than 5.6, Table \ref{tbl:C1} is kept for the next step with no modification.
+% subsection support_of_single_items (end)
+
+\subsection{2-Item Sets} % (fold)
+\label{ssub:support_of_2_item_sets}
+Scan Table \ref{tbl:aliasdata} again counting 2-item pairs as Table \ref{tbl:C2}.
+
+\begin{table}[!h]
+\caption{\label{tbl:C2} Support of 2-item sets, with supp>5.6.}
+\begin{center}
+\begin{tabular}{|l|r|}
+	\hline
+ Item     &  Support  \\
+\hline
+ \{G,S\}  &        9  \\
+ \{G,D\}  &       10  \\
+ \{G,C\}  &        9  \\
+ \{G,M\}  &        8  \\
+ \{S,D\}  &        6  \\
+ \{S,C\}  &        8  \\
+ \{S,M\}  &        6  \\
+ \{D,C\}  &        7  \\
+ \{D,M\}  &        9  \\
+ \{C,M\}  &        6  \\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+% subsection support_of_2_item_sets (end)
+
+\subsection{3-Item Sets} % (fold)
+\label{ssub:3_item_sets}
+Scan Table \ref{tbl:aliasdata} and count to get Table \ref{tbl:C3} for 3-item sets.
+
+\begin{table}[!h]
+\caption{\label{tbl:C3} Support of 3-item sets.}
+\begin{center}
+\begin{tabular}{|l|r|}
+	\hline
+ Item       &  Support  \\
+\hline
+ \{G,S,C\}  &        7  \\
+ \{G,D,C\}  &        6  \\
+ \{G,D,M\}  &        7  \\
+ \{G,S,D\}  &        6  \\
+ \{G,S,M\}  &        6  \\
+ \{G,C,M\}  &        5  \\
+ \{S,D,C\}  &        5  \\
+ \{S,D,M\}  &        6  \\
+ \{S,C,M\}  &        5  \\
+ \{C,D,M\}  &        6  \\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+Only keep rows with supp>5.6 and we have Table \ref{tbl:L3}.
+
+\begin{table}[!h]
+\caption{\label{tbl:L3} Support of 3-item sets, with supp>5.6.}
+\begin{center}
+\begin{tabular}{|l|r|}
+	\hline
+ Item       &  Support  \\
+\hline
+ \{G,S,C\}  &        7  \\
+ \{G,D,C\}  &        6  \\
+ \{G,D,M\}  &        7  \\
+ \{G,S,D\}  &        6  \\
+ \{G,S,M\}  &        6  \\
+ \{S,D,M\}  &        6  \\
+ \{C,D,M\}  &        6  \\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+% subsection 3_item_sets (end)
+
+\subsection{4-Item Sets} % (fold)
+\label{ssub:4_item_sets}
+Get Table \ref{tbl:C4} for 4-item sets the same way.
+
+\begin{table}[!h]
+\caption{\label{tbl:C4} Support of 4-item sets.}
+\begin{center}
+\begin{tabular}{|l|r|}
+	\hline
+ Item       &  Support  \\
+\hline
+ \{G,S,C,M\}  &        5  \\
+ \{G,S,C,D\}  &        5  \\
+ \{G,D,C,M\}  &        5  \\
+ \{G,D,M,S\}  &        6  \\
+ \{S,D,M,C\}  &        5  \\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+Remove rows with supp<5.6 to get Table \ref{tbl:L4}.
+
+\begin{table}[!h]
+\caption{\label{tbl:L4} Support of 4-item sets, with supp>5.6.}
+\begin{center}
+\begin{tabular}{|l|r|}
+	\hline
+ Item       &  Support  \\
+\hline
+ \{G,D,M,S\}  &        6  \\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+No more possible pair of item sets with support over 5.6.
+% subsection 4_item_sets (end)
+
+\subsection{Calculate Confidences} % (fold)
+\label{ssub:calculate_confidences}
+The item-sets with sufficient support are found in Table \ref{tbl:C2}, Table \ref{tbl:L3} and Table \ref{tbl:L4} now. Go on to calculate the confidence for all combinations of items as implication rules, shown in Table \ref{tbl:calcconf}. Here the confidence is calculated as:
+\begin{equation}
+	Conf(A \rightarrow B) = { {Support(A\&B)} \over {Support(A)} }
+\end{equation}
+
+\begin{center}
+\begin{longtable}{|l|l|r|r|r|l|}
+\caption{\label{tbl:calcconf}Calculating Confidences} \\
+
+\hline \multicolumn{1}{|c|}{\textbf{LHS}} & \multicolumn{1}{c|}{\textbf{RHS}} &
+\multicolumn{1}{c|}{\textbf{Supp(LHS$\wedge$RHS)}} &
+\multicolumn{1}{c|}{\textbf{Supp(LHS)}} &
+\multicolumn{1}{c|}{\textbf{Conf}} & \multicolumn{1}{c|}{\textbf{Conf$\geq$0.85}} \\ \hline 
+\endfirsthead
+
+\multicolumn{6}{c}%
+{{\bfseries \tablename\ \thetable{} -- continued from previous page}} \\
+\hline \multicolumn{1}{|c|}{\textbf{LHS}} & \multicolumn{1}{c|}{\textbf{RHS}} &
+\multicolumn{1}{c|}{\textbf{Supp(LHS$\wedge$RHS)}} &
+\multicolumn{1}{c|}{\textbf{Supp(LHS)}} &
+\multicolumn{1}{c|}{\textbf{Conf}} & \multicolumn{1}{c|}{\textbf{Conf$\geq$0.85}} \\ \hline
+\endhead
+
+\hline \multicolumn{6}{|r|}{{Continued on next page}} \\ \hline
+\endfoot
+
+\hline \hline
+\endlastfoot
+		
+\hline
+     C &     D &         7 &        20 &       0.35 &               \\
+     C &   D,G &         6 &        20 &        0.3 &               \\
+     C &   D,M &         6 &        20 &        0.3 &               \\
+     C &     G &         9 &        20 &       0.45 &               \\
+     C &   G,S &         7 &        20 &       0.35 &               \\
+     C &     S &         8 &        20 &        0.4 &               \\
+   C,D &     G &         6 &         7 & 0.85714286 &            Yes\\
+   C,D &     M &         6 &         7 & 0.85714286 &            Yes\\
+   C,G &     D &         6 &         9 & 0.66666667 &               \\
+   C,G &     S &         7 &         9 & 0.77777778 &               \\
+   C,M &     D &         6 &         6 &          1 &            Yes\\
+   C,S &     G &         7 &         8 &      0.875 &            Yes\\
+     D &     C &         7 &        17 & 0.41176471 &               \\
+     D &   C,G &         6 &        17 & 0.35294118 &               \\
+     D &   C,M &         6 &        17 & 0.35294118 &               \\
+     D &     G &        10 &        17 & 0.58823529 &               \\
+     D &   G,M &         7 &        17 & 0.41176471 &               \\
+     D & G,M,S &         6 &        17 & 0.35294118 &               \\
+     D &   G,S &         6 &        17 & 0.35294118 &               \\
+     D &     M &         9 &        17 & 0.52941176 &               \\
+     D &   M,S &         6 &        17 & 0.35294118 &               \\
+   D,G &     C &         6 &        10 &        0.6 &               \\
+   D,G &   G,S &         6 &        10 &        0.6 &               \\
+   D,G &     M &         7 &        10 &        0.7 &               \\
+   D,G &   M,S &         6 &        10 &        0.6 &               \\
+   D,G &     S &         6 &        10 &        0.6 &               \\
+ D,G,M &     S &         6 &         7 & 0.85714286 &            Yes\\
+ D,G,S &     M &         6 &         6 &          1 &            Yes\\
+   D,M &     C &         6 &         9 & 0.66666667 &               \\
+   D,M &     G &         7 &         9 & 0.77777778 &               \\
+   D,M &     S &         6 &         9 & 0.66666667 &               \\
+ D,M,S &     G &         6 &         6 &          1 &            Yes\\
+   D,S &     G &         6 &         6 &          1 &            Yes\\
+   D,S &   G,M &         6 &         6 &          1 &            Yes\\
+   D,S &     M &         6 &         6 &          1 &            Yes\\
+     G &     C &         9 &        21 & 0.42857143 &               \\
+     G &   C,D &         6 &        21 & 0.28571429 &               \\
+     G &   C,S &         7 &        21 & 0.33333333 &               \\
+     G &     D &        10 &        21 & 0.47619048 &               \\
+     G &   D,M &         7 &        21 & 0.33333333 &               \\
+     G & D,M,S &         6 &        21 & 0.28571429 &               \\
+     G &   D,S &         6 &        21 & 0.28571429 &               \\
+     G &     M &         8 &        21 & 0.38095238 &               \\
+     G &   M,S &         6 &        21 & 0.28571429 &               \\
+     G &     S &         9 &        21 & 0.42857143 &               \\
+   G,M &     D &         7 &         8 &      0.875 &            Yes\\
+   G,M &   D,S &         6 &         8 &       0.75 &               \\
+   G,M &     S &         6 &         8 &       0.75 &               \\
+ G,M,S &     D &         6 &         6 &          1 &            Yes\\
+   G,S &     C &         7 &         9 & 0.77777778 &               \\
+   G,S &     D &         6 &         9 & 0.66666667 &               \\
+   G,S &   D,M &         6 &         9 & 0.66666667 &               \\
+   G,S &     M &         6 &         9 & 0.66666667 &               \\
+     M &   C,D &         6 &        12 &        0.5 &               \\
+     M &     D &         9 &        12 &       0.75 &               \\
+     M &   D,G &         7 &        12 & 0.58333333 &               \\
+     M & D,G,S &         6 &        12 &        0.5 &               \\
+     M &   D,S &         6 &        12 &        0.5 &               \\
+     M &     G &         8 &        12 & 0.66666667 &               \\
+     M &   G,S &         6 &        12 &        0.5 &               \\
+   M,S &     D &         6 &         6 &          1 &            Yes\\
+   M,S &   D,G &         6 &         6 &          1 &            Yes\\
+   M,S &     G &         6 &         6 &          1 &            Yes\\
+     S &     C &         8 &        11 & 0.72727273 &               \\
+     S &   C,G &         7 &        11 & 0.63636364 &               \\
+     S &   D,G &         6 &        11 & 0.54545455 &               \\
+     S & D,G,M &         6 &        11 & 0.54545455 &               \\
+     S &   D,M &         6 &        11 & 0.54545455 &               \\
+     S &     G &         9 &        11 & 0.81818182 &               \\
+     S &   G,M &         6 &        11 & 0.54545455 &               \\
+\end{longtable}
+\end{center}
+% subsection calculate_confidence (end)
+
+\subsection{Interesting Rules} % (fold)
+\label{sub:interesting_rules}
+With Minimum Confidence set to 85\%, the interesting rules are shown in Table \ref{tbl:interesting_rules}.
+
+\begin{table*}[!h]
+\caption{\label{tbl:interesting_rules} List of interesting rules found.}
+\begin{center}
+	\begin{tabular}{|l|l|r|r|}
+		\hline
+   LHS & RHS & Support & Confidence\\
+\hline
+   C,D &   G &    0.15 & 0.85714286\\
+   C,D &   M &    0.15 & 0.85714286\\
+   C,M &   D &    0.15 &          1\\
+   C,S &   G &   0.175 &      0.875\\
+ D,G,M &   S &    0.15 & 0.85714286\\
+ D,G,S &   M &    0.15 &          1\\
+ D,M,S &   G &    0.15 &          1\\
+   D,S &   G &    0.15 &          1\\
+   D,S & G,M &    0.15 &          1\\
+   D,S &   M &    0.15 &          1\\
+   G,M &   D &   0.175 &      0.875\\
+ G,M,S &   D &    0.15 &          1\\
+   M,S &   D &    0.15 &          1\\
+   M,S & D,G &    0.15 &          1\\
+   M,S &   G &    0.15 &          1\\
+\hline
+	\end{tabular}
+\end{center}
+\end{table*}
+% subsection interesting_rules (end)
+
+\section{Part C}
+\label{sec-3}
+
+For the interesting rules found in Part B, their lift ratios are calculated as
+\begin{equation}
+	Lift(A \rightarrow B) = {Rule\ Confidence \over Expected\ Confidence\ of\ Consequent(RHS)} = {Rule\ Confidence \over Support(RHS)}
+\end{equation}
+
+The results are shown in Table \ref{tbl:intrules}.
+	\begin{table}[!h]
+	\caption{\label{tbl:intrules}Interesting Rules}
+	\begin{center}
+	\begin{tabular}{|l|l|r|r|r|l|}
+		\hline
+	 LHS    &  RHS  &  Exp Conf * 40  &        Conf  &  Lift Ratio  &  Lift$\geq$2?  \\
+	\hline
+	 C,S    &  G    &             21  &         7/8  &   1.6666667  &           \\
+	 G,M    &  D    &             17  &         7/8  &   2.0588235  &  Yes      \\
+	 C,D    &  G    &             21  &  0.85714286  &   1.6326531  &           \\
+	 C,D    &  M    &             12  &  0.85714286  &   2.8571429  &  Yes      \\
+	 C,M    &  D    &             17  &           1  &   2.3529412  &  Yes      \\
+	 C,S    &  G    &             21  &       0.875  &   1.6666667  &           \\
+	 D,G,M  &  S    &             11  &  0.85714286  &   3.1168831  &  Yes      \\
+	 D,G,S  &  M    &             12  &           1  &   3.3333333  &  Yes      \\
+	 D,M,S  &  G    &             21  &           1  &   1.9047619  &           \\
+	 D,S    &  G    &             21  &           1  &   1.9047619  &           \\
+	 D,S    &  G,M  &              8  &           1  &          5.  &  Yes      \\
+	 D,S    &  M    &             12  &           1  &   3.3333333  &  Yes      \\
+	 G,M    &  D    &             17  &       0.875  &   2.0588235  &  Yes      \\
+	 G,M,S  &  D    &             17  &           1  &   2.3529412  &  Yes      \\
+	 M,S    &  D    &             17  &           1  &   2.3529412  &  Yes      \\
+	 M,S    &  D,G  &             10  &           1  &          4.  &  Yes      \\
+	 M,S    &  G    &             21  &           1  &   1.9047619  &           \\
+	\hline
+	\end{tabular}
+	\end{center}
+	\end{table}
+
+Lift ratios of 11 rules are greater than the minimum lift ratio of 2. 6 rules found in Part B are considered no longer interesting.
+
+\section{Part D} % (fold)
+\label{sec:part_d}
+
+As the datafile contains some typos and NULL values, I would show the steps for data cleanup before finding the rules.
+
+\subsection{Data Cleanup} % (fold)
+\label{sub:data_cleanup}
+
+At the very beginning, we load the csv file to a data frame named \emph{df}.
+
+<<>>=
+df <- read.csv("data-q1e.csv", header=TRUE, sep=",", na.strings="")
+@
+
+Then we want to examine whether the data is ready for applying the Apriori algorithm. We may have a look at the \textbf{Product} column.
+
+<<>>=
+summary(df$Product, maxsum=20) # try to find errors in the Product column
+@
+
+As we can see in the result, there are some "noisy" cells in the table:
+\begin{itemize}
+	\item Inconsistent cases. E.g. "CASE" and "Case".
+	\item Typos. E.g. Desjtop
+	\item Null values. 590 NA's reported.
+\end{itemize}
+
+For typos and differences in letter cases, map the original value(s) to a new aggregate value. For example, "case", "CASE" and "Cese" are all mapped to "Case" for future processing.
+
+Here is how all of the typos and case differences are mapped.
+<<>>=
+# Fix typos and different in cases
+df$Product[df$Product == "case" | df$Product == "CASE" | df$Product == "Cese"] <- "Case"
+df$Product[df$Product == "desktop" | df$Product == "Desjtop"] <- "Desktop"
+df$Product[df$Product == "Diaplay Card"] <- "Display Card"
+df$Product[df$Product == "printer"] <- "Printer"
+df$Product[df$Product == "SPeaker"] <- "Speaker"
+@
+
+Examine the data again, we should have a "cleaner" data table so far. The following command shows the current distribution of the \textbf{Product} column. Cells previously counted as "CASE", "case" and "Cese" no longer exist. They are all "Case"'s instead.
+
+<<>>=
+# The data should be consistent now
+summary(df$Product, maxsum=20) # try to find errors in the Product column
+@
+
+NA's should also be excluded from the association rules. Since each row of the table is a TID-Product pair, we may just remove all the rows with NA values and keep the rest for rule mining.
+
+The steps are:
+\begin{itemize}
+	\item Count how many valid cells are in each row.
+	\item Mark rows with 2 valid cells as "good rows".
+	\item Select good rows in the original data frame into a new data frame called \emph{df.NAexcluded}.
+\end{itemize}
+
+<<>>=
+# Exclude NA's
+numbers.present <- rowSums(df != "") # the number of valid data points in each row
+good.rows <- which(numbers.present == 2) # find the complete rows (with both TID and product valid)
+df.NAexcluded <- df[good.rows,] # now we have the table without NA rows
+@
+
+Examine the \textbf{Product} column of df.NAexcluded again and it is shown that NA's are gone.
+
+<<>>=
+# Rows with NA values should be removed so far
+summary(df.NAexcluded$Product, maxsum=12)
+@
+
+Finally, we export the clean data to "data-q1e-clean.csv" for next steps.
+
+<<>>=
+names(df.NAexcluded) <- NULL
+write.table(df.NAexcluded, "data-q1e-clean.csv", sep=",", col.names=F, row.names=F,quote=F)
+@
+% subsection data_cleanup (end)
+
+\subsection{Rule Mining and Suggestions} % (fold)
+\label{sub:rule_mining_and_suggestions}
+\subsubsection{Apriori with R} % (fold)
+\label{ssub:apriori_with_r}
+With the clean data, we may start to find interesting rules. This is done with the \textbf{arules} package for GNU R.
+
+First, load the package:
+
+<<results=hide>>=
+library(arules);
+@
+
+Then load the transaction data from "data-q1e-clean.csv" we prepared in \ref{sub:data_cleanup}.
+
+<<results=hide>>=
+# Load the transaction data from file
+trans <- read.transactions(file="data-q1e-clean.csv", format="single", sep=",", cols=c(1,2), rm.duplicates=T)
+@
+
+The following command shows the number of transactions loaded.
+<<>>=
+# Show the number of transactions
+length(trans)
+@
+
+Use Apriori algorithm to find association rules:
+<<>>=
+# Use Apriori algorithm to find association rules
+rules <- apriori(trans, parameter=list(supp=0.14, conf=0.87))
+@
+
+View the rules found:
+<<>>=
+# View the rules found
+inspect(rules)
+@
+% subsubsection apriori_with_r (end)
+
+\subsubsection{Suggestions to Improve Sales} % (fold)
+\label{ssub:suggestions_to_improve_sales}
+\begin{itemize}
+	\item Display cards and cases are the most popular products sold. Therefore, it might help to adapt the stock combination to have have more display cards and cases in stock to avoid out-of-stock disappointments. 
+	\item Sound cards are the least bought one. Keep less sound cards in stock to reduce storage costs.
+	\item People who by case and speaker are 2 times more likely to also buy a display card. Bundling case and speaker with a discount price to attract customer to buy both the items to boost the sales of display cards.
+	\item It may also work to bundle display card and speaker to increase sales of cases.
+	\item According to the other two rules found, bundling display card and mouse or bundling case and desktop could also make a difference.
+	\item In general, it might help to let customer by 2 products as a bundle with a discount price. When they actually purchased the bundle, they are 2 times more likely to buy a third product.
+	\item But it seems sound cards do not appear in the rules. I suggest bundling sound cards with the most popular products, i.e. display cards and cases with more discount to see whether this leads to a surge in sound card sales.
+\end{itemize}
+% subsubsection suggestions_to_improve_sales (end)
+% subsection rule_mining_and_suggestions (end)
+
+\subsection{Discover the $min_{supp}$ and $min_{conf}$ Parameters} % (fold)
+\label{sub:discover_the_min__supp_and_min__conf_parameters}
+The finding of an optimal {$min_{conf}, min_{sup}$} parameter is basically a trial-and-error process.
+
+The following is always true about changes to the parameters:
+\begin{itemize}
+	\item Increasing one of the parameter with the other fixed will lead to less (or the same number of) rules found.
+	\item The rule sets found with lower(higher) support and higher(lower) confidence may be close in size, but with different characteristics of the data.
+\end{itemize}
+
+\subsubsection{The Starting Point} % (fold)
+\label{ssub:the_starting_point}
+With the previous work in \ref{sub:interesting_rules}, it turns out (14\%,85\%) is not too bad for the sample data. If the sample is well selected, the same parameter would also work for the complete dataset.
+
+Then we modify the parameters and see how the interestingness of the result rules change accordingly. By repeating this, we will finally get to the optimal parameter (or one of the optima).
+% subsubsection the_starting_point (end)
+
+\subsubsection{Interestingness Measurement} % (fold)
+\label{ssub:interestingness_measurement}
+Also, we have to define what is "interestingness" of a rule. Here I used the conviction measurement introduced by Sergey Brin, Rajeev Motwani, Jeffrey D. Ullman, and Shalom Tsur. Dynamic itemset counting and implication rules for market basket data. In SIGMOD 1997, Proceedings ACM SIGMOD International Conference on Management of Data, pages 255-264, Tucson, Arizona, USA, May 1997.
+
+\begin{equation}
+	conviction(X \rightarrow Y) ={1-supp(Y)\over 1-conf(X \rightarrow Y)} = {P(X)P(\bar{Y})\over P(X\wedge\bar{Y})}
+\end{equation}
+
+The range of conviction is 0.5 to infinity. 1 indicates unrelated items. If we mine rules with $min_{sup}=0.07, min_{conf}=0.99$, the results will have antecedents and consequences which are perfectly related to each other. In other words, such rules could be called common senses.
+
+We are mining rules that are not obvious, therefore the target is to find a pair of ($min_{conf},min{supp}$) which results in a set of rules with the mean of conviction as close to 1 as possible. The least size of the rule set is 4.
+% subsubsection interestingness_measurement (end)
+
+\subsubsection{Trial and Error Example} % (fold)
+\label{ssub:trial_and_error_example}
+Let's try with $min_{sup}=0.14, min_{conf}=0.85$:
+
+<<results=hide>>=
+rules1 <- apriori(trans, parameter=list(supp=0.14, conf=0.85))
+quality(rules1) <- cbind(quality(rules1), conviction = interestMeasure(rules1, method = "conviction", trans))
+@
+<<>>=
+summary(rules1)
+@
+
+6 rules are found, the mean of conviction is 5.043.
+
+Try again with $min_{sup}=0.12, min_{conf}=0.9$: 
+
+<<results=hide>>=
+rules2 <- apriori(trans, parameter=list(supp=0.12, conf=0.9))
+quality(rules2) <- cbind(quality(rules2), conviction = interestMeasure(rules2, method = "conviction", trans))
+@
+<<>>=
+summary(rules2)
+@
+
+We get a set of 10 rules with mean conviction of 7.528, which is worse according to our interest (for mean conviction close to 1).
+
+So we try in another direction with $min_{sup}=0.15, min_{conf}=0.8$:
+
+<<results=hide>>=
+rules3 <- apriori(trans, parameter=list(supp=0.15, conf=0.8))
+quality(rules3) <- cbind(quality(rules3), conviction = interestMeasure(rules3, method = "conviction", trans))
+@
+<<>>=
+summary(rules3)
+@
+
+This time the mean conviction is 4.121, better than the first try.
+% subsubsection trial_and_error_example (end)
+
+\subsubsection{The Optimal Parameter} % (fold)
+\label{ssub:the_optimal_parameter}
+After several tries, we may get to $min_{sup}=0.2, min_{conf}=0.4$:
+
+<<results=hide>>=
+rules4 <- apriori(trans, parameter=list(supp=0.2, conf=0.4))
+quality(rules4) <- cbind(quality(rules4), conviction = interestMeasure(rules4, method = "conviction", trans))
+@
+<<>>=
+summary(rules4)
+@
+
+The rules are:
+<<>>=
+inspect(rules4)
+@
+% subsubsection the_optimal_parameter (end)
+
+\subsubsection{Problems with the Measurement} % (fold)
+\label{ssub:problems}
+If we have chosen another measurement for interestingness of association rules, e.g. lift, this would be a totally different story. The optimal parameter would change as well as the rules found.
+
+Suppose we really chose lift as the criteria, we may start from $min_{sup}=0.04, min_{conf}=0.3$ to have a look at the highest lifts we may get from a large pool of rules:
+
+<<results=hide>>=
+rules <- apriori(trans, parameter=list(supp=0.04, conf=0.3))
+@
+<<>>=
+inspect(sort(rules, by = "lift")[1:5])
+@
+
+The lift are over 4, but people may think a support of 4 percent is too weak, or a confidence of 40 percent is far from sufficient. So we try $min_{sup}=0.12, min_{conf}=0.85$:
+
+<<results=hide>>=
+rules <- apriori(trans, parameter=list(supp=0.12, conf=0.85))
+@
+<<>>=
+inspect(sort(rules, by = "lift")[1:5])
+@
+
+We get higher support and confidence, but the lift is lowered accordingly. Now we have question: is there any interestingness measurement of association rules that is neither monotonically decreasing nor monotonically increasing with our change in parameters?
+% subsubsection problems (end)
+
+\subsubsection{AltI: An Alternative Measurement of Interesingness} % (fold)
+\label{ssub:alti}
+The following basic rules should apply to our interestingness measurement:
+\begin{itemize}
+	\item Rules with higher support are more interesting.
+	\item Rules with higher confidence are more interesting.
+	\item Rules with higher lift are more interesting.
+\end{itemize}
+
+We define the following as the interestingness of a rule:
+\begin{equation}
+	AltI = min_{supp} * min_{conf} * lift
+\end{equation}
+
+Define a function in R to calculate the interestingness:
+
+<<>>=
+AltI <- function(x,transactions) interestMeasure(x, method = "support", transactions)*interestMeasure(x, method = "confidence", transactions)*interestMeasure(x, method = "lift", transactions)
+@
+
+Then we may apply the same trial-and-error approach to find the set of rules with the maximum "interestingness".
+
+Tryout different parameters:
+\begin{table}[!h]
+\caption{\label{tbl:interestingness} AltI is not monotonic.}
+\begin{center}
+	\begin{tabular}{ccc}
+	\hline
+	$min_{conf}$ & $min_{supp}$ & interestingness\\
+	\hline
+	0.05 & 0.4 & 0.167\\
+	\hline
+	0.07 & 0.4  & 0.195\\
+	\hline
+	0.15 & 0.4 & 0.171\\
+	\hline
+	0.05 & 0.6 & 0.173\\
+	\hline
+	0.12 & 0.6 & 0.231\\
+	\hline
+	0.15 & 0.6 & 0.225\\
+	\hline
+	\end{tabular}
+\end{center}
+\end{table}
+
+From the first 3 rows in Table \ref{tbl:interestingness}, there must be an extreme point of AltI when changing $min_{conf}$. From the last 3 rows, AltI also has an extreme point when changing $min_{supp}$. And thus there must be an optimal pair of ($min_{conf},min_{supp}$) that provides maximum interestingness.
+% subsubsection alti (end)
+
+\subsubsection{Optimal Parameter to Maximize AltI} % (fold)
+\label{ssub:optimal_parameter_to_maximize_alti}
+With the same trial-and-error approach, we may get the optimal parameter to maximize AltI as $min_{sup}=0.14, min_{conf}=0.87$
+
+The rules found are:
+<<results=hide>>=
+rules <- apriori(trans, parameter=list(supp=0.14, conf=0.87))
+quality(rules) <- cbind(quality(rules), interestingness = AltI(rules, trans))
+summary(rules)
+@
+<<>>=
+inspect(rules)
+@
+
+% subsubsection optimal_parameter_to_maximize_alti (end)
+% subsection discover_the_min__supp_and_min__conf_parameters (end)
+% section part_d (end)
+
+\section{Part E} % (fold)
+\label{sec:part_e}
+\subsection{Level 2 Rules} % (fold)
+\label{sub:level_2_rules}
+In the previous "data-q1e-clean.csv", map all the products to a higher level of abstraction:
+\begin{itemize}
+	\item Map "Desktop" and "Notebook" to "Computers".
+	\item "LCD-Monitor" and "CRT-Monitor" to "Monitors".
+	\item The same to the rest products.
+\end{itemize}
+Save this as "data-q1e-l2.csv". And we have the data at level 2 abstraction.
+
+Find the association rules with:
+<<results=hide>>=
+transl2 <- read.transactions(file="data-q1e-l2.csv", format="single", sep=",", cols=c(1,2), rm.duplicates=T)
+rulesl2 <- apriori(transl2, parameter=list(supp=0.2, conf=0.85))
+@
+<<>>=
+inspect(rulesl2)
+@
+
+Considering the lift ratios, the 1st rule is interesting. $\{IntPeripherals, Monitor\}\rightarrow \{Computers\}$
+
+% subsection level_2_rules (end)
+
+\subsection{Level 3 Rules} % (fold)
+\label{sub:level_3_rules}
+More abstraction of "External Peripherals" and "Internal Peripherals" will give the following results:
+<<results=hide>>=
+transl3 <- read.transactions(file="data-q1e-l3.csv", format="single", sep=",", cols=c(1,2), rm.duplicates=T)
+rulesl3 <- apriori(transl3, parameter=list(supp=0.2, conf=0.8))
+@
+<<>>=
+inspect(rulesl3)
+@
+
+At this level, the 1st rule tells us that peripheral is so frequent that 82 percent of the transactions include some peripheral. And the 2nd and 3rd rules are two examples of redundant rules, in which the LHSs are all descendant of LHS of the 1st rule which is implicitly "Products".
+
+The 4th rule is interesting as the lift ratio is somewhat far from 1.
+% subsection level_3_rules (end)
+
+\subsection{Cross Level Rules} % (fold)
+\label{sub:cross_level_rules}
+So far we have found out rules at different level of abstraction in \ref{optimal_parameter_to_maximize_alti}, \ref{sub:level_2_rules} and \ref{sub:level_3_rules}.
+
+But some of them are so general that the lift ratios are very close to 1. Others might have a high lift ratio but with rather low support.
+
+By mining cross-level rules, we might be able to find something more interesting.
+
+<<results=hide>>=
+transcross <- read.transactions(file="data-q1e-cross.csv", format="single", sep=",", cols=c(1,2), rm.duplicates=T)
+rulescross <- apriori(transcross, parameter=list(supp=0.2, conf=0.8))
+@
+<<>>=
+inspect(sort(rulescross, decreasing = FALSE, by = "confidence")[1:10])
+@
+
+There should be some filtering on the results. The confidence of rule 3, 6, 7 and 9 may be largely influenced by the inheritance existing in LHS and RHS.
+
+Looking at rule 1 and 10, we may want to know if "Monitor" or "Case" contributes to the $Computers \rightarrow Internal Peripherals$ association. With further calculation, we find out that for the more general rule, the confidence is below 60\%. Therefore rule 1 and 10 are not unnecessary.
+
+Rule 4 is redundant since there is rule 2.
+
+Rule 5 is unnecessary because of rule 2.
+
+Rule 1, 2, 8 and 10 are still interesting after filtering. And they are helpful to remove unnecessary or redundant rules found previously at the lowest level. E.g. $\{Case, Desktop\}\rightarrow \{Display Card\}$ is redundant because of the rule $\{Case, Computers\}\rightarrow \{Internal Peripherals\}$.
+% subsection cross_level_rules (end)
+
+% section part_e (end)
+
+\section{Paper Review} % (fold)
+\label{sec:paper_review}
+With product taxonomy, products can be grouped into a superset for data mining at a higher level. This is desirable in different ways.
+\begin{itemize}
+	\item The product set may contain too many items for machine with limited speed and storage to deal with.
+	\item People may want to know the association of one group of products with another.
+	\item Trivial differences in products are known not interesting and therefore should be ignored during the mining process.
+	\item By abstraction, it is possible to remove some redundant rules.
+\end{itemize}
+
+In real-world applications, a miner may use such abstraction to filter the input data with a sneak peak and then do further investigation only on part of the data which is more important/interesting/relevant to the requirements.
+
+\subsection{Reducing Calculation} % (fold)
+\label{sub:reducing_calculation}
+In Apriori, the calculation of support for itemsets is heavy. With a product taxonomy, the calculation is carried out from a top-down view of the tree. If a high level node in the tree has insufficient support, none of its descendants would ever have a chance to have sufficient support. Taking this into consideration, there would be much less calculation for the frequent itemsets table. And thus speed up the Apriori process.
+% subsection reducing_calculations (end)
+
+\subsection{Mining General Rules} % (fold)
+\label{sub:mining_general_rules}
+People may have the need to know whether there is an association between "Computers" and "Monitors". The raw data may only be available with specific items sold, either a desktop or a notebook. Product taxonomy can help add an abstract level "Computers" to facilitate this kind of rule mining.
+% subsection mining_general_rules (end)
+
+\subsection{Mining Cross Level Rules} % (fold)
+\label{sub:mining_cross_level_rules}
+Rather than rules at a single level, people may also be interested in association of one category of products with another specific product. For instance, association between flat panel televisions and Nintendo Wii. We may not care whether the television is a Sony or a Panasonic, as long as it is a flat panel. 
+% subsection mining_cross_level_rules (end)
+
+\subsection{Removing Redundant Rules} % (fold)
+\label{sub:removing_redundant_rules}
+By processing the raw data at the lowest level, we may find rules like $\{Desktop,Notebook\}\rightarrow Mouse$. If we take advantage of the product taxonomy, we may also find a rule $Computers \rightarrow Mouse$. If both rules are found, it is natural to regard the one of them as redundant and has a motivation to remove such redundant rules from the results.
+
+Normally, we would keep the higher level rule.
+% subsection removing_redundant_rules (end)
+
+% section paper_review (end)
+\end{document}

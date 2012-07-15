@@ -1,0 +1,29 @@
+<STYLE>
+
+   .bodyStyle  {
+		   font-family: Verdana, arial, geneva, helvetica, sans-serif;
+		   font-style : normal;
+		   font-size: 100%;
+		   background-color: #ffffff;
+		   color : #000000;
+   }
+		   
+
+   .rowHeaderStyle  {
+		   font-family: Verdana, arial, geneva, helvetica, sans-serif;
+		   font-style : normal;
+		   font-size: 100%;
+		   background-color: #808080;
+		   color : #ffffff;
+   }
+		   
+
+   .colHeaderStyle  {
+		   font-family: Verdana, arial, geneva, helvetica, sans-serif;
+		   font-style : normal;
+		   font-size: 100%;
+		   background-color: #808080;
+		   color : #ffffff;
+   }
+		   
+</STYLE>

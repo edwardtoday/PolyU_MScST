@@ -1,0 +1,10 @@
+raw		84.34
+sex bal		85.66
+ana flag	85.66
+ana flag bal	92.62
+symptom recla	98.2	99.47
+symptom bal	98.73	99.86
+diagnosis flag	99.31	100
+age 2bin	99.43	100
+age 3bin	99.43	100
+age 4bin	99.43	100
