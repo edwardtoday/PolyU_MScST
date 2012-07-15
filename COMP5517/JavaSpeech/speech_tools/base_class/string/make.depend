@@ -1,0 +1,25 @@
+ ######################################################################
+ # 
+ # 	Dependencies created for inclusion in base_class/string/Makefile.
+ #		Thu Nov 10 18:39:09 HKT 2011
+ # 
+ ######################################################################
+
+EST_String.o: EST_String.cc ../../include/EST_String.h \
+  ../../include/EST_Chunk.h ../../include/EST_walloc.h \
+  ../../include/EST_strcasecmp.h ../../include/EST_bool.h \
+  ../../include/EST_Regex.h ../../include/EST_String.h string_version.h \
+  ../../include/EST_math.h regexp.h
+EST_Regex.o: EST_Regex.cc ../../include/EST_unix.h \
+  ../../include/EST_system.h ../../include/unix/EST_defines_unix.h \
+  ../../include/EST_String.h ../../include/EST_Chunk.h \
+  ../../include/EST_walloc.h ../../include/EST_strcasecmp.h \
+  ../../include/EST_bool.h ../../include/EST_Regex.h \
+  ../../include/EST_String.h ../../include/EST_Regex.h regexp.h
+EST_Chunk.o: EST_Chunk.cc ../../include/EST_Chunk.h \
+  ../../include/EST_walloc.h
+regexp.o: regexp.cc regexp.h regmagic.h
+regerror.o: regerror.c regexp.h
+regsub.o: regsub.c regexp.h regmagic.h
+EST_strcasecmp.o: EST_strcasecmp.c ../../include/EST_strcasecmp.h
+INCLUDED_MAKE_DEPEND=1

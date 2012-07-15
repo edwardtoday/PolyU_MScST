@@ -1,0 +1,1 @@
+LIBRARY_TEMPLATE_DIRS=   ./include ./audio ./utils ./base_class ./base_class/string ./base_class/templ_inst ./ling_class ./speech_class ./sigpr ./stats ./grammar   

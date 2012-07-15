@@ -1,0 +1,82 @@
+.TH  FESTIVAL 1 "1st Aug 1997"
+.SH NAME
+festival_client \- client access to festiva; text-to-speech server mode
+.SH SYNOPSIS
+.B festival_client
+.I [options]
+.I [file0]
+.I [file1]
+.I ...
+
+
+.SH DESCRIPTION
+Allows sending commands and/or test to a festival test-to-speech
+server.  Festival may be started in server mode using the
+option 
+.BI --server
+
+festival-clinet allows waveforms ot be generated faster as not
+time is required for start up.  See the festival manual for
+more details on recommended use.
+
+.SH OPTIONS
+
+
+.TP 8
+.BI "--server " <string>
+hostname (or IP number) of server 
+.TP 8
+.BI "--port " <int> " {1314}"
+port number of server process (1314) 
+.TP 8
+.BI "--output " <string>
+file to save output waveform to 
+.TP 8
+.BI "--otype " <string> " {riff}"
+output type for waveform 
+.TP 8
+.BI "--passwd " <string>
+server passwd in plain text (optional) 
+.TP 8
+.BI "--prolog " <string>
+filename containing commands to be sent 
+to the server before standard commands 
+(useful when using --ttw) 
+.TP 8
+.BI "--async " 
+Asynchronous mode, server may send back 
+multiple waveforms per text file 
+.TP 8
+.BI "--ttw " 
+Text to waveform: take text from first 
+arg or stdin get server to return 
+waveform(s) stored in output or operated 
+on by aucommand. 
+.TP 8
+.BI "--withlisp " 
+Output lisp replies from server. 
+.TP 8
+.BI "--tts_mode " <string>
+TTS mode for file (default is fundamental). 
+.TP 8
+.BI "--aucommand " <string>
+command to be applied to each 
+waveform retruned from server. Use $FILE 
+in string to refer to waveform file 
+.SH BUGS
+This still isn't as general as it should be.  It seems to
+require lots of special little options which suggests the
+general options aren't right.
+
+.SH AUTHOR
+Alan W Black and Paul Taylor
+.br
+(C) Centre for Speech Technology Research
+.br
+University of Edinburgh
+.br
+80 South Bridge
+.br
+Edinburgh EH1 1HN
+.br
+http://www.cstr.ed.ac.uk/projects/festival.html

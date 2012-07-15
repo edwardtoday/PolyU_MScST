@@ -1,0 +1,246 @@
+# Copyright 2001,2002,2003,2004,2005 Sun Microsystems, Inc.
+# All Rights Reserved.  Use is subject to license terms.
+# 
+# See the file "license.terms" for information on usage and
+# redistribution of this file, and for a DISCLAIMER OF ALL 
+# WARRANTIES.
+#
+
+Change history for FreeTTS.
+--------------------------
+
+March, 9, 2009 Release 1.2.2:
+    - Introduced an AliasDiphone class as a subclass of Diphone, which
+      has a name and an original diphone; most API calls are just
+      forwarded to the original diphone. (Marc Schroeder)
+    - In text db files, introduced a new type of line, "ALIAS new
+      old", where "old" is the name of an existing diphone (must have
+      been defined higher-up in the text db file using the traditional
+      "DIPHONE...." mechanism), and "new" is the new name under which
+      the diphone is to be known additionally.
+      DiphoneUnitDatabase.parseAndAdd () has been adapted accordingly.
+      (Marc Schroeder)
+    - In binary db files, introduced a new magic code identifying an
+      alias diphone entry. Diphone.loadBinary() has been adapted
+      accordingly. (Marc Schroeder)
+    - Fixed "Class-Path" issue in manifest created by FestVoxToFreeTTS.
+      (Willie Walker)
+    - Fixed internal class loader problems (Dirk Schnelle-Walka)
+    - using java logging library instead of system.out.println
+    - separation into a core jar and a jsapi1.0 dependent jar
+      (Dirk Schnelle-Walka)
+    - Bugfixes in JavaClipAudioPlayer ((Dirk Schnelle-Walka):
+      Catching runtime exceptions if the line is not available
+      writing directly to the output line instead of buffering the data
+    - some code cleanup (Dirk Schnelle-Walka)
+    
+March 10, 2005 Release 1.2.1
+    - Add support for metrics important to screen readers
+    - Add drain delay to clip audio player - the lack of
+      it was causing the end of speech to be cut on JDS/Linux
+
+February 06, 2005 Release 1.2 (final)
+    - Hang with JDK1.5 (bug 1019337)
+    - Added support to build w/o requiring JSAPI
+    - Only build tests on demand (more freedom from JUnit)
+    - Added build targets to create standalone emacspeak app
+    - Added ability for emacspeak demo to strip DECTalk commands from text
+    - Added speaking rate change support to emacspeak demo
+    - Allowed emacspeak text to omit '{' and '}' if text has no spaces
+    - Changed state name expansion logic (bug 1101229)
+    - Added pronunciations for British Sterling and "not" sign (bug 1100888)
+    - Modified missing speech.properties message (rfe 1041437 and bug 1041296)
+    - Added pronunciations for Linux terms (bug 1006630)
+    - Added JUnit to prerequisites list (bug 975557)
+    - Fixed -dump{Multi}Audio problem in freetts app (bug 986503).
+    - Added importing tools specifically for CMU ARCTIC Voices.
+    - Fixed problem in mbrola phonem remapping (bug 1013781)
+    - In the Voice class, removed the call to AudioPlayer.drain() 
+      if the audio is cancelled, since it will block until the next audio
+      is available.
+    - Fixed problem in FreeTTSSynthesizer where in some cases waiting 
+      threads are not notified when a queue item is cancelled.
+    - Made the JavaStreamingAudioPlayer.cancel() method unsynchronized
+      so that audio output can be stopped immediately.
+    - Added rudimentary internationalization to Festvox import.
+      This imports international (non-US-English) cluster unit voices,
+      but obviously still lacks a lexicon and other NLP components for
+      new languages.
+
+June 15, 2004 Release 1.2beta2
+    - Added experimental CMUArcticVoice that may (or may not) work
+      with the CMU ARCTIC databases.
+    - Added CMUTimeVoice, which has noop post lexical processing
+      to support the FestVox limited domain time voice scheme.
+      Modified FestVoxToFreeTTS to use this voice in the template.
+    - Restructured cluster unit voice for simple extensions.
+    - Added com.sun.speech.freetts.lexicon.userAddenda property
+    - Added FreeTTS pronunciation to addenda
+    - Fix problem where the space character in the path would cause
+      issues with finding voice jars (bug 938225)
+    - Added backwards compatibility for Gnome Speech API
+    - Fix to kill audio output thread on deallocate from JSAPI (bug 922579)
+    - Added "@" and "?" to list of known characters for German.
+    - Fixed problem where some jar files in the FreeTTS directory
+      would cause issues with discovering voices.
+    - Added defaultAudioPlayer property to voice (RFE 922580).
+
+December 22, 2003 Release 1.2beta
+    - Many documentation updates to prep for beta release.
+
+November 22, 2003 Release 1.2beta
+    - Abandon GNUMake in favor of Ant.
+    - Many documentation updates.
+    - Add capability to set the AudioPlayer on a JSAPI Voice. 
+
+September 3, 2003 Release 1.2beta
+    - Modified MBROLA output to work on Solaris and Mac
+
+August 15, 2003 Release 1.2beta
+    - Added support to import voices from FestVox into FreeTTS
+    - Extended voice packaging scheme to simplify management and addition
+      of new voices.
+    - VoiceManager class provices API to access voices.
+    - Dynamic detection of voice jarfiles is supported.
+
+Jun 5, 2003 Release 1.2beta
+    - Updated FreeTTS version message
+
+Jun 4, 2003 Release 1.2beta
+    - Imported changes from Flite 1.2:
+        - Regenerated cmulex_addenda, cart_dump
+        - Reads year "1200" as "twelve hundred" rather than "twelve oh
+          zero"
+        - TimeUtils reads 00:01 as "just after midnight" rather than
+          "just after midnight, in the morning".
+        - Added "daughter1" to be an alias for "daughter"
+        - Minor bug fixes in TokenToWords and ClusterUnitSelector
+    - Regenerated test data to compare FreeTTS against Flite 1.2
+    - Wrote script gen_flite_data.sh to help automate updates to test
+      data.
+
+May 13, 2003 Release 1.1.2
+    - Fixed bug in TokenToWords that causes abbreviations like "OK"
+      and "HI" to be spoken as a US state rather than just "ok" and "hi".
+
+    - Fixed race condition in JavaStreamingAudioPlayer that would
+      cause output to not be totally cancelled.
+
+    - Refactored all System.getProperty calls to call a wrapper
+      utility called Utilities.getPropery. This method catches a
+      SecurityException and deals with it properly, so that it can be
+      called from an applet.
+
+    - Fixed problem in the JSAPI implementation where the audio player
+      was not being closed when the synthesizer was deallocated. This
+      would cause problems for certain types of AudioPlayers such as
+      SingleFileAudioPlayer that require a 'close' before they flush
+      their accumulated wave data.
+
+September 6, 2002 Release 1.1.1
+    - Fixed index.html so that it looks for the RELEASE_NOTES in 
+      the proper spot.
+    - Added RELEASE_NOTES to the deploy_doc Make target.
+    - Fixed all run.bat files to run properly under Win32 systems.
+    - Fixed race condition in com.sun.speech.engine.EngineMonitor that
+      would cause a NullPointerException in the Player demo on
+      occasion.
+    - Added emacspeak deploy options
+    - Added non-JSAPI version of Emacspeak speech server
+    - Fixed non-JSAPI Emacspeak demo crashing problem by using the
+      JavaStreamingAudioPlayer (instead of ClipPlayer) as the default.
+    - Added RawFileAudioPlayer to write raw audio bytes to a binary file.
+    - Changed all  JDK_DIR references to JAVA_HOME
+    - Fixed problem in parsing certain dates (MonthRange)
+    - Fixed problem with some number parsing 
+    - Removed hardcoded array size of LPCResult.residualToFloatMap
+    - Fixed problem where output thread was not being shut down when a
+      voice was closed.
+    - Added TokenGame test which exercises some tricky tokenizing
+    - Screen shots of Player in demo/JSAPI/Player/readme.html now of
+      current version.
+    - parameterized utterance tests to allow easy addition of more
+      tests
+    - demo/freetts/ClientServer batch files specifies host and port
+    - Added contributors agreement: ContributorsAgreement.pdf
+    - Added handout: FreeTTS_handout.pdf FreeTTS_handout.sxw
+    - Added 'How to contribute' section to the web page
+    - Refactored identical demo code in the JSAPI and freetts branches
+      so that they share the same code (put in demo/util directory).
+    - Added "exit" command to Emacspeak. This will close the socket 
+      connection.
+    - Added JSAPI/Web Start clock demo to show how to use FreeTTS/JSAPI
+      with Java Web Start.
+    - Added support for MBROLA Voices, as well as JSAPI support for
+      MBROLA Voices. Specifically, the latter refers to check for
+      the MBROLA binaries and databse for an MBROLA voice. If they
+      are found, such a voice is consider 'valid'.
+    - Fixed the following bug: A word followed by a breaking
+      punctuation (:?!), followed by space and a single word,
+      e.g., "RE: Frank", causes the word following the breaking
+      punctuation (i.e., "Frank") not to be synthesized.
+    - Fixed the following bug: "From:" or "From" causes the system to
+      hang.
+    - Added MBROLA support to all appropriate demos.
+
+
+
+January 30, 2002  Release 1.1
+    - Created index.php to automatically put news on freetts front page
+    - Added a very small, time-domain specific lexicon 
+    - Updated voice to allow easier switching betwen different
+      lexicons
+    - Adapted cluster unit database layout to conform to flite 1.1
+      format
+    - Adapted cluster unit selection to conform to new database
+      layout
+    - Upgraded 16khz diphone database with Flite 1.1 data.
+    - Added support for duration shrinking/stretching at the segment
+      level.
+    - Added support for pitch shift adjustments at the segment level.
+    - More sophisticated phrasing CARTS.
+    - PostLexicalAnalyzer now deals with "'ve" and "'ll"
+    - Some refactoring of the FeatureProcessors
+    - A number of new Feature processors have been added.
+    - Added ASCII file support for Pronounceable finite state machines
+    - Expanded tokenizer. New features include:
+	1) processing abbreviations (e.g. U.S.A.)
+	2) 7-digit phone numbers,
+	3) partial phone numbers
+	4) time (e.g. 12:35)
+	5) digits w/ dashes (e.g. 999-999-999)
+	6) Roman numerals (e.g. IV)
+	7) St Andrew's St.
+	8) US Money (e.g. $14.53)
+	9) "80s" or "70s"
+	10) fractions (e.g. 3/4)
+	11) US states (e.g. NH, MA)
+
+    - Improved rules for generating binary forms of the databases
+    - Specifies 'Locale.US' (instead of null) when constructing a 
+      SynthesizerModeDesc in the demo code
+    - Output of regression tests are more consistent
+    - Workaround for the Linux sound bug reduces JVM crashes.
+
+January   8, 2002 Release V1.0.5  
+	- Fixed Locale.US problem in JSAPI demos.
+
+January   8, 2002 Release V1.0.4  
+	- Fixed speech.properties path message in demos.
+        - Added SourceForge news to docs front page.
+
+December 21, 2001 Release V1.0.3  
+	- Added .bat files for win32 demos
+
+December 20, 2001 Release V1.0.2  
+	- Added jsapi.exe - win32 jsapi installer
+
+December 20, 2001 Release V1.0.1  
+	- Added jsapi.sh - unix jsapi installer
+
+December 14, 2001 Release V1.0    
+	- First public release
+
+November  7, 2001 Release V0.9    
+	- Internal Test Release
+

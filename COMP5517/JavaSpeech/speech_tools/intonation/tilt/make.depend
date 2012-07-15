@@ -1,0 +1,140 @@
+ ######################################################################
+ # 
+ # 	Dependencies created for inclusion in intonation/tilt/Makefile.
+ #		Thu Nov 10 18:40:43 HKT 2011
+ # 
+ ######################################################################
+
+tilt_analysis.o: tilt_analysis.cc ../../include/EST_math.h \
+  ../../include/EST_tilt.h ../../include/ling_class/EST_Relation.h \
+  ../../include/EST_String.h ../../include/EST_Chunk.h \
+  ../../include/EST_walloc.h ../../include/EST_strcasecmp.h \
+  ../../include/EST_bool.h ../../include/EST_Regex.h \
+  ../../include/EST_String.h ../../include/EST_TList.h \
+  ../../include/EST_common.h ../../include/EST_UList.h \
+  ../../include/EST_TSortable.h \
+  ../../include/instantiate/EST_TSortableI.h \
+  ../../include/EST_TIterator.h ../../include/instantiate/EST_TListI.h \
+  ../../include/instantiate/EST_TIteratorI.h ../../include/EST_TKVL.h \
+  ../../include/EST_TList.h ../../include/instantiate/EST_TKVLI.h \
+  ../../include/instantiate/EST_TListI.h ../../include/EST_THash.h \
+  ../../include/EST_system.h ../../include/unix/EST_defines_unix.h \
+  ../../include/instantiate/EST_THashI.h ../../include/EST_system.h \
+  ../../include/instantiate/EST_TStringHashI.h ../../include/EST_Val.h \
+  ../../include/EST_error.h ../../include/EST_unix.h \
+  ../../include/EST_Contents.h ../../include/EST_Val_defs.h \
+  ../../include/EST_types.h ../../include/EST_TVector.h \
+  ../../include/EST_rw_status.h ../../include/instantiate/EST_TVectorI.h \
+  ../../include/EST_TKVL.h ../../include/EST_FMatrix.h \
+  ../../include/EST_TSimpleMatrix.h ../../include/EST_TMatrix.h \
+  ../../include/instantiate/EST_TMatrixI.h \
+  ../../include/instantiate/EST_TSimpleMatrixI.h \
+  ../../include/EST_TSimpleVector.h \
+  ../../include/instantiate/EST_TSimpleVectorI.h ../../include/EST_Val.h \
+  ../../include/EST_DMatrix.h ../../include/EST_IMatrix.h \
+  ../../include/EST_SMatrix.h ../../include/EST_Token.h \
+  ../../include/EST_Features.h ../../include/EST_types.h \
+  ../../include/ling_class/EST_Item.h \
+  ../../include/ling_class/EST_Item_Content.h \
+  ../../include/ling_class/EST_Relation_list.h \
+  ../../include/ling_class/EST_Relation_tree.h \
+  ../../include/ling_class/EST_Relation_mls.h \
+  ../../include/ling_class/EST_FeatureFunctionPackage.h \
+  ../../include/EST_util_class.h ../../include/EST_Option.h \
+  ../../include/EST_Token.h ../../include/EST_StringTrie.h \
+  ../../include/EST_cmd_line.h ../../include/EST_speech_class.h \
+  ../../include/EST_Wave.h ../../include/EST_Featured.h \
+  ../../include/EST_Features.h ../../include/EST_wave_aux.h \
+  ../../include/EST_TNamedEnum.h \
+  ../../include/instantiate/EST_TNamedEnumI.h ../../include/EST_Track.h \
+  ../../include/EST_TrackMap.h ../../include/EST_ChannelType.h \
+  ../../include/EST_Handleable.h ../../include/EST_THandle.h \
+  ../../include/EST_track_aux.h ../../include/EST_TBuffer.h \
+  ../../include/EST_Event.h ../../include/EST_String.h tilt.h \
+  ../../include/ling_class/EST_Relation.h ../../include/EST_Track.h \
+  ../../include/EST_track_aux.h ../../include/EST_Features.h \
+  ../../include/EST_error.h
+tilt_synthesis.o: tilt_synthesis.cc tilt.h \
+  ../../include/ling_class/EST_Relation.h ../../include/EST_String.h \
+  ../../include/EST_Chunk.h ../../include/EST_walloc.h \
+  ../../include/EST_strcasecmp.h ../../include/EST_bool.h \
+  ../../include/EST_Regex.h ../../include/EST_String.h \
+  ../../include/EST_TList.h ../../include/EST_common.h \
+  ../../include/EST_UList.h ../../include/EST_TSortable.h \
+  ../../include/instantiate/EST_TSortableI.h \
+  ../../include/EST_TIterator.h ../../include/instantiate/EST_TListI.h \
+  ../../include/instantiate/EST_TIteratorI.h ../../include/EST_TKVL.h \
+  ../../include/EST_TList.h ../../include/instantiate/EST_TKVLI.h \
+  ../../include/instantiate/EST_TListI.h ../../include/EST_THash.h \
+  ../../include/EST_system.h ../../include/unix/EST_defines_unix.h \
+  ../../include/instantiate/EST_THashI.h ../../include/EST_system.h \
+  ../../include/instantiate/EST_TStringHashI.h ../../include/EST_Val.h \
+  ../../include/EST_error.h ../../include/EST_unix.h \
+  ../../include/EST_Contents.h ../../include/EST_Val_defs.h \
+  ../../include/EST_types.h ../../include/EST_TVector.h \
+  ../../include/EST_rw_status.h ../../include/instantiate/EST_TVectorI.h \
+  ../../include/EST_TKVL.h ../../include/EST_FMatrix.h \
+  ../../include/EST_TSimpleMatrix.h ../../include/EST_TMatrix.h \
+  ../../include/instantiate/EST_TMatrixI.h \
+  ../../include/instantiate/EST_TSimpleMatrixI.h \
+  ../../include/EST_TSimpleVector.h \
+  ../../include/instantiate/EST_TSimpleVectorI.h ../../include/EST_Val.h \
+  ../../include/EST_DMatrix.h ../../include/EST_IMatrix.h \
+  ../../include/EST_SMatrix.h ../../include/EST_Token.h \
+  ../../include/EST_Features.h ../../include/EST_types.h \
+  ../../include/ling_class/EST_Item.h \
+  ../../include/ling_class/EST_Item_Content.h \
+  ../../include/ling_class/EST_Relation_list.h \
+  ../../include/ling_class/EST_Relation_tree.h \
+  ../../include/ling_class/EST_Relation_mls.h \
+  ../../include/ling_class/EST_FeatureFunctionPackage.h \
+  ../../include/EST_unix.h ../../include/EST_math.h \
+  ../../include/EST_tilt.h ../../include/ling_class/EST_Relation.h \
+  ../../include/EST_util_class.h ../../include/EST_Option.h \
+  ../../include/EST_Token.h ../../include/EST_StringTrie.h \
+  ../../include/EST_cmd_line.h ../../include/EST_speech_class.h \
+  ../../include/EST_Wave.h ../../include/EST_Featured.h \
+  ../../include/EST_Features.h ../../include/EST_wave_aux.h \
+  ../../include/EST_TNamedEnum.h \
+  ../../include/instantiate/EST_TNamedEnumI.h ../../include/EST_Track.h \
+  ../../include/EST_TrackMap.h ../../include/EST_ChannelType.h \
+  ../../include/EST_Handleable.h ../../include/EST_THandle.h \
+  ../../include/EST_track_aux.h ../../include/EST_TBuffer.h \
+  ../../include/EST_Event.h ../../include/EST_String.h \
+  ../../include/EST_Track.h ../../include/EST_error.h
+tilt_utils.o: tilt_utils.cc ../../include/EST_math.h tilt.h \
+  ../../include/ling_class/EST_Relation.h ../../include/EST_String.h \
+  ../../include/EST_Chunk.h ../../include/EST_walloc.h \
+  ../../include/EST_strcasecmp.h ../../include/EST_bool.h \
+  ../../include/EST_Regex.h ../../include/EST_String.h \
+  ../../include/EST_TList.h ../../include/EST_common.h \
+  ../../include/EST_UList.h ../../include/EST_TSortable.h \
+  ../../include/instantiate/EST_TSortableI.h \
+  ../../include/EST_TIterator.h ../../include/instantiate/EST_TListI.h \
+  ../../include/instantiate/EST_TIteratorI.h ../../include/EST_TKVL.h \
+  ../../include/EST_TList.h ../../include/instantiate/EST_TKVLI.h \
+  ../../include/instantiate/EST_TListI.h ../../include/EST_THash.h \
+  ../../include/EST_system.h ../../include/unix/EST_defines_unix.h \
+  ../../include/instantiate/EST_THashI.h ../../include/EST_system.h \
+  ../../include/instantiate/EST_TStringHashI.h ../../include/EST_Val.h \
+  ../../include/EST_error.h ../../include/EST_unix.h \
+  ../../include/EST_Contents.h ../../include/EST_Val_defs.h \
+  ../../include/EST_types.h ../../include/EST_TVector.h \
+  ../../include/EST_rw_status.h ../../include/instantiate/EST_TVectorI.h \
+  ../../include/EST_TKVL.h ../../include/EST_FMatrix.h \
+  ../../include/EST_TSimpleMatrix.h ../../include/EST_TMatrix.h \
+  ../../include/instantiate/EST_TMatrixI.h \
+  ../../include/instantiate/EST_TSimpleMatrixI.h \
+  ../../include/EST_TSimpleVector.h \
+  ../../include/instantiate/EST_TSimpleVectorI.h ../../include/EST_Val.h \
+  ../../include/EST_DMatrix.h ../../include/EST_IMatrix.h \
+  ../../include/EST_SMatrix.h ../../include/EST_Token.h \
+  ../../include/EST_Features.h ../../include/EST_types.h \
+  ../../include/ling_class/EST_Item.h \
+  ../../include/ling_class/EST_Item_Content.h \
+  ../../include/ling_class/EST_Relation_list.h \
+  ../../include/ling_class/EST_Relation_tree.h \
+  ../../include/ling_class/EST_Relation_mls.h \
+  ../../include/ling_class/EST_FeatureFunctionPackage.h \
+  ../../include/EST_error.h
+INCLUDED_MAKE_DEPEND=1

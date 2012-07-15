@@ -1,0 +1,10 @@
+Assignment 1: Qualitative Evaluation (Usability Study)
+Nullam sodales, elit quis porta gravida, eros turpis sagittis neque, eget ultricies arcu mi at enim. Integer in risus leo. Cras lobortis tempor dictum. Nullam eget ipsum nec nisl semper facilisis id quis erat.
+Step 0: Complete the Scenario
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc congue sem vitae augue sollicitudin tincidunt. Vivamus velit felis, tempus a condimentum id, porta eget dolor. Integer diam odio, lobortis et vulputate nec, pellentesque a est. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Praesent sed justo ut quam eleifend ultricies ac id odio. Aenean non mi erat, ut vestibulum ante. Pellentesque sit amet justo purus.
+Step 1: Role Division
+Donec rhoncus interdum sollicitudin. Donec et dolor est. Morbi fermentum placerat ipsum, quis commodo purus volutpat consectetur. Suspendisse eget justo sed nibh commodo ultrices vel at augue. Praesent eleifend, libero quis sollicitudin posuere, mauris libero dictum orci, nec cursus purus diam id lorem. Nam vehicula est ac nulla posuere congue.
+Step 2: Select your core set of typical tasks
+Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec dictum, leo ut hendrerit tincidunt, nulla mi scelerisque nisi, quis pulvinar dolor justo ac ante. Curabitur quis nisi non justo sagittis tincidunt. Morbi lectus quam, volutpat sit amet bibendum sit amet, hendrerit et odio. Curabitur mollis nulla sed augue hendrerit quis porttitor arcu aliquam. Aliquam purus urna, accumsan lobortis bibendum et, condimentum vitae nulla.
+Step 3: Prepare the questionnaires
+Praesent a magna ipsum, ut mattis massa. Donec ac porta felis. Nullam pellentesque sagittis dui, adipiscing viverra odio facilisis ut. Curabitur tincidunt erat sed lectus imperdiet bibendum. Donec porttitor pharetra accumsan. Cras consequat molestie sem et varius. Donec ac ligula eget nunc laoreet molestie. Vivamus vestibulum congue quam vel congue.

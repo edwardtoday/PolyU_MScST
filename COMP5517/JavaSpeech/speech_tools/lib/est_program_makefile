@@ -1,0 +1,25 @@
+
+ ###########################################################################
+ #                                                                         #
+ # Makefile for use with Edinburgh Speech Tools Library
+ #                                                                         #
+ ###########################################################################
+
+EST_HOME=/Users/edwardtoday/Downloads/JavaSpeech/speech_tools
+
+EXECS = 
+
+all: $(EXECS)
+
+## PROGRAMS
+
+## RULES
+
+$(EXECS) : % : %.o $(%_OBJ)
+	g++ -O3 -Wall     -o $* $($*_OBJ) $($*_LIBS)   -L$(EST_HOME)/lib -lestools -L$(EST_HOME)/lib -lestbase -L$(EST_HOME)/lib -leststring   -lncurses -framework CoreAudio -framework AudioUnit -framework AudioToolbox -framework Cocoa    -lm  -lstdc++ -lgcc 
+
+%.o: %.cc
+	g++ -c  -fno-implicit-templates  -O3 -Wall           -I$(EST_HOME)/include      $($*_INCLUDES) $($*_DEFINES) $*.cc
+
+%.o: %.c
+	g++ -c  -fno-implicit-templates  -O3 -Wall           -I$(EST_HOME)/include      $($*_INCLUDES) $($*_DEFINES) $*.c

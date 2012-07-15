@@ -1,0 +1,204 @@
+ ######################################################################
+ # 
+ # 	Dependencies created for inclusion in utils/Makefile.
+ #		Thu Nov 10 18:38:50 HKT 2011
+ # 
+ ######################################################################
+
+cmd_line.o: cmd_line.cc ../include/EST_unix.h ../include/EST_system.h \
+  ../include/unix/EST_defines_unix.h ../include/EST_String.h \
+  ../include/EST_Chunk.h ../include/EST_walloc.h \
+  ../include/EST_strcasecmp.h ../include/EST_bool.h \
+  ../include/EST_Regex.h ../include/EST_String.h ../include/EST_io_aux.h \
+  ../include/EST_unix.h ../include/EST_common.h ../include/EST_types.h \
+  ../include/EST_TList.h ../include/EST_UList.h \
+  ../include/EST_TSortable.h ../include/instantiate/EST_TSortableI.h \
+  ../include/EST_TIterator.h ../include/instantiate/EST_TListI.h \
+  ../include/instantiate/EST_TIteratorI.h ../include/EST_TVector.h \
+  ../include/EST_rw_status.h ../include/instantiate/EST_TVectorI.h \
+  ../include/EST_TKVL.h ../include/instantiate/EST_TKVLI.h \
+  ../include/instantiate/EST_TListI.h ../include/EST_FMatrix.h \
+  ../include/EST_TSimpleMatrix.h ../include/EST_TMatrix.h \
+  ../include/instantiate/EST_TMatrixI.h \
+  ../include/instantiate/EST_TSimpleMatrixI.h \
+  ../include/EST_TSimpleVector.h \
+  ../include/instantiate/EST_TSimpleVectorI.h ../include/EST_Val.h \
+  ../include/EST_error.h ../include/EST_Contents.h \
+  ../include/EST_Val_defs.h ../include/EST_DMatrix.h \
+  ../include/EST_IMatrix.h ../include/EST_SMatrix.h \
+  ../include/EST_Token.h ../include/EST_cutils.h ../include/EST_TList.h \
+  ../include/EST_string_aux.h ../include/EST_cmd_line.h \
+  ../include/EST_Option.h ../include/EST_Pathname.h \
+  ../include/EST_Features.h
+util_io.o: util_io.cc ../include/EST_types.h ../include/EST_TList.h \
+  ../include/EST_common.h ../include/EST_bool.h ../include/EST_UList.h \
+  ../include/EST_String.h ../include/EST_Chunk.h ../include/EST_walloc.h \
+  ../include/EST_strcasecmp.h ../include/EST_Regex.h \
+  ../include/EST_TSortable.h ../include/instantiate/EST_TSortableI.h \
+  ../include/EST_TIterator.h ../include/instantiate/EST_TListI.h \
+  ../include/instantiate/EST_TIteratorI.h ../include/EST_TVector.h \
+  ../include/EST_rw_status.h ../include/instantiate/EST_TVectorI.h \
+  ../include/EST_TKVL.h ../include/instantiate/EST_TKVLI.h \
+  ../include/instantiate/EST_TListI.h ../include/EST_FMatrix.h \
+  ../include/EST_TSimpleMatrix.h ../include/EST_TMatrix.h \
+  ../include/instantiate/EST_TMatrixI.h \
+  ../include/instantiate/EST_TSimpleMatrixI.h \
+  ../include/EST_TSimpleVector.h \
+  ../include/instantiate/EST_TSimpleVectorI.h ../include/EST_Val.h \
+  ../include/EST_error.h ../include/EST_unix.h ../include/EST_system.h \
+  ../include/unix/EST_defines_unix.h ../include/EST_Contents.h \
+  ../include/EST_Val_defs.h ../include/EST_DMatrix.h \
+  ../include/EST_IMatrix.h ../include/EST_SMatrix.h \
+  ../include/EST_String.h ../include/EST_Pathname.h \
+  ../include/EST_io_aux.h ../include/EST_types.h \
+  ../include/EST_string_aux.h ../include/EST_cutils.h \
+  ../include/EST_Token.h
+filetrans.o: filetrans.cc ../include/EST_unix.h ../include/EST_system.h \
+  ../include/unix/EST_defines_unix.h ../include/EST_String.h \
+  ../include/EST_Chunk.h ../include/EST_walloc.h \
+  ../include/EST_strcasecmp.h ../include/EST_bool.h \
+  ../include/EST_Regex.h ../include/EST_String.h ../include/EST_io_aux.h \
+  ../include/EST_unix.h ../include/EST_common.h ../include/EST_types.h \
+  ../include/EST_TList.h ../include/EST_UList.h \
+  ../include/EST_TSortable.h ../include/instantiate/EST_TSortableI.h \
+  ../include/EST_TIterator.h ../include/instantiate/EST_TListI.h \
+  ../include/instantiate/EST_TIteratorI.h ../include/EST_TVector.h \
+  ../include/EST_rw_status.h ../include/instantiate/EST_TVectorI.h \
+  ../include/EST_TKVL.h ../include/instantiate/EST_TKVLI.h \
+  ../include/instantiate/EST_TListI.h ../include/EST_FMatrix.h \
+  ../include/EST_TSimpleMatrix.h ../include/EST_TMatrix.h \
+  ../include/instantiate/EST_TMatrixI.h \
+  ../include/instantiate/EST_TSimpleMatrixI.h \
+  ../include/EST_TSimpleVector.h \
+  ../include/instantiate/EST_TSimpleVectorI.h ../include/EST_Val.h \
+  ../include/EST_error.h ../include/EST_Contents.h \
+  ../include/EST_Val_defs.h ../include/EST_DMatrix.h \
+  ../include/EST_IMatrix.h ../include/EST_SMatrix.h
+cmd_line_aux.o: cmd_line_aux.cc ../include/EST_String.h \
+  ../include/EST_Chunk.h ../include/EST_walloc.h \
+  ../include/EST_strcasecmp.h ../include/EST_bool.h \
+  ../include/EST_Regex.h ../include/EST_String.h ../include/EST_Token.h \
+  ../include/EST_common.h ../include/EST_cutils.h ../include/EST_system.h \
+  ../include/unix/EST_defines_unix.h ../include/EST_TList.h \
+  ../include/EST_UList.h ../include/EST_TSortable.h \
+  ../include/instantiate/EST_TSortableI.h ../include/EST_TIterator.h \
+  ../include/instantiate/EST_TListI.h \
+  ../include/instantiate/EST_TIteratorI.h ../include/EST_string_aux.h \
+  ../include/EST_TList.h ../include/EST_types.h ../include/EST_TVector.h \
+  ../include/EST_rw_status.h ../include/instantiate/EST_TVectorI.h \
+  ../include/EST_TKVL.h ../include/instantiate/EST_TKVLI.h \
+  ../include/instantiate/EST_TListI.h ../include/EST_FMatrix.h \
+  ../include/EST_TSimpleMatrix.h ../include/EST_TMatrix.h \
+  ../include/instantiate/EST_TMatrixI.h \
+  ../include/instantiate/EST_TSimpleMatrixI.h \
+  ../include/EST_TSimpleVector.h \
+  ../include/instantiate/EST_TSimpleVectorI.h ../include/EST_Val.h \
+  ../include/EST_error.h ../include/EST_unix.h ../include/EST_Contents.h \
+  ../include/EST_Val_defs.h ../include/EST_DMatrix.h \
+  ../include/EST_IMatrix.h ../include/EST_SMatrix.h \
+  ../include/EST_cmd_line.h ../include/EST_Option.h
+EST_swapping.o: EST_swapping.cc ../include/EST_cutils.h \
+  ../include/EST_common.h ../include/EST_bool.h ../include/EST_walloc.h \
+  ../include/EST_system.h ../include/unix/EST_defines_unix.h
+EST_Server.o: EST_Server.cc ../include/EST_system.h \
+  ../include/unix/EST_defines_unix.h ../include/EST_socket.h \
+  ../include/EST_system.h ../include/unix/EST_socket_unix.h \
+  ../include/EST_unix.h ../include/EST_TKVL.h ../include/EST_TList.h \
+  ../include/EST_common.h ../include/EST_bool.h ../include/EST_UList.h \
+  ../include/EST_String.h ../include/EST_Chunk.h ../include/EST_walloc.h \
+  ../include/EST_strcasecmp.h ../include/EST_Regex.h \
+  ../include/EST_TSortable.h ../include/instantiate/EST_TSortableI.h \
+  ../include/EST_TIterator.h ../include/instantiate/EST_TListI.h \
+  ../include/instantiate/EST_TIteratorI.h \
+  ../include/instantiate/EST_TKVLI.h ../include/instantiate/EST_TListI.h \
+  ../include/EST_ServiceTable.h ../include/EST_rw_status.h \
+  ../include/EST_TKVL.h ../include/EST_Server.h ../include/EST_Features.h \
+  ../include/EST_Val.h ../include/EST_error.h ../include/EST_unix.h \
+  ../include/EST_Contents.h ../include/EST_Val_defs.h \
+  ../include/EST_types.h ../include/EST_TVector.h \
+  ../include/instantiate/EST_TVectorI.h ../include/EST_FMatrix.h \
+  ../include/EST_TSimpleMatrix.h ../include/EST_TMatrix.h \
+  ../include/instantiate/EST_TMatrixI.h \
+  ../include/instantiate/EST_TSimpleMatrixI.h \
+  ../include/EST_TSimpleVector.h \
+  ../include/instantiate/EST_TSimpleVectorI.h ../include/EST_DMatrix.h \
+  ../include/EST_IMatrix.h ../include/EST_SMatrix.h \
+  ../include/EST_ServiceTable.h ../include/EST_Pathname.h \
+  ../include/EST_error.h ../include/EST_Token.h
+EST_FringeServer.o: EST_FringeServer.cc ../include/EST_system.h \
+  ../include/unix/EST_defines_unix.h ../include/EST_socket.h \
+  ../include/EST_system.h ../include/unix/EST_socket_unix.h \
+  ../include/EST_unix.h ../include/EST_TKVL.h ../include/EST_TList.h \
+  ../include/EST_common.h ../include/EST_bool.h ../include/EST_UList.h \
+  ../include/EST_String.h ../include/EST_Chunk.h ../include/EST_walloc.h \
+  ../include/EST_strcasecmp.h ../include/EST_Regex.h \
+  ../include/EST_TSortable.h ../include/instantiate/EST_TSortableI.h \
+  ../include/EST_TIterator.h ../include/instantiate/EST_TListI.h \
+  ../include/instantiate/EST_TIteratorI.h \
+  ../include/instantiate/EST_TKVLI.h ../include/instantiate/EST_TListI.h \
+  ../include/EST_ServiceTable.h ../include/EST_rw_status.h \
+  ../include/EST_TKVL.h ../include/EST_FringeServer.h \
+  ../include/EST_Server.h ../include/EST_Features.h ../include/EST_Val.h \
+  ../include/EST_error.h ../include/EST_unix.h ../include/EST_Contents.h \
+  ../include/EST_Val_defs.h ../include/EST_types.h \
+  ../include/EST_TVector.h ../include/instantiate/EST_TVectorI.h \
+  ../include/EST_FMatrix.h ../include/EST_TSimpleMatrix.h \
+  ../include/EST_TMatrix.h ../include/instantiate/EST_TMatrixI.h \
+  ../include/instantiate/EST_TSimpleMatrixI.h \
+  ../include/EST_TSimpleVector.h \
+  ../include/instantiate/EST_TSimpleVectorI.h ../include/EST_DMatrix.h \
+  ../include/EST_IMatrix.h ../include/EST_SMatrix.h \
+  ../include/EST_ServiceTable.h ../include/EST_Pathname.h \
+  ../include/EST_error.h ../include/EST_Token.h
+est_file.o: est_file.cc ../include/EST_FileType.h ../include/EST_Token.h \
+  ../include/EST_String.h ../include/EST_Chunk.h ../include/EST_walloc.h \
+  ../include/EST_strcasecmp.h ../include/EST_bool.h \
+  ../include/EST_Regex.h ../include/EST_common.h ../include/EST_Option.h \
+  ../include/EST_TKVL.h ../include/EST_TList.h ../include/EST_UList.h \
+  ../include/EST_TSortable.h ../include/instantiate/EST_TSortableI.h \
+  ../include/EST_TIterator.h ../include/instantiate/EST_TListI.h \
+  ../include/instantiate/EST_TIteratorI.h \
+  ../include/instantiate/EST_TKVLI.h ../include/instantiate/EST_TListI.h \
+  ../include/EST_rw_status.h ../include/EST_TNamedEnum.h \
+  ../include/instantiate/EST_TNamedEnumI.h ../include/EST_Token.h \
+  ../include/EST_Option.h ../include/EST_Features.h ../include/EST_Val.h \
+  ../include/EST_error.h ../include/EST_unix.h ../include/EST_system.h \
+  ../include/unix/EST_defines_unix.h ../include/EST_Contents.h \
+  ../include/EST_Val_defs.h ../include/EST_types.h \
+  ../include/EST_TVector.h ../include/instantiate/EST_TVectorI.h \
+  ../include/EST_FMatrix.h ../include/EST_TSimpleMatrix.h \
+  ../include/EST_TMatrix.h ../include/instantiate/EST_TMatrixI.h \
+  ../include/instantiate/EST_TSimpleMatrixI.h \
+  ../include/EST_TSimpleVector.h \
+  ../include/instantiate/EST_TSimpleVectorI.h ../include/EST_DMatrix.h \
+  ../include/EST_IMatrix.h ../include/EST_SMatrix.h \
+  ../base_class/EST_TNamedEnum.cc ../include/EST_walloc.h \
+  ../include/EST_TNamedEnum.h
+EST_ServiceTable.o: EST_ServiceTable.cc ../include/EST_Pathname.h \
+  ../include/EST_String.h ../include/EST_Chunk.h ../include/EST_walloc.h \
+  ../include/EST_strcasecmp.h ../include/EST_bool.h \
+  ../include/EST_Regex.h ../include/EST_TList.h ../include/EST_common.h \
+  ../include/EST_UList.h ../include/EST_TSortable.h \
+  ../include/instantiate/EST_TSortableI.h ../include/EST_TIterator.h \
+  ../include/instantiate/EST_TListI.h \
+  ../include/instantiate/EST_TIteratorI.h ../include/EST_socket.h \
+  ../include/EST_system.h ../include/unix/EST_defines_unix.h \
+  ../include/unix/EST_socket_unix.h ../include/EST_error.h \
+  ../include/EST_unix.h ../include/EST_Token.h \
+  ../include/EST_ServiceTable.h ../include/EST_rw_status.h \
+  ../include/EST_TKVL.h ../include/instantiate/EST_TKVLI.h \
+  ../include/instantiate/EST_TListI.h ../base_class/EST_TList.cc \
+  ../include/EST_TList.h ../base_class/EST_TSortable.cc \
+  ../include/EST_TSortable.h ../base_class/EST_TKVL.cc \
+  ../include/EST_TKVL.h ../include/EST_error.h
+EST_cutils.o: EST_cutils.c ../include/EST_unix.h ../include/EST_system.h \
+  ../include/unix/EST_defines_unix.h ../include/EST_cutils.h \
+  ../include/EST_common.h ../include/EST_bool.h ../include/EST_walloc.h
+EST_error.o: EST_error.c ../include/EST_error.h ../include/EST_unix.h \
+  ../include/EST_system.h ../include/unix/EST_defines_unix.h
+walloc.o: walloc.c ../include/EST_unix.h ../include/EST_system.h \
+  ../include/unix/EST_defines_unix.h ../include/EST_cutils.h \
+  ../include/EST_common.h ../include/EST_bool.h ../include/EST_walloc.h
+system_specific_unix.o: system_specific_unix.c ../include/EST_system.h \
+  ../include/unix/EST_defines_unix.h
+INCLUDED_MAKE_DEPEND=1

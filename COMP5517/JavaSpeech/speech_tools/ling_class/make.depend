@@ -1,0 +1,830 @@
+ ######################################################################
+ # 
+ # 	Dependencies created for inclusion in ling_class/Makefile.
+ #		Thu Nov 10 18:39:38 HKT 2011
+ # 
+ ######################################################################
+
+EST_Item.o: EST_Item.cc ../include/ling_class/EST_Item.h \
+  ../include/EST_String.h ../include/EST_Chunk.h ../include/EST_walloc.h \
+  ../include/EST_strcasecmp.h ../include/EST_bool.h \
+  ../include/EST_Regex.h ../include/EST_String.h \
+  ../include/EST_Features.h ../include/EST_TKVL.h ../include/EST_TList.h \
+  ../include/EST_common.h ../include/EST_UList.h \
+  ../include/EST_TSortable.h ../include/instantiate/EST_TSortableI.h \
+  ../include/EST_TIterator.h ../include/instantiate/EST_TListI.h \
+  ../include/instantiate/EST_TIteratorI.h \
+  ../include/instantiate/EST_TKVLI.h ../include/instantiate/EST_TListI.h \
+  ../include/EST_Val.h ../include/EST_error.h ../include/EST_unix.h \
+  ../include/EST_system.h ../include/unix/EST_defines_unix.h \
+  ../include/EST_Contents.h ../include/EST_Val_defs.h \
+  ../include/EST_types.h ../include/EST_TVector.h \
+  ../include/EST_rw_status.h ../include/instantiate/EST_TVectorI.h \
+  ../include/EST_FMatrix.h ../include/EST_TSimpleMatrix.h \
+  ../include/EST_TMatrix.h ../include/instantiate/EST_TMatrixI.h \
+  ../include/instantiate/EST_TSimpleMatrixI.h \
+  ../include/EST_TSimpleVector.h \
+  ../include/instantiate/EST_TSimpleVectorI.h ../include/EST_DMatrix.h \
+  ../include/EST_IMatrix.h ../include/EST_SMatrix.h \
+  ../include/ling_class/EST_Item_Content.h \
+  ../include/ling_class/EST_Relation_list.h \
+  ../include/ling_class/EST_Relation_tree.h \
+  ../include/ling_class/EST_Relation_mls.h \
+  ../include/ling_class/EST_FeatureFunctionPackage.h \
+  ../include/ling_class/EST_Item.h ../include/EST_THash.h \
+  ../include/instantiate/EST_THashI.h ../include/EST_system.h \
+  ../include/instantiate/EST_TStringHashI.h \
+  ../include/ling_class/EST_Relation.h ../include/EST_TList.h \
+  ../include/EST_TKVL.h ../include/EST_Val.h ../include/EST_types.h \
+  ../include/EST_Token.h ../include/ling_class/EST_Utterance.h \
+  ../include/ling_class/EST_Relation.h ../include/EST_TKVL.h \
+  ../include/EST_UList.h ../include/EST_string_aux.h ling_class_init.h
+EST_Item_Content.o: EST_Item_Content.cc \
+  ../include/ling_class/EST_Item_Content.h ../include/EST_String.h \
+  ../include/EST_Chunk.h ../include/EST_walloc.h \
+  ../include/EST_strcasecmp.h ../include/EST_bool.h \
+  ../include/EST_Regex.h ../include/EST_String.h \
+  ../include/EST_Features.h ../include/EST_TKVL.h ../include/EST_TList.h \
+  ../include/EST_common.h ../include/EST_UList.h \
+  ../include/EST_TSortable.h ../include/instantiate/EST_TSortableI.h \
+  ../include/EST_TIterator.h ../include/instantiate/EST_TListI.h \
+  ../include/instantiate/EST_TIteratorI.h \
+  ../include/instantiate/EST_TKVLI.h ../include/instantiate/EST_TListI.h \
+  ../include/EST_Val.h ../include/EST_error.h ../include/EST_unix.h \
+  ../include/EST_system.h ../include/unix/EST_defines_unix.h \
+  ../include/EST_Contents.h ../include/EST_Val_defs.h \
+  ../include/EST_types.h ../include/EST_TVector.h \
+  ../include/EST_rw_status.h ../include/instantiate/EST_TVectorI.h \
+  ../include/EST_FMatrix.h ../include/EST_TSimpleMatrix.h \
+  ../include/EST_TMatrix.h ../include/instantiate/EST_TMatrixI.h \
+  ../include/instantiate/EST_TSimpleMatrixI.h \
+  ../include/EST_TSimpleVector.h \
+  ../include/instantiate/EST_TSimpleVectorI.h ../include/EST_DMatrix.h \
+  ../include/EST_IMatrix.h ../include/EST_SMatrix.h \
+  ../include/ling_class/EST_Item.h \
+  ../include/ling_class/EST_Item_Content.h \
+  ../include/ling_class/EST_Relation_list.h \
+  ../include/ling_class/EST_Relation_tree.h \
+  ../include/ling_class/EST_Relation_mls.h \
+  ../include/ling_class/EST_FeatureFunctionPackage.h \
+  ../include/ling_class/EST_Item.h ../include/EST_THash.h \
+  ../include/instantiate/EST_THashI.h ../include/EST_system.h \
+  ../include/instantiate/EST_TStringHashI.h ../include/EST_error.h
+item_aux.o: item_aux.cc ../include/ling_class/EST_Item.h \
+  ../include/EST_String.h ../include/EST_Chunk.h ../include/EST_walloc.h \
+  ../include/EST_strcasecmp.h ../include/EST_bool.h \
+  ../include/EST_Regex.h ../include/EST_String.h \
+  ../include/EST_Features.h ../include/EST_TKVL.h ../include/EST_TList.h \
+  ../include/EST_common.h ../include/EST_UList.h \
+  ../include/EST_TSortable.h ../include/instantiate/EST_TSortableI.h \
+  ../include/EST_TIterator.h ../include/instantiate/EST_TListI.h \
+  ../include/instantiate/EST_TIteratorI.h \
+  ../include/instantiate/EST_TKVLI.h ../include/instantiate/EST_TListI.h \
+  ../include/EST_Val.h ../include/EST_error.h ../include/EST_unix.h \
+  ../include/EST_system.h ../include/unix/EST_defines_unix.h \
+  ../include/EST_Contents.h ../include/EST_Val_defs.h \
+  ../include/EST_types.h ../include/EST_TVector.h \
+  ../include/EST_rw_status.h ../include/instantiate/EST_TVectorI.h \
+  ../include/EST_FMatrix.h ../include/EST_TSimpleMatrix.h \
+  ../include/EST_TMatrix.h ../include/instantiate/EST_TMatrixI.h \
+  ../include/instantiate/EST_TSimpleMatrixI.h \
+  ../include/EST_TSimpleVector.h \
+  ../include/instantiate/EST_TSimpleVectorI.h ../include/EST_DMatrix.h \
+  ../include/EST_IMatrix.h ../include/EST_SMatrix.h \
+  ../include/ling_class/EST_Item_Content.h \
+  ../include/ling_class/EST_Relation_list.h \
+  ../include/ling_class/EST_Relation_tree.h \
+  ../include/ling_class/EST_Relation_mls.h \
+  ../include/ling_class/EST_FeatureFunctionPackage.h \
+  ../include/ling_class/EST_Item.h ../include/EST_THash.h \
+  ../include/instantiate/EST_THashI.h ../include/EST_system.h \
+  ../include/instantiate/EST_TStringHashI.h \
+  ../include/ling_class/EST_Item_Content.h \
+  ../include/ling_class/EST_Relation.h ../include/EST_TList.h \
+  ../include/EST_TKVL.h ../include/EST_Val.h ../include/EST_types.h \
+  ../include/EST_Token.h
+EST_relation_aux.o: EST_relation_aux.cc ../include/EST_types.h \
+  ../include/EST_TList.h ../include/EST_common.h ../include/EST_bool.h \
+  ../include/EST_UList.h ../include/EST_String.h ../include/EST_Chunk.h \
+  ../include/EST_walloc.h ../include/EST_strcasecmp.h \
+  ../include/EST_Regex.h ../include/EST_TSortable.h \
+  ../include/instantiate/EST_TSortableI.h ../include/EST_TIterator.h \
+  ../include/instantiate/EST_TListI.h \
+  ../include/instantiate/EST_TIteratorI.h ../include/EST_TVector.h \
+  ../include/EST_rw_status.h ../include/instantiate/EST_TVectorI.h \
+  ../include/EST_TKVL.h ../include/instantiate/EST_TKVLI.h \
+  ../include/instantiate/EST_TListI.h ../include/EST_FMatrix.h \
+  ../include/EST_TSimpleMatrix.h ../include/EST_TMatrix.h \
+  ../include/instantiate/EST_TMatrixI.h \
+  ../include/instantiate/EST_TSimpleMatrixI.h \
+  ../include/EST_TSimpleVector.h \
+  ../include/instantiate/EST_TSimpleVectorI.h ../include/EST_Val.h \
+  ../include/EST_error.h ../include/EST_unix.h ../include/EST_system.h \
+  ../include/unix/EST_defines_unix.h ../include/EST_Contents.h \
+  ../include/EST_Val_defs.h ../include/EST_DMatrix.h \
+  ../include/EST_IMatrix.h ../include/EST_SMatrix.h \
+  ../include/ling_class/EST_Relation.h ../include/EST_String.h \
+  ../include/EST_TList.h ../include/EST_TKVL.h ../include/EST_THash.h \
+  ../include/instantiate/EST_THashI.h ../include/EST_system.h \
+  ../include/instantiate/EST_TStringHashI.h ../include/EST_Val.h \
+  ../include/EST_types.h ../include/EST_Token.h ../include/EST_Features.h \
+  ../include/EST_types.h ../include/ling_class/EST_Item.h \
+  ../include/ling_class/EST_Item_Content.h \
+  ../include/ling_class/EST_Relation_list.h \
+  ../include/ling_class/EST_Relation_tree.h \
+  ../include/ling_class/EST_Relation_mls.h \
+  ../include/ling_class/EST_FeatureFunctionPackage.h \
+  ../include/ling_class/EST_relation_aux.h ../include/EST_Track.h \
+  ../include/EST_TrackMap.h ../include/EST_TNamedEnum.h \
+  ../include/instantiate/EST_TNamedEnumI.h ../include/EST_ChannelType.h \
+  ../include/EST_Handleable.h ../include/EST_THandle.h \
+  ../include/EST_Featured.h ../include/EST_Features.h \
+  ../include/ling_class/EST_Utterance.h \
+  ../include/ling_class/EST_Relation.h ../include/EST_Option.h \
+  ../include/EST_string_aux.h ../include/EST_io_aux.h \
+  ../include/EST_Option.h ../include/EST_Token.h
+EST_relation_track.o: EST_relation_track.cc ../include/EST_types.h \
+  ../include/EST_TList.h ../include/EST_common.h ../include/EST_bool.h \
+  ../include/EST_UList.h ../include/EST_String.h ../include/EST_Chunk.h \
+  ../include/EST_walloc.h ../include/EST_strcasecmp.h \
+  ../include/EST_Regex.h ../include/EST_TSortable.h \
+  ../include/instantiate/EST_TSortableI.h ../include/EST_TIterator.h \
+  ../include/instantiate/EST_TListI.h \
+  ../include/instantiate/EST_TIteratorI.h ../include/EST_TVector.h \
+  ../include/EST_rw_status.h ../include/instantiate/EST_TVectorI.h \
+  ../include/EST_TKVL.h ../include/instantiate/EST_TKVLI.h \
+  ../include/instantiate/EST_TListI.h ../include/EST_FMatrix.h \
+  ../include/EST_TSimpleMatrix.h ../include/EST_TMatrix.h \
+  ../include/instantiate/EST_TMatrixI.h \
+  ../include/instantiate/EST_TSimpleMatrixI.h \
+  ../include/EST_TSimpleVector.h \
+  ../include/instantiate/EST_TSimpleVectorI.h ../include/EST_Val.h \
+  ../include/EST_error.h ../include/EST_unix.h ../include/EST_system.h \
+  ../include/unix/EST_defines_unix.h ../include/EST_Contents.h \
+  ../include/EST_Val_defs.h ../include/EST_DMatrix.h \
+  ../include/EST_IMatrix.h ../include/EST_SMatrix.h \
+  ../include/ling_class/EST_Relation.h ../include/EST_String.h \
+  ../include/EST_TList.h ../include/EST_TKVL.h ../include/EST_THash.h \
+  ../include/instantiate/EST_THashI.h ../include/EST_system.h \
+  ../include/instantiate/EST_TStringHashI.h ../include/EST_Val.h \
+  ../include/EST_types.h ../include/EST_Token.h ../include/EST_Features.h \
+  ../include/EST_types.h ../include/ling_class/EST_Item.h \
+  ../include/ling_class/EST_Item_Content.h \
+  ../include/ling_class/EST_Relation_list.h \
+  ../include/ling_class/EST_Relation_tree.h \
+  ../include/ling_class/EST_Relation_mls.h \
+  ../include/ling_class/EST_FeatureFunctionPackage.h \
+  ../include/ling_class/EST_relation_aux.h ../include/EST_Track.h \
+  ../include/EST_TrackMap.h ../include/EST_TNamedEnum.h \
+  ../include/instantiate/EST_TNamedEnumI.h ../include/EST_ChannelType.h \
+  ../include/EST_Handleable.h ../include/EST_THandle.h \
+  ../include/EST_Featured.h ../include/EST_Features.h \
+  ../include/ling_class/EST_Utterance.h \
+  ../include/ling_class/EST_Relation.h ../include/EST_Option.h \
+  ../include/EST_track_aux.h ../include/ling_class/EST_Relation.h \
+  ../include/EST_Option.h ../include/EST_Track.h ../include/EST_TBuffer.h \
+  ../include/EST_string_aux.h ../include/EST_io_aux.h \
+  ../include/EST_Option.h
+relation_io.o: relation_io.cc ../include/EST_unix.h \
+  ../include/EST_system.h ../include/unix/EST_defines_unix.h \
+  ../include/EST_types.h ../include/EST_TList.h ../include/EST_common.h \
+  ../include/EST_bool.h ../include/EST_UList.h ../include/EST_String.h \
+  ../include/EST_Chunk.h ../include/EST_walloc.h \
+  ../include/EST_strcasecmp.h ../include/EST_Regex.h \
+  ../include/EST_TSortable.h ../include/instantiate/EST_TSortableI.h \
+  ../include/EST_TIterator.h ../include/instantiate/EST_TListI.h \
+  ../include/instantiate/EST_TIteratorI.h ../include/EST_TVector.h \
+  ../include/EST_rw_status.h ../include/instantiate/EST_TVectorI.h \
+  ../include/EST_TKVL.h ../include/instantiate/EST_TKVLI.h \
+  ../include/instantiate/EST_TListI.h ../include/EST_FMatrix.h \
+  ../include/EST_TSimpleMatrix.h ../include/EST_TMatrix.h \
+  ../include/instantiate/EST_TMatrixI.h \
+  ../include/instantiate/EST_TSimpleMatrixI.h \
+  ../include/EST_TSimpleVector.h \
+  ../include/instantiate/EST_TSimpleVectorI.h ../include/EST_Val.h \
+  ../include/EST_error.h ../include/EST_unix.h ../include/EST_Contents.h \
+  ../include/EST_Val_defs.h ../include/EST_DMatrix.h \
+  ../include/EST_IMatrix.h ../include/EST_SMatrix.h \
+  ../include/ling_class/EST_Relation.h ../include/EST_String.h \
+  ../include/EST_TList.h ../include/EST_TKVL.h ../include/EST_THash.h \
+  ../include/instantiate/EST_THashI.h ../include/EST_system.h \
+  ../include/instantiate/EST_TStringHashI.h ../include/EST_Val.h \
+  ../include/EST_types.h ../include/EST_Token.h ../include/EST_Features.h \
+  ../include/EST_types.h ../include/ling_class/EST_Item.h \
+  ../include/ling_class/EST_Item_Content.h \
+  ../include/ling_class/EST_Relation_list.h \
+  ../include/ling_class/EST_Relation_tree.h \
+  ../include/ling_class/EST_Relation_mls.h \
+  ../include/ling_class/EST_FeatureFunctionPackage.h \
+  ../include/EST_string_aux.h ../include/EST_cutils.h \
+  ../include/EST_TList.h ../include/EST_Option.h relation_io.h \
+  ../include/EST_String.h ../include/EST_Token.h \
+  ../include/EST_rw_status.h
+EST_relation_compare.o: EST_relation_compare.cc ../include/EST_types.h \
+  ../include/EST_TList.h ../include/EST_common.h ../include/EST_bool.h \
+  ../include/EST_UList.h ../include/EST_String.h ../include/EST_Chunk.h \
+  ../include/EST_walloc.h ../include/EST_strcasecmp.h \
+  ../include/EST_Regex.h ../include/EST_TSortable.h \
+  ../include/instantiate/EST_TSortableI.h ../include/EST_TIterator.h \
+  ../include/instantiate/EST_TListI.h \
+  ../include/instantiate/EST_TIteratorI.h ../include/EST_TVector.h \
+  ../include/EST_rw_status.h ../include/instantiate/EST_TVectorI.h \
+  ../include/EST_TKVL.h ../include/instantiate/EST_TKVLI.h \
+  ../include/instantiate/EST_TListI.h ../include/EST_FMatrix.h \
+  ../include/EST_TSimpleMatrix.h ../include/EST_TMatrix.h \
+  ../include/instantiate/EST_TMatrixI.h \
+  ../include/instantiate/EST_TSimpleMatrixI.h \
+  ../include/EST_TSimpleVector.h \
+  ../include/instantiate/EST_TSimpleVectorI.h ../include/EST_Val.h \
+  ../include/EST_error.h ../include/EST_unix.h ../include/EST_system.h \
+  ../include/unix/EST_defines_unix.h ../include/EST_Contents.h \
+  ../include/EST_Val_defs.h ../include/EST_DMatrix.h \
+  ../include/EST_IMatrix.h ../include/EST_SMatrix.h \
+  ../include/EST_FMatrix.h ../include/ling_class/EST_Relation.h \
+  ../include/EST_String.h ../include/EST_TList.h ../include/EST_TKVL.h \
+  ../include/EST_THash.h ../include/instantiate/EST_THashI.h \
+  ../include/EST_system.h ../include/instantiate/EST_TStringHashI.h \
+  ../include/EST_Val.h ../include/EST_types.h ../include/EST_Token.h \
+  ../include/EST_Features.h ../include/EST_types.h \
+  ../include/ling_class/EST_Item.h \
+  ../include/ling_class/EST_Item_Content.h \
+  ../include/ling_class/EST_Relation_list.h \
+  ../include/ling_class/EST_Relation_tree.h \
+  ../include/ling_class/EST_Relation_mls.h \
+  ../include/ling_class/EST_FeatureFunctionPackage.h \
+  ../include/EST_Token.h ../include/EST_string_aux.h \
+  ../include/ling_class/EST_relation_aux.h ../include/EST_Track.h \
+  ../include/EST_TrackMap.h ../include/EST_TNamedEnum.h \
+  ../include/instantiate/EST_TNamedEnumI.h ../include/EST_ChannelType.h \
+  ../include/EST_Handleable.h ../include/EST_THandle.h \
+  ../include/EST_Featured.h ../include/EST_Features.h \
+  ../include/ling_class/EST_Utterance.h \
+  ../include/ling_class/EST_Relation.h ../include/EST_Option.h \
+  ../include/ling_class/EST_relation_compare.h ../include/EST_io_aux.h
+standard_feature_functions.o: standard_feature_functions.cc \
+  ../include/ling_class/EST_Item.h ../include/EST_String.h \
+  ../include/EST_Chunk.h ../include/EST_walloc.h \
+  ../include/EST_strcasecmp.h ../include/EST_bool.h \
+  ../include/EST_Regex.h ../include/EST_String.h \
+  ../include/EST_Features.h ../include/EST_TKVL.h ../include/EST_TList.h \
+  ../include/EST_common.h ../include/EST_UList.h \
+  ../include/EST_TSortable.h ../include/instantiate/EST_TSortableI.h \
+  ../include/EST_TIterator.h ../include/instantiate/EST_TListI.h \
+  ../include/instantiate/EST_TIteratorI.h \
+  ../include/instantiate/EST_TKVLI.h ../include/instantiate/EST_TListI.h \
+  ../include/EST_Val.h ../include/EST_error.h ../include/EST_unix.h \
+  ../include/EST_system.h ../include/unix/EST_defines_unix.h \
+  ../include/EST_Contents.h ../include/EST_Val_defs.h \
+  ../include/EST_types.h ../include/EST_TVector.h \
+  ../include/EST_rw_status.h ../include/instantiate/EST_TVectorI.h \
+  ../include/EST_FMatrix.h ../include/EST_TSimpleMatrix.h \
+  ../include/EST_TMatrix.h ../include/instantiate/EST_TMatrixI.h \
+  ../include/instantiate/EST_TSimpleMatrixI.h \
+  ../include/EST_TSimpleVector.h \
+  ../include/instantiate/EST_TSimpleVectorI.h ../include/EST_DMatrix.h \
+  ../include/EST_IMatrix.h ../include/EST_SMatrix.h \
+  ../include/ling_class/EST_Item_Content.h \
+  ../include/ling_class/EST_Relation_list.h \
+  ../include/ling_class/EST_Relation_tree.h \
+  ../include/ling_class/EST_Relation_mls.h \
+  ../include/ling_class/EST_FeatureFunctionPackage.h \
+  ../include/ling_class/EST_Item.h ../include/EST_THash.h \
+  ../include/instantiate/EST_THashI.h ../include/EST_system.h \
+  ../include/instantiate/EST_TStringHashI.h \
+  ../include/ling_class/EST_Relation.h ../include/EST_TList.h \
+  ../include/EST_TKVL.h ../include/EST_Val.h ../include/EST_types.h \
+  ../include/EST_Token.h ../include/ling_class/EST_Item_Content.h \
+  ../include/ling_class/EST_item_aux.h ../include/EST_features_aux.h \
+  ../include/EST_Features.h
+EST_Relation_mls.o: EST_Relation_mls.cc ../include/ling_class/EST_Item.h \
+  ../include/EST_String.h ../include/EST_Chunk.h ../include/EST_walloc.h \
+  ../include/EST_strcasecmp.h ../include/EST_bool.h \
+  ../include/EST_Regex.h ../include/EST_String.h \
+  ../include/EST_Features.h ../include/EST_TKVL.h ../include/EST_TList.h \
+  ../include/EST_common.h ../include/EST_UList.h \
+  ../include/EST_TSortable.h ../include/instantiate/EST_TSortableI.h \
+  ../include/EST_TIterator.h ../include/instantiate/EST_TListI.h \
+  ../include/instantiate/EST_TIteratorI.h \
+  ../include/instantiate/EST_TKVLI.h ../include/instantiate/EST_TListI.h \
+  ../include/EST_Val.h ../include/EST_error.h ../include/EST_unix.h \
+  ../include/EST_system.h ../include/unix/EST_defines_unix.h \
+  ../include/EST_Contents.h ../include/EST_Val_defs.h \
+  ../include/EST_types.h ../include/EST_TVector.h \
+  ../include/EST_rw_status.h ../include/instantiate/EST_TVectorI.h \
+  ../include/EST_FMatrix.h ../include/EST_TSimpleMatrix.h \
+  ../include/EST_TMatrix.h ../include/instantiate/EST_TMatrixI.h \
+  ../include/instantiate/EST_TSimpleMatrixI.h \
+  ../include/EST_TSimpleVector.h \
+  ../include/instantiate/EST_TSimpleVectorI.h ../include/EST_DMatrix.h \
+  ../include/EST_IMatrix.h ../include/EST_SMatrix.h \
+  ../include/ling_class/EST_Item_Content.h \
+  ../include/ling_class/EST_Relation_list.h \
+  ../include/ling_class/EST_Relation_tree.h \
+  ../include/ling_class/EST_Relation_mls.h \
+  ../include/ling_class/EST_FeatureFunctionPackage.h \
+  ../include/ling_class/EST_Item.h ../include/EST_THash.h \
+  ../include/instantiate/EST_THashI.h ../include/EST_system.h \
+  ../include/instantiate/EST_TStringHashI.h
+EST_item_aux.o: EST_item_aux.cc ../include/ling_class/EST_item_aux.h \
+  ../include/EST_features_aux.h ../include/EST_Features.h \
+  ../include/EST_TKVL.h ../include/EST_TList.h ../include/EST_common.h \
+  ../include/EST_bool.h ../include/EST_UList.h ../include/EST_String.h \
+  ../include/EST_Chunk.h ../include/EST_walloc.h \
+  ../include/EST_strcasecmp.h ../include/EST_Regex.h \
+  ../include/EST_TSortable.h ../include/instantiate/EST_TSortableI.h \
+  ../include/EST_TIterator.h ../include/instantiate/EST_TListI.h \
+  ../include/instantiate/EST_TIteratorI.h \
+  ../include/instantiate/EST_TKVLI.h ../include/instantiate/EST_TListI.h \
+  ../include/EST_Val.h ../include/EST_error.h ../include/EST_unix.h \
+  ../include/EST_system.h ../include/unix/EST_defines_unix.h \
+  ../include/EST_Contents.h ../include/EST_Val_defs.h \
+  ../include/EST_types.h ../include/EST_TVector.h \
+  ../include/EST_rw_status.h ../include/instantiate/EST_TVectorI.h \
+  ../include/EST_FMatrix.h ../include/EST_TSimpleMatrix.h \
+  ../include/EST_TMatrix.h ../include/instantiate/EST_TMatrixI.h \
+  ../include/instantiate/EST_TSimpleMatrixI.h \
+  ../include/EST_TSimpleVector.h \
+  ../include/instantiate/EST_TSimpleVectorI.h ../include/EST_DMatrix.h \
+  ../include/EST_IMatrix.h ../include/EST_SMatrix.h \
+  ../include/ling_class/EST_Item.h ../include/EST_String.h \
+  ../include/EST_Features.h ../include/ling_class/EST_Item_Content.h \
+  ../include/ling_class/EST_Relation_list.h \
+  ../include/ling_class/EST_Relation_tree.h \
+  ../include/ling_class/EST_Relation_mls.h \
+  ../include/ling_class/EST_FeatureFunctionPackage.h \
+  ../include/ling_class/EST_Item.h ../include/EST_THash.h \
+  ../include/instantiate/EST_THashI.h ../include/EST_system.h \
+  ../include/instantiate/EST_TStringHashI.h ../include/EST_String.h \
+  ../include/EST_error.h ../base_class/EST_get_function_template.h \
+  ../include/EST_features_aux.h
+EST_item_content_aux.o: EST_item_content_aux.cc \
+  ../include/ling_class/EST_item_content_aux.h \
+  ../include/EST_features_aux.h ../include/EST_Features.h \
+  ../include/EST_TKVL.h ../include/EST_TList.h ../include/EST_common.h \
+  ../include/EST_bool.h ../include/EST_UList.h ../include/EST_String.h \
+  ../include/EST_Chunk.h ../include/EST_walloc.h \
+  ../include/EST_strcasecmp.h ../include/EST_Regex.h \
+  ../include/EST_TSortable.h ../include/instantiate/EST_TSortableI.h \
+  ../include/EST_TIterator.h ../include/instantiate/EST_TListI.h \
+  ../include/instantiate/EST_TIteratorI.h \
+  ../include/instantiate/EST_TKVLI.h ../include/instantiate/EST_TListI.h \
+  ../include/EST_Val.h ../include/EST_error.h ../include/EST_unix.h \
+  ../include/EST_system.h ../include/unix/EST_defines_unix.h \
+  ../include/EST_Contents.h ../include/EST_Val_defs.h \
+  ../include/EST_types.h ../include/EST_TVector.h \
+  ../include/EST_rw_status.h ../include/instantiate/EST_TVectorI.h \
+  ../include/EST_FMatrix.h ../include/EST_TSimpleMatrix.h \
+  ../include/EST_TMatrix.h ../include/instantiate/EST_TMatrixI.h \
+  ../include/instantiate/EST_TSimpleMatrixI.h \
+  ../include/EST_TSimpleVector.h \
+  ../include/instantiate/EST_TSimpleVectorI.h ../include/EST_DMatrix.h \
+  ../include/EST_IMatrix.h ../include/EST_SMatrix.h \
+  ../include/ling_class/EST_item_aux.h \
+  ../include/ling_class/EST_Item_Content.h ../include/EST_String.h \
+  ../include/EST_Features.h ../include/EST_String.h \
+  ../include/EST_error.h ../base_class/EST_get_function_template.h \
+  ../include/EST_features_aux.h
+EST_Relation.o: EST_Relation.cc ../include/ling_class/EST_Relation.h \
+  ../include/EST_String.h ../include/EST_Chunk.h ../include/EST_walloc.h \
+  ../include/EST_strcasecmp.h ../include/EST_bool.h \
+  ../include/EST_Regex.h ../include/EST_String.h ../include/EST_TList.h \
+  ../include/EST_common.h ../include/EST_UList.h \
+  ../include/EST_TSortable.h ../include/instantiate/EST_TSortableI.h \
+  ../include/EST_TIterator.h ../include/instantiate/EST_TListI.h \
+  ../include/instantiate/EST_TIteratorI.h ../include/EST_TKVL.h \
+  ../include/EST_TList.h ../include/instantiate/EST_TKVLI.h \
+  ../include/instantiate/EST_TListI.h ../include/EST_THash.h \
+  ../include/EST_system.h ../include/unix/EST_defines_unix.h \
+  ../include/instantiate/EST_THashI.h ../include/EST_system.h \
+  ../include/instantiate/EST_TStringHashI.h ../include/EST_Val.h \
+  ../include/EST_error.h ../include/EST_unix.h ../include/EST_Contents.h \
+  ../include/EST_Val_defs.h ../include/EST_types.h \
+  ../include/EST_TVector.h ../include/EST_rw_status.h \
+  ../include/instantiate/EST_TVectorI.h ../include/EST_TKVL.h \
+  ../include/EST_FMatrix.h ../include/EST_TSimpleMatrix.h \
+  ../include/EST_TMatrix.h ../include/instantiate/EST_TMatrixI.h \
+  ../include/instantiate/EST_TSimpleMatrixI.h \
+  ../include/EST_TSimpleVector.h \
+  ../include/instantiate/EST_TSimpleVectorI.h ../include/EST_Val.h \
+  ../include/EST_DMatrix.h ../include/EST_IMatrix.h \
+  ../include/EST_SMatrix.h ../include/EST_Token.h \
+  ../include/EST_Features.h ../include/EST_types.h \
+  ../include/ling_class/EST_Item.h \
+  ../include/ling_class/EST_Item_Content.h \
+  ../include/ling_class/EST_Relation_list.h \
+  ../include/ling_class/EST_Relation_tree.h \
+  ../include/ling_class/EST_Relation_mls.h \
+  ../include/ling_class/EST_FeatureFunctionPackage.h \
+  ../include/ling_class/EST_Item.h relation_io.h ../include/EST_String.h \
+  ../include/EST_Token.h ../include/EST_rw_status.h
+EST_UtteranceFile.o: EST_UtteranceFile.cc ../include/EST_string_aux.h \
+  ../include/EST_TList.h ../include/EST_common.h ../include/EST_bool.h \
+  ../include/EST_UList.h ../include/EST_String.h ../include/EST_Chunk.h \
+  ../include/EST_walloc.h ../include/EST_strcasecmp.h \
+  ../include/EST_Regex.h ../include/EST_TSortable.h \
+  ../include/instantiate/EST_TSortableI.h ../include/EST_TIterator.h \
+  ../include/instantiate/EST_TListI.h \
+  ../include/instantiate/EST_TIteratorI.h ../include/EST_types.h \
+  ../include/EST_TVector.h ../include/EST_rw_status.h \
+  ../include/instantiate/EST_TVectorI.h ../include/EST_TKVL.h \
+  ../include/instantiate/EST_TKVLI.h ../include/instantiate/EST_TListI.h \
+  ../include/EST_FMatrix.h ../include/EST_TSimpleMatrix.h \
+  ../include/EST_TMatrix.h ../include/instantiate/EST_TMatrixI.h \
+  ../include/instantiate/EST_TSimpleMatrixI.h \
+  ../include/EST_TSimpleVector.h \
+  ../include/instantiate/EST_TSimpleVectorI.h ../include/EST_Val.h \
+  ../include/EST_error.h ../include/EST_unix.h ../include/EST_system.h \
+  ../include/unix/EST_defines_unix.h ../include/EST_Contents.h \
+  ../include/EST_Val_defs.h ../include/EST_DMatrix.h \
+  ../include/EST_IMatrix.h ../include/EST_SMatrix.h \
+  ../include/EST_FileType.h ../include/EST_Token.h \
+  ../include/EST_Option.h ../include/EST_Token.h \
+  ../include/ling_class/EST_Utterance.h ../include/EST_String.h \
+  ../include/EST_TList.h ../include/ling_class/EST_Relation.h \
+  ../include/EST_TKVL.h ../include/EST_THash.h \
+  ../include/instantiate/EST_THashI.h ../include/EST_system.h \
+  ../include/instantiate/EST_TStringHashI.h ../include/EST_Val.h \
+  ../include/EST_types.h ../include/EST_Token.h ../include/EST_Features.h \
+  ../include/ling_class/EST_Item.h \
+  ../include/ling_class/EST_Item_Content.h \
+  ../include/ling_class/EST_Relation_list.h \
+  ../include/ling_class/EST_Relation_tree.h \
+  ../include/ling_class/EST_Relation_mls.h \
+  ../include/ling_class/EST_FeatureFunctionPackage.h EST_UtteranceFile.h \
+  ../include/EST_TNamedEnum.h ../include/instantiate/EST_TNamedEnumI.h \
+  ../base_class/EST_TNamedEnum.cc ../include/EST_walloc.h \
+  ../include/EST_TNamedEnum.h ../base_class/EST_TSimpleVector.cc \
+  ../include/EST_TSimpleVector.h ../base_class/EST_matrix_support.h \
+  ../include/EST_cutils.h ../base_class/EST_TVector.cc \
+  ../include/EST_TVector.h ../include/EST_error.h \
+  ../base_class/EST_Tvectlist.cc ../include/EST_TList.h
+genxml.o: genxml.cc ../include/EST_TDeque.h ../include/EST_TVector.h \
+  ../include/EST_bool.h ../include/EST_rw_status.h \
+  ../include/instantiate/EST_TVectorI.h \
+  ../include/instantiate/EST_TDequeI.h ../include/EST_THash.h \
+  ../include/EST_String.h ../include/EST_Chunk.h ../include/EST_walloc.h \
+  ../include/EST_strcasecmp.h ../include/EST_Regex.h \
+  ../include/EST_system.h ../include/unix/EST_defines_unix.h \
+  ../include/EST_TIterator.h ../include/instantiate/EST_THashI.h \
+  ../include/EST_system.h ../include/instantiate/EST_TIteratorI.h \
+  ../include/instantiate/EST_TStringHashI.h ../include/EST_error.h \
+  ../include/EST_unix.h genxml.h ../include/ling_class/EST_Utterance.h \
+  ../include/EST_String.h ../include/EST_TList.h ../include/EST_common.h \
+  ../include/EST_UList.h ../include/EST_TSortable.h \
+  ../include/instantiate/EST_TSortableI.h \
+  ../include/instantiate/EST_TListI.h \
+  ../include/ling_class/EST_Relation.h ../include/EST_TKVL.h \
+  ../include/EST_TList.h ../include/instantiate/EST_TKVLI.h \
+  ../include/instantiate/EST_TListI.h ../include/EST_THash.h \
+  ../include/EST_Val.h ../include/EST_error.h ../include/EST_Contents.h \
+  ../include/EST_Val_defs.h ../include/EST_types.h ../include/EST_TKVL.h \
+  ../include/EST_FMatrix.h ../include/EST_TSimpleMatrix.h \
+  ../include/EST_TMatrix.h ../include/instantiate/EST_TMatrixI.h \
+  ../include/instantiate/EST_TSimpleMatrixI.h \
+  ../include/EST_TSimpleVector.h \
+  ../include/instantiate/EST_TSimpleVectorI.h ../include/EST_Val.h \
+  ../include/EST_DMatrix.h ../include/EST_IMatrix.h \
+  ../include/EST_SMatrix.h ../include/EST_Token.h \
+  ../include/EST_Features.h ../include/EST_types.h \
+  ../include/ling_class/EST_Item.h \
+  ../include/ling_class/EST_Item_Content.h \
+  ../include/ling_class/EST_Relation_list.h \
+  ../include/ling_class/EST_Relation_tree.h \
+  ../include/ling_class/EST_Relation_mls.h \
+  ../include/ling_class/EST_FeatureFunctionPackage.h \
+  ../include/rxp/XML_Parser.h ../include/EST_String.h \
+  ../include/EST_Regex.h ../include/EST_TKVL.h ../include/EST_THash.h \
+  ../include/EST_TDeque.h ../include/EST_TList.h ../include/rxp/rxp.h \
+  ../include/rxp/charset.h ../include/rxp/string16.h ../include/rxp/dtd.h \
+  ../include/rxp/input.h ../include/rxp/stdio16.h \
+  ../include/rxp/xmlparser.h ../include/EST_types.h ling_class_init.h \
+  ../base_class/EST_THash.cc ../include/EST_THash.h
+EST_utterance_aux.o: EST_utterance_aux.cc \
+  ../include/ling_class/EST_utterance_aux.h ../include/EST_String.h \
+  ../include/EST_Chunk.h ../include/EST_walloc.h \
+  ../include/EST_strcasecmp.h ../include/EST_bool.h \
+  ../include/EST_Regex.h ../include/EST_String.h ../include/EST_types.h \
+  ../include/EST_TList.h ../include/EST_common.h ../include/EST_UList.h \
+  ../include/EST_TSortable.h ../include/instantiate/EST_TSortableI.h \
+  ../include/EST_TIterator.h ../include/instantiate/EST_TListI.h \
+  ../include/instantiate/EST_TIteratorI.h ../include/EST_TVector.h \
+  ../include/EST_rw_status.h ../include/instantiate/EST_TVectorI.h \
+  ../include/EST_TKVL.h ../include/instantiate/EST_TKVLI.h \
+  ../include/instantiate/EST_TListI.h ../include/EST_FMatrix.h \
+  ../include/EST_TSimpleMatrix.h ../include/EST_TMatrix.h \
+  ../include/instantiate/EST_TMatrixI.h \
+  ../include/instantiate/EST_TSimpleMatrixI.h \
+  ../include/EST_TSimpleVector.h \
+  ../include/instantiate/EST_TSimpleVectorI.h ../include/EST_Val.h \
+  ../include/EST_error.h ../include/EST_unix.h ../include/EST_system.h \
+  ../include/unix/EST_defines_unix.h ../include/EST_Contents.h \
+  ../include/EST_Val_defs.h ../include/EST_DMatrix.h \
+  ../include/EST_IMatrix.h ../include/EST_SMatrix.h EST_UtteranceFile.h \
+  ../include/EST_TNamedEnum.h ../include/instantiate/EST_TNamedEnumI.h \
+  ../include/ling_class/EST_Utterance.h ../include/EST_TList.h \
+  ../include/ling_class/EST_Relation.h ../include/EST_TKVL.h \
+  ../include/EST_THash.h ../include/instantiate/EST_THashI.h \
+  ../include/EST_system.h ../include/instantiate/EST_TStringHashI.h \
+  ../include/EST_Val.h ../include/EST_Token.h ../include/EST_Features.h \
+  ../include/EST_types.h ../include/ling_class/EST_Item.h \
+  ../include/ling_class/EST_Item_Content.h \
+  ../include/ling_class/EST_Relation_list.h \
+  ../include/ling_class/EST_Relation_tree.h \
+  ../include/ling_class/EST_Relation_mls.h \
+  ../include/ling_class/EST_FeatureFunctionPackage.h \
+  ../include/EST_string_aux.h ../include/EST_FileType.h \
+  ../include/EST_Token.h ../include/EST_Option.h ../include/EST_Token.h \
+  genxml.h ../include/rxp/XML_Parser.h ../include/EST_String.h \
+  ../include/EST_Regex.h ../include/EST_TKVL.h ../include/EST_THash.h \
+  ../include/EST_TDeque.h ../include/instantiate/EST_TDequeI.h \
+  ../include/EST_TList.h ../include/rxp/rxp.h ../include/rxp/charset.h \
+  ../include/rxp/string16.h ../include/rxp/dtd.h ../include/rxp/input.h \
+  ../include/rxp/stdio16.h ../include/rxp/xmlparser.h \
+  ../include/EST_types.h
+ling_class_init.o: ling_class_init.cc ../include/ling_class/EST_Item.h \
+  ../include/EST_String.h ../include/EST_Chunk.h ../include/EST_walloc.h \
+  ../include/EST_strcasecmp.h ../include/EST_bool.h \
+  ../include/EST_Regex.h ../include/EST_String.h \
+  ../include/EST_Features.h ../include/EST_TKVL.h ../include/EST_TList.h \
+  ../include/EST_common.h ../include/EST_UList.h \
+  ../include/EST_TSortable.h ../include/instantiate/EST_TSortableI.h \
+  ../include/EST_TIterator.h ../include/instantiate/EST_TListI.h \
+  ../include/instantiate/EST_TIteratorI.h \
+  ../include/instantiate/EST_TKVLI.h ../include/instantiate/EST_TListI.h \
+  ../include/EST_Val.h ../include/EST_error.h ../include/EST_unix.h \
+  ../include/EST_system.h ../include/unix/EST_defines_unix.h \
+  ../include/EST_Contents.h ../include/EST_Val_defs.h \
+  ../include/EST_types.h ../include/EST_TVector.h \
+  ../include/EST_rw_status.h ../include/instantiate/EST_TVectorI.h \
+  ../include/EST_FMatrix.h ../include/EST_TSimpleMatrix.h \
+  ../include/EST_TMatrix.h ../include/instantiate/EST_TMatrixI.h \
+  ../include/instantiate/EST_TSimpleMatrixI.h \
+  ../include/EST_TSimpleVector.h \
+  ../include/instantiate/EST_TSimpleVectorI.h ../include/EST_DMatrix.h \
+  ../include/EST_IMatrix.h ../include/EST_SMatrix.h \
+  ../include/ling_class/EST_Item_Content.h \
+  ../include/ling_class/EST_Relation_list.h \
+  ../include/ling_class/EST_Relation_tree.h \
+  ../include/ling_class/EST_Relation_mls.h \
+  ../include/ling_class/EST_FeatureFunctionPackage.h \
+  ../include/ling_class/EST_Item.h ../include/EST_THash.h \
+  ../include/instantiate/EST_THashI.h ../include/EST_system.h \
+  ../include/instantiate/EST_TStringHashI.h EST_FeatureFunctionContext.h \
+  ../include/ling_class/EST_FeatureFunctionPackage.h ling_class_init.h
+ling_t.o: ling_t.cc ../include/EST_TList.h ../include/EST_common.h \
+  ../include/EST_bool.h ../include/EST_UList.h ../include/EST_String.h \
+  ../include/EST_Chunk.h ../include/EST_walloc.h \
+  ../include/EST_strcasecmp.h ../include/EST_Regex.h \
+  ../include/EST_TSortable.h ../include/instantiate/EST_TSortableI.h \
+  ../include/EST_TIterator.h ../include/instantiate/EST_TListI.h \
+  ../include/instantiate/EST_TIteratorI.h ../include/EST_String.h \
+  ../include/ling_class/EST_Relation.h ../include/EST_String.h \
+  ../include/EST_TList.h ../include/EST_TKVL.h ../include/EST_TList.h \
+  ../include/instantiate/EST_TKVLI.h ../include/instantiate/EST_TListI.h \
+  ../include/EST_THash.h ../include/EST_system.h \
+  ../include/unix/EST_defines_unix.h ../include/instantiate/EST_THashI.h \
+  ../include/EST_system.h ../include/instantiate/EST_TStringHashI.h \
+  ../include/EST_Val.h ../include/EST_error.h ../include/EST_unix.h \
+  ../include/EST_Contents.h ../include/EST_Val_defs.h \
+  ../include/EST_types.h ../include/EST_TVector.h \
+  ../include/EST_rw_status.h ../include/instantiate/EST_TVectorI.h \
+  ../include/EST_TKVL.h ../include/EST_FMatrix.h \
+  ../include/EST_TSimpleMatrix.h ../include/EST_TMatrix.h \
+  ../include/instantiate/EST_TMatrixI.h \
+  ../include/instantiate/EST_TSimpleMatrixI.h \
+  ../include/EST_TSimpleVector.h \
+  ../include/instantiate/EST_TSimpleVectorI.h ../include/EST_Val.h \
+  ../include/EST_DMatrix.h ../include/EST_IMatrix.h \
+  ../include/EST_SMatrix.h ../include/EST_Token.h \
+  ../include/EST_Features.h ../include/EST_types.h \
+  ../include/ling_class/EST_Item.h \
+  ../include/ling_class/EST_Item_Content.h \
+  ../include/ling_class/EST_Relation_list.h \
+  ../include/ling_class/EST_Relation_tree.h \
+  ../include/ling_class/EST_Relation_mls.h \
+  ../include/ling_class/EST_FeatureFunctionPackage.h \
+  ../base_class/EST_TVector.cc ../include/EST_TVector.h \
+  ../base_class/EST_matrix_support.h ../include/EST_cutils.h \
+  ../include/EST_error.h ../base_class/EST_TList.cc \
+  ../include/EST_TList.h
+EST_Utterance.o: EST_Utterance.cc ../include/EST_error.h \
+  ../include/EST_unix.h ../include/EST_system.h \
+  ../include/unix/EST_defines_unix.h ../include/EST_String.h \
+  ../include/EST_Chunk.h ../include/EST_walloc.h \
+  ../include/EST_strcasecmp.h ../include/EST_bool.h \
+  ../include/EST_Regex.h ../include/EST_string_aux.h \
+  ../include/EST_TList.h ../include/EST_common.h ../include/EST_UList.h \
+  ../include/EST_TSortable.h ../include/instantiate/EST_TSortableI.h \
+  ../include/EST_TIterator.h ../include/instantiate/EST_TListI.h \
+  ../include/instantiate/EST_TIteratorI.h ../include/EST_types.h \
+  ../include/EST_TVector.h ../include/EST_rw_status.h \
+  ../include/instantiate/EST_TVectorI.h ../include/EST_TKVL.h \
+  ../include/instantiate/EST_TKVLI.h ../include/instantiate/EST_TListI.h \
+  ../include/EST_FMatrix.h ../include/EST_TSimpleMatrix.h \
+  ../include/EST_TMatrix.h ../include/instantiate/EST_TMatrixI.h \
+  ../include/instantiate/EST_TSimpleMatrixI.h \
+  ../include/EST_TSimpleVector.h \
+  ../include/instantiate/EST_TSimpleVectorI.h ../include/EST_Val.h \
+  ../include/EST_error.h ../include/EST_Contents.h \
+  ../include/EST_Val_defs.h ../include/EST_DMatrix.h \
+  ../include/EST_IMatrix.h ../include/EST_SMatrix.h \
+  ../include/ling_class/EST_Utterance.h ../include/EST_String.h \
+  ../include/EST_TList.h ../include/ling_class/EST_Relation.h \
+  ../include/EST_TKVL.h ../include/EST_THash.h \
+  ../include/instantiate/EST_THashI.h ../include/EST_system.h \
+  ../include/instantiate/EST_TStringHashI.h ../include/EST_Val.h \
+  ../include/EST_types.h ../include/EST_Token.h ../include/EST_Features.h \
+  ../include/ling_class/EST_Item.h \
+  ../include/ling_class/EST_Item_Content.h \
+  ../include/ling_class/EST_Relation_list.h \
+  ../include/ling_class/EST_Relation_tree.h \
+  ../include/ling_class/EST_Relation_mls.h \
+  ../include/ling_class/EST_FeatureFunctionPackage.h EST_UtteranceFile.h \
+  ../include/EST_TNamedEnum.h ../include/instantiate/EST_TNamedEnumI.h \
+  ../include/EST_FileType.h ../include/EST_Token.h \
+  ../include/EST_Option.h ../include/EST_Token.h \
+  ../base_class/EST_TList.cc ../include/EST_TList.h \
+  ../base_class/EST_TKVL.cc ../include/EST_TKVL.h ../include/EST_error.h
+item_feats.o: item_feats.cc ../include/EST_THash.h \
+  ../include/EST_String.h ../include/EST_Chunk.h ../include/EST_walloc.h \
+  ../include/EST_strcasecmp.h ../include/EST_bool.h \
+  ../include/EST_Regex.h ../include/EST_system.h \
+  ../include/unix/EST_defines_unix.h ../include/EST_TIterator.h \
+  ../include/instantiate/EST_THashI.h ../include/EST_system.h \
+  ../include/instantiate/EST_TIteratorI.h \
+  ../include/instantiate/EST_TStringHashI.h \
+  ../include/ling_class/EST_Item.h ../include/EST_String.h \
+  ../include/EST_Features.h ../include/EST_TKVL.h ../include/EST_TList.h \
+  ../include/EST_common.h ../include/EST_UList.h \
+  ../include/EST_TSortable.h ../include/instantiate/EST_TSortableI.h \
+  ../include/instantiate/EST_TListI.h ../include/instantiate/EST_TKVLI.h \
+  ../include/instantiate/EST_TListI.h ../include/EST_Val.h \
+  ../include/EST_error.h ../include/EST_unix.h ../include/EST_Contents.h \
+  ../include/EST_Val_defs.h ../include/EST_types.h \
+  ../include/EST_TVector.h ../include/EST_rw_status.h \
+  ../include/instantiate/EST_TVectorI.h ../include/EST_FMatrix.h \
+  ../include/EST_TSimpleMatrix.h ../include/EST_TMatrix.h \
+  ../include/instantiate/EST_TMatrixI.h \
+  ../include/instantiate/EST_TSimpleMatrixI.h \
+  ../include/EST_TSimpleVector.h \
+  ../include/instantiate/EST_TSimpleVectorI.h ../include/EST_DMatrix.h \
+  ../include/EST_IMatrix.h ../include/EST_SMatrix.h \
+  ../include/ling_class/EST_Item_Content.h \
+  ../include/ling_class/EST_Relation_list.h \
+  ../include/ling_class/EST_Relation_tree.h \
+  ../include/ling_class/EST_Relation_mls.h \
+  ../include/ling_class/EST_FeatureFunctionPackage.h \
+  ../include/ling_class/EST_Item.h ../include/EST_THash.h \
+  ../include/ling_class/EST_Item_Content.h \
+  ../include/ling_class/EST_Relation.h ../include/EST_TList.h \
+  ../include/EST_TKVL.h ../include/EST_Val.h ../include/EST_types.h \
+  ../include/EST_Token.h \
+  ../include/ling_class/EST_FeatureFunctionPackage.h \
+  EST_FeatureFunctionContext.h
+apml.o: apml.cc ../include/EST_THash.h ../include/EST_String.h \
+  ../include/EST_Chunk.h ../include/EST_walloc.h \
+  ../include/EST_strcasecmp.h ../include/EST_bool.h \
+  ../include/EST_Regex.h ../include/EST_system.h \
+  ../include/unix/EST_defines_unix.h ../include/EST_TIterator.h \
+  ../include/instantiate/EST_THashI.h ../include/EST_system.h \
+  ../include/instantiate/EST_TIteratorI.h \
+  ../include/instantiate/EST_TStringHashI.h ../include/EST_error.h \
+  ../include/EST_unix.h apml.h ../include/ling_class/EST_Utterance.h \
+  ../include/EST_String.h ../include/EST_TList.h ../include/EST_common.h \
+  ../include/EST_UList.h ../include/EST_TSortable.h \
+  ../include/instantiate/EST_TSortableI.h \
+  ../include/instantiate/EST_TListI.h \
+  ../include/ling_class/EST_Relation.h ../include/EST_TKVL.h \
+  ../include/EST_TList.h ../include/instantiate/EST_TKVLI.h \
+  ../include/instantiate/EST_TListI.h ../include/EST_THash.h \
+  ../include/EST_Val.h ../include/EST_error.h ../include/EST_Contents.h \
+  ../include/EST_Val_defs.h ../include/EST_types.h \
+  ../include/EST_TVector.h ../include/EST_rw_status.h \
+  ../include/instantiate/EST_TVectorI.h ../include/EST_TKVL.h \
+  ../include/EST_FMatrix.h ../include/EST_TSimpleMatrix.h \
+  ../include/EST_TMatrix.h ../include/instantiate/EST_TMatrixI.h \
+  ../include/instantiate/EST_TSimpleMatrixI.h \
+  ../include/EST_TSimpleVector.h \
+  ../include/instantiate/EST_TSimpleVectorI.h ../include/EST_Val.h \
+  ../include/EST_DMatrix.h ../include/EST_IMatrix.h \
+  ../include/EST_SMatrix.h ../include/EST_Token.h \
+  ../include/EST_Features.h ../include/EST_types.h \
+  ../include/ling_class/EST_Item.h \
+  ../include/ling_class/EST_Item_Content.h \
+  ../include/ling_class/EST_Relation_list.h \
+  ../include/ling_class/EST_Relation_tree.h \
+  ../include/ling_class/EST_Relation_mls.h \
+  ../include/ling_class/EST_FeatureFunctionPackage.h \
+  ../include/rxp/XML_Parser.h ../include/EST_String.h \
+  ../include/EST_Regex.h ../include/EST_TKVL.h ../include/EST_THash.h \
+  ../include/EST_TDeque.h ../include/instantiate/EST_TDequeI.h \
+  ../include/EST_TList.h ../include/rxp/rxp.h ../include/rxp/charset.h \
+  ../include/rxp/string16.h ../include/rxp/dtd.h ../include/rxp/input.h \
+  ../include/rxp/stdio16.h ../include/rxp/xmlparser.h
+solexml.o: solexml.cc ../include/EST_THash.h ../include/EST_String.h \
+  ../include/EST_Chunk.h ../include/EST_walloc.h \
+  ../include/EST_strcasecmp.h ../include/EST_bool.h \
+  ../include/EST_Regex.h ../include/EST_system.h \
+  ../include/unix/EST_defines_unix.h ../include/EST_TIterator.h \
+  ../include/instantiate/EST_THashI.h ../include/EST_system.h \
+  ../include/instantiate/EST_TIteratorI.h \
+  ../include/instantiate/EST_TStringHashI.h ../include/EST_error.h \
+  ../include/EST_unix.h solexml.h ../include/ling_class/EST_Utterance.h \
+  ../include/EST_String.h ../include/EST_TList.h ../include/EST_common.h \
+  ../include/EST_UList.h ../include/EST_TSortable.h \
+  ../include/instantiate/EST_TSortableI.h \
+  ../include/instantiate/EST_TListI.h \
+  ../include/ling_class/EST_Relation.h ../include/EST_TKVL.h \
+  ../include/EST_TList.h ../include/instantiate/EST_TKVLI.h \
+  ../include/instantiate/EST_TListI.h ../include/EST_THash.h \
+  ../include/EST_Val.h ../include/EST_error.h ../include/EST_Contents.h \
+  ../include/EST_Val_defs.h ../include/EST_types.h \
+  ../include/EST_TVector.h ../include/EST_rw_status.h \
+  ../include/instantiate/EST_TVectorI.h ../include/EST_TKVL.h \
+  ../include/EST_FMatrix.h ../include/EST_TSimpleMatrix.h \
+  ../include/EST_TMatrix.h ../include/instantiate/EST_TMatrixI.h \
+  ../include/instantiate/EST_TSimpleMatrixI.h \
+  ../include/EST_TSimpleVector.h \
+  ../include/instantiate/EST_TSimpleVectorI.h ../include/EST_Val.h \
+  ../include/EST_DMatrix.h ../include/EST_IMatrix.h \
+  ../include/EST_SMatrix.h ../include/EST_Token.h \
+  ../include/EST_Features.h ../include/EST_types.h \
+  ../include/ling_class/EST_Item.h \
+  ../include/ling_class/EST_Item_Content.h \
+  ../include/ling_class/EST_Relation_list.h \
+  ../include/ling_class/EST_Relation_tree.h \
+  ../include/ling_class/EST_Relation_mls.h \
+  ../include/ling_class/EST_FeatureFunctionPackage.h \
+  ../include/rxp/XML_Parser.h ../include/EST_String.h \
+  ../include/EST_Regex.h ../include/EST_TKVL.h ../include/EST_THash.h \
+  ../include/EST_TDeque.h ../include/instantiate/EST_TDequeI.h \
+  ../include/EST_TList.h ../include/rxp/rxp.h ../include/rxp/charset.h \
+  ../include/rxp/string16.h ../include/rxp/dtd.h ../include/rxp/input.h \
+  ../include/rxp/stdio16.h ../include/rxp/xmlparser.h
+EST_FeatureFunctionPackage.o: EST_FeatureFunctionPackage.cc \
+  ../include/ling_class/EST_Item.h ../include/EST_String.h \
+  ../include/EST_Chunk.h ../include/EST_walloc.h \
+  ../include/EST_strcasecmp.h ../include/EST_bool.h \
+  ../include/EST_Regex.h ../include/EST_String.h \
+  ../include/EST_Features.h ../include/EST_TKVL.h ../include/EST_TList.h \
+  ../include/EST_common.h ../include/EST_UList.h \
+  ../include/EST_TSortable.h ../include/instantiate/EST_TSortableI.h \
+  ../include/EST_TIterator.h ../include/instantiate/EST_TListI.h \
+  ../include/instantiate/EST_TIteratorI.h \
+  ../include/instantiate/EST_TKVLI.h ../include/instantiate/EST_TListI.h \
+  ../include/EST_Val.h ../include/EST_error.h ../include/EST_unix.h \
+  ../include/EST_system.h ../include/unix/EST_defines_unix.h \
+  ../include/EST_Contents.h ../include/EST_Val_defs.h \
+  ../include/EST_types.h ../include/EST_TVector.h \
+  ../include/EST_rw_status.h ../include/instantiate/EST_TVectorI.h \
+  ../include/EST_FMatrix.h ../include/EST_TSimpleMatrix.h \
+  ../include/EST_TMatrix.h ../include/instantiate/EST_TMatrixI.h \
+  ../include/instantiate/EST_TSimpleMatrixI.h \
+  ../include/EST_TSimpleVector.h \
+  ../include/instantiate/EST_TSimpleVectorI.h ../include/EST_DMatrix.h \
+  ../include/EST_IMatrix.h ../include/EST_SMatrix.h \
+  ../include/ling_class/EST_Item_Content.h \
+  ../include/ling_class/EST_Relation_list.h \
+  ../include/ling_class/EST_Relation_tree.h \
+  ../include/ling_class/EST_Relation_mls.h \
+  ../include/ling_class/EST_FeatureFunctionPackage.h \
+  ../include/ling_class/EST_Item.h ../include/EST_THash.h \
+  ../include/instantiate/EST_THashI.h ../include/EST_system.h \
+  ../include/instantiate/EST_TStringHashI.h \
+  ../include/ling_class/EST_FeatureFunctionPackage.h \
+  ../base_class/EST_THash.cc ../include/EST_THash.h
+EST_FeatureFunctionContext.o: EST_FeatureFunctionContext.cc \
+  ../include/ling_class/EST_Item.h ../include/EST_String.h \
+  ../include/EST_Chunk.h ../include/EST_walloc.h \
+  ../include/EST_strcasecmp.h ../include/EST_bool.h \
+  ../include/EST_Regex.h ../include/EST_String.h \
+  ../include/EST_Features.h ../include/EST_TKVL.h ../include/EST_TList.h \
+  ../include/EST_common.h ../include/EST_UList.h \
+  ../include/EST_TSortable.h ../include/instantiate/EST_TSortableI.h \
+  ../include/EST_TIterator.h ../include/instantiate/EST_TListI.h \
+  ../include/instantiate/EST_TIteratorI.h \
+  ../include/instantiate/EST_TKVLI.h ../include/instantiate/EST_TListI.h \
+  ../include/EST_Val.h ../include/EST_error.h ../include/EST_unix.h \
+  ../include/EST_system.h ../include/unix/EST_defines_unix.h \
+  ../include/EST_Contents.h ../include/EST_Val_defs.h \
+  ../include/EST_types.h ../include/EST_TVector.h \
+  ../include/EST_rw_status.h ../include/instantiate/EST_TVectorI.h \
+  ../include/EST_FMatrix.h ../include/EST_TSimpleMatrix.h \
+  ../include/EST_TMatrix.h ../include/instantiate/EST_TMatrixI.h \
+  ../include/instantiate/EST_TSimpleMatrixI.h \
+  ../include/EST_TSimpleVector.h \
+  ../include/instantiate/EST_TSimpleVectorI.h ../include/EST_DMatrix.h \
+  ../include/EST_IMatrix.h ../include/EST_SMatrix.h \
+  ../include/ling_class/EST_Item_Content.h \
+  ../include/ling_class/EST_Relation_list.h \
+  ../include/ling_class/EST_Relation_tree.h \
+  ../include/ling_class/EST_Relation_mls.h \
+  ../include/ling_class/EST_FeatureFunctionPackage.h \
+  ../include/ling_class/EST_Item.h ../include/EST_THash.h \
+  ../include/instantiate/EST_THashI.h ../include/EST_system.h \
+  ../include/instantiate/EST_TStringHashI.h \
+  ../include/ling_class/EST_FeatureFunctionPackage.h \
+  EST_FeatureFunctionContext.h ling_class_init.h \
+  ../base_class/EST_THash.cc ../include/EST_THash.h \
+  ../base_class/EST_TList.cc ../include/EST_TList.h
+INCLUDED_MAKE_DEPEND=1

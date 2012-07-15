@@ -1,0 +1,53 @@
+ ######################################################################
+ # 
+ # 	Dependencies created for inclusion in rxp/Makefile.
+ #		Thu Nov 10 18:38:41 HKT 2011
+ # 
+ ######################################################################
+
+charset.o: charset.c ../include/rxp/system.h ../include/rxp/charset.h \
+  ../include/rxp/string16.h ../include/rxp/charset.h
+dtd.o: dtd.c ../include/rxp/system.h ../include/rxp/charset.h \
+  ../include/rxp/string16.h ../include/rxp/charset.h ../include/rxp/dtd.h \
+  ../include/rxp/url.h ../include/rxp/stdio16.h
+string16.o: string16.c ../include/rxp/system.h ../include/rxp/charset.h \
+  ../include/rxp/ctype16.h ../include/rxp/string16.h \
+  ../include/rxp/charset.h
+url.o: url.c ../include/rxp/system.h ../include/rxp/string16.h \
+  ../include/rxp/charset.h ../include/rxp/stdio16.h ../include/rxp/url.h \
+  ../include/rxp/stdio16.h
+ctype16.o: ctype16.c ../include/rxp/charset.h ../include/rxp/ctype16.h
+input.o: input.c ../include/rxp/system.h ../include/rxp/charset.h \
+  ../include/rxp/string16.h ../include/rxp/charset.h ../include/rxp/dtd.h \
+  ../include/rxp/input.h ../include/rxp/stdio16.h ../include/rxp/dtd.h \
+  ../include/rxp/url.h ../include/rxp/ctype16.h
+stdio16.o: stdio16.c ../include/rxp/system.h ../include/rxp/charset.h \
+  ../include/rxp/string16.h ../include/rxp/charset.h \
+  ../include/rxp/stdio16.h
+system.o: system.c ../include/rxp/stdio16.h ../include/rxp/charset.h \
+  ../include/rxp/system.h
+xmlparser.o: xmlparser.c ../include/rxp/system.h ../include/rxp/charset.h \
+  ../include/rxp/string16.h ../include/rxp/charset.h \
+  ../include/rxp/ctype16.h ../include/rxp/dtd.h ../include/rxp/input.h \
+  ../include/rxp/stdio16.h ../include/rxp/dtd.h ../include/rxp/stdio16.h \
+  ../include/rxp/xmlparser.h ../include/rxp/input.h
+XML_Parser.o: XML_Parser.cc ../include/EST_error.h ../include/EST_unix.h \
+  ../include/EST_system.h ../include/unix/EST_defines_unix.h \
+  ../include/EST_String.h ../include/EST_Chunk.h ../include/EST_walloc.h \
+  ../include/EST_strcasecmp.h ../include/EST_bool.h \
+  ../include/EST_Regex.h ../include/rxp/XML_Parser.h \
+  ../include/EST_String.h ../include/EST_Regex.h ../include/EST_TKVL.h \
+  ../include/EST_TList.h ../include/EST_common.h ../include/EST_UList.h \
+  ../include/EST_TSortable.h ../include/instantiate/EST_TSortableI.h \
+  ../include/EST_TIterator.h ../include/instantiate/EST_TListI.h \
+  ../include/instantiate/EST_TIteratorI.h \
+  ../include/instantiate/EST_TKVLI.h ../include/instantiate/EST_TListI.h \
+  ../include/EST_THash.h ../include/instantiate/EST_THashI.h \
+  ../include/EST_system.h ../include/instantiate/EST_TStringHashI.h \
+  ../include/EST_TDeque.h ../include/EST_TVector.h \
+  ../include/EST_rw_status.h ../include/instantiate/EST_TVectorI.h \
+  ../include/instantiate/EST_TDequeI.h ../include/EST_TList.h \
+  ../include/rxp/rxp.h ../include/rxp/charset.h ../include/rxp/string16.h \
+  ../include/rxp/dtd.h ../include/rxp/input.h ../include/rxp/stdio16.h \
+  ../include/rxp/xmlparser.h ../include/rxp/rxp.h
+INCLUDED_MAKE_DEPEND=1

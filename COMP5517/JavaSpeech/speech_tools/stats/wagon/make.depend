@@ -1,0 +1,145 @@
+ ######################################################################
+ # 
+ # 	Dependencies created for inclusion in stats/wagon/Makefile.
+ #		Thu Nov 10 18:40:22 HKT 2011
+ # 
+ ######################################################################
+
+dlist.o: dlist.cc ../../include/EST_Wagon.h ../../include/EST_String.h \
+  ../../include/EST_Chunk.h ../../include/EST_walloc.h \
+  ../../include/EST_strcasecmp.h ../../include/EST_bool.h \
+  ../../include/EST_Regex.h ../../include/EST_Val.h \
+  ../../include/EST_error.h ../../include/EST_unix.h \
+  ../../include/EST_system.h ../../include/unix/EST_defines_unix.h \
+  ../../include/EST_Contents.h ../../include/EST_Val_defs.h \
+  ../../include/EST_TVector.h ../../include/EST_rw_status.h \
+  ../../include/instantiate/EST_TVectorI.h ../../include/EST_TList.h \
+  ../../include/EST_common.h ../../include/EST_UList.h \
+  ../../include/EST_TSortable.h \
+  ../../include/instantiate/EST_TSortableI.h \
+  ../../include/EST_TIterator.h ../../include/instantiate/EST_TListI.h \
+  ../../include/instantiate/EST_TIteratorI.h \
+  ../../include/EST_simplestats.h ../../include/EST_Token.h \
+  ../../include/EST_StringTrie.h ../../include/EST_TKVL.h \
+  ../../include/instantiate/EST_TKVLI.h \
+  ../../include/instantiate/EST_TListI.h ../../include/EST_types.h \
+  ../../include/EST_FMatrix.h ../../include/EST_TSimpleMatrix.h \
+  ../../include/EST_TMatrix.h ../../include/instantiate/EST_TMatrixI.h \
+  ../../include/instantiate/EST_TSimpleMatrixI.h \
+  ../../include/EST_TSimpleVector.h \
+  ../../include/instantiate/EST_TSimpleVectorI.h \
+  ../../include/EST_DMatrix.h ../../include/EST_IMatrix.h \
+  ../../include/EST_SMatrix.h ../../include/EST_Track.h \
+  ../../include/EST_TrackMap.h ../../include/EST_TNamedEnum.h \
+  ../../include/instantiate/EST_TNamedEnumI.h \
+  ../../include/EST_ChannelType.h ../../include/EST_Handleable.h \
+  ../../include/EST_THandle.h ../../include/EST_Featured.h \
+  ../../include/EST_Features.h ../../include/siod.h \
+  ../../include/EST_string_aux.h ../../include/siod_defs.h \
+  ../../include/siod_est.h ../../include/EST_FMatrix.h \
+  ../../include/EST_multistats.h
+wagon_aux.o: wagon_aux.cc ../../include/EST_unix.h \
+  ../../include/EST_system.h ../../include/unix/EST_defines_unix.h \
+  ../../include/EST_cutils.h ../../include/EST_common.h \
+  ../../include/EST_bool.h ../../include/EST_walloc.h \
+  ../../include/EST_Token.h ../../include/EST_String.h \
+  ../../include/EST_Chunk.h ../../include/EST_strcasecmp.h \
+  ../../include/EST_Regex.h ../../include/EST_Wagon.h \
+  ../../include/EST_Val.h ../../include/EST_error.h \
+  ../../include/EST_unix.h ../../include/EST_Contents.h \
+  ../../include/EST_Val_defs.h ../../include/EST_TVector.h \
+  ../../include/EST_rw_status.h ../../include/instantiate/EST_TVectorI.h \
+  ../../include/EST_TList.h ../../include/EST_UList.h \
+  ../../include/EST_TSortable.h \
+  ../../include/instantiate/EST_TSortableI.h \
+  ../../include/EST_TIterator.h ../../include/instantiate/EST_TListI.h \
+  ../../include/instantiate/EST_TIteratorI.h \
+  ../../include/EST_simplestats.h ../../include/EST_Token.h \
+  ../../include/EST_StringTrie.h ../../include/EST_TKVL.h \
+  ../../include/instantiate/EST_TKVLI.h \
+  ../../include/instantiate/EST_TListI.h ../../include/EST_types.h \
+  ../../include/EST_FMatrix.h ../../include/EST_TSimpleMatrix.h \
+  ../../include/EST_TMatrix.h ../../include/instantiate/EST_TMatrixI.h \
+  ../../include/instantiate/EST_TSimpleMatrixI.h \
+  ../../include/EST_TSimpleVector.h \
+  ../../include/instantiate/EST_TSimpleVectorI.h \
+  ../../include/EST_DMatrix.h ../../include/EST_IMatrix.h \
+  ../../include/EST_SMatrix.h ../../include/EST_Track.h \
+  ../../include/EST_TrackMap.h ../../include/EST_TNamedEnum.h \
+  ../../include/instantiate/EST_TNamedEnumI.h \
+  ../../include/EST_ChannelType.h ../../include/EST_Handleable.h \
+  ../../include/EST_THandle.h ../../include/EST_Featured.h \
+  ../../include/EST_Features.h ../../include/siod.h \
+  ../../include/EST_string_aux.h ../../include/siod_defs.h \
+  ../../include/siod_est.h ../../include/EST_math.h
+wagonint.o: wagonint.cc ../../include/EST_cutils.h \
+  ../../include/EST_common.h ../../include/EST_bool.h \
+  ../../include/EST_walloc.h ../../include/EST_system.h \
+  ../../include/unix/EST_defines_unix.h ../../include/EST_Token.h \
+  ../../include/EST_String.h ../../include/EST_Chunk.h \
+  ../../include/EST_strcasecmp.h ../../include/EST_Regex.h \
+  ../../include/EST_Wagon.h ../../include/EST_Val.h \
+  ../../include/EST_error.h ../../include/EST_unix.h \
+  ../../include/EST_Contents.h ../../include/EST_Val_defs.h \
+  ../../include/EST_TVector.h ../../include/EST_rw_status.h \
+  ../../include/instantiate/EST_TVectorI.h ../../include/EST_TList.h \
+  ../../include/EST_UList.h ../../include/EST_TSortable.h \
+  ../../include/instantiate/EST_TSortableI.h \
+  ../../include/EST_TIterator.h ../../include/instantiate/EST_TListI.h \
+  ../../include/instantiate/EST_TIteratorI.h \
+  ../../include/EST_simplestats.h ../../include/EST_Token.h \
+  ../../include/EST_StringTrie.h ../../include/EST_TKVL.h \
+  ../../include/instantiate/EST_TKVLI.h \
+  ../../include/instantiate/EST_TListI.h ../../include/EST_types.h \
+  ../../include/EST_FMatrix.h ../../include/EST_TSimpleMatrix.h \
+  ../../include/EST_TMatrix.h ../../include/instantiate/EST_TMatrixI.h \
+  ../../include/instantiate/EST_TSimpleMatrixI.h \
+  ../../include/EST_TSimpleVector.h \
+  ../../include/instantiate/EST_TSimpleVectorI.h \
+  ../../include/EST_DMatrix.h ../../include/EST_IMatrix.h \
+  ../../include/EST_SMatrix.h ../../include/EST_Track.h \
+  ../../include/EST_TrackMap.h ../../include/EST_TNamedEnum.h \
+  ../../include/instantiate/EST_TNamedEnumI.h \
+  ../../include/EST_ChannelType.h ../../include/EST_Handleable.h \
+  ../../include/EST_THandle.h ../../include/EST_Featured.h \
+  ../../include/EST_Features.h ../../include/siod.h \
+  ../../include/EST_string_aux.h ../../include/siod_defs.h \
+  ../../include/siod_est.h
+wagon.o: wagon.cc ../../include/EST_Token.h ../../include/EST_String.h \
+  ../../include/EST_Chunk.h ../../include/EST_walloc.h \
+  ../../include/EST_strcasecmp.h ../../include/EST_bool.h \
+  ../../include/EST_Regex.h ../../include/EST_common.h \
+  ../../include/EST_FMatrix.h ../../include/EST_TSimpleMatrix.h \
+  ../../include/EST_TMatrix.h ../../include/EST_rw_status.h \
+  ../../include/EST_TVector.h ../../include/instantiate/EST_TVectorI.h \
+  ../../include/instantiate/EST_TMatrixI.h \
+  ../../include/instantiate/EST_TSimpleMatrixI.h \
+  ../../include/EST_TSimpleVector.h \
+  ../../include/instantiate/EST_TSimpleVectorI.h ../../include/EST_Val.h \
+  ../../include/EST_error.h ../../include/EST_unix.h \
+  ../../include/EST_system.h ../../include/unix/EST_defines_unix.h \
+  ../../include/EST_Contents.h ../../include/EST_Val_defs.h \
+  ../../include/EST_multistats.h ../../include/EST_FMatrix.h \
+  ../../include/EST_types.h ../../include/EST_TList.h \
+  ../../include/EST_UList.h ../../include/EST_TSortable.h \
+  ../../include/instantiate/EST_TSortableI.h \
+  ../../include/EST_TIterator.h ../../include/instantiate/EST_TListI.h \
+  ../../include/instantiate/EST_TIteratorI.h ../../include/EST_TKVL.h \
+  ../../include/instantiate/EST_TKVLI.h \
+  ../../include/instantiate/EST_TListI.h ../../include/EST_DMatrix.h \
+  ../../include/EST_IMatrix.h ../../include/EST_SMatrix.h \
+  ../../include/EST_Wagon.h ../../include/EST_simplestats.h \
+  ../../include/EST_Token.h ../../include/EST_StringTrie.h \
+  ../../include/EST_Track.h ../../include/EST_TrackMap.h \
+  ../../include/EST_TNamedEnum.h \
+  ../../include/instantiate/EST_TNamedEnumI.h \
+  ../../include/EST_ChannelType.h ../../include/EST_Handleable.h \
+  ../../include/EST_THandle.h ../../include/EST_Featured.h \
+  ../../include/EST_Features.h ../../include/siod.h \
+  ../../include/EST_string_aux.h ../../include/siod_defs.h \
+  ../../include/siod_est.h ../../include/EST_math.h \
+  ../../include/../base_class/EST_TList.cc ../../include/EST_TList.h \
+  ../../include/../base_class/EST_TVector.cc ../../include/EST_TVector.h \
+  ../../include/../base_class/EST_matrix_support.h \
+  ../../include/EST_cutils.h ../../include/EST_error.h
+INCLUDED_MAKE_DEPEND=1
