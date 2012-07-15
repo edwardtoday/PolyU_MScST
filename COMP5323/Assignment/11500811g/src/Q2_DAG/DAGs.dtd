@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ELEMENT dags (dag*)>
+<!ELEMENT dag (nodes, edges)>
+<!ATTLIST dag name ID #REQUIRED>
+<!ELEMENT nodes EMPTY>
+<!ATTLIST nodes labels IDREFS #IMPLIED>
+<!ELEMENT edges EMPTY>
+<!ATTLIST edges labels IDREFS #IMPLIED>
+<!ELEMENT node (#PCDATA)>
+<!ATTLIST node label ID #REQUIRED>
+<!ELEMENT edge (head_node, tail_node, weight)>
+<!ATTLIST edge id ID #REQUIRED>
+<!ELEMENT head_node EMPTY>
+<!ATTLIST head_node label IDREF #REQUIRED>
+<!ELEMENT tail_node EMPTY>
+<!ATTLIST tail_node label IDREF #REQUIRED>
+<!ELEMENT weight (#PCDATA)>

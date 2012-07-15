@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XML Spy v4.4 U (http://www.xmlspy.com) by Department of Computing (The Hong Kong Polytechnic University) -->
+<Company xmlns="http://my.company.com/namespace" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://my.company.com/namespace
+j:\COMProfile\MYDOCU~1\XML\AddressFirst.xsd">
+	<Address xsi:type="US-Address">
+		<Name>US dependency</Name>
+		<Street>Noble Ave</Street>
+		<City>Dallas</City>
+		<Zip>04812</Zip>
+		<State>Texas</State>
+	</Address>
+	<Person Manager="true" Programmer="false" Degree="BA">
+		<First>Fred</First>
+		<Last>Chan</Last>
+		<Title>Sales Manager</Title>
+		<PhoneExt>22</PhoneExt>
+		<Email>fred@work.com</Email>
+	</Person>
+	<Person Manager="false" Programmer="true" Degree="MA">
+		<First>Alan</First>
+		<Last>Lee</Last>
+		<PhoneExt>33</PhoneExt>
+		<Email>alan@work.com</Email>
+	</Person>
+	<Person Manager="true" Programmer="false" Degree="PhD">
+		<First>Tom</First>
+		<Last>Cheng</Last>
+		<PhoneExt>44</PhoneExt>
+		<Email>tom@work.com</Email>
+	</Person>
+</Company>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--被XMLSpy vW3C Schema产生的2011 rel. 2 sp1 (http://www.altova.com)-->
+<!--Please add namespace attributes, a targetNamespace attribute and import elements according to your requirements-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<xs:import namespace="http://www.w3.org/XML/1998/namespace"/>
+	<xs:complexType name="dags">
+		<xs:sequence>
+			<xs:element ref="dag" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="dags" type="dags"/>
+	<xs:complexType name="dag">
+		<xs:sequence>
+			<xs:element ref="nodes"/>
+			<xs:element ref="edges"/>
+		</xs:sequence>
+		<xs:attribute name="name" use="required" type="xs:ID"/>
+	</xs:complexType>
+	<xs:element name="dag" type="dag"/>
+	<xs:complexType name="nodes">
+		<xs:attribute name="labels" type="xs:IDREFS"/>
+	</xs:complexType>
+	<xs:element name="nodes" type="nodes"/>
+	<xs:complexType name="edges">
+		<xs:attribute name="labels" type="xs:IDREFS"/>
+	</xs:complexType>
+	<xs:element name="edges" type="edges"/>
+	<xs:complexType name="node" mixed="true">
+		<xs:attribute name="label" use="required" type="xs:ID"/>
+	</xs:complexType>
+	<xs:element name="node" type="node"/>
+	<xs:complexType name="edge">
+		<xs:sequence>
+			<xs:element ref="head_node"/>
+			<xs:element ref="tail_node"/>
+			<xs:element ref="weight"/>
+		</xs:sequence>
+		<xs:attribute name="id" use="required" type="xs:ID"/>
+	</xs:complexType>
+	<xs:element name="edge" type="edge"/>
+	<xs:complexType name="head_node">
+		<xs:attribute name="label" use="required" type="xs:IDREF"/>
+	</xs:complexType>
+	<xs:element name="head_node" type="head_node"/>
+	<xs:complexType name="tail_node">
+		<xs:attribute name="label" use="required" type="xs:IDREF"/>
+	</xs:complexType>
+	<xs:element name="tail_node" type="tail_node"/>
+	<xs:complexType name="weight" mixed="true"/>
+	<xs:element name="weight" type="weight"/>
+</xs:schema>

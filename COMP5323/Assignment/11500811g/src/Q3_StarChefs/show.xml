@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<t:show xmlns:t="http://qingpei.me/COMP5323"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://qingpei.me/COMP5323 show.xsd">
+  <t:name>Star Chef with Ma</t:name>
+  <t:episode>
+    <t:number>3</t:number>
+    <t:star_chef ref="Llian" >
+    <t:star_chef ref="Mosquay" >
+    <t:star_chef ref="Creit" >
+    <t:challenged_chef ref="Thermosy" >
+    <t:challenger key1="Setin" key2="Café Caliblini" >
+    <t:ingredient ref="1" >
+    <t:judge>
+      <t:name>Darsrad</t:name>
+      <t:score_star>
+        <t:taste>8</t:taste>
+        <t:appearance>9</t:appearance>
+      </t:score_star>
+      <t:score_challenger>
+        <t:taste>16</t:taste>
+        <t:appearance>6</t:appearance>
+      </t:score_challenger>
+    </t:judge>
+    <t:judge>
+      <t:name>Rodnray</t:name>
+      <t:score_star>
+        <t:taste>8</t:taste>
+        <t:appearance>9</t:appearance>
+      </t:score_star>
+      <t:score_challenger>
+        <t:taste>16</t:taste>
+        <t:appearance>6</t:appearance>
+      </t:score_challenger>
+    </t:judge>
+    <t:judge>
+      <t:name>Lerys</t:name>
+      <t:score_star>
+        <t:taste>8</t:taste>
+        <t:appearance>9</t:appearance>
+      </t:score_star>
+      <t:score_challenger>
+        <t:taste>16</t:taste>
+        <t:appearance>6</t:appearance>
+      </t:score_challenger>
+    </t:judge>
+    <t:judge>
+      <t:name>Enthrpol</t:name>
+      <t:score_star>
+        <t:taste>8</t:taste>
+        <t:appearance>9</t:appearance>
+      </t:score_star>
+      <t:score_challenger>
+        <t:taste>16</t:taste>
+        <t:appearance>6</t:appearance>
+      </t:score_challenger>
+    </t:judge>
+    <t:winner_is_challenger>true</t:winner_is_challenger>
+  </t:episode>
+  <t:episode>
+    <t:number>2</t:number>
+    <t:star_chef ref="Llian" >
+    <t:star_chef ref="Mosquay" >
+    <t:star_chef ref="Creit" >
+    <t:challenged_chef ref="Serad" >
+    <t:challenger key1="Thermosy" key2="Triage Fish n Chips" >
+    <t:ingredient ref="2" >
+    <t:judge>
+      <t:name>Darsrad</t:name>
+      <t:score_star>
+        <t:taste>8</t:taste>
+        <t:appearance>9</t:appearance>
+      </t:score_star>
+      <t:score_challenger>
+        <t:taste>16</t:taste>
+        <t:appearance>6</t:appearance>
+      </t:score_challenger>
+    </t:judge>
+    <t:judge>
+      <t:name>Rodnray</t:name>
+      <t:score_star>
+        <t:taste>8</t:taste>
+        <t:appearance>9</t:appearance>
+      </t:score_star>
+      <t:score_challenger>
+        <t:taste>16</t:taste>
+        <t:appearance>6</t:appearance>
+      </t:score_challenger>
+    </t:judge>
+    <t:judge>
+      <t:name>Lerys</t:name>
+      <t:score_star>
+        <t:taste>8</t:taste>
+        <t:appearance>9</t:appearance>
+      </t:score_star>
+      <t:score_challenger>
+        <t:taste>16</t:taste>
+        <t:appearance>6</t:appearance>
+      </t:score_challenger>
+    </t:judge>
+    <t:judge>
+      <t:name>Enthrpol</t:name>
+      <t:score_star>
+        <t:taste>8</t:taste>
+        <t:appearance>9</t:appearance>
+      </t:score_star>
+      <t:score_challenger>
+        <t:taste>16</t:taste>
+        <t:appearance>6</t:appearance>
+      </t:score_challenger>
+    </t:judge>
+    <t:winner_is_challenger>true</t:winner_is_challenger>
+  </t:episode>
+  <t:episode>
+    <t:number>1</t:number>
+    <t:star_chef ref="Llian" >
+    <t:star_chef ref="Serad" >
+    <t:star_chef ref="Creit" >
+    <t:challenged_chef ref="Delore" >
+    <t:challenger key1="Mosquay" key2="China Duck" >
+    <t:ingredient ref="3" >
+    <t:judge>
+      <t:name>Darsrad</t:name>
+      <t:score_star>
+        <t:taste>8</t:taste>
+        <t:appearance>9</t:appearance>
+      </t:score_star>
+      <t:score_challenger>
+        <t:taste>9</t:taste>
+        <t:appearance>9</t:appearance>
+      </t:score_challenger>
+    </t:judge>
+    <t:judge>
+      <t:name>Rodnray</t:name>
+      <t:score_star>
+        <t:taste>8</t:taste>
+        <t:appearance>9</t:appearance>
+      </t:score_star>
+      <t:score_challenger>
+        <t:taste>9</t:taste>
+        <t:appearance>9</t:appearance>
+      </t:score_challenger>
+    </t:judge>
+    <t:judge>
+      <t:name>Lerys</t:name>
+      <t:score_star>
+        <t:taste>8</t:taste>
+        <t:appearance>9</t:appearance>
+      </t:score_star>
+      <t:score_challenger>
+        <t:taste>9</t:taste>
+        <t:appearance>9</t:appearance>
+      </t:score_challenger>
+    </t:judge>
+    <t:judge>
+      <t:name>Enthrpol</t:name>
+      <t:score_star>
+        <t:taste>8</t:taste>
+        <t:appearance>9</t:appearance>
+      </t:score_star>
+      <t:score_challenger>
+        <t:taste>9</t:taste>
+        <t:appearance>9</t:appearance>
+      </t:score_challenger>
+    </t:judge>
+    <t:winner_is_challenger>true</t:winner_is_challenger>
+  </t:episode>
+  <t:star_chef>
+    <t:name>Serad</t:name>
+    <t:episode_appeared ref="1" >
+    <t:episode_appeared ref="2" >
+    <t:episode_appeared ref="3" >
+  </t:star_chef>
+  <t:star_chef>
+    <t:name>Llian</t:name>
+    <t:episode_appeared ref="1" >
+    <t:episode_appeared ref="2" >
+    <t:episode_appeared ref="3" >
+  </t:star_chef>
+  <t:star_chef>
+    <t:name>Creit</t:name>
+    <t:episode_appeared ref="1" >
+    <t:episode_appeared ref="2" >
+    <t:episode_appeared ref="3" >
+  </t:star_chef>
+  <t:star_chef>
+    <t:name>Delore</t:name>
+    <t:episode_appeared ref="1" >
+  </t:star_chef>
+  <t:star_chef>
+    <t:name>Mosquay</t:name>
+    <t:episode_appeared ref="2" >
+  </t:star_chef>
+  <t:star_chef>
+    <t:name>Thermosy</t:name>
+    <t:episode_appeared ref="3" >
+  </t:star_chef>
+  <t:ingredient>
+    <t:id>1</t:id>
+    <t:name>Grilled Cheese</t:name>
+  </t:ingredient>
+  <t:ingredient>
+    <t:id>2</t:id>
+    <t:name>Orange Juice</t:name>
+  </t:ingredient>
+  <t:ingredient>
+    <t:id>3</t:id>
+    <t:name>French Fries</t:name>
+  </t:ingredient>
+  <t:challenger>
+    <t:name>Setin</t:name>
+    <t:restaurant>Café Caliblini</t:restaurant>
+  </t:challenger>
+  <t:challenger>
+    <t:name>Mosquay</t:name>
+    <t:restaurant>China Duck</t:restaurant>
+  </t:challenger>
+  <t:challenger>
+    <t:name>Thermosy</t:name>
+    <t:restaurant>Triage Fish n Chips</t:restaurant>
+  </t:challenger>
+</t:show>

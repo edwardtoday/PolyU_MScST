@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://qingpei.me/COMP5323" targetNamespace="http://qingpei.me/COMP5323" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="forms">
+		<xs:annotation>
+			<xs:documentation>Root element, consisting of a number of forms collected.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="form" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="group_member" type="group_memberType">
+		<xs:annotation>
+			<xs:documentation>Group member element in section 2</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="studentID" type="xs:string">
+		<xs:annotation>
+			<xs:documentation>E.g. 11500811G</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="mobile_number" type="xs:string">
+		<xs:annotation>
+			<xs:documentation>For compatibility, it's a string.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="year" type="xs:gYear"/>
+	<xs:element name="department" type="xs:string">
+		<xs:annotation>
+			<xs:documentation>Name of the department.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="name" type="xs:string">
+		<xs:annotation>
+			<xs:documentation>English name, please.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="activity_item" type="activity_itemType">
+		<xs:annotation>
+			<xs:documentation>All the info abount an activity.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="form" type="formType">
+		<xs:annotation>
+			<xs:documentation>The complete application form.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="income_item">
+		<xs:annotation>
+			<xs:documentation>Info of an income source.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="amount_itemType">
+					<xs:sequence>
+						<xs:element name="source" type="xs:string"/>
+					</xs:sequence>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="amount_item" type="amount_itemType">
+		<xs:annotation>
+			<xs:documentation>Amout applied, approved and optional remarks.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="expenditure_item">
+		<xs:annotation>
+			<xs:documentation>Info about an expenditure item.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="amount_itemType">
+					<xs:sequence>
+						<xs:element name="description" type="xs:string"/>
+					</xs:sequence>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="date" type="xs:date"/>
+	<xs:complexType name="group_memberType">
+		<xs:sequence>
+			<xs:element ref="name"/>
+			<xs:element ref="studentID"/>
+			<xs:element ref="mobile_number"/>
+			<xs:element ref="department"/>
+			<xs:element ref="year"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="leaderType">
+		<xs:complexContent>
+			<xs:extension base="group_memberType">
+				<xs:sequence>
+					<xs:element name="name_cn" type="xs:string"/>
+					<xs:element name="prog" type="xs:string"/>
+					<xs:element name="prog_code" type="xs:string"/>
+					<xs:element name="mode">
+						<xs:simpleType>
+							<xs:restriction base="xs:string">
+								<xs:enumeration value="Full"/>
+								<xs:enumeration value="Part"/>
+								<xs:enumeration value="Cyber"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+					<xs:element name="address" type="xs:string"/>
+					<xs:element name="home_number" type="xs:string"/>
+					<xs:element name="email" type="xs:string"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="datetimeType">
+		<xs:sequence>
+			<xs:element ref="date"/>
+			<xs:element name="Time" type="xs:time" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="activity_itemType">
+		<xs:sequence>
+			<xs:element name="activity_name" type="xs:string"/>
+			<xs:element name="datetime" type="datetimeType"/>
+			<xs:element name="place" type="xs:string"/>
+			<xs:element name="type_of_user" type="xs:string"/>
+			<xs:element name="number_of_user" type="xs:unsignedInt"/>
+			<xs:element name="otherdetails" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="amount_itemType">
+		<xs:sequence>
+			<xs:element name="applied" type="xs:unsignedInt"/>
+			<xs:element name="approved" type="xs:unsignedInt" minOccurs="0"/>
+			<xs:element name="remarks" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="advance_partial_paymentType">
+		<xs:choice>
+			<xs:element name="dismiss"/>
+			<xs:element name="justification" type="xs:string"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="income_itemType">
+		<xs:sequence>
+			<xs:element name="sponsorship_kind">
+				<xs:complexType>
+					<xs:choice>
+						<xs:element name="sao"/>
+						<xs:element name="other" type="xs:string"/>
+					</xs:choice>
+				</xs:complexType>
+			</xs:element>
+			<xs:element ref="amount_item"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="declarationType">
+		<xs:sequence>
+			<xs:element name="signature" type="xs:base64Binary" minOccurs="0"/>
+			<xs:element ref="studentID"/>
+			<xs:element ref="name"/>
+			<xs:element ref="date"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="detailsType">
+		<xs:sequence>
+			<xs:element name="project_name" type="xs:string"/>
+			<xs:element name="objectives">
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="xs:string"/>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element ref="activity_item" maxOccurs="unbounded"/>
+			<xs:element name="preparation">
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="xs:string"/>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="benefits">
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="xs:string"/>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="eval_mech">
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="xs:string"/>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="followup_actions" minOccurs="0">
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="xs:string"/>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="budgetType">
+		<xs:sequence>
+			<xs:element ref="income_item" maxOccurs="unbounded"/>
+			<xs:element name="total_income" type="amount_itemType"/>
+			<xs:element ref="expenditure_item" maxOccurs="unbounded"/>
+			<xs:element name="total_expenditure" type="amount_itemType"/>
+			<xs:element name="advance_partial_payment" type="advance_partial_paymentType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="resultsType">
+		<xs:sequence>
+			<xs:element name="amount_granted" type="xs:unsignedInt"/>
+			<xs:element name="signature" type="xs:base64Binary"/>
+			<xs:element ref="date"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="membersType">
+		<xs:sequence>
+			<xs:element ref="group_member" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="formType">
+		<xs:sequence>
+			<xs:element name="leader" type="leaderType"/>
+			<xs:element name="members" type="membersType"/>
+			<xs:element name="details" type="detailsType"/>
+			<xs:element name="budget" type="budgetType"/>
+			<xs:element name="declaration" type="declarationType"/>
+			<xs:element name="results" type="resultsType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

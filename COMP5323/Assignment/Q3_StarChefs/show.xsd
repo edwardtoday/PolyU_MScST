@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:t="http://qingpei.me/COMP5323"
+xmlns:xs="http://www.w3.org/2001/XMLSchema"
+xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+targetNamespace="http://qingpei.me/COMP5323"
+elementFormDefault="qualified" attributeFormDefault="unqualified">
+  <xs:element name="show">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="name" type="xs:string" >
+        <xs:element ref="t:episode" maxOccurs="unbounded" >
+        <xs:element ref="t:star_chef" minOccurs="4"
+        maxOccurs="unbounded" />
+        <xs:element ref="t:ingredient" maxOccurs="unbounded" >
+        <xs:element ref="t:challenger" maxOccurs="unbounded" >
+      </xs:sequence>
+    </xs:complexType>
+    <xs:key name="episode_id">
+      <xs:selector xpath="t:episode" >
+      <xs:field xpath="t:number" >
+    </xs:key>
+    <xs:key name="chef_id">
+      <xs:selector xpath="t:star_chef" >
+      <xs:field xpath="t:name" >
+    </xs:key>
+    <xs:key name="challenger_id">
+      <xs:selector xpath="t:challenger" >
+      <xs:field xpath="t:name" >
+      <xs:field xpath="t:restaurant" >
+    </xs:key>
+    <xs:key name="ingredient_id">
+      <xs:selector xpath="t:ingredient" >
+      <xs:field xpath="t:id" >
+    </xs:key>
+    <xs:keyref name="episode_idref" refer="t:episode_id">
+      <xs:selector xpath="t:star_chef/t:episode_appeared" />
+      <xs:field xpath="@ref" >
+    </xs:keyref>
+    <xs:keyref name="chef_idref" refer="t:chef_id">
+      <xs:selector xpath="t:episode/t:star_chef|t:episode/t:challenged_chef" />
+      <xs:field xpath="@ref" >
+    </xs:keyref>
+    <xs:keyref name="challenger_idref" refer="t:challenger_id">
+      <xs:selector xpath="t:episode/t:challenger" />
+      <xs:field xpath="@key1" >
+      <xs:field xpath="@key2" >
+    </xs:keyref>
+    <xs:keyref name="ingredient_idref" refer="t:ingredient_id">
+      <xs:selector xpath="t:episode/t:ingredient" />
+      <xs:field xpath="@ref" >
+    </xs:keyref>
+    <xs:unique name="ingredient">
+      <xs:selector xpath="t:episode/t:ingredient" />
+      <xs:field xpath="@ref" >
+    </xs:unique>
+  </xs:element>
+  <xs:element name="episode">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="t:episodeType" >
+      </xs:complexContent>
+    </xs:complexType>
+    <xs:key name="judge_id">
+      <xs:selector xpath="t:judge" >
+      <xs:field xpath="t:name" >
+    </xs:key>
+    <xs:key name="star_id">
+      <xs:selector xpath="t:star_chef|t:challenged_chef" >
+      <xs:field xpath="@ref" >
+    </xs:key>
+    <xs:unique name="judge_name">
+      <xs:selector xpath="t:judge" >
+      <xs:field xpath="t:name" >
+    </xs:unique>
+  </xs:element>
+  <xs:complexType name="episodeType">
+    <xs:sequence>
+      <xs:element name="number" type="xs:positiveInteger" >
+      <xs:element name="star_chef" type="t:refType" minOccurs="3"
+      maxOccurs="3" />
+      <xs:element name="challenged_chef" type="t:refType" >
+      <xs:element name="challenger" type="t:doubleRefType" >
+      <xs:element name="ingredient" type="t:refType" >
+      <xs:element name="judge" minOccurs="4" maxOccurs="4">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="name" type="xs:string" >
+            <xs:element name="score_star" type="t:scoreType" >
+            <xs:element name="score_challenger"
+            type="t:scoreType" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="winner_is_challenger" type="xs:boolean" >
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="star_chef">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="t:personType">
+          <xs:sequence>
+            <xs:element name="episode_appeared" type="t:refType"
+            maxOccurs="unbounded" />
+          </xs:sequence>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="personType">
+    <xs:sequence>
+      <xs:element name="name" type="xs:string" >
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="refType">
+    <xs:attribute name="ref" use="required" >
+  </xs:complexType>
+  <xs:element name="ingredient" type="t:ingredientType" >
+  <xs:complexType name="ingredientType">
+    <xs:sequence>
+      <xs:element name="id" type="xs:positiveInteger" >
+      <xs:element name="name" type="xs:string" >
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="challengerType">
+    <xs:complexContent>
+      <xs:extension base="t:personType">
+        <xs:sequence>
+          <xs:element name="restaurant" type="xs:string" >
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="challenger" type="t:challengerType" >
+  <xs:complexType name="doubleRefType">
+    <xs:attribute name="key1" use="required" >
+    <xs:attribute name="key2" use="required" >
+  </xs:complexType>
+  <xs:complexType name="scoreType">
+    <xs:sequence>
+      <xs:element name="taste">
+        <xs:simpleType>
+          <xs:restriction base="xs:int">
+            <xs:minInclusive value="0" >
+            <xs:maxInclusive value="20" >
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="appearance">
+        <xs:simpleType>
+          <xs:restriction base="xs:int">
+            <xs:minInclusive value="0" >
+            <xs:maxInclusive value="20" >
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
