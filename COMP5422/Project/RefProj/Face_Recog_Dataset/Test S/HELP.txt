@@ -1,0 +1,15 @@
+Help for Face Recognition Software:
+
+Steps to be followed while running the application:
+1.Start Matlab.
+2.Run only the figure file named Face.
+3.An interface will be displayed on the screen.
+4.To test the testbase and the database click on the respective buttons on the GUI(Graphical User Interface).
+5.Click on the Query input button to select the name of the face to be recognized.
+:::REMEMBER:::
+Do not press profile or detect faces button before giving input image name or else the software won't work and an error would pop out on the command window of MATLAB.
+6.Either press the Detect Faces button or the profile button to obtain the recognized face from the database and to obtain the bio-data of the individual respectively.
+Thus the face recognition software can be implemented on the windows platform.
+
+All credits to Team 36 and project guide Prof. Venu Shah.
+Also, we appreciate the ammount of support and utilities provided by the college during the implementation of the project.

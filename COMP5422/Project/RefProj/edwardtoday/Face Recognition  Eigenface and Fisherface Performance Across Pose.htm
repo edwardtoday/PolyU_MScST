@@ -1,0 +1,524 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 TRANSITIONAL//EN">
+<!-- saved from url=(0061)http://dailyburrito.com/projects/facerecog/FaceRecReport.html -->
+<html zhtongwen="simplified" autopagermatchedrules="1"><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<title>Face Recognition: Eigenface and Fisherface Performance Across Pose</title>
+	<link type="text/css" rel="stylesheet" href="data:text/css,"></head>
+	<body>
+	   <table width="450" align="left" cellpadding="10"><tbody><tr><td>
+	   
+	   <h1>Face Recognition: Eigenface and Fisherface Performance Across Pose</h1>
+
+<pre><code>by Alan Brooks (in collaboration with Li Gao) 
+ECE 432 Computer Vision with Professor Ying Wu
+Final Project Report submitted on June 9, 2004
+</code></pre>
+
+<h2>Computer Vision Research in General</h2>
+
+<p>The computer vision field has recently become a very interesting area to research. Technological improvements in computers and imaging hardware have enabled many novel computer vision applications. </p>
+
+<p>Automated computer vision systems that capture and analyze images have found mostly military applications to date: in surveillance, targeting, and biometrics. In the near future, computer vision is likely to be used in consumer applications such as:</p>
+
+<ul>
+<li>improved human-computer interfaces, </li>
+<li>assisted automobile navigation &amp; collision avoidance, </li>
+<li>video summarization,</li>
+<li>virtual simulations &amp; games, and</li>
+<li>home entertainment.</li>
+</ul>
+
+<p>Also, some useful commercial applications that are currently or soon-to-be in development include:</p>
+
+<ul>
+<li>motion capture for movie special effects,</li>
+<li>face recognition biometric systems, and</li>
+<li>home robotics.</li>
+</ul>
+
+<p>Computer vision makes use of multidisciplinary knowledge from many different fields, including optical physics, machine learning, pattern recognition, signal processing, and computer graphics. It can be useful to divide computer vision research into four levels:</p>
+
+<ol>
+<li>Image Formation (physics, optics, &amp; cameras)</li>
+<li>Low-level Vision (derivatives, optical flow)</li>
+<li>Mid-level Vision (segmented objects, tracking, …)</li>
+<li>High-level Vision (understanding underlying semantics)</li>
+</ol>
+
+<p>While theoretical knowledge is well-developed for image formation and low-level vision, many mid-level and high-level vision problems lack theoretical descriptions or solutions. Because so much remains to be learned, the next several years should be an exciting time to research computer vision.</p>
+
+<p>As a researcher beginning study in the computer vision field, I wanted to start with study of an established research topic. The facial recognition problem has been studied extensively, with research beginning in the 1960-70’s that was mostly influenced by early works authored by Bledsoe <a href="http://dailyburrito.com/projects/facerecog/FaceRecReport.html#refs">[1]</a>, Kelly <a href="http://dailyburrito.com/projects/facerecog/FaceRecReport.html#refs">[2]</a>, and Kanade <a href="http://dailyburrito.com/projects/facerecog/FaceRecReport.html#refs">[3]</a>.</p>
+
+<h2>Problem Statement</h2>
+
+<p><em>Broad Problem Statement</em></p>
+
+<blockquote>
+	<p>Given a training database of human facial photographs annotated with identity, train an automated system to recognize the identity of a person from a new image of the person. The system should have minimal sensitivity to lighting, maximal probability of detecting the correct person, and minimal probability of false alarms.</p>
+</blockquote>
+
+<p>Pictorially, given this database of photos</p>
+
+<p><img src="./Face Recognition  Eigenface and Fisherface Performance Across Pose_files/probdef-aa_joined-web.jpg" alt="facial photo database"></p>
+
+<p>and this new picture,</p>
+
+<p><img src="./Face Recognition  Eigenface and Fisherface Performance Across Pose_files/probdef-Jessica-web.jpg" alt="jessica face"></p>
+
+<p>can an automatic algorithm be developed that can match the identity of the person from the new picture with a previously stored image in the database?</p>
+
+<p>While the broad goal is appropriate for a research group, the scope must be narrowed a bit for a class project. By assuming that the face detection problem is already solved, we can expect to use pre-processed (in scale, rotation, and alignment) face images as inputs to our face recognition software.</p>
+
+<p><img src="./Face Recognition  Eigenface and Fisherface Performance Across Pose_files/assumptions-faces_detected-web.jpg" alt="cmu face detection result"></p>
+
+<p>An example of this face detection work can be seen at Carnegie Mellon University’s face detection <a href="http://www.vasc.ri.cmu.edu/cgi-bin/demos/findface.cgi">online demo</a>. Running some of our database through this demo gives <a href="http://vasc.ri.cmu.edu/demos/faceindex/05312004/users/4333.html">this result</a>.</p>
+
+<p><em>Our (Specific) Problem Statement</em></p>
+
+<blockquote>
+	<p>Given a training database of pre-processed face images, train an automated system to recognize the identity of a person from a new image of the person. Examine sensitivity to pose using the eigenface approach suggested in <a href="http://dailyburrito.com/projects/facerecog/FaceRecReport.html#refs">[4,5]</a> and the fisherface approach developed in <a href="http://dailyburrito.com/projects/facerecog/FaceRecReport.html#refs">[6]</a>.</p>
+</blockquote>
+
+<h2>Why is Face Recognition Interesting?</h2>
+
+<p>Face recognition is interesting to study because it is an application area where computer vision research is being utilized in both military and commercial products. Much effort has been spent on this problem, yet there is still plenty of work to be done.</p>
+
+<p>Basic research related to this field is currently active. For example, research searching for a fundamental theory describing how light and objects interact to produce images (via the plenoptic function) was recently published in April 2004 <a href="http://dailyburrito.com/projects/facerecog/FaceRecReport.html#refs">[7]</a>. Often, practical applications can grow out of improvements in theoretical understanding and it seems that this problem will continue to demonstrate this growth. </p>
+
+<p>Personally, I’m interested in this project because it’s a high-level pattern recognition problem in which humans are very adept, whereas it can be quite challenging to teach a machine to do it. The intermediate and final visual results are interesting to observe in order to understand failures and successes of the various approaches.</p>
+
+<h2>Background</h2>
+
+<p>The state of the art research of face recognition has progressed much beyond the eigenface and fisherface approaches we study in this project. The history has developed from the 1960’s until now (2004) with many significant advances happening within the last eight years.</p>
+
+<p>Influential contributions (with our focus <em>emphasized</em>)</p>
+
+<ul>
+<li>1964, 1970, 1977: Facial feature-based recognition (Bledsoe, Kelly Kanade)</li>
+<li>1984: WIZARD neural net approach (Stonham)</li>
+<li><em>1991, 1994: Eigenface PCA (Pentland &amp; Turk)</em></li>
+<li><em>1997: Fisherface FLD + PCA (Belheumeur)</em></li>
+<li>2000: FERET standard testing method &amp; database</li>
+<li>2002: Independent Component Analysis (ICA) captures higher-order statistics (Bartlett)</li>
+<li>2003: Kernel, SVM, RBF, combos (Liu, Er)</li>
+<li>2004: Plenoptic light-fields (Gross), 2D-PCA (Yang)</li>
+</ul>
+
+<p>For more historical detail, refer to R. Chellappa’s survey <a href="http://dailyburrito.com/projects/facerecog/FaceRecReport.html#refs">[8]</a> of this topic’s early history, covering the 1960’s until 1995.</p>
+
+<h2>Approach</h2>
+
+<p>We have implemented the eigenface and fisherface algorithms and tested them against two face databases, observing results across pose (out-of-plane face rotation). We evaluated performance against databases with both densely-sampled and sparsely-sampled facial poses.</p>
+
+<p>Our new ideas include:</p>
+
+<ol>
+<li>comparing results of eigenface &amp; fisherface across pose, </li>
+<li>testing dense and sparse training databases, and</li>
+<li>a slight modification to fisherface imposing a max on the number of PCA components to be used for dimension reduction.</li>
+</ol>
+
+<p>More detail describing the new ideas can be found in the <a href="http://dailyburrito.com/projects/facerecog/FaceRecReport.html#new">new contributions</a> section.</p>
+
+<h2>Mathematics Overview</h2>
+
+<p>This section reviews the basic mathematics for the eigenface and fisherface approaches. We use MATLAB-like pseudo-code notation.</p>
+
+<h4>Eigenface</h4>
+
+<p><em>Given</em>:</p>
+
+<pre><code>M training images, sized N pixels wide by N pixels tall
+c recognition images, also sized N by N pixels
+Mp = desired number of principal components
+</code></pre>
+
+<p><em>Feature Extraction</em>:</p>
+
+<pre><code>% merge column vector for each training face
+X = [x1 x2 ... xm]
+% compute the average face
+me = mean(X,2)
+A = X - [me me ... me]
+
+% avoids N^2 by N^2 matrix computation of [V,D]=eig(A*A')
+% only computes M columns of U: A=U*E*V'
+[U,E,V] = svd(A,0)
+
+eigVals = diag(E)
+lmda = eigVals(1:Mp)
+% pick face-space principal components (eigenfaces)
+P = U(:,1:Mp)
+
+% store weights of training data projected into eigenspace
+train_wt = P'*A
+</code></pre>
+
+<p><em>Nearest-Neighbor Classification</em>:</p>
+
+<pre><code>% A2 created from the recog data (in similar manner to A)
+recog_wt = P'*A2
+
+% euclidean distance for ith recog face, jth train face
+euDis(i,j) = sqrt((recog_wt(:,j)-train_wt(:,i)).^2)
+</code></pre>
+
+<h4>Fisherface</h4>
+
+<p><em>Given</em>:</p>
+
+<pre><code>same training &amp; recognition images, also sized N by N pixels
+P1 = eigenface result
+</code></pre>
+
+<p><em>Feature Extraction</em>:</p>
+
+<pre><code>% same as eigenface
+A = X - [me me ... me]
+
+% compute N^2 by N^2 between-class scatter matrix
+for i=1:c
+   Sb = Sb + clsMeani*clsMeani'
+
+% compute N^2 by N^2 within-class scatter matrix
+for i=1:c, j=1:ci
+   Sw = Sw + (X(j)-clsMeani)*(X(j)-clsMeani)'
+
+% project into (N-c) by (N-c) subspace using PCA
+Sbb = P1'*Sb*P1
+Sww = P1'*Sw*P1
+
+% generalized eigenvalue decomposition
+% solves Sbb*V = Sww*V*D
+[V,D] = eig(Sbb,Sww)
+
+eigVals = diag(D)
+lmda = eigVals(1:Mp)
+P = P1*V(:,1:Mp)
+
+% store training weights
+train_wt = P'*A
+</code></pre>
+
+<p><em>Nearest-Neighbor Classification</em>:</p>
+
+<pre><code>% same as eigenface
+</code></pre>
+
+<h2>Results and Comparisons</h2>
+
+<p>Facial recognition software was developed using the MATLAB programming language by <a href="http://www.mathworks.com/">the MathWorks</a>. This environment was chosen because it easily supports image processing, image visualization, and linear algebra.</p>
+
+<p>The software was tested against two databases: ALAN &amp; UMIST. </p>
+
+<ol>
+<li><a href="http://images.ee.umist.ac.uk/danny/database.html">UMIST</a> was created by Daniel B. Graham, with a purpose of collecting a controlled set of images that vary pose uniformly from frontal to side view. The UMIST database has 565 total images of 20 people.</li>
+<li><a href="http://pubweb.northwestern.edu/~acb206/ece432/tmbwClassOval40x60.zip">ALAN</a> was created by the author, Alan C. Brooks, by collecting facial snapshots of people taken at different times. These snapshots were then pre-processed by hand using <a href="http://www.gimp.org/">the gimp</a> to align, normalize lighting, and remove background. This database has 47 total images of 14 people.</li>
+</ol>
+
+<p>The UMIST database images, displayed below, has uniform lighting and pose varying from side to frontal.</p>
+
+<p><img src="./Face Recognition  Eigenface and Fisherface Performance Across Pose_files/umistdb-aa_joined-web.jpg" alt="UMIST database montage"></p>
+
+<h4>UMIST Results Using Eigenface in Densely Sampled Database</h4>
+
+<p>For these results, 20 recognition faces (one for each person) were randomly picked from the database, leaving 545 photos to use as training faces. Mp, the number of principal components to use, was chosen as 20.</p>
+
+<p>The average face, eigenvalue strengths, and the 20 eigenfaces (eigenvectors) corresponding to the 20 strongest eigenvalues are displayed.</p>
+
+<p><img src="./Face Recognition  Eigenface and Fisherface Performance Across Pose_files/umist_avg-web.jpg" alt="average face">
+<img src="./Face Recognition  Eigenface and Fisherface Performance Across Pose_files/umist_eig-web.jpg" alt="eigenvalues">
+<img src="./Face Recognition  Eigenface and Fisherface Performance Across Pose_files/umist_eigface-web.jpg" alt="eigenfaces"></p>
+
+<p>Once these eigenfaces have been found, they can be used as a basis for face-space. All of the training images are projected into this face-space and the projection weights are stored as training data.</p>
+
+<p>In order to recognize a face, it is projected into face-space, producing weights that are then used as features in a nearest neighbor classifier that simply finds the minimum euclidean distance between the recognition weights and the training weights.</p>
+
+<p>The resulting plots follow. Note that <em>blue text</em> over a face denotes a correct match while <em>red text</em> indicates a incorrect recognition.</p>
+
+<p><img src="./Face Recognition  Eigenface and Fisherface Performance Across Pose_files/umist_res1-web.png" alt="umist results 1">
+<img src="./Face Recognition  Eigenface and Fisherface Performance Across Pose_files/umist_res2-web.png" alt="umist results 2">
+<img src="./Face Recognition  Eigenface and Fisherface Performance Across Pose_files/umist_res3-web.png" alt="umist results 3"></p>
+
+<p>All 20 of 20 images were correctly recognized, confirming the very good performance of eigenface with densely and uniformly sampled inputs. For this same database and setup, fisherface performs very similarly.</p>
+
+<h4>UMIST Results Using Fisherface in Sparsely Sampled Database</h4>
+
+<p>For these results, 20 recognition faces (one for each person) were randomly picked from the database, then 60 more photos were used as training faces. Three training faces were picked for each person: a frontal, side, and 45-degree view.</p>
+
+<p>The resulting plots follow.</p>
+
+<p><img src="./Face Recognition  Eigenface and Fisherface Performance Across Pose_files/umist_res1_spar-web.png" alt="umist results 1">
+<img src="./Face Recognition  Eigenface and Fisherface Performance Across Pose_files/umist_res2_spar-web.png" alt="umist results 2">
+<img src="./Face Recognition  Eigenface and Fisherface Performance Across Pose_files/umist_res3_spar-web.png" alt="umist results 3"></p>
+
+<p>Out of the 20 faces, 16 were correctly classified in the 1st match. Also notice that this approach is rather pose invariant — it often (13 times) picks out all 3 training images from the database.</p>
+
+<p>For comparison, the next plots show the same setup run using the eigenface algorithm. Note that 14 of the 20 faces are correctly classified, and all 3 correct images are <em>never</em> found.</p>
+
+<p><img src="./Face Recognition  Eigenface and Fisherface Performance Across Pose_files/umist_res1_spar_eig-web.png" alt="umist results 1">
+<img src="./Face Recognition  Eigenface and Fisherface Performance Across Pose_files/umist_res2_spar_eig-web.png" alt="umist results 2">
+<img src="./Face Recognition  Eigenface and Fisherface Performance Across Pose_files/umist_res3_spar_eig-web.png" alt="umist results 3"></p>
+
+<p>Clearly, the fisherface algorithm performs better under pose variation when only a few samples across pose are available in the training set.</p>
+
+<h4>ALAN Database Results Using Eigenface</h4>
+
+<p>The following images depict the original captured photos and the faces generated by manual pre-processing.</p>
+
+<p><img src="./Face Recognition  Eigenface and Fisherface Performance Across Pose_files/probdef-aa_joined-web.jpg" alt="original faces">
+<img src="./Face Recognition  Eigenface and Fisherface Performance Across Pose_files/preproc-aa_joined-web.jpg" alt="preprocessed faces"></p>
+
+<p>Pre-processing was used to attempt to remove differences among images in lighting (by normalizing skin tone), scale, alignment, and background.</p>
+
+<p>For these results, 11 recognition faces (one for each person) were randomly picked from the database, then the remaining 26 photos were used as training faces. The results before and after pre-processing are displayed.</p>
+
+<p><img src="./Face Recognition  Eigenface and Fisherface Performance Across Pose_files/alan_perf_imp_before-web.jpg" alt="performance improvement1"></p>
+
+<p><img src="./Face Recognition  Eigenface and Fisherface Performance Across Pose_files/alan_perf_imp_after-web.jpg" alt="performance improvement2"></p>
+
+<p>While performance was still not perfect, the pre-processing improved the number of correct classifications from 6 to 9 (of 13). Fisherface performance was similar to eigenface for this database.</p>
+
+<p><a name="new"></a></p><a name="new">
+
+<h2>Our New Contributions</h2>
+
+<h4>Eigenface vs. Fisherface for Training Data that is Densely and Sparsely Sampled Across Pose</h4>
+
+<p>As displayed by the UMIST results, we found that when only a few training samples across pose are available, fisherface clearly performs better than eigenface. This is not unexpected because fisherface is minimizing the within-class scatter. However, this particular detail not been clearly stated in past literature.</p>
+
+<h4>Fisherface Algorithm Tweak</h4>
+
+<p>In experimenting with the fisherface approach, we also implemented a slightly modified version of the algorithm. Our change tweaks the principal component analysis dimension reduction step in the fisherface approach.</p>
+
+</a><p><a name="new">The original algorithm, detailed in </a><a href="http://dailyburrito.com/projects/facerecog/FaceRecReport.html#refs">[6]</a>, suggests picking the number of principal components to keep in the PCA dimension reduction step as Mp = N - c, where N is the number of training images and c is the number of unique identities. While this choice of Mp guarantees that the resulting matrix will be non-singular, it is not the only possible choice.</p>
+
+<p>By choosing Mp less than N - c, we can further reduce the dimensionality before employing the fisherface approach. Our rationale is that the “face-space” does not need the higher dimensional eigenvectors to be well represented. This adds flexibility in making the trade between using the strongest principal components versus classifying based on the within-class and between-class scatter.</p>
+
+<p>This modification should improve upon both fisherface and eigenface by:</p>
+
+<ol>
+<li>improving computational speed over fisherface while still providing better classification than eigenface, and</li>
+<li>avoiding over-training on densely sampled databases.</li>
+</ol>
+
+<p>More thorough testing on larger databases would be necessary to verify these improvements.</p>
+
+<h2>Summary</h2>
+
+<p><em>Table comparing eigenface to fisherface (* denotes new result)</em></p>
+
+<table border="1" cellspacing="1" cellpadding="5" width="416">
+ <tbody><tr>
+  <td><p>&nbsp;</p>
+  </td>
+  <td><p><strong>Fisherface</strong></p>
+  </td>
+  <td><p><strong>Eigenface</strong></p>
+  </td>
+ </tr>
+
+ <tr>
+  <td><p><strong>Computational Complexity</strong></p>
+  </td>
+  <td><p>slightly more complex</p>
+  </td>
+  <td><p>simple</p>
+  </td>
+ </tr>
+
+ <tr>
+  <td><p><strong>Effectiveness Across Pose</strong></p>
+  </td>
+  <td><p>good, even with limited data *</p>
+  </td>
+  <td><p>some, with enough data</p>
+  </td>
+ </tr>
+
+ <tr>
+  <td><p><b>Sensitivity to Lighting</b></p>
+  </td>
+  <td><p>little</p>
+  </td>
+  <td><p>very</p>
+  </td>
+ </tr>
+</tbody></table> 
+
+<p>We find that both the eigenface and fisherface techniques work very well for a uniformly and densely sampled data set varied over pose. When a more sparse data set across pose is available, the fisherface approach performs better than eigenface.</p>
+
+<h2>Further Work Ideas</h2>
+
+<p>Given more time to improve and expand our results, we would suggest getting better databases, trying other recognition techniques, and using the formal FERET test methodology. The eventual goal might be a submission to the Face Recognition Vendor Test.</p>
+
+<p>We could augment our results by:</p>
+
+<ol>
+<li>Integrating with face detector.</li>
+<li>Incorporating time info in classifier.</li>
+<li>Trying SVM, kernel, ICA, wavelet, plenoptic (light-field) approaches.</li>
+<li>Acquiring &amp; using CMU and FERET databases.</li>
+</ol>
+
+<hr>
+
+<h2>Appendix</h2>
+
+<h4>Comments on ECE432</h4>
+
+<p>I enjoyed this class, <a href="http://www.ece.northwestern.edu/~yingwu/teaching/ECE432/">ECE 432 Advanced Computer Vision</a>. Adaption of the lecture schedule to better fit the projects people chose was a good idea because it was very helpful to get a detailed explanation about the problem and solution from the professor.</p>
+
+<p>One minor improvement I’d like to see made in the future would be a bit more intermediate feedback on the final project. Maybe some earlier demo days where we show running code to classmates and ask for input in class would be useful.</p>
+
+<p><a name="code"></a></p><a name="code">
+
+<h4>MATLAB Code and Tools Used</h4>
+
+<p>Functions:</p>
+
+<ul>
+<li>RunFaceRecog</li>
+<li>[P,train] = computeEigenfaces(train, Mp, plots)</li>
+<li>[P,train] = computeFisherfaces(train, trainClass, plots, P1)</li>
+<li>[recog] = classifyFaces(recog, train, P, threshFace, threshClass, plots)</li>
+<li>subfigure(m,n,p)</li>
+</ul>
+
+<table border="1" cellspacing="1" cellpadding="5">
+ <tbody><tr>
+  <td><p><strong>Function Name</strong></p>
+  </td>
+  <td><p><strong>Inputs</strong></p>
+  </td>
+  <td><p><strong>Outputs</strong></p>
+  </td>
+  <td><p><strong>Description</strong></p>
+  </td>
+ </tr>
+
+ <tr>
+  <td><p>RunFaceRecog</p>
+  </td>
+  <td><pre><code>
+user-modified
+ parameters
+  </code></pre>
+  </td>
+  <td><pre><code>
+n/a
+  </code></pre>
+  </td>
+  <td><p>Main function that, once edited with user parameters, reads the input data, applies pre-processing, calls the desired face recognition algorithm, and then plots the results.</p>
+  </td>
+ </tr>
+
+ <tr>
+  <td><p>computeEigenfaces</p>
+  </td>
+  <td><pre><code>
+train
+Mp
+plots
+  </code></pre>
+  </td>
+  <td><pre><code>
+P
+train
+  </code></pre>
+  </td>
+  <td><p>Performs feature extraction: computing <em>Mp</em> eigenfaces, denoted as <em>P</em>, according to the training data, <em>train</em>. Intermediate debugging graphs are enabled by <em>plots</em>.</p>
+  </td>
+ </tr>
+
+ <tr>
+  <td><p>computeFisherfaces</p>
+  </td>
+  <td><pre><code>
+train
+trainClass
+plots
+P1
+  </code></pre>
+  </td>
+  <td><pre><code>
+P
+train
+  </code></pre>
+  </td>
+  <td><p>Performs 2-step feature extraction by using the eigenfaces (<em>P1</em>) and <em>trainClass</em> to generate a FLD subspace of fisherfaces, <em>P</em>.</p>
+  </td>
+ </tr>
+
+ <tr>
+  <td><p>classifyFaces</p>
+  </td>
+  <td><pre><code>
+recog
+train
+P
+threshFace
+threshClass
+plots
+  </code></pre>
+  </td>
+  <td><pre><code>
+recog
+  </code></pre>
+  </td>
+  <td><p>Applies nearest neighbor classification approach to find recognition face weights (<em>recog.wt</em>) that most nearly match training face weights (<em>train.wt</em>).</p>
+  </td>
+ </tr>
+
+ <tr>
+  <td><p>subfigure</p>
+  </td>
+  <td><pre><code>
+m
+n
+p
+  </code></pre>
+  </td>
+  <td><p>&nbsp;</p>
+  </td>
+  <td><p>Utiltity similar to subplot that allows easy positioning of figures in an <em>m</em> by <em>n</em> grid, with <em>p</em> denoting the current figure number, ranging from 1 to <em>m</em>*<em>n</em>.</p>
+  </td>
+ </tr>
+</tbody></table>
+
+</a><p><a name="code">MATLAB by </a><a href="http://www.mathworks.com/">the MathWorks</a> was used for mose of the software development. <a href="http://www.imagemagick.org/">Imagemagick</a>, <a href="http://www.gimp.org/">the GIMP</a>, and <a href="http://daringfireball.net/projects/markdown/">Markdown</a> were used in preparing the data and documentation.</p>
+
+<p>All of the functions required to run version V of the simulation (<em>RunFaceRecog</em>, <em>computeEigenfaces</em>, <em>computeFisherfaces</em>, and <em>classifyFaces</em>) are available in <a href="http://dailyburrito.com/projects/facerecog/code/RunFaceRecog_vV.m">matlab m-file</a> and <a href="http://dailyburrito.com/projects/facerecog/code/RunFaceRecog_vV.html">html</a> formats.</p>
+
+<p>A supporting function called <em>subfigure</em> that nicely arranges the plots is also available in <a href="http://dailyburrito.com/projects/facerecog/code/subfigure.m">matlab m-file</a> and <a href="http://dailyburrito.com/projects/facerecog/code/subfigure.html">html</a> formats.</p>
+
+<hr>
+
+<p><a name="refs"> <!-- a within-document anchor --></a></p><a name="refs">
+
+<h2>Cited References </h2>
+
+<p>[1] W. W. Bledsoe, “The model method in facial recognition,” Panoramic Research Inc., Tech. Rep. PRI:15, Palo Alto, CA, 1964.</p>
+
+<p>[2] M. D. Kelly, “Visual identification of people by computer,” Tech. Rep. AI-130, Stanford AI Proj., Stanford, CA, 1970.</p>
+
+<p>[3] T. Kanade, <em>Computer Recognition of Human Faces</em>. Basel and Stuttgart: Birkhauser, 1977.</p>
+
+<p>[4] M. Turk and A. Pentland, “Eigenfaces for recognition,” <em>J. Cognitive Neuroscience</em>, vol. 3, no. 1, 1991.</p>
+
+<p>[5] M. Turk and A. Pentland, “Face recognition using eigenfaces,” <em>Proc. IEEE Conf. on Computer Vision and Pattern Recognition</em>, 1991, pp. 586-591.</p>
+
+<p>[6] P. N. Belhumeur, J. P. Hespanha, and D. J. Kriegman, “Eigenfaces vs. fisherfaces: recognition using class specific linear projection,” <em>IEEE Transactions on Pattern Analysis and Machine Intelligence</em>, vol. 19, no. 7, pp. 711-720, July 1997.</p>
+
+<p>[7] R. Gross, I. Matthews, S. Baker, “Appearance-based face recognition and light-fields,” <em>IEEE Transactions on Pattern Analysis and Machine Intelligence</em>, vol. 26, no. 4, pp. 449-465, April 2004.</p>
+
+<p>[8] R. Chellappa, C. L. Wilson, and S. Sirohey, “Human and machine recognition of faces: A survey,” <em>Proc. IEEE</em>, vol. 83, pp. 705-740, 1995.</p>
+
+<h2>Other References</h2>
+
+<p>[9] R. O. Duda, P. E. Hart, and D. G. Stork, <em>Pattern Classification</em>. New York: Wiley, 2001.</p>
+
+<p>[10] D. A. Forsyth, J. Ponce, <em>Computer vision: a modern approach</em>. New Jersey: Prentice Hall, 2003.</p>
+
+        </a></td></tr></tbody></table>
+	
+</body></html>

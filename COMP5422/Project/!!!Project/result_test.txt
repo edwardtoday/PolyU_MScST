@@ -1,0 +1,22 @@
+Applying rotation compensation to database...
+Dataset [1] Image rotate angle detected = -0
+Dataset [7] Image rotate angle detected = -2.9
+Dataset [59] Image rotate angle detected = -0
+Dataset [60] Image rotate angle detected = 14
+Dataset [164] Image rotate angle detected = 3.4
+Dataset [193] Image rotate angle detected = -0
+Dataset [194] Image rotate angle detected = -14
+Dataset [200] Image rotate angle detected = -2.4
+Dataset [201] Image rotate angle detected = -1.7
+Dataset [228] Image rotate angle detected = -6.3
+Dataset [231] Image rotate angle detected = 1.7
+Dataset [242] Image rotate angle detected = -16
+Dataset [251] Image rotate angle detected = 4.6
+Dataset [259] Image rotate angle detected = 1.8
+Dataset [278] Image rotate angle detected = 19
+Dataset [296] Image rotate angle detected = -6.7
+Dataset [299] Image rotate angle detected = -6.7
+Dataset [391] Image rotate angle detected = -6.1
+Elapsed time is 130.913400 seconds.
+Enhancing face images in the database...
+Elapsed time is 0.724244 seconds.

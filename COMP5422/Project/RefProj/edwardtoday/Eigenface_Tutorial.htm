@@ -1,0 +1,456 @@
+
+<!-- saved from url=(0059)http://www.pages.drexel.edu/~sis26/Eigenface%20Tutorial.htm -->
+<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns="http://www.w3.org/TR/REC-html40" zhtongwen="simplified" autopagermatchedrules="1"><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+
+<link rel="File-List" href="http://www.pages.drexel.edu/~sis26/Eigenface%20Tutorial_files/filelist.xml">
+
+<title>Eigenface_Tutorial</title>
+<!--[if !mso]>
+<style>
+v\:*         { behavior: url(#default#VML) }
+o\:*         { behavior: url(#default#VML) }
+.shape       { behavior: url(#default#VML) }
+</style>
+<![endif]--><!--[if gte mso 9]>
+<xml><o:shapedefaults v:ext="edit" spidmax="1027"/>
+</xml><![endif]-->
+<link type="text/css" rel="stylesheet" href="data:text/css,"></head>
+
+<body bgcolor="#FFFFCC">
+
+<p align="left">&nbsp;</p>
+
+<table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="763" id="AutoNumber4">
+  <tbody><tr>
+    <td width="95" rowspan="2" valign="top" bgcolor="#000080">
+    <div align="center">
+      <center>
+    <table border="0" cellpadding="0" cellspacing="0" width="100%" id="AutoNumber3" height="100">
+      <tbody><tr>
+        <td width="100%" bgcolor="#FFCE5A" align="center" height="100%">
+        <img border="0" src="./Eigenface_Tutorial_files/Drexel logo.gif" align="middle" width="72" height="77"></td>
+      </tr>
+    </tbody></table>
+      </center>
+    </div>
+    <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="82" id="AutoNumber5" bgcolor="#000080" height="122">
+      <tbody><tr>
+        <td width="82" height="30" valign="middle"><b>
+        <a href="http://www.pages.drexel.edu/~sis26/Computer%20Vision.htm"><font color="#FFFF00">Home</font></a></b></td>
+      </tr>
+      <tr>
+        <td width="82" height="27"><b>
+        <a href="http://www.pages.drexel.edu/~sis26/IndexTutorials.htm">
+        <font color="#FFFF00">Tutorials</font></a></b></td>
+      </tr>
+      <tr>
+        <td width="82" height="25"><b>
+        <a href="http://www.pages.drexel.edu/~sis26/Contact%20info.htm">
+        <font color="#FFFF00">Contact info</font></a></b></td>
+      </tr>
+      <tr>
+        <td width="82" height="19"><b><font color="#FFFF00"><a href="http://www.pages.drexel.edu/~sis26/Tasks.htm">
+        <font color="#FFFF00">Tasks</font></a></font></b></td>
+      </tr>
+      <tr>
+        <td width="100" bgcolor="#000080" height="21">&nbsp;</td>
+      </tr>
+      </tbody></table>
+    </td>
+    <td width="679" bgcolor="#000080">
+    <p align="left"><img border="0" src="./Eigenface_Tutorial_files/Drexel banner.gif" width="600" height="100"></p>
+    </td>
+  </tr>
+  <tr>
+    <td width="679">
+    <p align="center"><font color="#000080">&nbsp;</font></p><blockquote>
+<h1 align="center"><font size="6" color="#000080">Eigenface Tutorial</font></h1>
+      <p>
+<font color="#000080">
+<b>Keywords:</b></font> <font face="Times New Roman">Matlab, Face Recognition, 
+Eigenfaces, Computer vision</font></p>
+<center>
+<p><span style="font-size: 12.0pt; font-family: Times New Roman">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>
+<img border="0" src="./Eigenface_Tutorial_files/Original ones.jpg" width="413" height="345"></p>
+</center>
+<p align="justify">
+<font face="Times New Roman">This picture represents the set of images used to 
+create our eigen space for face recognition. The goal of this tutorial is to 
+apply the eigenface approach to recognize someone's face. The overall problem is 
+to be able to accurately recognize a person's identity and take some action 
+based on the outcome of the recognition process. Recognize a person's identity 
+is important mainly for security&nbsp; reason, but it could also be used to 
+obtain quick access to medical, criminal, or any type of records. Solving this 
+problem is important because it could allow personnel to take preventive action 
+action, provide better service - in the case of a doctors appointment, or allow 
+a person access to a secure area. This tutorial will shows you how to build a 
+face recognition program using Matlab.<br>
+</font>
+<br>
+</p><h3><font color="#000080">Motivation and Audience</font></h3>
+
+      <p align="justify"><font face="Times New Roman">This tutorial has been 
+      developed to get people interest on computer vision and face recognition; 
+      in addition to give you some guidance on how to approach the problem. The 
+      reader should have the following background and interests:</font></p>
+<ul>
+<font color="green"><b>
+<i>
+<li> <font color="#008000" face="Helvetica" size="-1"><span style="font-size:12">
+Moderate Matlab knowledge </span></font></li></i></b></font><li><font color="green"><b><i> Being familiar with Linear Algebra 
+concepts</i></b></font><font color="green"><b><i></i></b></font></li><li><font color="green"><b><i> <font color="#008000" face="Helvetica" size="-1"><span style="font-size:12">
+Desire to learn about face recognition using </span><span style="font-size:12">
+Matlab </span></font></i></b></font></li><li><font color="green"><b><i> <font color="#008000" face="Helvetica" size="-1"><span style="font-size:12">
+In addition, would like to learn more about computer vision</span></font></i></b></font></li></ul>
+<p>
+The rest of the tutorial is presented as follows:
+</p><p>
+</p><ul>
+<li><a href="http://www.pages.drexel.edu/~sis26/Eigenface%20Tutorial.htm#Parts"> Parts List and Sources</a>
+</li><li><a href="http://www.pages.drexel.edu/~sis26/Eigenface%20Tutorial.htm#Construction"> Construction</a>
+</li><li><a href="http://www.pages.drexel.edu/~sis26/Eigenface%20Tutorial.htm#Programming"> Programming</a></li><li><a href="http://www.pages.drexel.edu/~sis26/Eigenface%20Tutorial.htm#Final Words"> Final Words</a>
+</li></ul>
+<p>
+&nbsp;</p><h3><font color="#000080">Parts List and Sources</font></h3>
+
+      <p>US-based vendors to obtain material to complete this tutorial include
+      <br>
+      <a href="http://www.mathworks.com/"><font face="Helvetica">Mathworks</font></a></p>
+<p>
+To complete this tutorial, you'll need the following items <br>
+&nbsp;</p><center>
+<table colspec="L20 L20 L20 L20 L20 L20" border="5" cellspacing="3" height="63">
+<tbody><tr><td height="19">Software</td><td height="19">VENDOR</td>
+  <td height="19" align="center">Version</td><td height="19">PRICE </td>
+  <td height="19">QTY</td></tr>
+<tr><td height="1"><font face="Helvetica">Matlab</font></td><td height="1">
+  <a href="http://www.mathworks.com/"><font face="Helvetica">Mathworks</font></a></td>
+  <td height="1" align="center">6.1</td><td height="1">$500</td>
+  <td height="1">1</td></tr>
+</tbody></table>
+</center>
+<p><font color="#000080" size="4"><span style="font-weight: 700">Construction</span></font></p>
+
+      <p><font face="Times New Roman">This section gives step-by-step 
+      instructions along with photos and formulas on how to recognize faces and 
+      implemented into Matlab. All the necessary files to complete this tutorial 
+      would be </font>provided.</p>
+
+    <p class="MsoNormal"><font color="#000080" size="5">
+    <span style="font-weight:700">
+    Steps</span></font></p>
+      <ol>
+        <li>
+
+    <p class="MsoNormal">The first step is to obtain a set S with M face images. 
+    In our example M = 25 as shown at the beginning of the tutorial. Each image 
+    is transformed into a vector of size N and placed into the set.</p>
+        <p align="center">
+        <span style="font-size: 12.0pt; font-family: Times New Roman">
+        <span style="position: relative; top: 6.0pt"><!--[if gte vml 1]><v:shapetype id="_x0000_t75"
+ coordsize="21600,21600" o:spt="75" o:preferrelative="t" path="m@4@5l@4@11@9@11@9@5xe"
+ filled="f" stroked="f">
+ <v:stroke joinstyle="miter"/>
+ <v:formulas>
+  <v:f eqn="if lineDrawn pixelLineWidth 0"/>
+  <v:f eqn="sum @0 1 0"/>
+  <v:f eqn="sum 0 0 @1"/>
+  <v:f eqn="prod @2 1 2"/>
+  <v:f eqn="prod @3 21600 pixelWidth"/>
+  <v:f eqn="prod @3 21600 pixelHeight"/>
+  <v:f eqn="sum @0 0 1"/>
+  <v:f eqn="prod @6 1 2"/>
+  <v:f eqn="prod @7 21600 pixelWidth"/>
+  <v:f eqn="sum @8 21600 0"/>
+  <v:f eqn="prod @7 21600 pixelHeight"/>
+  <v:f eqn="sum @10 21600 0"/>
+ </v:formulas>
+ <v:path o:extrusionok="f" gradientshapeok="t" o:connecttype="rect"/>
+ <o:lock v:ext="edit" aspectratio="t"/>
+</v:shapetype><v:shape id="_x0000_s1031" type="#_x0000_t75" style='width:180pt;
+ height:23.25pt'>
+ <v:imagedata src="Eigenface%20Tutorial_files/image001.wmz" o:title=""/>
+</v:shape><![endif]--><!--[if !vml]--><img border="0" width="240" height="31" src="./Eigenface_Tutorial_files/image002.gif" v:shapes="_x0000_s1031"><!--[endif]--></span><!--[if gte mso 9]><xml>
+        <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1025" DrawAspect="Content" ObjectID="_1121340079">
+        </o:OLEObject>
+        </xml><br>
+&nbsp;<![endif]--></span></p></li>
+        <li>
+
+    <p class="MsoNormal">After you have obtained your set, you will obtain the 
+    mean image <b><font face="Times New Roman">&#936;<br>
+&nbsp;</font></b></p>
+        <p align="center">
+        <span style="font-size: 12.0pt; font-family: Times New Roman">
+        <span style="position: relative; top: 12.0pt"><!--[if gte vml 1]><v:shape
+ id="_x0000_s1032" type="#_x0000_t75" style='width:126pt;height:39pt'>
+ <v:imagedata src="Eigenface%20Tutorial_files/image003.wmz" o:title=""/>
+</v:shape><![endif]--><!--[if !vml]--><img border="0" width="168" height="52" src="./Eigenface_Tutorial_files/image004.gif" v:shapes="_x0000_s1032"><!--[endif]--></span><!--[if gte mso 9]><xml>
+        <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1025" DrawAspect="Content" ObjectID="_1121340171">
+        </o:OLEObject>
+        </xml><![endif]--></span></p>
+        <p align="center">
+        <img border="0" src="./Eigenface_Tutorial_files/Mean Face.jpg" width="182" height="199"><span style="font-size: 12.0pt; font-family: Times New Roman"><!--[if gte mso 9]><br>
+        mean image<br>
+&nbsp;<![endif]--></span></p></li>
+        <li>
+
+    <p class="MsoNormal"><font face="Times New Roman">Then you will find the 
+    difference <b>&#934;</b> between the input image and the mean image</font></p>
+        <p align="center">
+        <span style="font-size: 12.0pt; font-family: Times New Roman">
+        <span style="position: relative; top: 6.0pt"><!--[if gte vml 1]><v:shape
+ id="_x0000_s1033" type="#_x0000_t75" style='width:81pt;height:24pt'>
+ <v:imagedata src="Eigenface%20Tutorial_files/image005.wmz" o:title=""/>
+</v:shape><![endif]--><!--[if !vml]--><img border="0" width="108" height="32" src="./Eigenface_Tutorial_files/image006.gif" v:shapes="_x0000_s1033"><!--[endif]--></span><!--[if gte mso 9]><xml>
+        <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1025" DrawAspect="Content" ObjectID="_1121340351">
+        </o:OLEObject>
+        </xml><![endif]--></span></p></li>
+        <li>
+
+    <p class="MsoNormal">Next we seek a set of M orthonormal vectors,
+    <font face="Times New Roman"><b>u<sub><font size="2">n</font></sub>, </b>
+    which best describes the distribution of the data. The k<sup>th</sup> 
+    vector, <b>u<font size="2"><sub>k</sub>,</font></b> is chosen such that
+    </font></p>
+        <p align="center">
+        <span style="font-size: 12.0pt; font-family: Times New Roman">
+        <span style="position: relative; top: 12.0pt"><!--[if gte vml 1]><v:shape
+ id="_x0000_s1036" type="#_x0000_t75" style='width:162pt;height:42.75pt'>
+ <v:imagedata src="Eigenface%20Tutorial_files/image007.wmz" o:title=""/>
+</v:shape><![endif]--><!--[if !vml]--><img border="0" width="216" height="57" src="./Eigenface_Tutorial_files/image008.gif" v:shapes="_x0000_s1036"><!--[endif]--></span><!--[if gte mso 9]><xml>
+        <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1025" DrawAspect="Content" ObjectID="_1121341000">
+        </o:OLEObject>
+        </xml><![endif]--></span></p>
+        <p align="left"><span style="font-family: Times New Roman">is a maximum, 
+        subject to</span></p>
+        <p align="center">
+        <span style="font-size: 12.0pt; font-family: Times New Roman">
+        <span style="position: relative; top: 15.0pt"><!--[if gte vml 1]><v:shape
+ id="_x0000_s1035" type="#_x0000_t75" style='width:159.75pt;height:40.5pt'>
+ <v:imagedata src="Eigenface%20Tutorial_files/image009.wmz" o:title=""/>
+</v:shape><![endif]--><!--[if !vml]--><img border="0" width="213" height="54" src="./Eigenface_Tutorial_files/image010.gif" v:shapes="_x0000_s1035"><!--[endif]--></span></span></p>
+        <p align="left"><span style="font-family: Times New Roman">Note: </span>
+        <b><font face="Times New Roman">u<font size="2"><sub>k</sub></font></font></b><span style="font-family: Times New Roman"> 
+        and </span><b>&#955;<sub><font size="2" face="Times New Roman">k </font>
+        </sub></b><font face="Times New Roman">are the eigenvectors and 
+        eigenvalues of the covariance matrix <b>C</b><br>
+&nbsp;</font></p></li>
+        <li>
+
+    <p class="MsoNormal">We obtain the covariance matrix <b>C</b> in the 
+    following manner<br>
+&nbsp;</p>
+        <p align="center">
+        <span style="font-size: 12.0pt; font-family: Times New Roman">
+        <span style="position: relative; top: 21.0pt"><!--[if gte vml 1]><v:shape
+ id="_x0000_s1038" type="#_x0000_t75" style='width:139.5pt;height:64.5pt'>
+ <v:imagedata src="Eigenface%20Tutorial_files/image011.wmz" o:title=""/>
+</v:shape><![endif]--><!--[if !vml]--><img border="0" width="186" height="86" src="./Eigenface_Tutorial_files/image012.gif" v:shapes="_x0000_s1038"><!--[endif]--></span><!--[if gte mso 9]><xml>
+        <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1025" DrawAspect="Content" ObjectID="_1121341415">
+        </o:OLEObject>
+        </xml><![endif]--></span></p>
+        <p align="center">
+        <span style="font-size: 12.0pt; font-family: Times New Roman">
+        <span style="position: relative; top: 6.0pt"><!--[if gte vml 1]><v:shape
+ id="_x0000_s1040" type="#_x0000_t75" style='width:196.5pt;height:22.5pt'>
+ <v:imagedata src="Eigenface%20Tutorial_files/image013.wmz" o:title=""/>
+</v:shape><![endif]--><!--[if !vml]--><img border="0" width="262" height="30" src="./Eigenface_Tutorial_files/image014.gif" v:shapes="_x0000_s1040"><!--[endif]--></span><!--[if gte mso 9]><xml>
+        <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1025" DrawAspect="Content" ObjectID="_1121341664">
+        </o:OLEObject>
+        </xml><br>
+&nbsp;<![endif]--></span></p></li>
+        <li>
+        <p align="left"><span style="font-family: Times New Roman"><!--[if gte mso 9]>
+        Since the <b>C</b> matrix is an N<sup>2 </sup>x N<sup>2</sup> matrix, 
+        computing its eigenvectors is not computationally feasible. Instead, we 
+        find the eigenvectors <b>v<sub>l</sub></b> of the new matrix L = A<sup>T</sup>A 
+        which has the same eigenvectors of our matrix C = A<![endif]-->A<sup>T</sup></span></p>
+        <p align="center">
+        <span style="font-size: 12.0pt; font-family: Times New Roman">
+        <span style="position: relative; top: 6.0pt"><!--[if gte vml 1]><v:shape
+ id="_x0000_s1041" type="#_x0000_t75" style='width:90pt;height:24pt'>
+ <v:imagedata src="Eigenface%20Tutorial_files/image015.wmz" o:title=""/>
+</v:shape><![endif]--><!--[if !vml]--><img border="0" width="120" height="32" src="./Eigenface_Tutorial_files/image016.gif" v:shapes="_x0000_s1041"><!--[endif]--></span><!--[if gte mso 9]><xml>
+        <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1025" DrawAspect="Content" ObjectID="_1121342575">
+        </o:OLEObject>
+        </xml><![endif]--></span></p></li>
+        <li>
+        <p align="left">Once we have found the eigenvectors, <b>v<sub>l</sub></b>,
+        <span style="font-size: 12.0pt; font-family: Times New Roman"><!--[if gte mso 9]>
+        of the L matrix, we can find our eigenfaces <![endif]--></span><b>
+        <font face="Times New Roman">u<sub><font size="2">l</font></sub></font></b></p>
+        <p align="center">
+        <span style="font-size: 12.0pt; font-family: Times New Roman">
+        <span style="position: relative; top: 8.0pt"><!--[if gte vml 1]><v:shape
+ id="_x0000_s1042" type="#_x0000_t75" style='width:234pt;height:29.25pt'>
+ <v:imagedata src="Eigenface%20Tutorial_files/image017.wmz" o:title=""/>
+</v:shape><![endif]--><!--[if !vml]--><img border="0" width="312" height="39" src="./Eigenface_Tutorial_files/image018.gif" v:shapes="_x0000_s1042"><!--[endif]--></span><!--[if gte mso 9]><xml>
+        <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1025" DrawAspect="Content" ObjectID="_1121343786">
+        </o:OLEObject>
+        </xml><![endif]--></span></p></li>
+</ol>
+<p class="MsoNormal" style="text-indent: -.25in; margin-left: .5in" align="center">
+      <img border="0" src="./Eigenface_Tutorial_files/Eigenface.jpg" width="475" height="394"><br>
+      These are the eigenfaces of our set of original images</p><p class="MsoNormal" style="text-indent: -.25in; margin-left: .5in" align="center">
+      &nbsp;</p><p class="MsoNormal" style="text-indent: -.25in; margin-left: .5in" align="center">
+      <b><font size="5">Recognition Procedure</font></b></p><p class="MsoNormal" style="text-indent: -.25in; margin-left: .5in" align="justify">
+      1. A new face is transformed into its eigenface components. First we 
+      compare our input image with our mean image and multiply their difference 
+      with each eigenvector of the L matrix. Each value would represent a weight 
+      and would be saved on a vector &#937;.</p><p align="center">
+<span style="font-size: 12.0pt; font-family: Times New Roman">
+<span style="position: relative; top: 6.0pt"><!--[if gte vml 1]><v:shape
+ id="_x0000_s1049" type="#_x0000_t75" style='width:102.75pt;height:24.75pt'>
+ <v:imagedata src="Eigenface%20Tutorial_files/image019.wmz" o:title=""/>
+</v:shape><![endif]--><!--[if !vml]--><img border="0" width="137" height="33" src="./Eigenface_Tutorial_files/image020.gif" v:shapes="_x0000_s1049"><!--[endif]--></span><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1025" DrawAspect="Content" ObjectID="_1121854005">
+ </o:OLEObject>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1025" DrawAspect="Content" ObjectID="_1121853696">
+ </o:OLEObject>
+</xml><br>
+where </span><span style="font-size: 12.0pt">&#969; = weight,
+<font face="Times New Roman">&#956; = eigenvector, &#915; = input image, &#936; = mean face<br>
+<br>
+The weight vector is given by </font></span><![endif]-->
+<span style="font-size: 12.0pt; font-family: Times New Roman">
+<span style="position: relative; top: 5.0pt">&nbsp;&nbsp; <!--[if gte vml 1]><v:shape
+ id="_x0000_s1048" type="#_x0000_t75" style='width:167.25pt;height:25.5pt'>
+ <v:imagedata src="Eigenface%20Tutorial_files/image021.wmz" o:title=""/>
+</v:shape><![endif]--><!--[if !vml]--><img border="0" width="223" height="34" src="./Eigenface_Tutorial_files/image022.gif" v:shapes="_x0000_s1048"><!--[endif]--></span><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1025" DrawAspect="Content" ObjectID="_1121853957">
+ </o:OLEObject>
+</xml><![endif]--></span></span></p>
+<p class="MsoNormal" style="text-indent: -.25in; margin-left: .5in" align="justify">
+      2. We now determine which face class provides the best description for the 
+      input image. This is done by minimizing the Euclidean distance</p><p align="center">
+<span style="font-size: 12.0pt; font-family: Times New Roman">
+<span style="position: relative; top: 10.0pt"><!--[if gte vml 1]><v:shape
+ id="_x0000_s1050" type="#_x0000_t75" style='width:90pt;height:31.5pt'>
+ <v:imagedata src="Eigenface%20Tutorial_files/image023.wmz" o:title=""/>
+</v:shape><![endif]--><!--[if !vml]--><img border="0" width="120" height="42" src="./Eigenface_Tutorial_files/image024.gif" v:shapes="_x0000_s1050"><!--[endif]--></span><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1025" DrawAspect="Content" ObjectID="_1121854840">
+ </o:OLEObject>
+</xml><![endif]--></span></p>
+<p class="MsoNormal" style="text-indent: -.25in; margin-left: .5in" align="left">
+      3. The input face is consider to belong to a class if
+      <font face="Times New Roman">&#949;<sub><i>k </i></sub>is bellow an established 
+      threshold </font>&#952;<font face="Times New Roman"><sub>&#949;</sub>. Then the face 
+      image is considered to be a known face. If the difference is above the 
+      given threshold, but bellow a second threshold, the image can be 
+      determined as a unknown face. If the input image is above these two 
+      thresholds, the image is determined NOT to be a face.</font></p><p class="MsoNormal" style="text-indent: -.25in; margin-left: .5in" align="left">
+      <font face="Times New Roman">4. If the image is found to be an unknown 
+      face, you could decide whether or not you want to add the image to your 
+      training set for future recognitions. You would have to repeat steps 1 
+      trough 7 to incorporate this new face image.</font></p><p class="MsoNormal" style="text-indent: -.25in; margin-left: .5in" align="center">
+      <font size="5"><a href="http://www.pages.drexel.edu/~sis26/Recognition_Section.htm">See Results</a></font></p><p class="MsoNormal" style="text-indent: -.25in; margin-left: .5in" align="center">
+      &nbsp;</p></blockquote>
+      <blockquote>
+      <p>
+<font face="Times New Roman">The source code face recognition using Matlab is provided below:</font></p><p>
+</p><hr size="4" width="90%">
+<center>
+<p>
+<b><font face="Times New Roman">To be compiled with Matlab Editor/Debugger</font></b><br>
+<font face="Times New Roman">Note: download the 
+<a href="http://www.pages.drexel.edu/~sis26/Eigenface%20Tutorial_files/Eigen%20kit.zip">Face Recognition Kit</a> rather than cutting and pasting from below.<br>
+Use WinZip to unzip the 
+files. All the necessary files are included.</font></p>
+</center>
+<pre><font face="Times New Roman"><font size="3">Example of Face.m script for face recognition using Matlab:</font></font></pre>
+      <pre><font face="Times New Roman" size="4"><a href="http://www.pages.drexel.edu/~sis26/Eigencode.htm">Click here to go to the code</a></font></pre>
+      <pre><font face="Times New Roman" size="4"><a href="http://www.pages.drexel.edu/~sis26/Eigenface%20Tutorial_files/Eigen%20kit.zip">Download Face Recognition Kit</a></font></pre>
+      <pre><font face="Times New Roman" size="3">If you follow the steps on the tutorial you will obtain the following </font><font face="Times New Roman" size="4"><a href="http://www.pages.drexel.edu/~sis26/FaceResults.htm">results</a></font><font face="Times New Roman" size="3">. These results are different 
+from the ones shown above, since the images have not been normalized or filtered.</font>
+</pre>
+<hr size="4" width="90%">
+
+<h4><b><font face="Times New Roman">Code Description</font></b></h4>
+
+<p><font face="Times New Roman">This algorithm works in the following manner: 
+First, it obtains several images from the training set <br>
+(figure 1). The code was been tested using bmp and jpg images.&nbsp; After 
+loading these images, we find the mean face and perform several calculation 
+(refer to code and tutorial). Next, we ask for the name of an image we want to 
+recognize (note: the image must have the same size as the training images). The 
+default path of your input image is your desktop. You could change it by&nbsp; 
+modifying the code on line 159. We then 
+project the input image into the eigenspace, and based on the difference&nbsp; 
+from the eigenfaces we make a decision. <br>
+<a href="http://www.pages.drexel.edu/~sis26/EigenAlgorithms.htm">Please look at results of our algorithm and </a></font>
+<a href="http://www.pages.drexel.edu/~sis26/EigenAlgorithms.htm">Adam's algorithm.</a></p>
+
+<h2>Final Words</h2>
+      <p>Although our algorithm works, it is necessary to normalize the images 
+      and use some filtering techniques to obtain better results. We encourage 
+      you to modify our code to obtain better results. The following links will 
+      provide you with more examples and will give you a better idea about face 
+      recognition. </p>
+      <p><b><font face="Times New Roman" color="#000080" size="5">Useful links</font></b></p>
+      <table border="1" cellspacing="1" width="593" id="AutoNumber6">
+        <tbody><tr>
+          <td width="585" height="19">
+          <a href="http://www.csis.hku.hk/~facereco/introduction.html">Face 
+          Recognition by Man Kwok Ming and Cheung Chi Wai</a></td>
+        </tr>
+        <tr>
+          <td width="585" height="19">
+          <p align="LEFT"><font face="Times New Roman">
+          <a href="http://www.ilkeratalay.com/download/eigenfaces_msc_thesis.pdf">Face Recognition Using 
+          Eigenfaces by Ilker Atalay</a></font></p></td>
+        </tr>
+        <tr>
+          <td width="585" height="19"><font face="Times New Roman">
+          </font><p align="LEFT"><font face="Times New Roman">
+          <a href="http://www.geocities.com/raphael_cendrillon/thesis.pdf">Real 
+          Time face Recognition using Eigenfaces by Raphael Cendrillon</a></font></p></td>
+        </tr>
+        <tr>
+          <td width="585" height="19">
+          <a href="http://www.cse.cuhk.edu.hk/~hmtang/literature.htm">Types of 
+          Face Recognition</a></td>
+        </tr>
+        <tr>
+          <td width="585" height="19">
+          <a href="http://et.wcu.edu/aidc/BioWebPages/eigenfaces.htm">History 
+          behind 
+          Eigenfaces</a></td>
+        </tr>
+        <tr>
+          <td width="585" height="18">
+          <a href="http://home.t-online.de/home/Robert.Frischholz/face.htm">Face 
+          Detection</a></td>
+        </tr>
+        <tr>
+          <td width="585" height="19">
+          <a href="http://www.ri.cmu.edu/projects/project_416.html">Carnegie 
+          Mellon Robotics Institute</a></td>
+        </tr>
+        <tr>
+          <td width="585" height="19"><a href="http://www.media.mit.edu/">MIT media 
+          laboratory</a></td>
+        </tr>
+        <tr>
+          <td width="585" height="19">
+          <a href="http://vxl.sourceforge.net/">C++ libraries 
+          designed for computer vision research</a></td>
+        </tr>
+      </tbody></table>
+<p>
+<br>
+<font face="Times New Roman"><a name="Links">Click</a> </font> <a href="mailto:sis26@drexel.edu">here</a> 
+to email me  
+</p><p>
+    </p></blockquote>
+      </td>
+  </tr>
+  </tbody></table>
+
+
+
+</body></html>

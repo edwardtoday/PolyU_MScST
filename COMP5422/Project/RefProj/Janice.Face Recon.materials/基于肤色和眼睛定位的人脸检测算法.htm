@@ -1,0 +1,1035 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0056)http://blog.csdn.net/wuxianglong/article/details/6156904 -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>基于肤色和眼睛定位的人脸检测算法——MATLAB实现 - 降龍 - 博客频道 - CSDN.NET</title>
+
+<meta name="description" content="    本文提出了一种基于肤色信息和眼睛粗略定位的人脸检测算法。该算法先对Anil K.Jain 的Cb、Cr椭圆聚类方法进行了改进，用改进的算法进行肤色提取，经过肤色区域的分析，对人脸区域进行预检测，确定人脸可能区域，然后再根据眼睛的粗略定位进一步确定人脸区域。一、肤色分析(skin.m)  Anil K.Jain提出的基于YCbCr颜色空间的肤色模型，根据当前点的Cb Cr值判断是否为肤色。% Anil K.Jain提出的基于YCbCr颜色空间的肤色模型">
+<script type="text/javascript" async="" src="./基于肤色和眼睛定位的人脸检测算法_files/ga.js"></script><script src="./基于肤色和眼睛定位的人脸检测算法_files/jquery.js" type="text/javascript"></script>
+<script src="./基于肤色和眼睛定位的人脸检测算法_files/plugins.js" type="text/javascript"></script>
+<script src="./基于肤色和眼睛定位的人脸检测算法_files/common.js" type="text/javascript"></script>
+<link rel="Stylesheet" type="text/css" href="./基于肤色和眼睛定位的人脸检测算法_files/style.css">
+<link id="RSSLink" title="RSS" type="application/rss+xml" rel="alternate" href="http://blog.csdn.net/wuxianglong/rss/list">
+<link rel="shortcut icon" href="http://blog.csdn.net/favicon.ico">
+<link type="text/css" rel="stylesheet" href="./基于肤色和眼睛定位的人脸检测算法_files/blue_green.css">
+</head>
+<body>
+<script src="./基于肤色和眼睛定位的人脸检测算法_files/pub_topnav_2011.js" type="text/javascript"></script><link rel="stylesheet" type="text/css" href="./基于肤色和眼睛定位的人脸检测算法_files/navtop_2011.css">
+<div class="nav_top_2011">
+<p><span style="color:red;">您还未登录！</span>|<a href="http://passport.csdn.net/account/login">登录</a>|<a href="http://passport.csdn.net/account/register">注册</a>|<a href="http://passport.csdn.net/help/faq">帮助</a></p><ul>
+<li><a href="http://www.csdn.net/" target="_blank">CSDN首页</a></li>
+<li><a href="http://news.csdn.net/" target="_blank">资讯</a></li>
+<li><a href="http://bbs.csdn.net/" target="_blank">论坛</a></li>
+<li><a href="http://blog.csdn.net/" target="_blank">博客</a></li>
+<li><a href="http://download.csdn.net/" target="_blank">下载</a></li>
+<li><a href="http://so.csdn.net/" target="_blank">搜索</a></li>
+<li class="more"><h2 id="topnav_btnmore"><a href="javascript:void(0);">更多</a></h2>
+<ul id="topnav_hidlist" style="display: none; ">
+<li><a href="http://cto.csdn.net/" target="_blank">CTO俱乐部</a></li>
+<li><a href="http://student.csdn.net/" target="_blank">学生大本营</a></li>
+<li><a href="http://edu.csdn.net/" target="_blank">培训充电</a></li>
+<li><a href="http://mobile.csdn.net/" target="_blank">移动开发</a></li>
+<li><a href="http://sd.csdn.net/" target="_blank">软件研发</a></li>
+<li><a href="http://cloud.csdn.net/" target="_blank">云计算</a></li>
+<li><a href="http://www.programmer.com.cn/" target="_blank">程序员</a></li>
+<li><a href="http://www.iteye.com/" target="_blank">ITeye</a></li>
+<li><a href="http://tup.csdn.net/" target="_blank">TUP</a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+
+<div id="container">
+<div id="header">
+    <div class="header">
+        <div id="blog_title">
+            <h1>
+                <a href="http://blog.csdn.net/wuxianglong">降龍</a></h1>
+            <h2>There is some good in this world,and it's worth fighting for!!!!</h2>
+            <div class="clear">
+            </div>
+        </div>
+        <div class="clear">
+        </div>
+    </div>
+</div>
+<div id="navigator">
+    <div class="navigator_bg">
+    </div>
+    <div class="navigator">
+        <ul>
+            <!--<li id="btnHome"><a href="/wuxianglong"><span><img src="http://static.blog.csdn.net/images/ico_home.gif">我的首页</span></a></li>-->
+            <li id="btnContents"><a href="http://blog.csdn.net/wuxianglong?viewmode=contents"><span><img src="./基于肤色和眼睛定位的人脸检测算法_files/ico_list.gif">目录视图</span></a></li>
+            <li id="btnView"><a href="http://blog.csdn.net/wuxianglong?viewmode=list"><span><img src="./基于肤色和眼睛定位的人脸检测算法_files/ico_summary.gif">摘要视图</span></a></li>
+            <li id="btnRss"><a href="http://blog.csdn.net/wuxianglong/rss/list"><span><img src="./基于肤色和眼睛定位的人脸检测算法_files/ico_rss.gif">订阅</span></a></li>
+</ul>
+    </div>
+</div>
+<script type="text/javascript">
+    var username = "wuxianglong";
+    var blog_address = "http://blog.csdn.net/wuxianglong";
+    var static_host = "http://static.blog.csdn.net";
+    var currentUserName = $.cookie("UserName");
+</script>
+        
+<div id="body">
+<div id="main">
+<div class="main">
+<div class="notice"> 
+
+
+<a href="http://ad-apac.doubleclick.net/clk;253093956;76972838;f?http://www.ibm.com/systems/cn/ads/2012q1_bcfc.shtml?crs=apch_cit1_20120206_1328527126975&cm=b&cr=csdn&ct=CN2DG13W&ck=csdn&cmp=CN2DG" target="_blank"><font color="blue">免费下载《SKC易云解决方案》</font></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="http://topic.csdn.net/u/20120313/10/4319a6d2-572a-426f-9c7a-eb7a7070e26c.html" target="_blank"><font color="red">下载频道双倍下载分返还活动震撼出击！</font></a>
+<br>
+
+
+
+
+<a href="http://event.blog.csdn.net/topcolumn/topcolumn.aspx" target="_blank"><font color="red">CSDN 2011年度十大风云博客专栏评选火爆进行中！</font></a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="http://topic.csdn.net/u/20120312/15/b6a12aaa-46e2-4bbf-9de2-fbade000014d.html" target="_blank"><font color="red">CSDN社区3月技术大分享百本IT图书等你拿！</font></a>
+</div><script type="text/javascript" src="./基于肤色和眼睛定位的人脸检测算法_files/ad.js"></script>
+
+<div id="article_details" class="details">
+    <div class="article_title">
+    <span class="ico ico_type_Original"></span>
+    <h3>
+        <span class="link_title"><a href="./基于肤色和眼睛定位的人脸检测算法_files/基于肤色和眼睛定位的人脸检测算法.htm">
+        <font color="red">[置顶]</font>
+        基于肤色和眼睛定位的人脸检测算法——MATLAB实现
+        </a></span>
+    </h3>
+</div>
+
+        
+    <div class="article_manage">
+        <span class="link_categories">
+        分类：
+            <a href="http://blog.csdn.net/wuxianglong/article/category/770717">MATLAB</a> 
+        </span>
+    <span class="link_postdate">2011-01-21 14:15</span>
+    <span class="link_view" title="阅读次数">1166人阅读</span>
+    <span class="link_comments" title="评论次数"><a href="http://blog.csdn.net/wuxianglong/article/details/6156904#comments">评论</a>(10)</span>
+    <span class="link_collect"><a href="javascript:void(0);" onclick="javascript:collectArticle(&#39;基于肤色和眼睛定位的人脸检测算法——MATLAB实现&#39;,&#39;6156904&#39;);return false;" title="收藏">收藏</a></span>
+    <span class="link_report"><a href="http://blog.csdn.net/wuxianglong/article/details/6156904#report" onclick="javascript:report(6156904,2);return false;" title="举报">举报</a></span>
+    
+</div>
+
+    
+<div id="article_content" class="article_content">
+    <p>&nbsp;&nbsp;&nbsp; <!-- [if gte mso 9]><xml>
+ <o:OfficeDocumentSettings>
+  <o:AllowPNG/>
+ </o:OfficeDocumentSettings>
+</xml><![endif]--><!-- [if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:View>Normal</w:View>
+  <w:Zoom>0</w:Zoom>
+  <w:TrackMoves/>
+  <w:TrackFormatting/>
+  <w:PunctuationKerning/>
+  <w:DrawingGridVerticalSpacing>7.8 磅</w:DrawingGridVerticalSpacing>
+  <w:DisplayHorizontalDrawingGridEvery>0</w:DisplayHorizontalDrawingGridEvery>
+  <w:DisplayVerticalDrawingGridEvery>2</w:DisplayVerticalDrawingGridEvery>
+  <w:ValidateAgainstSchemas/>
+  <w:SaveIfXMLInvalid>false</w:SaveIfXMLInvalid>
+  <w:IgnoreMixedContent>false</w:IgnoreMixedContent>
+  <w:AlwaysShowPlaceholderText>false</w:AlwaysShowPlaceholderText>
+  <w:DoNotPromoteQF/>
+  <w:LidThemeOther>EN-US</w:LidThemeOther>
+  <w:LidThemeAsian>ZH-CN</w:LidThemeAsian>
+  <w:LidThemeComplexScript>X-NONE</w:LidThemeComplexScript>
+  <w:Compatibility>
+   <w:SpaceForUL/>
+   <w:BalanceSingleByteDoubleByteWidth/>
+   <w:DoNotLeaveBackslashAlone/>
+   <w:ULTrailSpace/>
+   <w:DoNotExpandShiftReturn/>
+   <w:AdjustLineHeightInTable/>
+   <w:BreakWrappedTables/>
+   <w:SnapToGridInCell/>
+   <w:WrapTextWithPunct/>
+   <w:UseAsianBreakRules/>
+   <w:DontGrowAutofit/>
+   <w:SplitPgBreakAndParaMark/>
+   <w:EnableOpenTypeKerning/>
+   <w:DontFlipMirrorIndents/>
+   <w:OverrideTableStyleHps/>
+   <w:UseFELayout/>
+  </w:Compatibility>
+  <m:mathPr>
+   <m:mathFont m:val="Cambria Math"/>
+   <m:brkBin m:val="before"/>
+   <m:brkBinSub m:val="&#45;-"/>
+   <m:smallFrac m:val="off"/>
+   <m:dispDef/>
+   <m:lMargin m:val="0"/>
+   <m:rMargin m:val="0"/>
+   <m:defJc m:val="centerGroup"/>
+   <m:wrapIndent m:val="1440"/>
+   <m:intLim m:val="subSup"/>
+   <m:naryLim m:val="undOvr"/>
+  </m:mathPr></w:WordDocument>
+</xml><![endif]--><!-- [if gte mso 9]><xml>
+ <w:LatentStyles DefLockedState="false" DefUnhideWhenUsed="true"
+  DefSemiHidden="true" DefQFormat="false" DefPriority="99"
+  LatentStyleCount="267">
+  <w:LsdException Locked="false" Priority="0" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Normal"/>
+  <w:LsdException Locked="false" Priority="9" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="heading 1"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 2"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 3"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 4"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 5"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 6"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 7"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 8"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 9"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 1"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 2"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 3"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 4"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 5"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 6"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 7"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 8"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 9"/>
+  <w:LsdException Locked="false" Priority="35" QFormat="true" Name="caption"/>
+  <w:LsdException Locked="false" Priority="10" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Title"/>
+  <w:LsdException Locked="false" Priority="1" Name="Default Paragraph Font"/>
+  <w:LsdException Locked="false" Priority="11" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Subtitle"/>
+  <w:LsdException Locked="false" Priority="22" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Strong"/>
+  <w:LsdException Locked="false" Priority="20" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Emphasis"/>
+  <w:LsdException Locked="false" Priority="59" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Table Grid"/>
+  <w:LsdException Locked="false" UnhideWhenUsed="false" Name="Placeholder Text"/>
+  <w:LsdException Locked="false" Priority="1" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="No Spacing"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 1"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 1"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 1"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 1"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 1"/>
+  <w:LsdException Locked="false" UnhideWhenUsed="false" Name="Revision"/>
+  <w:LsdException Locked="false" Priority="34" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="List Paragraph"/>
+  <w:LsdException Locked="false" Priority="29" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Quote"/>
+  <w:LsdException Locked="false" Priority="30" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Intense Quote"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 1"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 1"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 1"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 1"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 1"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 1"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 2"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 2"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 2"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 2"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 2"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 2"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 2"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 2"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 2"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 2"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 2"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 3"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 3"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 3"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 3"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 3"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 3"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 3"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 3"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 3"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 3"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 3"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 4"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 4"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 4"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 4"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 4"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 4"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 4"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 4"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 4"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 4"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 4"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 5"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 5"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 5"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 5"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 5"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 5"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 5"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 5"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 5"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 5"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 5"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 6"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 6"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 6"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 6"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 6"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 6"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 6"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 6"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 6"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 6"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 6"/>
+  <w:LsdException Locked="false" Priority="19" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Subtle Emphasis"/>
+  <w:LsdException Locked="false" Priority="21" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Intense Emphasis"/>
+  <w:LsdException Locked="false" Priority="31" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Subtle Reference"/>
+  <w:LsdException Locked="false" Priority="32" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Intense Reference"/>
+  <w:LsdException Locked="false" Priority="33" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Book Title"/>
+  <w:LsdException Locked="false" Priority="37" Name="Bibliography"/>
+  <w:LsdException Locked="false" Priority="39" QFormat="true" Name="TOC Heading"/>
+ </w:LatentStyles>
+</xml><![endif]--><!-- [if gte mso 10]>
+<style>
+ /* Style Definitions */
+ table.MsoNormalTable
+	{mso-style-name:普通表格;
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-parent:"";
+	mso-padding-alt:0cm 5.4pt 0cm 5.4pt;
+	mso-para-margin:0cm;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.5pt;
+	mso-bidi-font-size:11.0pt;
+	font-family:"Calibri","sans-serif";
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;
+	mso-font-kerning:1.0pt;}
+</style>
+<![endif]--><span style="font-size: large;"><span style="font-family: 楷体;">本文提出了一种基于肤色信息和眼睛粗略定位的人脸检测算法。该算法先对</span>
+<span style="font-family: &quot;Courier New&quot;;" lang="EN-US">Anil K.Jain </span>
+<span style="font-family: 楷体;">的</span>
+<span style="font-family: &quot;Courier New&quot;;" lang="EN-US">Cb</span>
+<span style="font-family: 楷体;">、</span>
+<span style="font-family: &quot;Courier New&quot;;" lang="EN-US">Cr</span>
+<span style="font-family: 楷体;">椭圆聚类方法进行了改进，用改进的算法进行肤色提取，经过肤色区域的分析，对人脸区域进行预检测，确定人脸可能区域，然后再根据眼睛的粗略定位进一步确定人脸区域。</span>
+</span>
+</p>
+<p><span style="font-size: large;"><span style="font-family: 楷体;">一、肤色分析(skin.m)</span>
+</span>
+</p>
+<p><span style="font-size: large;"><span style="font-family: 楷体;">&nbsp; Anil K.Jain提出的基于YCbCr颜色空间的肤色模型，根据当前点的Cb Cr值判断是否为肤色。</span>
+</span>
+</p>
+<p><span style="font-size: large;"><span style="font-family: 楷体;"><div class="dp-highlighter bg_java"><div class="bar"><div class="tools"><b>[java]</b> <a href="http://blog.csdn.net/wuxianglong/article/details/6156904#" class="ViewSource" title="view plain" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;">view plain</a><a href="http://blog.csdn.net/wuxianglong/article/details/6156904#" class="CopyToClipboard" title="copy" onclick="dp.sh.Toolbar.Command(&#39;CopyToClipboard&#39;,this);return false;">copy</a><a href="http://blog.csdn.net/wuxianglong/article/details/6156904#" class="PrintSource" title="print" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;">print</a><a href="http://blog.csdn.net/wuxianglong/article/details/6156904#" class="About" title="?" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;">?</a><div style="position: absolute; left: 428px; top: 548px; width: 29px; height: 14px; z-index: 99; "><embed id="ZeroClipboardMovie_1" src="http://static.blog.csdn.net/scripts/ZeroClipboard/ZeroClipboard.swf" loop="false" menu="false" quality="best" bgcolor="#ffffff" width="29" height="14" name="ZeroClipboardMovie_1" align="middle" allowscriptaccess="always" allowfullscreen="false" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" flashvars="id=1&amp;width=29&amp;height=14" wmode="transparent"></div></div></div><ol start="1" class="dp-j"><li class="alt"><span><span>%&nbsp;Anil&nbsp;K.Jain提出的基于YCbCr颜色空间的肤色模型&nbsp;&nbsp;</span></span></li><li class=""><span>%&nbsp;根据当前点的Cb&nbsp;Cr值判断是否为肤色&nbsp;&nbsp;</span></li><li class="alt"><span>function&nbsp;result&nbsp;=&nbsp;skin(Y,Cb,Cr)&nbsp;&nbsp;</span></li><li class=""><span>%&nbsp;参数&nbsp;&nbsp;</span></li><li class="alt"><span>a&nbsp;=&nbsp;<span class="number">25.39</span><span>;&nbsp;&nbsp;</span></span></li><li class=""><span>b&nbsp;=&nbsp;<span class="number">14.03</span><span>;&nbsp;&nbsp;</span></span></li><li class="alt"><span>ecx&nbsp;=&nbsp;<span class="number">1.60</span><span>;&nbsp;&nbsp;</span></span></li><li class=""><span>ecy&nbsp;=&nbsp;<span class="number">2.41</span><span>;&nbsp;&nbsp;</span></span></li><li class="alt"><span>sita&nbsp;=&nbsp;<span class="number">2.53</span><span>;&nbsp;&nbsp;</span></span></li><li class=""><span>cx&nbsp;=&nbsp;<span class="number">109.38</span><span>;&nbsp;&nbsp;</span></span></li><li class="alt"><span>cy&nbsp;=&nbsp;<span class="number">152.02</span><span>;&nbsp;&nbsp;</span></span></li><li class=""><span>xishu&nbsp;=&nbsp;[cos(sita)&nbsp;sin(sita);-sin(sita)&nbsp;cos(sita)];&nbsp;&nbsp;</span></li><li class="alt"><span>%&nbsp;如果亮度大于<span class="number">230</span><span>，则将长短轴同时扩大为原来的</span><span class="number">1.1</span><span>倍&nbsp;&nbsp;</span></span></li><li class=""><span><span class="keyword">if</span><span>(Y&nbsp;&gt;&nbsp;</span><span class="number">230</span><span>)&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;a&nbsp;=&nbsp;<span class="number">1.1</span><span>*a;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;b&nbsp;=&nbsp;<span class="number">1.1</span><span>*b;&nbsp;&nbsp;</span></span></li><li class="alt"><span>end&nbsp;&nbsp;</span></li><li class=""><span>%&nbsp;根据公式进行计算&nbsp;&nbsp;</span></li><li class="alt"><span>Cb&nbsp;=&nbsp;<span class="keyword">double</span><span>(Cb);&nbsp;&nbsp;</span></span></li><li class=""><span>Cr&nbsp;=&nbsp;<span class="keyword">double</span><span>(Cr);&nbsp;&nbsp;</span></span></li><li class="alt"><span>t&nbsp;=&nbsp;[(Cb-cx);(Cr-cy)];&nbsp;&nbsp;</span></li><li class=""><span>temp&nbsp;=&nbsp;xishu*t;&nbsp;&nbsp;</span></li><li class="alt"><span>value&nbsp;=&nbsp;(temp(<span class="number">1</span><span>)&nbsp;-&nbsp;ecx)^</span><span class="number">2</span><span>/a^</span><span class="number">2</span><span>&nbsp;+&nbsp;(temp(</span><span class="number">2</span><span>)&nbsp;-&nbsp;ecy)^</span><span class="number">2</span><span>/b^</span><span class="number">2</span><span>;&nbsp;&nbsp;</span></span></li><li class=""><span>%&nbsp;大于<span class="number">1</span><span>则不是肤色，返回</span><span class="number">0</span><span>；否则为肤色，返回</span><span class="number">1</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="keyword">if</span><span>&nbsp;value&nbsp;&gt;&nbsp;</span><span class="number">1</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;result&nbsp;=&nbsp;<span class="number">0</span><span>;&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="keyword">else</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;result&nbsp;=&nbsp;<span class="number">1</span><span>;&nbsp;&nbsp;</span></span></li><li class="alt"><span>end&nbsp;&nbsp;</span></li></ol></div><textarea cols="50" rows="15" name="code" class="java" style="display: none; ">% Anil K.Jain提出的基于YCbCr颜色空间的肤色模型
+% 根据当前点的Cb Cr值判断是否为肤色
+function result = skin(Y,Cb,Cr)
+% 参数
+a = 25.39;
+b = 14.03;
+ecx = 1.60;
+ecy = 2.41;
+sita = 2.53;
+cx = 109.38;
+cy = 152.02;
+xishu = [cos(sita) sin(sita);-sin(sita) cos(sita)];
+% 如果亮度大于230，则将长短轴同时扩大为原来的1.1倍
+if(Y &gt; 230)
+    a = 1.1*a;
+    b = 1.1*b;
+end
+% 根据公式进行计算
+Cb = double(Cb);
+Cr = double(Cr);
+t = [(Cb-cx);(Cr-cy)];
+temp = xishu*t;
+value = (temp(1) - ecx)^2/a^2 + (temp(2) - ecy)^2/b^2;
+% 大于1则不是肤色，返回0；否则为肤色，返回1
+if value &gt; 1
+    result = 0;
+else
+    result = 1;
+end</textarea>
+ </span>
+</span>
+</p>
+<p>&nbsp;</p>
+<p><span style="font-size: large;"><span style="font-family: 楷体;">二、眼睛粗略定位(findeye.m)</span>
+</span>
+</p>
+<p><span style="font-size: large;"><span style="font-family: 楷体;"><div class="dp-highlighter bg_java"><div class="bar"><div class="tools"><b>[java]</b> <a href="http://blog.csdn.net/wuxianglong/article/details/6156904#" class="ViewSource" title="view plain" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;">view plain</a><a href="http://blog.csdn.net/wuxianglong/article/details/6156904#" class="CopyToClipboard" title="copy" onclick="dp.sh.Toolbar.Command(&#39;CopyToClipboard&#39;,this);return false;">copy</a><a href="http://blog.csdn.net/wuxianglong/article/details/6156904#" class="PrintSource" title="print" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;">print</a><a href="http://blog.csdn.net/wuxianglong/article/details/6156904#" class="About" title="?" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;">?</a><div style="position: absolute; left: 428px; top: 1187px; width: 29px; height: 14px; z-index: 99; "><embed id="ZeroClipboardMovie_2" src="http://static.blog.csdn.net/scripts/ZeroClipboard/ZeroClipboard.swf" loop="false" menu="false" quality="best" bgcolor="#ffffff" width="29" height="14" name="ZeroClipboardMovie_2" align="middle" allowscriptaccess="always" allowfullscreen="false" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" flashvars="id=2&amp;width=29&amp;height=14" wmode="transparent"></div></div></div><ol start="1" class="dp-j"><li class="alt"><span><span>%&nbsp;判断二值图像中是否含有可能是眼睛的块&nbsp;&nbsp;</span></span></li><li class=""><span>%&nbsp;&nbsp;&nbsp;bImage----二值图像&nbsp;&nbsp;</span></li><li class="alt"><span>%&nbsp;&nbsp;&nbsp;x---------矩形左上角顶点X坐标&nbsp;&nbsp;</span></li><li class=""><span>%&nbsp;&nbsp;&nbsp;y---------矩形左上角顶点Y坐标&nbsp;&nbsp;</span></li><li class="alt"><span>%&nbsp;&nbsp;&nbsp;w---------矩形宽度&nbsp;&nbsp;</span></li><li class=""><span>%&nbsp;&nbsp;&nbsp;h---------矩形长度&nbsp;&nbsp;</span></li><li class="alt"><span>%&nbsp;如果有则返回值eye等于<span class="number">1</span><span>，否则为</span><span class="number">0</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>function&nbsp;eye&nbsp;=&nbsp;findeye(bImage,x,y,w,h)&nbsp;&nbsp;</span></li><li class="alt"><span>%&nbsp;根据矩形相关属性得到二值图像中矩形区域中的数据&nbsp;&nbsp;</span></li><li class=""><span>%&nbsp;存放矩形区域二值图像信息&nbsp;&nbsp;</span></li><li class="alt"><span>part&nbsp;=&nbsp;zeros(h,w);&nbsp;&nbsp;</span></li><li class=""><span>%&nbsp;二值化&nbsp;&nbsp;</span></li><li class="alt"><span><span class="keyword">for</span><span>&nbsp;i&nbsp;=&nbsp;y:(y+h)&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">for</span><span>&nbsp;j&nbsp;=&nbsp;x:(x+w)&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>&nbsp;bImage(i,j)&nbsp;==&nbsp;</span><span class="number">0</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;part(i-y+<span class="number">1</span><span>,j-x+</span><span class="number">1</span><span>)&nbsp;=&nbsp;</span><span class="number">255</span><span>;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">else</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;part(i-y+<span class="number">1</span><span>,j-x+</span><span class="number">1</span><span>)&nbsp;=&nbsp;</span><span class="number">0</span><span>;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;end&nbsp;&nbsp;</span></li><li class="alt"><span>end&nbsp;&nbsp;</span></li><li class=""><span>[L,num]&nbsp;=&nbsp;bwlabel(part,<span class="number">8</span><span>);&nbsp;&nbsp;</span></span></li><li class="alt"><span>%&nbsp;如果区域中有两个以上的矩形则认为有眼睛&nbsp;&nbsp;</span></li><li class=""><span><span class="keyword">if</span><span>&nbsp;num&nbsp;&lt;&nbsp;</span><span class="number">2</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;eye&nbsp;=&nbsp;<span class="number">0</span><span>;&nbsp;&nbsp;</span></span></li><li class=""><span><span class="keyword">else</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;eye&nbsp;=&nbsp;<span class="number">1</span><span>;&nbsp;&nbsp;</span></span></li><li class=""><span>end&nbsp;&nbsp;</span></li></ol></div><textarea cols="50" rows="15" name="code" class="java" style="display: none; ">% 判断二值图像中是否含有可能是眼睛的块
+%   bImage----二值图像
+%   x---------矩形左上角顶点X坐标
+%   y---------矩形左上角顶点Y坐标
+%   w---------矩形宽度
+%   h---------矩形长度
+% 如果有则返回值eye等于1，否则为0
+function eye = findeye(bImage,x,y,w,h)
+% 根据矩形相关属性得到二值图像中矩形区域中的数据
+% 存放矩形区域二值图像信息
+part = zeros(h,w);
+% 二值化
+for i = y:(y+h)
+    for j = x:(x+w)
+        if bImage(i,j) == 0
+            part(i-y+1,j-x+1) = 255;
+        else
+            part(i-y+1,j-x+1) = 0;
+        end
+    end
+end
+[L,num] = bwlabel(part,8);
+% 如果区域中有两个以上的矩形则认为有眼睛
+if num &lt; 2
+    eye = 0;
+else
+    eye = 1;
+end</textarea>
+ </span>
+</span>
+</p>
+<p>&nbsp;</p>
+<p><span style="font-size: large;"><span style="font-family: 楷体;">三、人脸检测(facedetection.m)</span>
+</span>
+</p>
+<p><span style="font-size: large;"><span style="font-family: 楷体;"><div class="dp-highlighter bg_java"><div class="bar"><div class="tools"><b>[java]</b> <a href="http://blog.csdn.net/wuxianglong/article/details/6156904#" class="ViewSource" title="view plain" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;">view plain</a><a href="http://blog.csdn.net/wuxianglong/article/details/6156904#" class="CopyToClipboard" title="copy" onclick="dp.sh.Toolbar.Command(&#39;CopyToClipboard&#39;,this);return false;">copy</a><a href="http://blog.csdn.net/wuxianglong/article/details/6156904#" class="PrintSource" title="print" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;">print</a><a href="http://blog.csdn.net/wuxianglong/article/details/6156904#" class="About" title="?" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;">?</a><div style="position: absolute; left: 428px; top: 1808px; width: 29px; height: 14px; z-index: 99; "><embed id="ZeroClipboardMovie_3" src="http://static.blog.csdn.net/scripts/ZeroClipboard/ZeroClipboard.swf" loop="false" menu="false" quality="best" bgcolor="#ffffff" width="29" height="14" name="ZeroClipboardMovie_3" align="middle" allowscriptaccess="always" allowfullscreen="false" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" flashvars="id=3&amp;width=29&amp;height=14" wmode="transparent"></div></div></div><ol start="1" class="dp-j"><li class="alt"><span><span>function&nbsp;facedetection(img_name)&nbsp;&nbsp;</span></span></li><li class=""><span>%&nbsp;读取RGB图像&nbsp;&nbsp;</span></li><li class="alt"><span>I&nbsp;=&nbsp;imread(img_name);&nbsp;&nbsp;</span></li><li class=""><span>%&nbsp;转换为灰度图像&nbsp;&nbsp;</span></li><li class="alt"><span>gray&nbsp;=&nbsp;rgb2gray(I);&nbsp;&nbsp;</span></li><li class=""><span>%&nbsp;将图像转化为YCbCr颜色空间&nbsp;&nbsp;</span></li><li class="alt"><span>YCbCr&nbsp;=&nbsp;rgb2ycbcr(I);&nbsp;&nbsp;</span></li><li class=""><span>%&nbsp;获得图像宽度和高度&nbsp;&nbsp;</span></li><li class="alt"><span>heigth&nbsp;=&nbsp;size(gray,<span class="number">1</span><span>);&nbsp;&nbsp;</span></span></li><li class=""><span>width&nbsp;=&nbsp;size(gray,<span class="number">2</span><span>);&nbsp;&nbsp;</span></span></li><li class="alt"><span>%&nbsp;根据肤色模型将图像二值化&nbsp;&nbsp;</span></li><li class=""><span><span class="keyword">for</span><span>&nbsp;i&nbsp;=&nbsp;</span><span class="number">1</span><span>:heigth&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">for</span><span>&nbsp;j&nbsp;=&nbsp;</span><span class="number">1</span><span>:width&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Y&nbsp;=&nbsp;YCbCr(i,j,<span class="number">1</span><span>);&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cb&nbsp;=&nbsp;YCbCr(i,j,<span class="number">2</span><span>);&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cr&nbsp;=&nbsp;YCbCr(i,j,<span class="number">3</span><span>);&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(Y&nbsp;&lt;&nbsp;</span><span class="number">80</span><span>)&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gray(i,j)&nbsp;=&nbsp;<span class="number">0</span><span>;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">else</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(skin(Y,Cb,Cr)&nbsp;==&nbsp;</span><span class="number">1</span><span>)&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gray(i,j)&nbsp;=&nbsp;<span class="number">255</span><span>;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">else</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gray(i,j)&nbsp;=&nbsp;<span class="number">0</span><span>;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;end&nbsp;&nbsp;</span></li><li class="alt"><span>end&nbsp;&nbsp;</span></li><li class=""><span>%&nbsp;二值图像形态学处理&nbsp;&nbsp;</span></li><li class="alt"><span>SE=strel(<span class="string">'arbitrary'</span><span>,eye(</span><span class="number">5</span><span>));&nbsp;&nbsp;&nbsp;&nbsp;</span></span></li><li class=""><span>%gray&nbsp;=&nbsp;bwmorph(gray,<span class="string">'erode'</span><span>);&nbsp;&nbsp;</span></span></li><li class="alt"><span>%&nbsp;imopen先腐蚀再膨胀&nbsp;&nbsp;</span></li><li class=""><span>gray&nbsp;=&nbsp;imopen(gray,SE);&nbsp;&nbsp;</span></li><li class="alt"><span>%&nbsp;imclose先膨胀再腐蚀&nbsp;&nbsp;</span></li><li class=""><span>%gray&nbsp;=&nbsp;imclose(gray,SE);&nbsp;&nbsp;</span></li><li class="alt"><span>imshow(gray);&nbsp;&nbsp;</span></li><li class=""><span>%&nbsp;取出图片中所有包含白色区域的最小矩形&nbsp;&nbsp;</span></li><li class="alt"><span>[L,num]&nbsp;=&nbsp;bwlabel(gray,<span class="number">8</span><span>);&nbsp;&nbsp;</span></span></li><li class=""><span>STATS&nbsp;=&nbsp;regionprops(L,<span class="string">'BoundingBox'</span><span>);&nbsp;&nbsp;</span></span></li><li class="alt"><span>%&nbsp;存放经过筛选以后得到的所有矩形块&nbsp;&nbsp;</span></li><li class=""><span>n&nbsp;=&nbsp;<span class="number">1</span><span>;&nbsp;&nbsp;</span></span></li><li class="alt"><span>result&nbsp;=&nbsp;zeros(n,<span class="number">4</span><span>);&nbsp;&nbsp;</span></span></li><li class=""><span>figure,imshow(I);&nbsp;&nbsp;</span></li><li class="alt"><span>hold&nbsp;on;&nbsp;&nbsp;</span></li><li class=""><span><span class="keyword">for</span><span>&nbsp;i&nbsp;=&nbsp;</span><span class="number">1</span><span>:num&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;box&nbsp;=&nbsp;STATS(i).BoundingBox;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;x&nbsp;=&nbsp;box(<span class="number">1</span><span>);&nbsp;&nbsp;&nbsp;&nbsp;%矩形坐标x&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;y&nbsp;=&nbsp;box(<span class="number">2</span><span>);&nbsp;&nbsp;&nbsp;&nbsp;%矩形坐标y&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;w&nbsp;=&nbsp;box(<span class="number">3</span><span>);&nbsp;&nbsp;&nbsp;&nbsp;%矩形宽度w&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;h&nbsp;=&nbsp;box(<span class="number">4</span><span>);&nbsp;&nbsp;&nbsp;&nbsp;%矩形高度h&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;%&nbsp;宽度和高度的比例&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;ratio&nbsp;=&nbsp;h/w;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;ux&nbsp;=&nbsp;uint8(x);&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;uy&nbsp;=&nbsp;uint8(y);&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>&nbsp;ux&nbsp;&gt;&nbsp;</span><span class="number">1</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ux&nbsp;=&nbsp;ux&nbsp;-&nbsp;<span class="number">1</span><span>;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;end&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>&nbsp;uy&nbsp;&gt;&nbsp;</span><span class="number">1</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;uy&nbsp;=&nbsp;uy&nbsp;-&nbsp;<span class="number">1</span><span>;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;end&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;%&nbsp;可能是人脸区域的矩形应满足以下条件：&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;%&nbsp;&nbsp;&nbsp;<span class="number">1</span><span>、高度和宽度必须都大于</span><span class="number">20</span><span>，且矩形面积大于</span><span class="number">400</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;%&nbsp;&nbsp;&nbsp;<span class="number">2</span><span>、高度和宽度比率应该在范围（</span><span class="number">0.6</span><span>,</span><span class="number">2</span><span>）内&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;%&nbsp;&nbsp;&nbsp;<span class="number">3</span><span>、函数findeye返回值为</span><span class="number">1</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>&nbsp;w&nbsp;&lt;&nbsp;</span><span class="number">20</span><span>&nbsp;||&nbsp;h&nbsp;&lt;&nbsp;</span><span class="number">20</span><span>&nbsp;||&nbsp;w*h&nbsp;&lt;&nbsp;</span><span class="number">400</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">continue</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;elseif&nbsp;ratio&nbsp;&lt;&nbsp;<span class="number">2</span><span>&nbsp;&amp;&amp;&nbsp;ratio&nbsp;&gt;&nbsp;</span><span class="number">0.6</span><span>&nbsp;&amp;&amp;&nbsp;findeye(gray,ux,uy,w,h)&nbsp;==&nbsp;</span><span class="number">1</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%&nbsp;记录可能为人脸的矩形区域&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;result(n,:)&nbsp;=&nbsp;[ux&nbsp;uy&nbsp;w&nbsp;h];&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;n&nbsp;=&nbsp;n+<span class="number">1</span><span>;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;end&nbsp;&nbsp;</span></li><li class="alt"><span>end&nbsp;&nbsp;</span></li><li class=""><span>%&nbsp;对可能是人脸的区域进行标记&nbsp;&nbsp;</span></li><li class="alt"><span><span class="keyword">if</span><span>&nbsp;&nbsp;size(result,</span><span class="number">1</span><span>)&nbsp;==&nbsp;</span><span class="number">1</span><span>&nbsp;&amp;&amp;&nbsp;result(</span><span class="number">1</span><span>,</span><span class="number">1</span><span>)&nbsp;&gt;&nbsp;</span><span class="number">0</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;rectangle(<span class="string">'Position'</span><span>,[result(</span><span class="number">1</span><span>,</span><span class="number">1</span><span>),result(</span><span class="number">1</span><span>,</span><span class="number">2</span><span>),result(</span><span class="number">1</span><span>,</span><span class="number">3</span><span>),result(</span><span class="number">1</span><span>,</span><span class="number">4</span><span>)],</span><span class="string">'EdgeColor'</span><span>,</span><span class="string">'r'</span><span>);&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="keyword">else</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;%&nbsp;如果满足条件的矩形区域大于<span class="number">1</span><span>则再根据其他信息进行筛选&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">for</span><span>&nbsp;m&nbsp;=&nbsp;</span><span class="number">1</span><span>:size(result,</span><span class="number">1</span><span>)&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;m1&nbsp;=&nbsp;result(m,<span class="number">1</span><span>);&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;m2&nbsp;=&nbsp;result(m,<span class="number">2</span><span>);&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;m3&nbsp;=&nbsp;result(m,<span class="number">3</span><span>);&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;m4&nbsp;=&nbsp;result(m,<span class="number">4</span><span>);&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%&nbsp;标记最终的人脸区域&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>&nbsp;m1&nbsp;+&nbsp;m3&nbsp;&lt;&nbsp;width&nbsp;&amp;&amp;&nbsp;m2&nbsp;+&nbsp;m4&nbsp;&lt;&nbsp;heigth&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rectangle(<span class="string">'Position'</span><span>,[m1,m2,m3,m4],</span><span class="string">'EdgeColor'</span><span>,</span><span class="string">'r'</span><span>);&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;end&nbsp;&nbsp;</span></li><li class="alt"><span>end&nbsp;&nbsp;</span></li></ol></div><textarea cols="50" rows="15" name="code" class="java" style="display: none; ">function facedetection(img_name)
+% 读取RGB图像
+I = imread(img_name);
+% 转换为灰度图像
+gray = rgb2gray(I);
+% 将图像转化为YCbCr颜色空间
+YCbCr = rgb2ycbcr(I);
+% 获得图像宽度和高度
+heigth = size(gray,1);
+width = size(gray,2);
+% 根据肤色模型将图像二值化
+for i = 1:heigth
+    for j = 1:width
+        Y = YCbCr(i,j,1);
+        Cb = YCbCr(i,j,2);
+        Cr = YCbCr(i,j,3);
+        if(Y &lt; 80)
+            gray(i,j) = 0;
+        else
+            if(skin(Y,Cb,Cr) == 1)
+                gray(i,j) = 255;
+            else
+                gray(i,j) = 0;
+            end
+        end
+    end
+end
+% 二值图像形态学处理
+SE=strel('arbitrary',eye(5));  
+%gray = bwmorph(gray,'erode');
+% imopen先腐蚀再膨胀
+gray = imopen(gray,SE);
+% imclose先膨胀再腐蚀
+%gray = imclose(gray,SE);
+imshow(gray);
+% 取出图片中所有包含白色区域的最小矩形
+[L,num] = bwlabel(gray,8);
+STATS = regionprops(L,'BoundingBox');
+% 存放经过筛选以后得到的所有矩形块
+n = 1;
+result = zeros(n,4);
+figure,imshow(I);
+hold on;
+for i = 1:num
+    box = STATS(i).BoundingBox;
+    x = box(1);    %矩形坐标x
+    y = box(2);    %矩形坐标y
+    w = box(3);    %矩形宽度w
+    h = box(4);    %矩形高度h
+    % 宽度和高度的比例
+    ratio = h/w;
+    ux = uint8(x);
+    uy = uint8(y);
+    if ux &gt; 1
+        ux = ux - 1;
+    end
+    if uy &gt; 1
+        uy = uy - 1;
+    end
+    % 可能是人脸区域的矩形应满足以下条件：
+    %   1、高度和宽度必须都大于20，且矩形面积大于400
+    %   2、高度和宽度比率应该在范围（0.6,2）内
+    %   3、函数findeye返回值为1
+    if w &lt; 20 || h &lt; 20 || w*h &lt; 400
+        continue
+    elseif ratio &lt; 2 &amp;&amp; ratio &gt; 0.6 &amp;&amp; findeye(gray,ux,uy,w,h) == 1
+        % 记录可能为人脸的矩形区域
+        result(n,:) = [ux uy w h];
+        n = n+1;
+    end
+end
+% 对可能是人脸的区域进行标记
+if  size(result,1) == 1 &amp;&amp; result(1,1) &gt; 0
+    rectangle('Position',[result(1,1),result(1,2),result(1,3),result(1,4)],'EdgeColor','r');
+else
+    % 如果满足条件的矩形区域大于1则再根据其他信息进行筛选
+    for m = 1:size(result,1)
+        m1 = result(m,1);
+        m2 = result(m,2);
+        m3 = result(m,3);
+        m4 = result(m,4);
+        % 标记最终的人脸区域
+        if m1 + m3 &lt; width &amp;&amp; m2 + m4 &lt; heigth
+            rectangle('Position',[m1,m2,m3,m4],'EdgeColor','r');
+        end
+    end
+end</textarea>
+ </span>
+</span>
+</p>
+<p>&nbsp;</p>
+<p><span style="font-size: large;"><span style="font-family: 楷体;">四、主函数(main.m)</span>
+</span>
+</p>
+<p><span style="font-size: large;"><span style="font-family: 楷体;"><div class="dp-highlighter bg_java"><div class="bar"><div class="tools"><b>[java]</b> <a href="http://blog.csdn.net/wuxianglong/article/details/6156904#" class="ViewSource" title="view plain" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;">view plain</a><a href="http://blog.csdn.net/wuxianglong/article/details/6156904#" class="CopyToClipboard" title="copy" onclick="dp.sh.Toolbar.Command(&#39;CopyToClipboard&#39;,this);return false;">copy</a><a href="http://blog.csdn.net/wuxianglong/article/details/6156904#" class="PrintSource" title="print" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;">print</a><a href="http://blog.csdn.net/wuxianglong/article/details/6156904#" class="About" title="?" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;">?</a><div style="position: absolute; left: 428px; top: 3491px; width: 29px; height: 14px; z-index: 99; "><embed id="ZeroClipboardMovie_4" src="http://static.blog.csdn.net/scripts/ZeroClipboard/ZeroClipboard.swf" loop="false" menu="false" quality="best" bgcolor="#ffffff" width="29" height="14" name="ZeroClipboardMovie_4" align="middle" allowscriptaccess="always" allowfullscreen="false" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" flashvars="id=4&amp;width=29&amp;height=14" wmode="transparent"></div></div></div><ol start="1" class="dp-j"><li class="alt"><span><span>%清理窗口&nbsp;&nbsp;</span></span></li><li class=""><span>close&nbsp;all&nbsp;&nbsp;</span></li><li class="alt"><span>clear&nbsp;all&nbsp;&nbsp;</span></li><li class=""><span>clc&nbsp;&nbsp;</span></li><li class="alt"><span>%&nbsp;输入图像名字&nbsp;&nbsp;</span></li><li class=""><span>img_name&nbsp;=&nbsp;input(<span class="string">'请输入图像名字(图像必须为RGB图像，输入0结束)：'</span><span>,</span><span class="string">'s'</span><span>);&nbsp;&nbsp;</span></span></li><li class="alt"><span>%&nbsp;当输入<span class="number">0</span><span>时结束&nbsp;&nbsp;</span></span></li><li class=""><span><span class="keyword">while</span><span>&nbsp;~strcmp(img_name,</span><span class="string">'0'</span><span>)&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;%&nbsp;进行人脸识别&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;facedetection(img_name);&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;img_name&nbsp;=&nbsp;input(<span class="string">'请输入图像名字(图像必须为RGB图像，输入0结束)：'</span><span>,</span><span class="string">'s'</span><span>);&nbsp;&nbsp;</span></span></li><li class=""><span>end&nbsp;&nbsp;</span></li></ol></div><textarea cols="50" rows="15" name="code" class="java" style="display: none; ">%清理窗口
+close all
+clear all
+clc
+% 输入图像名字
+img_name = input('请输入图像名字(图像必须为RGB图像，输入0结束)：','s');
+% 当输入0时结束
+while ~strcmp(img_name,'0')
+    % 进行人脸识别
+    facedetection(img_name);
+    img_name = input('请输入图像名字(图像必须为RGB图像，输入0结束)：','s');
+end</textarea>
+ <br>
+</span>
+</span>
+</p>
+</div>
+<div class="share_buttons" id="sharePanel"><span>分享到：</span> <a name="sina" class="share_sina" title="分享到新浪微博"></a><a name="qq" class="share_qq" title="分享到腾讯微博"></a></div>
+
+<div class="article_next_prev">
+        <li class="prev_article">
+            <span>上一篇：</span><a href="http://blog.csdn.net/wuxianglong/article/details/6128734">Ubuntu获得根用户权限时su认证失败的解决方法</a></li>
+        <li class="next_article">
+            <span>下一篇：</span><a href="http://blog.csdn.net/wuxianglong/article/details/6156919">基于HSV色彩空间变换的阴影检测算法——MATLAB实现</a></li>
+</div>
+
+
+</div>
+<div id="ad_cen"><iframe id="ad_frm_0" frameborder="0" scrolling="no" style="border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; overflow-x: hidden; overflow-y: hidden; width: 1327px; height: 97px; " src="./基于肤色和眼睛定位的人脸检测算法_files/ad(1).htm"></iframe></div>
+<script type="text/javascript">
+    new Ad(4, 'ad_cen');
+</script>
+<div id="comment_title" class="panel_head">查看评论<a name="comments"></a></div>
+<div id="comment_list"><dl class="comment_item comment_topic" id="comment_item_2143805"><dt class="comment_head" floor="9">9楼 <span class="user"><a class="username" href="http://blog.csdn.net/baobao_meimei" target="_blank">baobao_meimei</a> <span class="ptime">3天前 10:41发表</span>  <a href="http://blog.csdn.net/wuxianglong/article/details/6156904#reply" class="cmt_btn reply" title="回复">[回复]</a> <span class="comment_manage" style="display:none;" commentid="2143805" username="baobao_meimei"> <a href="http://blog.csdn.net/wuxianglong/article/details/6156904#quote" class="cmt_btn quote" title="引用">[引用]</a> <a href="http://blog.csdn.net/wuxianglong/article/details/6156904#report" class="cmt_btn report" title="举报">[举报]</a></span></span></dt><dd class="comment_userface"><a href="http://blog.csdn.net/baobao_meimei" target="_blank"><img src="./基于肤色和眼睛定位的人脸检测算法_files/3_baobao_meimei.jpg" width="40" height="40"></a></dd><dd class="comment_body">请问博主，这个代码可以运行吗，为什么我运行时报错了，感谢感谢啊??? Error using ==&gt; rectangle<br>Width and height must be &gt; 0</dd></dl><dl class="comment_item comment_topic" id="comment_item_2052818"><dt class="comment_head" floor="8">8楼 <span class="user"><a class="username" href="http://blog.csdn.net/hughdove" target="_blank">hughdove</a> <span class="ptime">2011-12-15 05:57发表</span>  <a href="http://blog.csdn.net/wuxianglong/article/details/6156904#reply" class="cmt_btn reply" title="回复">[回复]</a> <span class="comment_manage" style="display:none;" commentid="2052818" username="hughdove"> <a href="http://blog.csdn.net/wuxianglong/article/details/6156904#quote" class="cmt_btn quote" title="引用">[引用]</a> <a href="http://blog.csdn.net/wuxianglong/article/details/6156904#report" class="cmt_btn report" title="举报">[举报]</a></span></span></dt><dd class="comment_userface"><a href="http://blog.csdn.net/hughdove" target="_blank"><img src="./基于肤色和眼睛定位的人脸检测算法_files/3_hughdove.jpg" width="40" height="40"></a></dd><dd class="comment_body">第一个问题解决了，是文件facedetection.m中 语句“view plainprint?”被认为是代码了<br>现在又新的问题了哈<br>??? Error using ==&gt; rectangle<br>Width and height must be &gt; 0<br><br>Error in ==&gt; facedetection at 84<br>            rectangle('Position',[m1,m2,m3,m4],'EdgeColor','r');<br><br>Error in ==&gt; main at 10<br>    facedetection(img_name);</dd></dl><dl class="comment_item comment_topic" id="comment_item_2052816"><dt class="comment_head" floor="7">7楼 <span class="user"><a class="username" href="http://blog.csdn.net/hughdove" target="_blank">hughdove</a> <span class="ptime">2011-12-15 05:43发表</span>  <a href="http://blog.csdn.net/wuxianglong/article/details/6156904#reply" class="cmt_btn reply" title="回复">[回复]</a> <span class="comment_manage" style="display:none;" commentid="2052816" username="hughdove"> <a href="http://blog.csdn.net/wuxianglong/article/details/6156904#quote" class="cmt_btn quote" title="引用">[引用]</a> <a href="http://blog.csdn.net/wuxianglong/article/details/6156904#report" class="cmt_btn report" title="举报">[举报]</a></span></span></dt><dd class="comment_userface"><a href="http://blog.csdn.net/hughdove" target="_blank"><img src="./基于肤色和眼睛定位的人脸检测算法_files/3_hughdove.jpg" width="40" height="40"></a></dd><dd class="comment_body">请输入图像名字(图像必须为RGB图像，输入0结束)：face.jpg<br>??? Error: File: skin.m Line: 4 Column: 1<br>Function definitions are not permitted at the prompt or in scripts.<br><br>Error in ==&gt; facedetection at 20<br>            if(skin(Y,Cb,Cr) == 1)<br><br>Error in ==&gt; main at 10<br>    facedetection(img_name);<br><br>大哥，运行时报了这些错，请问是哪里有错误呢</dd></dl><dl class="comment_item comment_topic" id="comment_item_1668143"><dt class="comment_head" floor="6">6楼 <span class="user"><a class="username" href="http://blog.csdn.net/wuwenwen888" target="_blank">wuwenwen888</a> <span class="ptime">2011-05-11 21:52发表</span>  <a href="http://blog.csdn.net/wuxianglong/article/details/6156904#reply" class="cmt_btn reply" title="回复">[回复]</a> <span class="comment_manage" style="display:none;" commentid="1668143" username="wuwenwen888"> <a href="http://blog.csdn.net/wuxianglong/article/details/6156904#quote" class="cmt_btn quote" title="引用">[引用]</a> <a href="http://blog.csdn.net/wuxianglong/article/details/6156904#report" class="cmt_btn report" title="举报">[举报]</a></span></span></dt><dd class="comment_userface"><a href="http://blog.csdn.net/wuwenwen888" target="_blank"><img src="./基于肤色和眼睛定位的人脸检测算法_files/3_wuwenwen888.jpg" width="40" height="40"></a></dd><dd class="comment_body">能详细告诉我这个程序怎们在matlab上实现吗 谢谢了</dd></dl><dl class="comment_item comment_topic" id="comment_item_1668096"><dt class="comment_head" floor="5">5楼 <span class="user"><a class="username" href="http://blog.csdn.net/wuwenwen888" target="_blank">wuwenwen888</a> <span class="ptime">2011-05-11 20:51发表</span>  <a href="http://blog.csdn.net/wuxianglong/article/details/6156904#reply" class="cmt_btn reply" title="回复">[回复]</a> <span class="comment_manage" style="display:none;" commentid="1668096" username="wuwenwen888"> <a href="http://blog.csdn.net/wuxianglong/article/details/6156904#quote" class="cmt_btn quote" title="引用">[引用]</a> <a href="http://blog.csdn.net/wuxianglong/article/details/6156904#report" class="cmt_btn report" title="举报">[举报]</a></span></span></dt><dd class="comment_userface"><a href="http://blog.csdn.net/wuwenwen888" target="_blank"><img src="./基于肤色和眼睛定位的人脸检测算法_files/3_wuwenwen888.jpg" width="40" height="40"></a></dd><dd class="comment_body">问一下 为啥运行时会出现??? Undefined command/function 'skin'.这个错误</dd></dl><dl class="comment_item comment_topic" id="comment_item_1659607"><dt class="comment_head" floor="4">4楼 <span class="user"><a class="username" href="http://blog.csdn.net/cynthiamoonbeen" target="_blank">cynthiamoonbeen</a> <span class="ptime">2011-05-03 16:04发表</span>  <a href="http://blog.csdn.net/wuxianglong/article/details/6156904#reply" class="cmt_btn reply" title="回复">[回复]</a> <span class="comment_manage" style="display:none;" commentid="1659607" username="cynthiamoonbeen"> <a href="http://blog.csdn.net/wuxianglong/article/details/6156904#quote" class="cmt_btn quote" title="引用">[引用]</a> <a href="http://blog.csdn.net/wuxianglong/article/details/6156904#report" class="cmt_btn report" title="举报">[举报]</a></span></span></dt><dd class="comment_userface"><a href="http://blog.csdn.net/cynthiamoonbeen" target="_blank"><img src="./基于肤色和眼睛定位的人脸检测算法_files/3_cynthiamoonbeen.jpg" width="40" height="40"></a></dd><dd class="comment_body">谢谢,可以加你QQ么?</dd></dl><dl class="comment_item comment_topic" id="comment_item_1630887"><dt class="comment_head" floor="3">3楼 <span class="user"><a class="username" href="http://blog.csdn.net/Zz2Xz" target="_blank">Zz2Xz</a> <span class="ptime">2011-04-02 11:22发表</span>  <a href="http://blog.csdn.net/wuxianglong/article/details/6156904#reply" class="cmt_btn reply" title="回复">[回复]</a> <span class="comment_manage" style="display:none;" commentid="1630887" username="Zz2Xz"> <a href="http://blog.csdn.net/wuxianglong/article/details/6156904#quote" class="cmt_btn quote" title="引用">[引用]</a> <a href="http://blog.csdn.net/wuxianglong/article/details/6156904#report" class="cmt_btn report" title="举报">[举报]</a></span></span></dt><dd class="comment_userface"><a href="http://blog.csdn.net/Zz2Xz" target="_blank"><img src="./基于肤色和眼睛定位的人脸检测算法_files/3_zz2xz.jpg" width="40" height="40"></a></dd><dd class="comment_body">弱弱的问一下，要怎么用呢？</dd><dl class="comment_item comment_reply" id="comment_item_1630974"><dt class="comment_head" floor="3">Re: <span class="user"><a class="username" href="http://blog.csdn.net/wuxianglong" target="_blank">wuxianglong</a> <span class="ptime">2011-04-02 13:00发表</span>  <a href="http://blog.csdn.net/wuxianglong/article/details/6156904#reply" class="cmt_btn reply" title="回复">[回复]</a> <span class="comment_manage" style="display:none;" commentid="1630974" username="wuxianglong"> <a href="http://blog.csdn.net/wuxianglong/article/details/6156904#quote" class="cmt_btn quote" title="引用">[引用]</a> <a href="http://blog.csdn.net/wuxianglong/article/details/6156904#report" class="cmt_btn report" title="举报">[举报]</a></span></span></dt><dd class="comment_userface"><a href="http://blog.csdn.net/wuxianglong" target="_blank"><img src="./基于肤色和眼睛定位的人脸检测算法_files/3_wuxianglong.jpg" width="40" height="40"></a></dd><dd class="comment_body">回复 Zz2Xz：这些使用matlab写的，在matlab中运行就可以了。。。。</dd></dl></dl><dl class="comment_item comment_topic" id="comment_item_1617751"><dt class="comment_head" floor="2">2楼 <span class="user"><a class="username" href="http://blog.csdn.net/jijispace" target="_blank">jijispace</a> <span class="ptime">2011-03-18 16:47发表</span>  <a href="http://blog.csdn.net/wuxianglong/article/details/6156904#reply" class="cmt_btn reply" title="回复">[回复]</a> <span class="comment_manage" style="display:none;" commentid="1617751" username="jijispace"> <a href="http://blog.csdn.net/wuxianglong/article/details/6156904#quote" class="cmt_btn quote" title="引用">[引用]</a> <a href="http://blog.csdn.net/wuxianglong/article/details/6156904#report" class="cmt_btn report" title="举报">[举报]</a></span></span></dt><dd class="comment_userface"><a href="http://blog.csdn.net/jijispace" target="_blank"><img src="./基于肤色和眼睛定位的人脸检测算法_files/3_jijispace.jpg" width="40" height="40"></a></dd><dd class="comment_body"><img src="./基于肤色和眼睛定位的人脸检测算法_files/e01.gif"></dd></dl><dl class="comment_item comment_topic" id="comment_item_1616286"><dt class="comment_head" floor="1">1楼 <span class="user"><a class="username" href="http://blog.csdn.net/einsdrw" target="_blank">einsdrw</a> <span class="ptime">2011-03-17 07:56发表</span>  <a href="http://blog.csdn.net/wuxianglong/article/details/6156904#reply" class="cmt_btn reply" title="回复">[回复]</a> <span class="comment_manage" style="display:none;" commentid="1616286" username="einsdrw"> <a href="http://blog.csdn.net/wuxianglong/article/details/6156904#quote" class="cmt_btn quote" title="引用">[引用]</a> <a href="http://blog.csdn.net/wuxianglong/article/details/6156904#report" class="cmt_btn report" title="举报">[举报]</a></span></span></dt><dd class="comment_userface"><a href="http://blog.csdn.net/einsdrw" target="_blank"><img src="./基于肤色和眼睛定位的人脸检测算法_files/3_einsdrw.jpg" width="40" height="40"></a></dd><dd class="comment_body"><img src="./基于肤色和眼睛定位的人脸检测算法_files/e01.gif"></dd></dl><div class="clear"></div></div>
+<div id="comment_bar" style="display: none; "></div>
+<div id="comment_form"><div class="guest_link">您还没有登录,请<a href="http://passport.csdn.net/account/login?from=http%3A%2F%2Fblog.csdn.net%2Fwuxianglong%2Farticle%2Fdetails%2F6156904">[登录]</a>或<a href="http://passport.csdn.net/account/register?from=http%3A%2F%2Fblog.csdn.net%2Fwuxianglong%2Farticle%2Fdetails%2F6156904">[注册]</a></div></div>
+<div class="announce">* 以上用户言论只代表其个人观点，不代表CSDN网站的观点或立场<a name="reply"></a><a name="quote"></a></div>
+<script type="text/javascript">
+    var fileName = '6156904';
+    var commentscount = 10;
+    var islock = false
+</script>
+<script type="text/javascript" src="./基于肤色和眼睛定位的人脸检测算法_files/comment.js"></script>
+<div id="ad_bot"><iframe id="ad_frm_1" frameborder="0" scrolling="no" style="border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; overflow-x: hidden; overflow-y: hidden; width: 1327px; height: 170px; " src="./基于肤色和眼睛定位的人脸检测算法_files/ad(2).htm"></iframe></div>
+<script type="text/javascript">
+    new Ad(5, 'ad_bot');
+</script>
+<div id="report_dialog"></div>
+
+
+<div class="clear"></div>
+</div>
+</div>
+<div id="side">
+    <div class="side">
+<div id="panel_Profile" class="panel">
+    <ul class="panel_head"><span>个人资料</span></ul>
+    <ul class="panel_body profile">
+        <div id="blog_userface">
+            <a href="http://my.csdn.net/wuxianglong" target="_blank">
+            <img src="./基于肤色和眼睛定位的人脸检测算法_files/1_wuxianglong.jpg" title="访问我的空间" style="max-width:90%">
+            </a>
+            <br>
+            <span><a href="http://my.csdn.net/wuxianglong" target="_blank">wuxianglong</a></span>
+        </div>
+<div class="interact">
+<a href="http://my.csdn.net/my/letter/send/wuxianglong" class="letter" title="[发私信]"></a>
+<!--<a href="#" class="attented" title="已关注"></a>-->
+<a href="http://blog.csdn.net/wuxianglong/article/details/6156904#" class="attent" id="span_add_follow" title="[加关注]"></a>
+</div>
+        <div id="blog_medal">
+        <div id="bms_box"><a href="http://medal.blog.csdn.net/allmedal.aspx" target="_blank"><img src="./基于肤色和眼睛定位的人脸检测算法_files/holdon_s2.gif" onmouseover="m_over_m(this,0)" onmouseout="m_out_m()" alt=""></a></div></div>
+        <ul id="blog_rank">
+            <li>访问：<span>43529次</span></li>
+            <li>积分：<span>1363分</span></li>
+            <li>排名：<span>第4190名</span></li>
+        </ul>
+        <ul id="blog_statistics">
+            <li>原创：<span>73篇</span></li>
+            <li>转载：<span>80篇</span></li>
+            <li>译文：<span>0篇</span></li>
+            <li>评论：<span>70条</span></li>
+        </ul>
+    </ul>
+</div>
+<script language="JavaScript" type="text/javascript" src="./基于肤色和眼睛定位的人脸检测算法_files/jquery-1.4.2.min.js"></script> 
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#span_add_follow').click(function () {
+            var url = "http://my.csdn.net/index.php/follow/do_follow?jsonpcallback=?";
+            $.getJSON(url, { "username": "wuxianglong" }, function (data) {
+                if (data.succ == 1) {
+                    alert('关注成功！');
+                    $('#span_add_follow').attr('class', 'attented').click(function () { return false; });
+                } else {
+                    alert(data.msg);
+                }
+            });
+        });
+    });
+</script>
+
+<div class="panel" id="panel_Search">
+    <ul class="panel_head"><span>文章搜索</span></ul>
+    <ul class="panel_body">
+        <form id="frmSearch" action="http://so.csdn.net/search" class="form_search" target="_blank">
+        <span><input id="inputSearch" type="text" class="blogsearch" title="请输入关键字"></span>
+        <input id="btnSubmit" type="submit" value="搜索" title="search in blog">
+        <input type="hidden" name="q" id="inputQ">
+        <input type="hidden" name="t" value="blog">
+        <a id="btnSearchBlog" target="_blank"></a>
+        </form>
+    </ul>
+</div><div id="panel_Archive" class="panel">
+    <ul class="panel_head"><span>文章存档</span></ul>
+    <ul class="panel_body">
+        <div id="archive_list"><li><a href="http://blog.csdn.net/wuxianglong/article/month/2012/02">2012年02月</a>(1)</li><li><a href="http://blog.csdn.net/wuxianglong/article/month/2011/12">2011年12月</a>(3)</li><li><a href="http://blog.csdn.net/wuxianglong/article/month/2011/11">2011年11月</a>(1)</li><li><a href="http://blog.csdn.net/wuxianglong/article/month/2011/10">2011年10月</a>(6)</li><li><a href="http://blog.csdn.net/wuxianglong/article/month/2011/09">2011年09月</a>(2)</li><span class="hidelist" style="display:none;"><li><a href="http://blog.csdn.net/wuxianglong/article/month/2011/08">2011年08月</a>(6)</li><li><a href="http://blog.csdn.net/wuxianglong/article/month/2011/07">2011年07月</a>(13)</li><li><a href="http://blog.csdn.net/wuxianglong/article/month/2011/06">2011年06月</a>(7)</li><li><a href="http://blog.csdn.net/wuxianglong/article/month/2011/05">2011年05月</a>(7)</li><li><a href="http://blog.csdn.net/wuxianglong/article/month/2011/04">2011年04月</a>(14)</li><li><a href="http://blog.csdn.net/wuxianglong/article/month/2011/03">2011年03月</a>(10)</li><li><a href="http://blog.csdn.net/wuxianglong/article/month/2011/02">2011年02月</a>(2)</li><li><a href="http://blog.csdn.net/wuxianglong/article/month/2011/01">2011年01月</a>(7)</li><li><a href="http://blog.csdn.net/wuxianglong/article/month/2010/12">2010年12月</a>(4)</li><li><a href="http://blog.csdn.net/wuxianglong/article/month/2010/11">2010年11月</a>(2)</li><li><a href="http://blog.csdn.net/wuxianglong/article/month/2010/10">2010年10月</a>(11)</li><li><a href="http://blog.csdn.net/wuxianglong/article/month/2010/09">2010年09月</a>(2)</li><li><a href="http://blog.csdn.net/wuxianglong/article/month/2010/08">2010年08月</a>(2)</li><li><a href="http://blog.csdn.net/wuxianglong/article/month/2010/07">2010年07月</a>(7)</li><li><a href="http://blog.csdn.net/wuxianglong/article/month/2010/06">2010年06月</a>(15)</li><li><a href="http://blog.csdn.net/wuxianglong/article/month/2010/05">2010年05月</a>(29)</li><li><a href="http://blog.csdn.net/wuxianglong/article/month/2009/11">2009年11月</a>(1)</li><li><a href="http://blog.csdn.net/wuxianglong/article/month/2009/10">2009年10月</a>(1)</li></span><div id="archive_list_button" class="list_closed">展开</div></div>
+    </ul>
+</div>
+<div id="custom_column_999570" class="panel">
+    <ul class="panel_head"><span>学习资源</span></ul>
+    <ul class="panel_body">
+        
+<ul>
+<li><a href="http://blog.csdn.net/xiaominghimi/" target="_blank">HiMi</a></li><li><a href="http://coolshell.cn/" target="_blank">酷壳</a></li><li><a href="http://www.microdu.com/" target="_blank">微度网</a></li><li><a href="http://www.zhuotx.com/" target="_blank">卓天下</a></li><li><a href="http://blog.csdn.net/yincheng01" target="_blank">黑暗伯爵</a> </li><li><a href="http://www.williamlong.info/" target="_blank">月光博客</a></li><li><a href="http://www.qianduan.net/" target="_blank">前端观察</a> </li><li><a href="http://blog.foreverlove.us/" target="_blank">翟子博客</a></li><li><a href="http://blog.csdn.net/v_JULY_v" target="_blank">v_JULY_v(算法)</a></li></ul>
+
+    </ul>
+</div><div id="homepageArticles" class="panel">
+    <ul class="panel_head"><span>推荐文章</span></ul>
+    <ul class="panel_body" id="ad_commend"><iframe id="ad_frm_2" frameborder="0" scrolling="no" style="border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; overflow-x: hidden; overflow-y: hidden; width: 194px; height: 238px; " src="./基于肤色和眼睛定位的人脸检测算法_files/ad.htm"></iframe></ul>
+</div>
+<script type="text/javascript" src="./基于肤色和眼睛定位的人脸检测算法_files/ad.js"></script>
+<script type="text/javascript">
+    new Ad(12, 'ad_commend');
+</script><div id="newcomments" class="panel">
+<ul class="panel_head"><span>最新评论</span></ul>
+<ul class="panel_body">
+    <li>
+    <a href="http://blog.csdn.net/wuxianglong/article/details/6156904#comments">基于肤色和眼睛定位的人脸检测算法——MATLAB实现</a>
+    <p style="margin:0px;">baobao_meimei:
+请问博主，这个代码可以运行吗，为什么我运行时报错了，感谢感谢啊??? Error using ==&gt;...
+    </p>
+    </li>
+    <li>
+    <a href="http://blog.csdn.net/wuxianglong/article/details/6414135#comments">LayoutInflater中四种类型inflate方法的介绍</a>
+    <p style="margin:0px;">changjianlong:
+想问一下第三种方法如何使用呢？能不能简单的介绍一下parser和root参数如何实现么？
+    </p>
+    </li>
+    <li>
+    <a href="http://blog.csdn.net/wuxianglong/article/details/6608091#comments">Android利用SAX解析XML文件</a>
+    <p style="margin:0px;">NickRambo:
+上面的例子里面是里面嵌套了,如果需要解析的xml文件有更多级的嵌套，该用什么思路来解析呢，特别是st...
+    </p>
+    </li>
+    <li>
+    <a href="http://blog.csdn.net/wuxianglong/article/details/6582770#comments">Android2.2使用广播机制完全退出程序</a>
+    <p style="margin:0px;">zoulu1:
+没用啊
+    </p>
+    </li>
+    <li>
+    <a href="http://blog.csdn.net/wuxianglong/article/details/6575995#comments">Android UI设计中的三种特效</a>
+    <p style="margin:0px;">chuchu521:
+谢谢 lz
+    </p>
+    </li>
+    <li>
+    <a href="http://blog.csdn.net/wuxianglong/article/details/6119399#comments">JAVA创建String对象的问题</a>
+    <p style="margin:0px;">aliouswang10:
+楼主说的不错，但是有一些地方我觉得说的有问题。String池是有的，但是只有直接通过str = “1...
+    </p>
+    </li>
+    <li>
+    <a href="http://blog.csdn.net/wuxianglong/article/details/6829514#comments">邮政诈骗短信经历</a>
+    <p style="margin:0px;">ldk22:
+我也差点上当了，杯具，好可恶的
+    </p>
+    </li>
+    <li>
+    <a href="http://blog.csdn.net/wuxianglong/article/details/6609650#comments">Android ListView分组布局改进</a>
+    <p style="margin:0px;">jianghao3616:
+你好，请问下，如果要求在分组项和各个item加checkbox，是做两个itemview好还是用ex...
+    </p>
+    </li>
+    <li>
+    <a href="http://blog.csdn.net/wuxianglong/article/details/6156904#comments">基于肤色和眼睛定位的人脸检测算法——MATLAB实现</a>
+    <p style="margin:0px;">hughdove:
+第一个问题解决了，是文件facedetection.m中 语句“view plainprint?”被...
+    </p>
+    </li>
+    <li>
+    <a href="http://blog.csdn.net/wuxianglong/article/details/6156904#comments">基于肤色和眼睛定位的人脸检测算法——MATLAB实现</a>
+    <p style="margin:0px;">hughdove:
+请输入图像名字(图像必须为RGB图像，输入0结束)：face.jpg??? Error: File:...
+    </p>
+    </li>
+</ul>
+</div>
+<div id="panel_Category" class="panel">
+    <ul class="panel_head"><span>文章分类</span></ul>
+    <ul class="panel_body">
+        <li>
+        <a href="http://blog.csdn.net/wuxianglong/article/category/794232">Android</a><span>(28)</span>
+        
+        </li>
+        <li>
+        <a href="http://blog.csdn.net/wuxianglong/article/category/606364">JAVA语言</a><span>(36)</span>
+        
+        </li>
+        <li>
+        <a href="http://blog.csdn.net/wuxianglong/article/category/933157">Python/Django</a><span>(4)</span>
+        
+        </li>
+        <li>
+        <a href="http://blog.csdn.net/wuxianglong/article/category/736425">Unix/Linux</a><span>(3)</span>
+        
+        </li>
+        <li>
+        <a href="http://blog.csdn.net/wuxianglong/article/category/606365">C/C++语言</a><span>(5)</span>
+        
+        </li>
+        <li>
+        <a href="http://blog.csdn.net/wuxianglong/article/category/740789">JavaScript</a><span>(2)</span>
+        
+        </li>
+        <li>
+        <a href="http://blog.csdn.net/wuxianglong/article/category/693995">算法</a><span>(8)</span>
+        
+        </li>
+        <li>
+        <a href="http://blog.csdn.net/wuxianglong/article/category/693997">数据结构</a><span>(1)</span>
+        
+        </li>
+        <li>
+        <a href="http://blog.csdn.net/wuxianglong/article/category/770717">MATLAB</a><span>(3)</span>
+        
+        </li>
+        <li>
+        <a href="http://blog.csdn.net/wuxianglong/article/category/693998">POJ题库</a><span>(7)</span>
+        
+        </li>
+        <li>
+        <a href="http://blog.csdn.net/wuxianglong/article/category/693994">数据库</a><span>(7)</span>
+        
+        </li>
+        <li>
+        <a href="http://blog.csdn.net/wuxianglong/article/category/797488">电脑知识</a><span>(4)</span>
+        
+        </li>
+        <li>
+        <a href="http://blog.csdn.net/wuxianglong/article/category/694442">设计模式</a><span>(22)</span>
+        
+        </li>
+        <li>
+        <a href="http://blog.csdn.net/wuxianglong/article/category/738803">Eiffel与契约式设计</a><span>(4)</span>
+        
+        </li>
+        <li>
+        <a href="http://blog.csdn.net/wuxianglong/article/category/694816">IT资讯</a><span>(2)</span>
+        
+        </li>
+        <li>
+        <a href="http://blog.csdn.net/wuxianglong/article/category/694309">人生感悟</a><span>(11)</span>
+        
+        </li>
+        <li>
+        <a href="http://blog.csdn.net/wuxianglong/article/category/740972">趣闻轶事</a><span>(1)</span>
+        
+        </li>
+    </ul>
+</div><div id="hotarticls" class="panel">
+    <ul class="panel_head"><span>评论排行</span></ul>
+    <ul class="panel_body">
+        <li>
+            <a href="./基于肤色和眼睛定位的人脸检测算法_files/基于肤色和眼睛定位的人脸检测算法.htm" title="基于肤色和眼睛定位的人脸检测算法——MATLAB实现">基于肤色和眼睛定位的人脸检测算法——MA...</a> (10)
+        </li>
+        <li>
+            <a href="http://blog.csdn.net/wuxianglong/article/details/6119399" title="JAVA创建String对象的问题">JAVA创建String对象的问题</a> (6)
+        </li>
+        <li>
+            <a href="http://blog.csdn.net/wuxianglong/article/details/6156919" title="基于HSV色彩空间变换的阴影检测算法——MATLAB实现">基于HSV色彩空间变换的阴影检测算法——...</a> (6)
+        </li>
+        <li>
+            <a href="http://blog.csdn.net/wuxianglong/article/details/5894236" title="WIN7系统下修改Jar文件关联的方法">WIN7系统下修改Jar文件关联的方法</a> (6)
+        </li>
+        <li>
+            <a href="http://blog.csdn.net/wuxianglong/article/details/6430990" title="Android 3.0 访问WebService 出现 android.os.NetworkOnMainThreadException异常">Android 3.0 访问WebSer...</a> (5)
+        </li>
+        <li>
+            <a href="http://blog.csdn.net/wuxianglong/article/details/6635338" title="Android获取dialog自定义布局中的控件">Android获取dialog自定义布局...</a> (4)
+        </li>
+        <li>
+            <a href="http://blog.csdn.net/wuxianglong/article/details/6298654" title="Android使用KSOAP2调用WebService及正确导入jar包的问题">Android使用KSOAP2调用Web...</a> (4)
+        </li>
+        <li>
+            <a href="http://blog.csdn.net/wuxianglong/article/details/5636295" title="关于VS的几个问题">关于VS的几个问题</a> (4)
+        </li>
+        <li>
+            <a href="http://blog.csdn.net/wuxianglong/article/details/6609650" title="Android ListView分组布局改进">Android ListView分组布局...</a> (4)
+        </li>
+        <li>
+            <a href="http://blog.csdn.net/wuxianglong/article/details/6869115" title="几种基本的排序算法：选择排序、插入排序、冒泡排序">几种基本的排序算法：选择排序、插入排序、...</a> (4)
+        </li>
+    </ul>
+</div>
+<div id="hotarticls" class="panel">
+    <ul class="panel_head"><span>阅读排行</span></ul>
+    <ul class="panel_body">
+        <li>
+            <a href="http://blog.csdn.net/wuxianglong/article/details/6117380" title="error LNK2019: 无法解析的外部符号 (解决方法)">error LNK2019: 无法解析的...</a> (3895)
+        </li>
+        <li>
+            <a href="http://blog.csdn.net/wuxianglong/article/details/6126942" title="虚拟机安装Ubuntu的上网设置（有线网络和无线网络）">虚拟机安装Ubuntu的上网设置（有线网...</a> (3329)
+        </li>
+        <li>
+            <a href="http://blog.csdn.net/wuxianglong/article/details/6430990" title="Android 3.0 访问WebService 出现 android.os.NetworkOnMainThreadException异常">Android 3.0 访问WebSer...</a> (2109)
+        </li>
+        <li>
+            <a href="http://blog.csdn.net/wuxianglong/article/details/5894236" title="WIN7系统下修改Jar文件关联的方法">WIN7系统下修改Jar文件关联的方法</a> (1916)
+        </li>
+        <li>
+            <a href="http://blog.csdn.net/wuxianglong/article/details/6298654" title="Android使用KSOAP2调用WebService及正确导入jar包的问题">Android使用KSOAP2调用Web...</a> (1552)
+        </li>
+        <li>
+            <a href="http://blog.csdn.net/wuxianglong/article/details/6609650" title="Android ListView分组布局改进">Android ListView分组布局...</a> (1277)
+        </li>
+        <li>
+            <a href="http://blog.csdn.net/wuxianglong/article/details/6635338" title="Android获取dialog自定义布局中的控件">Android获取dialog自定义布局...</a> (1178)
+        </li>
+        <li>
+            <a href="./基于肤色和眼睛定位的人脸检测算法_files/基于肤色和眼睛定位的人脸检测算法.htm" title="基于肤色和眼睛定位的人脸检测算法——MATLAB实现">基于肤色和眼睛定位的人脸检测算法——MA...</a> (1165)
+        </li>
+        <li>
+            <a href="http://blog.csdn.net/wuxianglong/article/details/5647303" title="JAVA中控制double类型小数点后位数的方法">JAVA中控制double类型小数点后位...</a> (953)
+        </li>
+        <li>
+            <a href="http://blog.csdn.net/wuxianglong/article/details/6575995" title="Android UI设计中的三种特效">Android UI设计中的三种特效</a> (857)
+        </li>
+    </ul>
+</div>
+    </div>
+    <div class="clear">
+    </div>
+</div>
+
+<div class="clear"></div>
+</div>
+<script type="text/javascript" src="./基于肤色和眼睛定位的人脸检测算法_files/shCore-src.js"></script>
+<script type="text/javascript" src="./基于肤色和眼睛定位的人脸检测算法_files/ZeroClipboard.js"></script>
+<script type="text/javascript" src="./基于肤色和眼睛定位的人脸检测算法_files/article_code.js"></script>
+
+<script type="text/javascript" src="./基于肤色和眼睛定位的人脸检测算法_files/show.js"></script>
+<script type="text/javascript" src="./基于肤色和眼睛定位的人脸检测算法_files/showblogmedal.ashx"></script>
+<script type="text/javascript">document.write("<img src=http://counter.csdn.net/pv.aspx?id=24 border=0 width=0 height=0>");</script><img src="./基于肤色和眼睛定位的人脸检测算法_files/pv.aspx" border="0" width="0" height="0">
+<script type="text/javascript" src="./基于肤色和眼睛定位的人脸检测算法_files/counter.js"></script><script type="text/javascript" charset="UTF-8" src="./基于肤色和眼睛定位的人脸检测算法_files/msg.popup.js"></script><img src="./基于肤色和眼睛定位的人脸检测算法_files/visitlog.php" width="1" height="1" border="0" alt="">
+<script type="text/javascript" src="./基于肤色和眼睛定位的人脸检测算法_files/publib_footer.js"></script><link rel="stylesheet" type="text/css" href="./基于肤色和眼睛定位的人脸检测算法_files/pub_footerstyle.css"><div class="pub_footerall"><dl><dt></dt> <dd><a href="http://www.csdn.net/company/about.html" target="_blank">公司简介</a>|<a href="http://www.csdn.net/company/recruit.html" target="_blank">招贤纳士</a>|<a href="http://www.csdn.net/company/marketing.html" target="_blank">广告服务</a>|<a href="http://www.csdn.net/company/account.html" target="_blank">银行汇款帐号</a>|<a href="http://www.csdn.net/company/contact.html" target="_blank">联系方式</a>|<a href="http://www.csdn.net/company/statement.html" target="_blank">版权声明</a>|<a href="http://www.csdn.net/company/layer.html" target="_blank">法律顾问</a>|<a href="mailto:webmaster@csdn.net">问题报告</a></dd><dd>北京创新乐知信息技术有限公司 版权所有,&nbsp;京&nbsp;ICP&nbsp;证&nbsp;070598&nbsp;号</dd><dd>世纪乐知(北京)网络技术有限公司 提供技术支持</dd><dd>江苏乐知网络技术有限公司 提供商务支持</dd><dd><img src="./基于肤色和眼睛定位的人脸检测算法_files/pic_email.gif" alt="" title=""> Email:webmaster@csdn.net</dd><dd>Copyright © 1999-2012, CSDN.NET, All Rights Reserved</dd><dd><a href="http://www.hd315.gov.cn/beian/view.asp?bianhao=010202001032100010" target="_blank"><img src="./基于肤色和眼睛定位的人脸检测算法_files/gongshang_logos.gif" alt="GongshangLogo" title=""></a></dd></dl></div>
+
+
+</div>
+
+<link href="./基于肤色和眼睛定位的人脸检测算法_files/message_pop.css" rel="stylesheet" type="text/css"><div style="display: block; " id="_popup_msg_container"><div wistate="max" id="im_popupWindow_miniMsg" class="im_popupWindow" style="height: 0px; display: none; ">
+    <h6 class="wi_draggable"><span>一周技术文章点击Top9</span><a onclick="_message_tips_pop(&#39;down&#39;);return false;"><img alt="close" class="founctionpic3" src="./基于肤色和眼睛定位的人脸检测算法_files/pic_close.gif"></a></h6>
+    <div id="im_popupWindow_miniMsgContent" class="wi_content">
+        <style type="text/css">
+<!--
+	#im2009 { position:relative; width:280px;  background-color:#FEF9F5; overflow:hidden;}
+	#im2009 UL{ width:100%;  float:left; margin-left:0; padding:5px 10px; overflow:hidden;}
+        .blue { line-height:120%;}
+	.blue A:link { color:#100cff; text-decoration:none;}
+	.blue A:visited { color:#100cff; text-decoration:none;}
+	.blue A:active { color:#100cff; text-decoration:none;}
+	.blue A:hover { color:#100cff; text-decoration:none;}
+	
+	.bottom { margin-bottom:0px; height:40px; padding:5px}
+	.bottom A:link { color:#FF9900; text-decoration:none; font-size:12px;}
+	.bottom A:visited { color:#FF9900; text-decoration:none; font-size:12px;}
+	.bottom A:active { color:#FF9900; text-decoration:none; font-size:12px;}
+	.bottom A:hover { color:#FF9900; text-decoration:none; font-size:12px;}
+-->
+        .Adela li { margin-top:0px; margin-bottom:5px; }
+        .bottom { margin-top:10px; }
+        </style>
+        <div id="im2009" style="left: 0px; top: 0px; height: 180px">
+            <ul class="Adela">      
+      <li class="blue"><a href="http://g.csdn.net/5213796" target="_blank">1、不可错过的应用开发宝库</a></li>
+        <li class="blue"><a href="http://g.csdn.net/5213796" target="_blank">2、不用重写，一行代码就改进性能</a></li>
+        <li class="blue"><a href="http://g.csdn.net/5213796" target="_blank">3、在不编写AVX的情况下使用英特尔AVX</a></li>
+        <li class="blue"><a href="http://g.csdn.net/5213796" target="_blank">4、如何更好的测试并行程序 </a></li>
+        <li class="blue"><a href="http://g.csdn.net/5216091" target="_blank">5、MFC 中的多线程（Work线程）</a></li>
+        <li class="blue"><a href="http://g.csdn.net/5216090" target="_blank">6、Android 3D 游戏实现之再谈碰撞</a></li>
+        <li class="blue"><a href="http://g.csdn.net/5216088" target="_blank">7、一个简单的游戏服务器框架</a></li>
+        <li class="blue"><a href="http://g.csdn.net/5216087" target="_blank">8、MMORPG 游戏服务器端设计</a></li>
+        <li class="blue"><a href="http://g.csdn.net/5216086" target="_blank">9、多线程伪共享(false sharing)问题分析 </a></li>
+       </ul>
+    <div style="clear:both; height:1px;"></div> </div>
+       </div>
+    <div class="content_qq">
+
+       
+    </div>
+</div></div><img src="./基于肤色和眼睛定位的人脸检测算法_files/count_new.php" style="display: none; "></body></html>

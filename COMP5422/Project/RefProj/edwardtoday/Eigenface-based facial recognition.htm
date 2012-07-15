@@ -1,0 +1,249 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0085)http://openbio.sourceforge.net/resources/eigenfaces/eigenfaces-html/facesOptions.html -->
+<html zhtongwen="simplified" autopagermatchedrules="1"><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>Eigenface-based facial recognition</title> 
+ 
+<meta name="generator" content="TeX4ht (http://www.cis.ohio-state.edu/~gurari/TeX4ht/mn.html)"> 
+<!-- html --> 
+<meta name="src" content="facesOptions.tex"> 
+<meta name="date" content="2003-02-13 14:37:00"> 
+<link rel="stylesheet" type="text/css" href="./Eigenface-based facial recognition_files/facesOptions.css"> 
+<link type="text/css" rel="stylesheet" href="data:text/css,"></head><body>
+   <div align="center" class="maketitle">
+
+<h2 class="titleHead"> Eigenface-based facial recognition </h2>
+<div class="author" align="center"><span class="ptmr7t-x-x-120">Dimitri PISSARENKO</span></div>
+<br>
+<div class="date" align="center"> <span class="ptmr7t-x-x-120">February 13, 2003</span></div>
+   </div>
+   <h3 class="sectionHead"><span class="titlemark">1</span> <a name="x1-10001"></a>General</h3>
+<!--l. 2--><p class="noindent">This document is based upon <a href="http://openbio.sourceforge.net/resources/eigenfaces/eigenfaces-html/facesOptions.html#XTurkPentland1991">Turk and Pentland</a>&nbsp;(<a href="http://openbio.sourceforge.net/resources/eigenfaces/eigenfaces-html/facesOptions.html#XTurkPentland1991">1991b</a>), <a href="http://openbio.sourceforge.net/resources/eigenfaces/eigenfaces-html/facesOptions.html#XTurkPentland1991a">Turk and Pentland</a>&nbsp;(<a href="http://openbio.sourceforge.net/resources/eigenfaces/eigenfaces-html/facesOptions.html#XTurkPentland1991a">1991a</a>) and
+<a href="http://openbio.sourceforge.net/resources/eigenfaces/eigenfaces-html/facesOptions.html#XSmith2002">Smith</a>&nbsp;(<a href="http://openbio.sourceforge.net/resources/eigenfaces/eigenfaces-html/facesOptions.html#XSmith2002">2002</a>).
+   </p><h3 class="sectionHead"><span class="titlemark">2</span> <a name="x1-20002"></a>How does it work?</h3>
+<!--l. 2--><p class="noindent">The task of facial recogniton is discriminating input signals (image data) into several classes
+(persons). The input signals are highly noisy (e.g. the noise is caused by differing lighting
+conditions, pose etc.), yet the input images are not completely random and in spite of their
+differences there are patterns which occur in any input signal. Such patterns, which can be
+observed in all signals could be - in the domain of facial recognition - the presence of some
+objects (eyes, nose, mouth) in any face as well as relative distances between these
+objects. These characteristic features are called <span class="ptmri7t-">eigenfaces </span>in the facial recognition
+domain (or <span class="ptmri7t-">principal components </span>generally). They can be extracted out of original
+image data by means of a mathematical tool called <span class="ptmri7t-">Principal Component Analysis</span>
+(PCA).
+<br class="newline">By means of PCA one can transform each original image of the training set into a
+corresponding eigenface. An important feature of PCA is that one can reconstruct reconstruct
+any original image from the training set by combining the eigenfaces. Remember that
+eigenfaces are nothing less than characteristic features of the faces. Therefore one could say
+that the original face image can be reconstructed from eigenfaces if one adds up all the
+eigenfaces (features) in the right proportion. Each eigenface represents only certain features
+of the face, which may or may not be present in the original image. If the feature is present in
+the original image to a higher degree, the share of the corresponding eigenface in the
+”sum” of the eigenfaces should be greater. If, contrary, the particular feature is not
+(or almost not) present in the original image, then the corresponding eigenface
+should contribute a smaller (or not at all) part to the sum of eigenfaces. So, in order
+to reconstruct the original image from the eigenfaces, one has to build a kind of
+weighted sum of all eigenfaces. That is, the reconstructed original image is equal to a
+sum of all eigenfaces, with each eigenface having a certain weight. This weight
+
+specifies, to what degree the specific feature (eigenface) is present in the original
+image.
+<br class="newline">If one uses all the eigenfaces extracted from original images, one can reconstruct the
+original images from the eigenfaces <span class="ptmri7t-">exactly</span>. But one can also use only a part of
+the eigenfaces. Then the reconstructed image is an approximation of the original
+image. However, one can ensure that losses due to omitting some of the eigenfaces
+can be minimized. This happens by choosing only the most important features
+(eigenfaces). Omission of eigenfaces is necessary due to scarcity of computational
+resources.
+<br class="newline">How does this relate to facial recognition? The clue is that it is possible not only to extract the
+face from eigenfaces given a set of weights, but also to go the opposite way. This opposite
+way would be to extract the weights from eigenfaces and the face to be recognized. These
+weights tell nothing less, as the amount by which the face in question differs from ”typical”
+faces represented by the eigenfaces. Therefore, using this weights one can determine two
+important things:
+     </p><ol type="1" class="enumerate1" start="1">
+     <li class="enumerate"><a name="x1-2002x1"></a> Determine, if the image in question is a face at all. In the case the weights of the
+     image differ too much from the weights of face images (i.e. images, from which
+     we know for sure that they are faces), the image probably is not a face.
+     </li>
+     <li class="enumerate"><a name="x1-2004x2"></a> Similar faces (images) possess similar features (eigenfaces) to similar degrees
+     (weights). If one extracts weights from all the images available, the images could
+     be grouped to clusters. That is, all images having similar weights are likely to be
+     similar faces. </li></ol>
+   <h3 class="sectionHead"><span class="titlemark">3</span> <a name="x1-30003"></a>Overview over the algorithm</h3>
+<!--l. 2--><p class="noindent"></p><hr class="figure"><div align="center" class="figure"><table class="figure"><tbody><tr class="figure"><td class="figure">
+
+<a name="x1-30011"></a>
+
+<!--l. 3--><p class="indent">   <img src="./Eigenface-based facial recognition_files/facesOptions0x.gif" alt="PIC" class="graphics"><!--tex4ht:graphics  
+name="facesOptions0x.gif" src="overviewOverAlgorithm.jpg"  
+-->
+<br class="newline">
+<br> </p><div align="center" class="caption"><table class="caption"><tbody><tr valign="baseline" class="caption"><td class="id">Figure&nbsp;1: </td><td class="content">High-level functioning principle of the eigenface-based facial recognition
+algorithm</td></tr></tbody></table></div><!--tex4ht:label?: x1-30011-->
+
+   </td></tr></tbody></table></div><hr class="endfigure"> The algorithm for the facial recognition using eigenfaces is basically described in figure
+<a href="http://openbio.sourceforge.net/resources/eigenfaces/eigenfaces-html/facesOptions.html#x1-30011">1<!--tex4ht:ref: fig:overviewOverAlgorithm--></a>. First, the original images of the training set are transformed into a set of eigenfaces <span class="cmmi-10">E</span>.
+Afterwards, the weights are calculated for each image of the training set and stored in the set
+<span class="cmmi-10">W </span>.
+<br class="newline">Upon observing an unknown image <span class="cmmi-10">X</span>, the weights are calculated for that particular image
+and stored in the vector <span class="cmmi-10">W</span><sub><span class="cmmi-7">X</span></sub>. Afterwards, <span class="cmmi-10">W</span><sub><span class="cmmi-7">X</span></sub> is compared with the weights of images, of
+which one knows for certain that they are faces (the weights of the training set <span class="cmmi-10">W </span>). One way
+to do it would be to regard each weight vector as a point in space and calculate an average
+distance <span class="cmmi-10">D </span>between the weight vectors from <span class="cmmi-10">W</span><sub><span class="cmmi-7">X</span></sub> and the weight vector of the unknown
+image <span class="cmmi-10">W</span><sub><span class="cmmi-7">X</span></sub> (the Euclidean distance described in appendix <a href="http://openbio.sourceforge.net/resources/eigenfaces/eigenfaces-html/facesOptions.html#x1-13000A">A<!--tex4ht:ref: sec:euclideanDistance--></a> would be a measure for that). If
+this average distance exceeds some threshold value <span class="cmmi-10"><img src="./Eigenface-based facial recognition_files/cmmi10-12.gif" alt="h" class="10x-x-12"></span>, then the weight vector of the unknown
+image <span class="cmmi-10">W</span><sub><span class="cmmi-7">X</span></sub> lies too ”far apart” from the weights of the faces. In this case, the unknown <span class="cmmi-10">X </span>is
+considered to not a face. Otherwise (if <span class="cmmi-10">X </span>is actualy a face), its weight vector <span class="cmmi-10">W</span><sub><span class="cmmi-7">X</span></sub> is
+stored for later classification. The optimal threshold value <span class="cmmi-10"><img src="./Eigenface-based facial recognition_files/cmmi10-12.gif" alt="h" class="10x-x-12"> </span>has to be determined
+empirically.
+   <h3 class="sectionHead"><span class="titlemark">4</span> <a name="x1-40004"></a>Eigenvectors and eigenvalues</h3>
+<!--l. 2--><p class="noindent">An eigenvector of a matrix is a vector such that, if multiplied with the matrix, the result is
+always an integer multiple of that vector. This integer value is the corresponding
+eigenvalue of the eigenvector. This relationship can be described by the equation
+<span class="cmmi-10">M </span><span class="cmsy-10">× </span><span class="cmmi-10">u </span><span class="cmr-10">= </span><span class="cmmi-10"><img src="./Eigenface-based facial recognition_files/cmmi10-15.gif" alt="c" class="10x-x-15"> </span><span class="cmsy-10">× </span><span class="cmmi-10">u</span>, where <span class="cmmi-10">u </span>is an eigenvector of the matrix <span class="cmmi-10">M </span>and <span class="cmmi-10"><img src="./Eigenface-based facial recognition_files/cmmi10-15.gif" alt="c" class="10x-x-15"> </span>is the corresponding
+eigenvalue.
+<br class="newline">Eigenvectors possess following properties:
+     </p><ul class="itemize1">
+     <li class="itemize"> They can be determined only for square matrices
+     </li>
+     <li class="itemize"> There are <span class="cmmi-10">n </span>eigenvectors (and corresponding eigenvalues) in a <span class="cmmi-10">n </span><span class="cmsy-10">× </span><span class="cmmi-10">n </span>matrix.
+     </li>
+     <li class="itemize"> All eigenvectors are perpendicular, i.e. at right angle with each other. </li></ul>
+   <h3 class="sectionHead"><span class="titlemark">5</span> <a name="x1-50005"></a>Calculation of eigenfaces with PCA</h3>
+<!--l. 2--><p class="noindent">In this section, the original scheme for determination of the eigenfaces using PCA will be
+presented. The algorithm described in scope of this paper is a variation of the one
+outlined here. A detailed (and more theoretical) description of PCA can be found in
+(<a href="http://openbio.sourceforge.net/resources/eigenfaces/eigenfaces-html/facesOptions.html#XPissarenko2002">Pissarenko</a>,&nbsp;<a href="http://openbio.sourceforge.net/resources/eigenfaces/eigenfaces-html/facesOptions.html#XPissarenko2002">2002</a>, pp. 70-72).
+   </p><h4 class="subsectionHead"><span class="titlemark">5.1</span> <a name="x1-60005.1"></a>Step 1: Prepare the data</h4> In this step, the faces constituting the training set (<span class="cmr-10"><img src="./Eigenface-based facial recognition_files/cmr10-0.gif" alt="G" class="10x-x-0"></span><sub><span class="cmmi-7">i</span></sub>) should
+be prepared for processing.
+   <h4 class="subsectionHead"><span class="titlemark">5.2</span> <a name="x1-70005.2"></a>Step 2: Subtract the mean</h4> The average matrix <span class="cmr-10"><img src="./Eigenface-based facial recognition_files/cmr10-9.gif" alt="Y" class="10x-x-9"> </span>has to be calculated, then subtracted
+from the original faces (<span class="cmr-10"><img src="./Eigenface-based facial recognition_files/cmr10-0.gif" alt="G" class="10x-x-0"></span><sub><span class="cmmi-7">i</span></sub>) and the result stored in the variable <span class="cmr-10"><img src="./Eigenface-based facial recognition_files/cmr10-8.gif" alt="P" class="10x-x-8"></span><sub><span class="cmmi-7">i</span></sub>:
+
+<table class="align">
+                           <tbody><tr><td class="align-odd"></td>                           <td class="align-even"><span class="cmr-10"><img src="./Eigenface-based facial recognition_files/cmr10-9.gif" alt="Y" class="10x-x-9"> =</span> <img src="./Eigenface-based facial recognition_files/facesOptions1x.gif" alt="1--
+M" class="frac" align="middle"><span class="cmex-10"><img src="./Eigenface-based facial recognition_files/cmex10-58.gif" alt=" sum " class="10x-x-58"></span>
+     <sub><img src="./Eigenface-based facial recognition_files/facesOptions2x.gif" alt="n-1"></sub><sup><img src="./Eigenface-based facial recognition_files/facesOptions3x.gif" alt="M"></sup><span class="cmr-10"><img src="./Eigenface-based facial recognition_files/cmr10-0.gif" alt="G" class="10x-x-0"></span><sub>
+<span class="cmmi-7">n</span></sub></td>                                                      <td class="align-label"><a name="x1-7001r1"></a>(1)
+                           </td></tr><tr><td class="align-odd"></td>                           <td class="align-even"><span class="cmr-10"><img src="./Eigenface-based facial recognition_files/cmr10-8.gif" alt="P" class="10x-x-8"></span><sub><span class="cmmi-7">i</span></sub> <span class="cmr-10">= <img src="./Eigenface-based facial recognition_files/cmr10-0.gif" alt="G" class="10x-x-0"></span><sub><span class="cmmi-7">i</span></sub> <span class="cmsy-10">- </span><span class="cmr-10"><img src="./Eigenface-based facial recognition_files/cmr10-9.gif" alt="Y" class="10x-x-9"></span></td>                                                            <td class="align-label"><a name="x1-7002r2"></a>(2)                           </td></tr></tbody></table>
+   <h4 class="subsectionHead"><span class="titlemark">5.3</span> <a name="x1-80005.3"></a>Step 3: Calculate the covariance matrix</h4> In the next stept the covariance matrix <span class="cmmi-10">C </span>is
+calculated according to <table width="100%" class="equation"><tbody><tr><td><a name="x1-8001r3"></a>
+   <center class="math-display">
+<img src="./Eigenface-based facial recognition_files/facesOptions4x.gif" alt="    -1- sum M    T
+C = M     PnP n
+       n-1 " class="math-display"><a name="x1-8001r3"></a></center></td><td width="5%">(3)</td></tr></tbody></table>
+   <h4 class="subsectionHead"><span class="titlemark">5.4</span> <a name="x1-90005.4"></a>Step 4: Calculate the eigenvectors and eigenvalues of the covariance matrix</h4> In this
+step, the eigenvectors (eigenfaces) <span class="cmmi-10">u</span><sub><span class="cmmi-7">i</span></sub> and the corresponding eigenvalues <span class="cmmi-10"><img src="./Eigenface-based facial recognition_files/cmmi10-15.gif" alt="c" class="10x-x-15"></span><sub><span class="cmmi-7">i</span></sub> should be
+calculated. The eigenvectors (eigenfaces) must be normalised so that they are unit vectors, i.e.
+of length 1. The description of the exact algorithm for determination of eigenvectors and
+eigenvalues is omitted here, as it belongs to the standard arsenal of most math programming
+libraries.
+   <h4 class="subsectionHead"><span class="titlemark">5.5</span> <a name="x1-100005.5"></a>Step 5: Select the principal components</h4> From <span class="cmmi-10">M </span>eigenvectors (eigenfaces) <span class="cmmi-10">u</span><sub><span class="cmmi-7">i</span></sub>, only
+<span class="cmmi-10">M</span><span class="cmsy-10">' </span>should be chosen, which have the highest eigenvalues. The higher the eigenvalue, the
+more characteristic features of a face does the particular eigenvector describe. Eigenfaces
+with low eigenvalues can be omitted, as they explain only a small part of characteristic
+features of the faces.
+
+<br class="newline">After <span class="cmmi-10">M</span><span class="cmsy-10">' </span>eigenfaces <span class="cmmi-10">u</span><sub><span class="cmmi-7">i</span></sub> are determined, the ”training” phase of the algorithm is
+finished.
+   <h3 class="sectionHead"><span class="titlemark">6</span> <a name="x1-110006"></a>Improvement of the original algorithm</h3>
+<!--l. 2--><p class="noindent">There is a problem with the algorithm described in section <a href="http://openbio.sourceforge.net/resources/eigenfaces/eigenfaces-html/facesOptions.html#x1-50005">5<!--tex4ht:ref: sec:calculationOfEigenfacesWithPca--></a>. The covariance matrix <span class="cmmi-10">C </span>in step
+3 (see equation <a href="http://openbio.sourceforge.net/resources/eigenfaces/eigenfaces-html/facesOptions.html#x1-8001r3">3<!--tex4ht:ref: eq:covarianceMatrix--></a>) has a dimensionality of <span class="cmmi-10">N</span><sup><span class="cmr-7">2</span></sup> <span class="cmsy-10">× </span><span class="cmmi-10">N</span><sup><span class="cmr-7">2</span></sup>, so one would have <span class="cmmi-10">N</span><sup><span class="cmr-7">2</span></sup> eigenfaces and
+eigenvalues. For a <span class="cmr-10">256 </span><span class="cmsy-10">× </span><span class="cmr-10">256 </span>image that means that one must compute a <span class="cmr-10">65</span><span class="cmmi-10">,</span><span class="cmr-10">536 </span><span class="cmsy-10">× </span><span class="cmr-10">65</span><span class="cmmi-10">,</span><span class="cmr-10">536</span>
+matrix and calculate <span class="cmr-10">65</span><span class="cmmi-10">,</span><span class="cmr-10">536 </span>eigenfaces. Computationally, this is not very efficient as most of
+those eigenfaces are not useful for our task.
+<br class="newline">So, the step 3 and 4 is replaced by the scheme proposed by <a href="http://openbio.sourceforge.net/resources/eigenfaces/eigenfaces-html/facesOptions.html#XTurkPentland1991a">Turk and Pentland</a>&nbsp;(<a href="http://openbio.sourceforge.net/resources/eigenfaces/eigenfaces-html/facesOptions.html#XTurkPentland1991a">1991a</a>):
+</p><table class="align">
+                     <tbody><tr><td class="align-odd"></td>                     <td class="align-even"><span class="cmmi-10">C </span><span class="cmr-10">=</span> <img src="./Eigenface-based facial recognition_files/facesOptions5x.gif" alt="-1-
+M" class="frac" align="middle"><span class="cmex-10"><img src="./Eigenface-based facial recognition_files/cmex10-58.gif" alt=" sum " class="10x-x-58"></span>
+     <sub><img src="./Eigenface-based facial recognition_files/facesOptions6x.gif" alt="n-1"></sub><sup><img src="./Eigenface-based facial recognition_files/facesOptions7x.gif" alt="M"></sup><span class="cmr-10"><img src="./Eigenface-based facial recognition_files/cmr10-8.gif" alt="P" class="10x-x-8"></span><sub>
+<span class="cmmi-7">n</span></sub><span class="cmr-10"><img src="./Eigenface-based facial recognition_files/cmr10-8.gif" alt="P" class="10x-x-8"></span><sub><span class="cmmi-7">n</span></sub><sup><span class="cmmi-7">T</span></sup> <span class="cmr-10">= </span><span class="cmmi-10">AA</span><sup><span class="cmmi-7">T</span></sup></td>                                          <td class="align-label"><a name="x1-11001r4"></a>(4)
+                     </td></tr><tr><td class="align-odd"></td>                     <td class="align-even"><span class="cmmi-10">L </span><span class="cmr-10">= </span><span class="cmmi-10">A</span><sup><span class="cmmi-7">T</span></sup><span class="cmmi-10">A   L</span><sub>
+<span class="cmmi-7">n,m</span></sub> <span class="cmr-10">= <img src="./Eigenface-based facial recognition_files/cmr10-8.gif" alt="P" class="10x-x-8"></span><sub><span class="cmmi-7">m</span></sub><sup><span class="cmmi-7">T</span></sup><span class="cmr-10"><img src="./Eigenface-based facial recognition_files/cmr10-8.gif" alt="P" class="10x-x-8"></span><sub>
+<span class="cmmi-7">n</span></sub></td>                                               <td class="align-label"><a name="x1-11002r5"></a>(5)
+                     </td></tr><tr><td class="align-odd"></td>                     <td class="align-even"><span class="cmmi-10">u</span><sub><span class="cmmi-7">l</span></sub> <span class="cmr-10">=</span> <span class="cmex-10"><img src="./Eigenface-based facial recognition_files/cmex10-58.gif" alt=" sum " class="10x-x-58"></span>
+  <sub><img src="./Eigenface-based facial recognition_files/facesOptions8x.gif" alt="k-1"></sub><sup><img src="./Eigenface-based facial recognition_files/facesOptions9x.gif" alt="M"></sup><span class="cmmi-10">v</span><sub>
+<span class="cmmi-7">lk</span></sub><span class="cmr-10"><img src="./Eigenface-based facial recognition_files/cmr10-8.gif" alt="P" class="10x-x-8"></span><sub><span class="cmmi-7">k</span></sub>   <span class="cmmi-10">l </span><span class="cmr-10">= 1</span><span class="cmmi-10">,</span><span class="cmmi-10">...</span><span class="cmmi-10">,M</span></td>                                          <td class="align-label"><a name="x1-11003r6"></a>(6)                     </td></tr></tbody></table>
+where <span class="cmmi-10">L </span>is a <span class="cmmi-10">M </span><span class="cmsy-10">×</span><span class="cmmi-10">M </span>matrix, <span class="cmmi-10">v </span>are <span class="cmmi-10">M </span>eigenvectors of <span class="cmmi-10">L </span>and <span class="cmmi-10">u </span>are eigenfaces. Note that the
+covariance matrix <span class="cmmi-10">C </span>is calculated using the formula <span class="cmmi-10">C </span><span class="cmr-10">= </span><span class="cmmi-10">AA</span><sup><span class="cmmi-7">T</span></sup>, the original (inefficient)
+formula is given only for the sake of explanation of <span class="cmmi-10">A</span>. The advantage of this method is that
+one has to evaluate only <span class="cmmi-10">M </span>numbers and not <span class="cmmi-10">N</span><sup><span class="cmr-7">2</span></sup>. Usually, <span class="cmmi-10">M </span><span class="cmsy-10">« </span><span class="cmmi-10">N</span><sup><span class="cmr-7">2</span></sup> as only a few principal
+components (eigenfaces) will be relevant. The amount of calculations to be performed is
+reduced from the number of prixels (<span class="cmmi-10">N</span><sup><span class="cmr-7">2</span></sup> <span class="cmsy-10">× </span><span class="cmmi-10">N</span><sup><span class="cmr-7">2</span></sup>) to the number of images in the training set
+(<span class="cmmi-10">M</span>).
+<br class="newline">In the step 5, the associated eigenvalues allow one to rank the eigenfaces according to their
+usefulness. Usually, we will use only a subset of <span class="cmmi-10">M </span>eigenfaces, the <span class="cmmi-10">M</span><span class="cmsy-10">' </span>eigenfaces with the
+largest eigenvalues.
+   <h3 class="sectionHead"><span class="titlemark">7</span> <a name="x1-120007"></a>Classifying the faces</h3>
+<!--l. 2--><p class="noindent">The process of classification of a new (unknown) face <span class="cmr-10"><img src="./Eigenface-based facial recognition_files/cmr10-0.gif" alt="G" class="10x-x-0"></span><sub>new</sub> to one of the classes (known
+faces) proceeds in two steps.
+<br class="newline">First, the new image is transformed into its eigenface components. The resulting weights
+
+form the weight vector <span class="cmr-10"><img src="./Eigenface-based facial recognition_files/cmr10-a.gif" alt="_O_" class="10x-x-a"></span><sub><span class="cmmi-7">new</span></sub><sup><span class="cmmi-7">T</span></sup>
+</p><table class="align">
+                   <tbody><tr><td class="align-odd"></td>                   <td class="align-even"><span class="cmmi-10"><img src="./Eigenface-based facial recognition_files/cmmi10-21.gif" alt="w" class="10x-x-21"></span><sub><span class="cmmi-7">k</span></sub> <span class="cmr-10">= </span><span class="cmmi-10">u</span><sub><span class="cmmi-7">k</span></sub><sup><span class="cmmi-7">T</span></sup><span class="cmr-10">(<img src="./Eigenface-based facial recognition_files/cmr10-0.gif" alt="G" class="10x-x-0"></span><sub>new</sub> <span class="cmsy-10">- </span><span class="cmr-10"><img src="./Eigenface-based facial recognition_files/cmr10-9.gif" alt="Y" class="10x-x-9">)   </span><span class="cmmi-10">k </span><span class="cmr-10">= 1</span><span class="cmmi-10">...</span><span class="cmmi-10">M</span><span class="cmsy-10">'</span></td>                                      <td class="align-label"><a name="x1-12001r7"></a>(7)
+                   </td></tr><tr><td class="align-odd"></td>                   <td class="align-even"><span class="cmr-10"><img src="./Eigenface-based facial recognition_files/cmr10-a.gif" alt="_O_" class="10x-x-a"></span><sub>new</sub><sup><span class="cmmi-7">T</span></sup> <span class="cmr-10">= </span><img src="./Eigenface-based facial recognition_files/facesOptions10x.gif" alt="[                 ]
+  w1  w2  ...  wM&#39;" class="left" align="middle"></td>                                       <td class="align-label"><a name="x1-12002r8"></a>(8)                   </td></tr></tbody></table>
+The Euclidean distance between two weight vectors <span class="cmmi-10">d</span><span class="cmr-10">(<img src="./Eigenface-based facial recognition_files/cmr10-a.gif" alt="_O_" class="10x-x-a"></span><sub><span class="cmmi-7">i</span></sub><span class="cmmi-10">,</span><span class="cmr-10"><img src="./Eigenface-based facial recognition_files/cmr10-a.gif" alt="_O_" class="10x-x-a"></span><sub><span class="cmmi-7">j</span></sub><span class="cmr-10">) </span>provides a measure of
+similarity between the corresponding images <span class="cmmi-10">i </span>and <span class="cmmi-10">j</span>. If the Euclidean distance between <span class="cmr-10"><img src="./Eigenface-based facial recognition_files/cmr10-0.gif" alt="G" class="10x-x-0"></span><sub>new</sub>
+and other faces exceeds - on average - some threshold value <span class="cmmi-10"><img src="./Eigenface-based facial recognition_files/cmmi10-12.gif" alt="h" class="10x-x-12"></span>, one can assume that <span class="cmr-10"><img src="./Eigenface-based facial recognition_files/cmr10-0.gif" alt="G" class="10x-x-0"></span><sub>new</sub> is
+no face at all. <span class="cmmi-10">d</span><span class="cmr-10">(<img src="./Eigenface-based facial recognition_files/cmr10-a.gif" alt="_O_" class="10x-x-a"></span><sub><span class="cmmi-7">i</span></sub><span class="cmmi-10">,</span><span class="cmr-10"><img src="./Eigenface-based facial recognition_files/cmr10-a.gif" alt="_O_" class="10x-x-a"></span><sub><span class="cmmi-7">j</span></sub><span class="cmr-10">) </span>also allows one to construct ”clusters” of faces such that similar
+faces are assigned to one cluster.
+   <h3 class="sectionHead"><span class="titlemark">A</span> <a name="x1-13000A"></a>Euclidean Distance</h3>
+<!--l. 2--><p class="noindent">Let<a href="http://openbio.sourceforge.net/resources/eigenfaces/eigenfaces-html/facesOptions2.html" name="facesOptions2.html"><sup>1</sup></a>
+an arbitrary instance <span class="cmmi-10">x </span>be described by the feature vector </p><table width="100%" class="equation"><tbody><tr><td><a name="x1-13002r9"></a>
+   <center class="math-display">
+<img src="./Eigenface-based facial recognition_files/facesOptions11x.gif" alt="x = [a1(x),a2(x),...,an(x)]
+" class="math-display"></center></td><td width="5%">(9)</td></tr></tbody></table>
+where <span class="cmmi-10">a</span><sub><span class="cmmi-7">r</span></sub><span class="cmr-10">(</span><span class="cmmi-10">x</span><span class="cmr-10">) </span>denotes the value of the <span class="cmmi-10">r</span>th attribute of instance <span class="cmmi-10">x</span>. Then the distance between
+two instances <span class="cmmi-10">x</span><sub><span class="cmmi-7">i</span></sub> and <span class="cmmi-10">x</span><sub><span class="cmmi-7">j</span></sub> is defined to be <span class="cmmi-10">d</span><span class="cmr-10">(</span><span class="cmmi-10">x</span><sub><span class="cmmi-7">i</span></sub><span class="cmmi-10">,x</span><sub><span class="cmmi-7">j</span></sub><span class="cmr-10">)</span>: <table width="100%" class="equation"><tbody><tr><td><a name="x1-13003r10"></a>
+
+   <center class="math-display">
+<img src="./Eigenface-based facial recognition_files/facesOptions12x.gif" alt="           ------------------
+          V~   sum n             2
+d(xi,xj) =     (ar(xi)- ar(xj))
+            r=1  " class="math-display"></center></td><td width="5%">(10)</td></tr></tbody></table>
+   <h3 class="sectionHead"><span class="titlemark">B</span> <a name="x1-14000B"></a>Notation</h3>
+   <div class="tabular"><table class="tabular" cellspacing="0pt" cellpadding="0" frame="void" id="TBL-2-"><colgroup id="TBL-2-1g"><col id="TBL-2-1"><col id="TBL-2-2"></colgroup><tbody><tr valign="baseline" id="TBL-2-1-"><td align="center" nowrap="nowrap" id="TBL-2-1-1" class="td11">      <span class="cmmi-10">I    </span></td> <td align="left" nowrap="nowrap" id="TBL-2-1-2" class="td11">Face image                                                          </td>
+</tr><tr valign="baseline" id="TBL-2-2-"><td align="center" nowrap="nowrap" id="TBL-2-2-1" class="td11"> <span class="cmmi-10">N </span><span class="cmsy-10">× </span><span class="cmmi-10">N </span></td> <td align="left" nowrap="nowrap" id="TBL-2-2-2" class="td11">Size of <span class="cmmi-10">I                                        </span></td>
+</tr><tr valign="baseline" id="TBL-2-3-"><td align="center" nowrap="nowrap" id="TBL-2-3-1" class="td11">      <span class="cmr-10"><img src="./Eigenface-based facial recognition_files/cmr10-0.gif" alt="G" class="10x-x-0">    </span></td><td align="left" nowrap="nowrap" id="TBL-2-3-2" class="td11">Training set                                                         </td>
+</tr><tr valign="baseline" id="TBL-2-4-"><td align="center" nowrap="nowrap" id="TBL-2-4-1" class="td11">     <span class="cmr-10"><img src="./Eigenface-based facial recognition_files/cmr10-0.gif" alt="G" class="10x-x-0"></span><sub><span class="cmmi-7">i</span></sub>    </td><td align="left" nowrap="nowrap" id="TBL-2-4-2" class="td11">Face image <span class="cmmi-10">i </span>of the training set                          </td>
+</tr><tr valign="baseline" id="TBL-2-5-"><td align="center" nowrap="nowrap" id="TBL-2-5-1" class="td11">   <span class="cmr-10"><img src="./Eigenface-based facial recognition_files/cmr10-0.gif" alt="G" class="10x-x-0"></span><sub>new</sub>   </td><td align="left" nowrap="nowrap" id="TBL-2-5-2" class="td11">New (unknown) image                                       </td>
+</tr><tr valign="baseline" id="TBL-2-6-"><td align="center" nowrap="nowrap" id="TBL-2-6-1" class="td11">      <span class="cmr-10"><img src="./Eigenface-based facial recognition_files/cmr10-9.gif" alt="Y" class="10x-x-9">    </span></td> <td align="left" nowrap="nowrap" id="TBL-2-6-2" class="td11">Average face                                                       </td>
+</tr><tr valign="baseline" id="TBL-2-7-"><td align="center" nowrap="nowrap" id="TBL-2-7-1" class="td11"><span class="cmmi-10">M </span><span class="cmr-10">= </span><span class="cmsy-10">|</span><span class="cmr-10"><img src="./Eigenface-based facial recognition_files/cmr10-0.gif" alt="G" class="10x-x-0"></span><span class="cmsy-10">|</span></td><td align="left" nowrap="nowrap" id="TBL-2-7-2" class="td11">Number of eigenfaces                                         </td>
+</tr><tr valign="baseline" id="TBL-2-8-"><td align="center" nowrap="nowrap" id="TBL-2-8-1" class="td11">    <span class="cmmi-10">M</span><span class="cmsy-10">' </span></td><td align="left" nowrap="nowrap" id="TBL-2-8-2" class="td11">Number of eigenfaces used for face recognition</td>
+</tr><tr valign="baseline" id="TBL-2-9-"><td align="center" nowrap="nowrap" id="TBL-2-9-1" class="td11">      <span class="cmmi-10">C    </span></td> <td align="left" nowrap="nowrap" id="TBL-2-9-2" class="td11">Covariance matrix                                               </td>
+</tr><tr valign="baseline" id="TBL-2-10-"><td align="center" nowrap="nowrap" id="TBL-2-10-1" class="td11">    <span class="cmmi-10">X</span><sup><span class="cmmi-7">T</span></sup>   </td> <td align="left" nowrap="nowrap" id="TBL-2-10-2" class="td11">Transposed <span class="cmmi-10">X </span>(if <span class="cmmi-10">X </span>is a matrix)                         </td>
+</tr><tr valign="baseline" id="TBL-2-11-"><td align="center" nowrap="nowrap" id="TBL-2-11-1" class="td11">      <span class="cmmi-10">u    </span></td> <td align="left" nowrap="nowrap" id="TBL-2-11-2" class="td11">Eigenvector (eigenface)                                      </td>
+</tr><tr valign="baseline" id="TBL-2-12-"><td align="center" nowrap="nowrap" id="TBL-2-12-1" class="td11">      <span class="cmmi-10"><img src="./Eigenface-based facial recognition_files/cmmi10-15.gif" alt="c" class="10x-x-15">    </span></td><td align="left" nowrap="nowrap" id="TBL-2-12-2" class="td11">Eigenvalue                                                          </td>
+</tr><tr valign="baseline" id="TBL-2-13-"><td align="center" nowrap="nowrap" id="TBL-2-13-1" class="td11">     <span class="cmmi-10"><img src="./Eigenface-based facial recognition_files/cmmi10-21.gif" alt="w" class="10x-x-21"></span><sub><span class="cmmi-7">i</span></sub>    </td> <td align="left" nowrap="nowrap" id="TBL-2-13-2" class="td11">Weight <span class="cmmi-10">i                                        </span></td>
+</tr><tr valign="baseline" id="TBL-2-14-"><td align="center" nowrap="nowrap" id="TBL-2-14-1" class="td11">    <span class="cmr-10"><img src="./Eigenface-based facial recognition_files/cmr10-a.gif" alt="_O_" class="10x-x-a"></span><sub><span class="cmmi-7">i</span></sub><sup><span class="cmmi-7">T</span></sup>   </td> <td align="left" nowrap="nowrap" id="TBL-2-14-2" class="td11">Weight vector of the image <span class="cmmi-10">i                   </span></td>
+</tr><tr valign="baseline" id="TBL-2-15-"><td align="center" nowrap="nowrap" id="TBL-2-15-1" class="td11">      <span class="cmmi-10"><img src="./Eigenface-based facial recognition_files/cmmi10-12.gif" alt="h" class="10x-x-12">    </span></td> <td align="left" nowrap="nowrap" id="TBL-2-15-2" class="td11">Threshold value                                                  </td>
+</tr><tr valign="baseline" id="TBL-2-16-"><td align="center" nowrap="nowrap" id="TBL-2-16-1" class="td11">              </td> </tr><!--"c l"--></tbody></table>
+</div>
+   <h3 class="likesectionHead"><a name="x1-15000B"></a>References</h3>
+  <div class="thebibliography"><p class="bibitem"><span class="biblabel">
+<span class="bibsp">&nbsp;&nbsp;&nbsp;</span></span><a name="XMitchell1997"></a>T.&nbsp;M. Mitchell. <span class="ptmri7t-">Machine Learning</span>. McGraw-Hill International Editions, 1997.
+  </p><p class="bibitem"><span class="biblabel">
+<span class="bibsp">&nbsp;&nbsp;&nbsp;</span></span><a name="XPissarenko2002"></a>D.&nbsp;Pissarenko. Neural networks for financial time series prediction: Overview over
+  recent research. BSc thesis, 2002.
+  </p><p class="bibitem"><span class="biblabel">
+<span class="bibsp">&nbsp;&nbsp;&nbsp;</span></span><a name="XSmith2002"></a>L.&nbsp;I. Smith.   A tutorial on principal components analysis, February 2002.   URL
+  <span class="cmtt-10">http://www.cs.otago.ac.nz/cosc453/student_tutorials/principal_components.pdf</span>.
+  (URL accessed on November 27, 2002).
+  </p><p class="bibitem"><span class="biblabel">
+<span class="bibsp">&nbsp;&nbsp;&nbsp;</span></span><a name="XTurkPentland1991a"></a>M.&nbsp;Turk
+  and A.&nbsp;Pentland.  Eigenfaces for recognition.  <span class="ptmri7t-">Journal of Cognitive Neuroscience</span>, 3
+
+  (1), 1991a.  URL <span class="cmtt-10">http://www.cs.ucsb.edu/</span><span class="cmtt-10">&nbsp;mturk/Papers/jcn.pdf</span>.  (URL
+  accessed on November 27, 2002).
+  </p><p class="bibitem"><span class="biblabel">
+<span class="bibsp">&nbsp;&nbsp;&nbsp;</span></span><a name="XTurkPentland1991"></a>M.&nbsp;A. Turk and A.&nbsp;P. Pentland.   Face recognition using eigenfaces.   In <span class="ptmri7t-">Proc. of</span>
+  <span class="ptmri7t-">Computer Vision and Pattern Recognition</span>, pages 586-591. IEEE, June 1991b. URL
+  <span class="cmtt-10">http://www.cs.wisc.edu/</span><span class="cmtt-10">&nbsp;dyer/cs540/handouts/mturk-CVPR91.pdf</span>.
+  (URL accessed on November 27, 2002).
+  </p></div>
+    
+ 
+
+
+
+</body></html>

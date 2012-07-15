@@ -1,0 +1,24 @@
+The code and the needed files are stored in 'MATLAB submission' folder.
+
+Requirements:
+1. Latest FLASH player
+2. Video camera (check in the m files - 2nd line(both of the files) - that the video adapter selected is the one 
+	used by your machine)
+3. Image acquisition and processing toolbox
+4. Make sure you unzip the AT&T database
+
+TO RUN THE SYSTEM:
+
+1. Make sure you have the att_faces.zip (AT&T database) unziped and avaliable in the folder containing the m file.
+	(They should be in the format of 's1' to 's40'.)
+2. Run the Project_cold_v4.m
+3. Select the appropriate option from the GUI. (speed depends on the hardware but overall patience is required ;p
+
+
+TO ADD A FACE:
+
+1. To add a face run the database_update_v3.m OR run the GUI using Project_vold_v4.m and then click on ADD.
+	(whenever we add a face the w.mat files get recompiled. This file is used by the main m file. 
+	The original w.mat contains faces from author's directory of 60 faces folders.)
+
+agarwalmukund@yahoo.com

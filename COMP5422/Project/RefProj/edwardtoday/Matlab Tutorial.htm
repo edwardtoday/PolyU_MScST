@@ -1,0 +1,371 @@
+
+<!-- saved from url=(0040)http://www.cs.ait.ac.th/~mdailey/matlab/ -->
+<html zhtongwen="simplified" autopagermatchedrules="1"><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Matlab Tutorial</title>
+<link rel="icon" href="http://www.cs.ait.ac.th/~mdailey/icons/aiticon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="http://www.cs.ait.ac.th/~mdailey/icons/aiticon.ico" type="image/x-icon">
+<link type="text/css" rel="stylesheet" href="data:text/css,"></head>
+
+<body bgcolor="#333333" text="#FFFFFF" link="#9999CC" vlink="#BBBBBB" alink="#FFFF00">
+
+<a href="http://www.cs.ait.ac.th/~mdailey/matlab/#refs"><img src="./Matlab Tutorial_files/kurtcobain.jpg" align="right"></a>
+
+<h1>Matt's Matlab Tutorial Source Code Page</h1>
+<p>
+This document contains a tutorial on
+<a href="http://www.mathworks.com/products/matlab">Matlab</a>
+with a principal components analysis for a set of face images as the
+theme.
+</p>
+<p>I wrote this tutorial while a graduate student in the
+<a href="http://ai.ucsd.edu/">Artificial Intelligence Laboratory</a> of
+the <a href="http://www-cse.ucsd.edu/">Computer Science and Engineering
+Department</a> at the <a href="http://www.ucsd.edu/">University of California,
+San Diego</a>.  Now it's here at
+<a href="http://www.cs.ait.ac.th/">CSIM-AIT</a>.
+You might still be able to find the original
+<a href="http://ai.ucsd.edu/Tutorial/matlab.html">here</a>.</p>
+
+<p>
+<a rel="license" href="http://creativecommons.org/licenses/by/3.0/">
+  <img alt="Creative Commons License" style="border-width:0" src="./Matlab Tutorial_files/88x31.png" align="left"></a>
+This work is licensed under a 
+<a rel="license" href="http://creativecommons.org/licenses/by/3.0/">Creative
+Commons Attribution 3.0 License</a>.  You are free to use the code here for
+any purpose you like, but please acknowledge its source if you do.  It's not
+required, but if you make improvements I'd appreciate it if you sent me your
+updates.
+</p>
+
+<p>
+Here's an index to this tutorial:
+</p><ul>
+<li> <a href="http://www.cs.ait.ac.th/~mdailey/matlab/#faces">Get some face images</a>
+</li><li> <a href="http://www.cs.ait.ac.th/~mdailey/matlab/#eigenfaces">What is PCA and the
+     “Eigenface” Technique?</a>
+</li><li> <a href="http://www.cs.ait.ac.th/~mdailey/matlab/#prelim">Other preliminaries</a>
+</li><li> <a href="http://www.cs.ait.ac.th/~mdailey/matlab/#images">Reading and displaying images</a>
+</li><li> <a href="http://www.cs.ait.ac.th/~mdailey/matlab/#matrix">Getting your training set into one big
+matrix</a>
+</li><li> <a href="http://www.cs.ait.ac.th/~mdailey/matlab/#evectors">Getting
+the principal component eigenvectors of the training set</a>
+</li><li> <a href="http://www.cs.ait.ac.th/~mdailey/matlab/#explore">Exploratory analysis of the eigenvectors</a>
+</li><li> <a href="http://www.cs.ait.ac.th/~mdailey/matlab/#refs">References</a>
+</li><li> Back to the <a href="http://ai.ucsd.edu/">AI Lab Home Page</a>
+     or the more up-to-date <a href="http://learning.ucsd.edu/">UCSD
+     Computational Statistics and Machine Learning group</a> home page.
+</li></ul>
+
+<h2><a name="faces">Get some face images</a></h2><a name="faces">
+</a><p><a name="faces">
+I used the Ekman and Friesen Pictures of Facial Affect (POFA) for this
+tutorial.  Unfortunately, the faces are copyrighted so if you want them
+you'll have to pay Paul Ekman some cash to get our online version of
+the database.  Contact </a><a href="mailto:gary@cs.ucsd.edu">Gary Cottrell</a>
+for details about our versions, or see
+<a href="http://www.paulekman.com/researchproducts.html">http://www.paulekman.com/researchproducts.html</a>
+on getting a CD directly from Ekman.
+</p>
+
+<p>Don't despair, however.  There are a bunch of nice face databases that
+are free.  Check the
+<a href="http://www.face-rec.org/">Face Recognition
+Home Page</a> for a list of what's available.
+</p>
+
+<h2><a name="eigenfaces">What is PCA and the “Eigenface”
+Technique?</a></h2><a name="eigenfaces">
+
+</a><p><a name="eigenfaces">
+I won't go into it in detail here, but the idea is that face images
+can be economically represented by their projection onto a small number
+of basis images that are derived by finding the most significant
+eigenvectors of the pixelwise covariance matrix for a set of training
+images.
+A quick
+</a><a href="http://www.google.com/search?q=turk+pentland+eigenfaces">Google
+Search</a> shows that a lot of people like to play with this technique.
+In my tutorial I simply show how to get some eigenfaces and play with them
+in Matlab.
+</p>
+
+<h2><a name="prelim">Other preliminaries</a></h2><a name="prelim">
+
+</a><p><a name="prelim">
+If you don't use emacs, the Matlab emacs mode may be one reason to use it.
+To get Matlab mode working in emacs, put </a><a href="http://www.cs.ait.ac.th/~mdailey/matlab/matlab.el">matlab.el</a>
+somewhere emacs can find it and add something like the following to your
+.emacs file:
+</p><blockquote><pre>(autoload 'matlab-mode "matlab" "Enter Matlab mode." t)
+(setq auto-mode-alist (cons '("\\.m$" . matlab-mode) auto-mode-alist))
+(defun my-matlab-mode-hook ()
+  (setq matlab-indent-function t)       ; if you want function bodies indented
+  (setq fill-column 76)         ; where auto-fill should wrap
+  (matlab-mode-hilit)
+  (turn-on-auto-fill))
+(setq matlab-mode-hook 'my-matlab-mode-hook)
+(autoload 'matlab-shell "matlab" "Interactive Matlab mode." t)
+(defun my-matlab-shell-mode-hook ()
+  '())
+(setq matlab-mode-hook 'my-matlab-mode-hook)
+</pre></blockquote>
+I don't pretend to understand any of this emacs stuff.  For more information,
+you might try the
+<a href="http://www.mathworks.com/matlabcentral/fileexchange/loadFile.do?objectId=104&objectType=file">
+Mathworks Matlab Central Contrib site</a>.
+<p></p>
+
+<h2><a name="images">Reading and displaying images</a></h2><a name="images">
+Matlab can read PNG files and other formats without help.  Here is how
+to read a PNG image into memory and look at the pixel values in its upper
+left corner.  The "&gt;&gt;" is the Matlab prompt.  Comments begin with a
+% sign.
+<blockquote><pre>&gt;&gt; help imread                    % Online help is useful...
+
+ IMREAD Read image from graphics file.
+    A = IMREAD(FILENAME,FMT) reads the image in FILENAME into
+    A. If the file contains a grayscale intensity image, A is
+    a two-dimensional array.  If the file contains a truecolor
+
+    etc...
+
+&gt;&gt; I = imread('test.png');        % Read image test.png into variable I
+&gt;&gt; size(I)                        % Get the number of rows and columns of I
+
+ans =
+
+   320   240
+
+&gt;&gt; I(1:10,1:10)                   % Display row 1-10 and col 1-10 of I
+
+ans =
+
+    26    20    20    22    22    20    19    20    22    22
+    26    24    19    22    22    19    21    24    24    22
+    25    24    22    24    21    19    20    22    24    22
+    25    21    21    24    22    20    21    22    24    20
+    24    20    22    25    22    19    20    21    25    24
+    20    19    22    22    24    21    21    24    22    24
+    20    20    21    25    25    24    24    25    20    20
+    20    20    21    24    26    25    25    25    20    20
+    20    19    22    24    24    25    24    24    22    21
+    21    17    21    25    21    22    24    25    22    21
+
+&gt;&gt; colormap(gray(256));          % Use a 256-value grayscale color map
+&gt;&gt; image(I);                     % Display I as an image
+&gt;&gt; daspect([1 1 1]);             % Set x:y aspect ratio to be 1:1
+</pre></blockquote>
+
+<p>
+If you like the PGM format like I do, here are matlab functions for reading
+and writing them:
+</p></a><ul><a name="images">
+</a><li><a name="images"> </a><a href="http://www.cs.ait.ac.th/~mdailey/matlab/readpgm.m">readpgm.m</a>
+</li><li> <a href="http://www.cs.ait.ac.th/~mdailey/matlab/writepgm.m">writepgm.m</a>
+</li></ul>
+<p></p>
+
+<h2><a name="matrix">Getting your training set into one big matrix</a></h2><a name="matrix">
+
+</a><p><a name="matrix">
+Matlab is really nice for linear algebra stuff and visualization, but sorta
+sucks when it comes to file I/O.  Or rather, it's not much easier than C,
+although there are functions for reading and writing entire arrays to and
+from files.  The following function, defined in
+</a><a href="http://www.cs.ait.ac.th/~mdailey/matlab/load_images.m">load_images.m</a>, is an example of how to read
+a bunch of images, make column vectors out of each of them, and return the
+result.
+</p><blockquote><pre>function [Images,w,h] = load_images(filelist,downscale_f)
+%LOAD_IMAGES Load a set of images listed in a file.
+%
+%            [IMGS,W,H] = LOAD_IMAGES(FILELIST) Treat each line of
+%            the file named FILELIST as the filename of a PGM image,
+%            and load each image as one column of the return array
+%            IMGS.
+%
+%            LOAD_IMAGES(FILELIST,DOWNSCALE_F) Do the same thing,
+%            but downscale each image's width and height by a factor
+%            of DOWNSCALE_F.  Useful if the images are too big to be
+%            loaded into memory all at once.
+
+% Matthew Dailey 2000
+  
+  % Check argument consistency
+
+  if nargin &lt; 1 | nargin &gt; 2
+    error('usage: load_images(filelist[,downscale_f]');
+  end;
+  if nargin == 1
+    downscale_f = 1.0;
+  end;
+  Images = []; old_w = 0; old_h = 0; w=0; h=0;
+
+  % Open input file
+
+  numimgs = linecount(filelist);
+  fid = fopen(filelist,'r');
+  if fid &lt; 0 | numimgs &lt; 1
+    error(['Cannot get list of images from file "' filelist, '"']);
+  end;
+
+  % Get the images
+
+  for i = 1:numimgs
+    imgname = fgetl(fid);
+    if ~isstr(imgname)            % EOF is not a string
+      break;                      % Exit from loop on EOF
+    end;
+    fprintf(1,'loading PGM file %s\n',imgname);
+    Img = readpgm(imgname);       % Read this image as a 2D array
+    if i==1                       % If this is first image, figure things out
+      old_w = size(Img,2);        %   - like sizes of the downscaled images
+      old_h = size(Img,1);
+      if downscale_f &lt;= 1.0
+	w = old_w; h = old_h;
+      else
+	w = round(old_w/downscale_f); h = round(old_h/downscale_f);
+      end;
+      Images = zeros(w*h,numimgs);   % - preallocate size of the return matrix
+    end;
+    if downscale_f &gt; 1.0
+      Img = im_resize(Img,w,h);      % downscale using bicubic spline interp
+    end;
+    Images(1:w*h,i) = reshape(Img',w*h,1);   % Make a column vector
+  end;
+  fclose(fid);                    % Close the filelist when done
+
+  fprintf(1,'Read %d images.\n',numimgs);
+
+  % The function returns the output arguments Images, w, and h here.
+</pre></blockquote>
+The function has a downscaling factor that lets you save memory.
+To use the function, just create a file listing your images then run:
+<blockquote><pre>&gt;&gt; [Imgs,w,h] = load_images('facelist',4);
+</pre></blockquote>
+The <a href="http://www.cs.ait.ac.th/~mdailey/matlab/im_resize.m">im_resize</a> function uses Matlab's built in
+2-D function interpolation (using bicubic splines) to resize the image
+by the desired downscaling factor.  If you want to run load_images,
+you also need the trivial little function <a href="http://www.cs.ait.ac.th/~mdailey/matlab/linecount.m">linecount</a>.
+<p></p>
+
+<p>
+Here is how you would convert a column of Imgs back into an image
+and display it:
+</p><blockquote><pre>&gt;&gt; L = Imgs(:,10);
+&gt;&gt; L = reshape(L,w,h)';         % Reshapes column vector into a 2D array
+&gt;&gt; image(L);
+&gt;&gt; colormap(gray(256));
+&gt;&gt; daspect([1 1 1]);
+</pre></blockquote>
+<p></p>
+
+<h2><a name="evectors">Getting
+the principal component eigenvectors of the training set</a></h2><a name="evectors">
+
+</a><p><a name="evectors">
+The function </a><a href="http://www.cs.ait.ac.th/~mdailey/matlab/pc_evectors.m">pc_evectors</a> uses Turk and Pentland's
+trick to get the eigenvectors of A*A' from the eigenvectors of A'*A.
+It uses the function <a href="http://www.cs.ait.ac.th/~mdailey/matlab/sortem.m">sortem</a> to sort the eigenvectors
+and eigenvalues by eigenvalue.  [Here is a faster version,
+<a href="http://www.cs.ait.ac.th/~mdailey/matlab/sortem2.m">sortem2</a>, by <a href="http://www.jameshumig.com/">James
+Javurek-Humig</a>,
+which is considerably faster, if you have matlab version 7 or better.]
+To use pc_evectors, just do:
+</p><blockquote><pre>&gt;&gt; [Vecs,Vals,Psi] = pc_evectors(Imgs,30);   % Get top 30 PC evectors of Imgs
+</pre></blockquote>
+And to explore the eigenvalue spectrum and how much variance the first
+<em>n</em> vectors account for, try the following:
+<blockquote><pre>&gt;&gt; plot(Vals);                       % To plot the eigenvalues
+&gt;&gt; CVals = zeros(1,length(Vals));    % Allocate a vector same length as Vals
+&gt;&gt; CVals(1) = Vals(1);
+&gt;&gt; for i = 2:length(Vals)            % Accumulate the eigenvalue sum
+     CVals(i) = CVals(i-1) + Vals(i);
+   end;
+&gt;&gt; CVals = CVals / sum(Vals);        % Normalize total sum to 1.0
+&gt;&gt; plot(CVals);                      % Plot the cumulative sum
+&gt;&gt; ylim([0 1]);                      % Set Y-axis limits to be 0-1
+</pre></blockquote>
+This gives you something like the following:
+<p></p>
+
+<p></p><center><img src="./Matlab Tutorial_files/plot.gif"></center><br>
+It depends on the application, but most folks seem to use a number of
+eigenvectors that account for variance somewhere in the 65%-90% range.
+<p></p>
+
+<h2><a name="explore">Exploratory analysis of the eigenvectors</a></h2><a name="explore">
+<p>
+One thing that can be fun is to try to figure out what the top few
+eigenvectors encode.  You can make a scatter plot of one component
+against another as follows:
+</p><blockquote><pre>&gt;&gt; Proj = Vecs(:,1:2)' * Imgs;       % Project each image onto first 2 evectors
+&gt;&gt; size(Proj)
+
+ans =
+
+     2   110
+
+&gt;&gt; plot(Proj(1,:),Proj(2,:),'r.')    % To get scatterplot of PC 1 vs PC 2
+</pre></blockquote>
+And if you wanted to add text labels to each of the points in the plot,
+you could do the following.  First create a file containing the labels
+you want, in the correct order.  Then read it into a Matlab string array:
+<blockquote><pre>&gt;&gt; Labels = textread('labels','%s');    % Read labels from file 'labels'
+&gt;&gt; text(Proj(1,:),Proj(2,:),Labels);    % Add text labels at each plotted point
+</pre></blockquote>
+It is simple to display an eigenface as an image, using the
+built in imagesc function, which first scales the values in an array
+to the 0-255 range.
+<blockquote><pre>&gt;&gt; pc_ev_1 = Vecs(:,1);                 % Get PC eigenvector 1
+&gt;&gt; pc_ev_1 = reshape(pc_ev_1,w,h)';     % Reshape into 2D array
+&gt;&gt; imagesc(pc_ev_1);                    % Display as image scaled 0-255
+</pre></blockquote>
+Finally, you might be interested in determining the reconstruction
+error involved in representing an image by its projection onto a few
+eigenvectors.  Here is how you would project onto and reconstruct from
+eigenvectors 1-10.
+<blockquote><pre>&gt;&gt; OrigImg = Imgs(:,20);                     % Grab image 20
+&gt;&gt; Projection = Vecs(:,1:10)'*(OrigImg - Psi);    % Project onto ev's 1-10
+&gt;&gt; Reconstruction = Vecs(:,1:10)*Projection+Psi;  % Reconstruct from projection
+&gt;&gt; Reconstruction = reshape(Reconstruction,w,h)';
+&gt;&gt; image(Reconstruction);
+&gt;&gt; colormap(gray(256));
+&gt;&gt; daspect([1 1 1]);
+</pre></blockquote>
+<p></p>
+
+</a><h2><a name="explore"></a><a name="refs">References</a></h2><a name="refs">
+</a><ul><a name="refs">
+<li>Turk, M. and Pentland, A. (1991). Eigenfaces for recognition.
+<em>The Journal of Cognitive Neuroscience</em>, 3(1): 71-86.
+</li></a><li><a name="refs"><em>The photo of Kurt Cobain, representing the fact that this tutorial
+was written on a Linux box named after him, originally came from</em>
+<tt>http://mrshowbiz.go.com/people/kurtcobain/content/bio.html</tt>
+<em>but the original site is long gone.  Now the original
+photographer is unknown.</em>
+</a>
+</li></ul>
+
+<hr size="8">
+<p></p><center>
+<a href="mailto:"mdailey@ait.ac.th""><address>mdailey@ait.ac.th</address></a>
+<a href="http://www.cs.ait.ac.th/~mdailey">http://www.cs.ait.ac.th/~mdailey</a>
+<br>
+<script language="JavaScript">
+<!-- Begin script
+
+  var theDate = ""
+  theDate = document.lastModified
+  document.write("Last Updated: ");
+  document.write(theDate);
+  document.write();
+
+// end script -->
+</script>Last Updated: 04/02/2012 05:41:23
+</center>
+<p></p>
+
+
+
+
+</body></html>
