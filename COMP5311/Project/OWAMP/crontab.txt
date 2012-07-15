@@ -1,0 +1,9 @@
+# m h  dom mon dow   command
+22 * * * * /home/owamp/Dropbox/PolyU/COMP5311/Project/OWAMP/log_ping.sh
+22 * * * * /home/owamp/Dropbox/PolyU/COMP5311/Project/OWAMP/log_owping.sh
+22 * * * * /home/owamp/Dropbox/PolyU/COMP5311/Project/OWAMP/log_traceroute.sh
+52 * * * * /home/owamp/Dropbox/PolyU/COMP5311/Project/OWAMP/log_ping.sh
+52 * * * * /home/owamp/Dropbox/PolyU/COMP5311/Project/OWAMP/log_owping.sh
+52 * * * * /home/owamp/Dropbox/PolyU/COMP5311/Project/OWAMP/log_traceroute.sh
+07 * * * * /home/owamp/Dropbox/PolyU/COMP5311/Project/OWAMP/runparselog.sh
+10 * * * * /home/owamp/Dropbox/PolyU/COMP5311/Project/OWAMP/runplot.sh

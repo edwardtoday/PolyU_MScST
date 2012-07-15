@@ -1,0 +1,62 @@
+%!TEX TS-program = xelatex
+%!TEX encoding = UTF-8 Unicode
+
+\documentclass[11pt]{article}
+\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\geometry{a4paper}                   % ... or a4paper or a5paper or ... 
+\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{amssymb}
+
+
+\title{Solution to COMP5311 Assignment 2}
+\author{QING Pei, 11500811G}
+%\date{}                                           % Activate to display a given date or no date
+
+\begin{document}
+\maketitle
+
+\section{Problem 1}
+\subsection{a}
+The second fragment is 40 bytes in size.
+
+\texttt{| IP | data |}\\
+\texttt{| 20 | 1480 |}\\
+The original IP packet is 20+1480 bytes. This 1500-byte data will be encapsulated when tunneled. Therefore, the payload size exceeds 1480, which is the tunnel MTU, and need fragmentation. 
+So the original packet is broken into 1480- and 20-byte fragments:\\
+
+After encapsulation, the packet would become:\\
+\texttt{| Tunnel hdr  | data |}\\
+\texttt{| 20 | 1480 |}\\
+and\\
+\texttt{| Tunnel hdr | rest of data |}\\
+\texttt{| 20 | 20 |}
+
+In the first fragment, the payload length is 1480 bytes, which is
+
+\subsection{b}
+The fragments will be reassembled at the \emph{tunnel endpoint} if no further fragmentation occurs inside the tunnel.
+
+Reassembly of the fragments will only happen at the destination specified in the tunnel header. In this case, the destination is set to the IP of tunnel endpoint.
+
+\subsection{c}
+Still at the \emph{tunnel endpoint}.
+
+If there is no further tunneling, any fragmentation in the tunnel will just take the destination IP in the tunnel header, which is the IP of tunnel endpoint, as the destination. This does not alter the reassembler.
+
+\section{Problem 2}
+\begin{description}
+	\item[a] $SEQ<rcv\_nxt$. As long as the first byte of data in the TCP packet has been received before, "some" data are duplicate.
+	\item[b] $SEQ+LEN<rcv\_nxt$. If the last byte of data in the TCP packet has been received before, all the data are duplicate. If the receive buffer is not large enough, $SEQ<rcv\_nxt$ should also be checked.
+	\item[c] \emph{Sender will keep retransmitting this packet if ACK is not sent for duplicated.} If the entire payload is a duplicate, this segment is retransmitted from the sender. The receiver has sent the ACK before, but it has been either corrupted or lost or timed out. Unless the sender receives the ACK for this segment, it will keep retransmitting.
+\end{description}
+
+\section{Problem 3}
+\begin{description}
+	\item[a] $snd\_nxt=1$. Originally, server's $snd\_nxt$ is 0. After sending the SYN-ACK packet, it increases by 1.
+	\item[b] $snd\_nxt=1+659=660$. Originally, client's $snd\_nxt$ is 0. After sending the SYN packet, it becomes 1. Sending a data packet will increase the pointer by data length, which is 659 in this case.
+	\item[c] $rcv\_nxt=1+1430+1430=2861$. Receiving SYN increases the pointer by 1. Receiving data packets increases the pointer by data length. 1 SYN and 2 data packets have been received so far.
+	\item[d] $AN=1+1430+1430+1002+1430+469+215=5977$. AN in the last packet is to acknowledge all the data sent from server received by the client so far. SYN packet contributes 1 and data packet contributes data length to this cumulative counter.
+\end{description}
+
+\end{document}  

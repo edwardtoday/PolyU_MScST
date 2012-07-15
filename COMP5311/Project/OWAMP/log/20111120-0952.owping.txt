@@ -1,0 +1,88 @@
+Approximately 33.1 seconds until results available
+
+--- owping statistics from [lab39.COMP.POLYU.EDU.HK]:43282 to [137.189.27.61]:34898 ---
+SID:	89bd1b3dd272dbc1215b035be3c30407
+first:	2011-11-20T09:52:02.179
+last:	2011-11-20T09:52:35.177
+300 sent, 0 lost (0.000%), 0 duplicates
+one-way delay min/median/max = -0.611/-0.1/0.554 ms, (err=13.3 ms)
+one-way jitter = 0.5 ms (P95-P50)
+Hops = 6 (consistently)
+no reordering
+
+Approximately 34.1 seconds until results available
+
+--- owping statistics from [lab39.COMP.POLYU.EDU.HK]:47863 to [64.57.17.162]:53997 ---
+SID:	403911a2d272dbe7463c85c2a7a28d48
+first:	2011-11-20T09:52:40.874
+last:	2011-11-20T09:53:09.916
+300 sent, 0 lost (0.000%), 0 duplicates
+one-way delay min/median/max = 82.7/83.5/89.9 ms, (err=1.37 ms)
+one-way jitter = 2.1 ms (P95-P50)
+Hops = 10 (consistently)
+no reordering
+
+Approximately 34.1 seconds until results available
+
+--- owping statistics from [lab39.COMP.POLYU.EDU.HK]:49182 to [206.12.24.110]:8825 ---
+SID:	ce0c186ed272dc0b0300abf7be67ec04
+first:	2011-11-20T09:53:16.635
+last:	2011-11-20T09:53:49.585
+300 sent, 0 lost (0.000%), 0 duplicates
+one-way delay min/median/max = 119/120/123 ms, (err=17.5 ms)
+one-way jitter = 0.4 ms (P95-P50)
+Hops = 13 (consistently)
+no reordering
+
+Approximately 30.1 seconds until results available
+
+--- owping statistics from [lab39.COMP.POLYU.EDU.HK]:34911 to [193.48.99.79]:5273 ---
+SID:	c130634fd272dc33583b0c4575f2c370
+first:	2011-11-20T09:53:57.107
+last:	2011-11-20T09:54:28.031
+292 sent, 1 lost (0.342%), 0 duplicates
+one-way delay min/median/max = 172/173/203 ms, (err=13.8 ms)
+one-way jitter = 29.7 ms (P95-P50)
+Hops = 20 (consistently)
+1-reordering = 0.343643%
+2-reordering = 0.343643%
+3-reordering = 0.343643%
+4-reordering = 0.343643%
+5-reordering = 0.343643%
+6-reordering = 0.343643%
+7-reordering = 0.343643%
+8-reordering = 0.343643%
+9-reordering = 0.343643%
+10-reordering = 0.343643%
+11-reordering = 0.343643%
+12-reordering = 0.343643%
+13-reordering = 0.343643%
+14-reordering = 0.343643%
+15-reordering = 0.343643%
+16-reordering = 0.343643%
+no 17-reordering
+
+Approximately 34.5 seconds until results available
+
+--- owping statistics from [lab39.COMP.POLYU.EDU.HK]:42285 to [130.246.179.197]:33021 ---
+SID:	82f6b3c5d272dc5cd55f99c3ec37d0f0
+first:	2011-11-20T09:54:38.586
+last:	2011-11-20T09:55:09.238
+300 sent, 0 lost (0.000%), 0 duplicates
+one-way delay min/median/max = 172/173/186 ms, (err=0.385 ms)
+one-way jitter = 2.1 ms (P95-P50)
+Hops = 20 (consistently)
+no reordering
+
+Approximately 34.7 seconds until results available
+
+--- owping statistics from [lab39.COMP.POLYU.EDU.HK]:53088 to [90.147.67.252]:56306 ---
+SID:	5a9343fcd272dc83827ded6bed1f04ef
+first:	2011-11-20T09:55:17.425
+last:	2011-11-20T09:55:48.244
+300 sent, 2 lost (0.667%), 0 duplicates
+one-way delay min/median/max = 178/179/184 ms, (err=0.413 ms)
+one-way jitter = 1.8 ms (P95-P50)
+Hops = 21 (consistently)
+no reordering
+

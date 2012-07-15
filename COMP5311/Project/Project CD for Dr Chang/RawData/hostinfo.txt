@@ -1,0 +1,15 @@
+host ip
+     158.132.9.39
+account
+        owamp
+pass
+        comp5311
+ssh
+        gateway.comp.polyu.edu.hk
+ssh-account-and-pass
+        polyu net id
+
+host os
+        ubuntu 10.04.3 LTS 32bit
+host location
+        PQ605

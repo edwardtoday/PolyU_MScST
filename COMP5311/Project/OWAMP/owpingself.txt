@@ -1,0 +1,23 @@
+Approximately 13.1 seconds until results available
+
+--- owping statistics from [localhost]:33906 to [localhost]:39862 ---
+SID:	00000001d274c46288224e8dd438cd49
+first:	2011-11-21T20:36:51.715
+last:	2011-11-21T20:37:02.368
+100 sent, 0 lost (0.000%), 0 duplicates
+one-way delay min/median/max = 0.0148/0.1/0.0582 ms, (err=23.6 ms)
+one-way jitter = 0 ms (P95-P50)
+TTL not reported
+no reordering
+
+
+--- owping statistics from [localhost]:53053 to [localhost]:49522 ---
+SID:	00000001d274c4628852cdb1a8b62c8d
+first:	2011-11-21T20:36:51.633
+last:	2011-11-21T20:37:01.196
+100 sent, 0 lost (0.000%), 0 duplicates
+one-way delay min/median/max = 0.0191/0.1/0.061 ms, (err=23.6 ms)
+one-way jitter = 0 ms (P95-P50)
+TTL not reported
+no reordering
+

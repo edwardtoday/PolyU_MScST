@@ -1,0 +1,7 @@
+Approximately 13.2 seconds until results available
+owping: FILE=api.c, LINE=1097, _OWPCleanDataRecs: Invalid data record (seq_no too large) sid(9e840927d27ed3ede7802e7986a86667)
+owping: FILE=api.c, LINE=1245, _OWPCleanDataRecs: Failed
+owping: FILE=protocol.c, LINE=2291, _OWPReadStopSessions: Unable to clean data sid(9e840927d27ed3ede7802e7986a86667): Function not implemented
+owping: FILE=protocol.c, LINE=2453, _OWPReadStopSessions: Failed
+owping: FILE=owping.c, LINE=1708, Test session(s) Failed...
+

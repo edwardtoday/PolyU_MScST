@@ -1,0 +1,72 @@
+Approximately 33.1 seconds until results available
+
+--- owping statistics from [lab39.COMP.POLYU.EDU.HK]:35835 to [137.189.27.61]:45865 ---
+SID:	89bd1b3dd2745e79de981387dbc92b26
+first:	2011-11-21T13:22:02.900
+last:	2011-11-21T13:22:29.176
+300 sent, 0 lost (0.000%), 0 duplicates
+one-way delay min/median/max = 39.8/67.1/81.9 ms, (err=14.4 ms)
+one-way jitter = 10.5 ms (P95-P50)
+Hops = 6 (consistently)
+no reordering
+
+Approximately 33.8 seconds until results available
+
+--- owping statistics from [lab39.COMP.POLYU.EDU.HK]:38464 to [64.57.17.162]:48954 ---
+SID:	403911a2d2745e9993a55d1cf15dc65b
+first:	2011-11-21T13:22:34.828
+last:	2011-11-21T13:23:05.971
+300 sent, 3 lost (1.000%), 0 duplicates
+one-way delay min/median/max = 98.2/127/142 ms, (err=6.42 ms)
+one-way jitter = 11.1 ms (P95-P50)
+Hops = 10 (consistently)
+no reordering
+
+Approximately 34.1 seconds until results available
+
+--- owping statistics from [lab39.COMP.POLYU.EDU.HK]:43135 to [206.12.24.110]:8825 ---
+SID:	ce0c186ed2745ebf13cdbbe0bf7105b1
+first:	2011-11-21T13:23:12.656
+last:	2011-11-21T13:23:39.803
+300 sent, 2 lost (0.667%), 0 duplicates
+one-way delay min/median/max = 134/161/185 ms, (err=5.3 ms)
+one-way jitter = 11.3 ms (P95-P50)
+Hops = 13 (consistently)
+no reordering
+
+Approximately 34.5 seconds until results available
+
+--- owping statistics from [lab39.COMP.POLYU.EDU.HK]:60893 to [193.48.99.79]:5239 ---
+SID:	c130634fd2745ee14cda2b5a3fd52b72
+first:	2011-11-21T13:23:47.101
+last:	2011-11-21T13:24:16.345
+300 sent, 4 lost (1.333%), 0 duplicates
+one-way delay min/median/max = 191/219/248 ms, (err=5.59 ms)
+one-way jitter = 12.3 ms (P95-P50)
+Hops = 20 (consistently)
+no reordering
+
+Approximately 34.6 seconds until results available
+
+--- owping statistics from [lab39.COMP.POLYU.EDU.HK]:54334 to [130.246.179.197]:43699 ---
+SID:	82f6b3c5d2745f068b9b8887e8867dcd
+first:	2011-11-21T13:24:24.294
+last:	2011-11-21T13:24:54.292
+300 sent, 2 lost (0.667%), 0 duplicates
+one-way delay min/median/max = 189/189/211 ms, (err=5.54 ms)
+one-way jitter = 1.2 ms (P95-P50)
+Hops = 20 (consistently)
+no reordering
+
+Approximately 34.6 seconds until results available
+
+--- owping statistics from [lab39.COMP.POLYU.EDU.HK]:35362 to [90.147.67.252]:53818 ---
+SID:	5a9343fcd2745f2c90f69ca903b0e4dc
+first:	2011-11-21T13:25:02.329
+last:	2011-11-21T13:25:33.237
+300 sent, 1 lost (0.333%), 0 duplicates
+one-way delay min/median/max = 193/194/201 ms, (err=5.42 ms)
+one-way jitter = 0.5 ms (P95-P50)
+Hops = 21 (consistently)
+no reordering
+
