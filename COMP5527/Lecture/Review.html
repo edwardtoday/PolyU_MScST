@@ -1,0 +1,584 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+*{margin:0;padding:0;}
+body {
+	font:13.34px helvetica,arial,freesans,clean,sans-serif;
+	color:black;
+	line-height:1.4em;
+	background-color: #F8F8F8;
+	padding: 0.7em;
+}
+p {
+	margin:1em 0;
+	line-height:1.5em;
+}
+table {
+	font-size:inherit;
+	font:100%;
+	margin:1em;
+}
+table th{border-bottom:1px solid #bbb;padding:.2em 1em;}
+table td{border-bottom:1px solid #ddd;padding:.2em 1em;}
+input[type=text],input[type=password],input[type=image],textarea{font:99% helvetica,arial,freesans,sans-serif;}
+select,option{padding:0 .25em;}
+optgroup{margin-top:.5em;}
+pre,code{font:12px Monaco,"Courier New","DejaVu Sans Mono","Bitstream Vera Sans Mono",monospace;}
+pre {
+	margin:1em 0;
+	font-size:12px;
+	background-color:#eee;
+	border:1px solid #ddd;
+	padding:5px;
+	line-height:1.5em;
+	color:#444;
+	overflow:auto;
+	-webkit-box-shadow:rgba(0,0,0,0.07) 0 1px 2px inset;
+	-webkit-border-radius:3px;
+	-moz-border-radius:3px;border-radius:3px;
+}
+pre code {
+	padding:0;
+	font-size:12px;
+	background-color:#eee;
+	border:none;
+}
+code {
+	font-size:12px;
+	background-color:#f8f8ff;
+	color:#444;
+	padding:0 .2em;
+	border:1px solid #dedede;
+}
+img{border:0;max-width:100%;}
+abbr{border-bottom:none;}
+a{color:#4183c4;text-decoration:none;}
+a:hover{text-decoration:underline;}
+a code,a:link code,a:visited code{color:#4183c4;}
+h2,h3{margin:1em 0;}
+h1,h2,h3,h4,h5,h6{border:0;}
+h1{font-size:170%;border-top:4px solid #aaa;padding-top:.5em;margin-top:1.5em;}
+h1:first-child{margin-top:0;padding-top:.25em;border-top:none;}
+h2{font-size:150%;margin-top:1.5em;border-top:4px solid #e0e0e0;padding-top:.5em;}
+h3{margin-top:1em;}
+hr{border:1px solid #ddd;}
+ul{margin:1em 0 1em 2em;}
+ol{margin:1em 0 1em 2em;}
+ul li,ol li{margin-top:.5em;margin-bottom:.5em;}
+ul ul,ul ol,ol ol,ol ul{margin-top:0;margin-bottom:0;}
+blockquote{margin:1em 0;border-left:5px solid #ddd;padding-left:.6em;color:#555;}
+dt{font-weight:bold;margin-left:1em;}
+dd{margin-left:2em;margin-bottom:1em;}
+@media screen and (min-width: 768px) {
+    body {
+        width: 748px;
+        margin:10px auto;
+    }
+}
+</style>
+<title>COMP5527 Review</title>
+</head>
+<body>
+<h1>COMP5527 Review</h1>
+
+<blockquote><p>11500811G QING Pei <a href="&#109;&#x61;&#105;&#x6c;&#x74;&#x6f;&#x3a;&#x65;&#100;&#119;&#x61;&#x72;&#100;&#116;&#x6f;&#100;&#97;&#121;&#64;&#103;&#x6d;&#x61;&#105;&#108;&#x2e;&#99;&#x6f;&#x6d;">&#101;&#x64;&#x77;&#97;&#114;&#x64;&#x74;&#111;&#100;&#97;&#x79;&#64;&#x67;&#109;&#x61;&#x69;&#108;&#46;&#x63;&#111;&#109;</a></p>
+
+<p>April 24, 2012</p></blockquote>
+
+<h2>Overview</h2>
+
+<ul>
+<li><strong>Mobile computing</strong>: techniques that allow mobile users to use portable computing devices to run stand-alone applications and / or to access remote ones via wireless networks.</li>
+<li>Challenges
+
+<ul>
+<li>How to ensure <strong>high data availability</strong> in mobile computing environment, where frequent disconnection may occur?</li>
+<li>How to ensure <strong>desired level of consistency</strong> among the copies of data in servers and mobile devices, where battery power is limited?</li>
+</ul>
+</li>
+<li>Distinct characteristics of mobile wireless computing
+
+<ul>
+<li><strong>Wireless communication</strong>
+
+<ul>
+<li>More frequent disconnection</li>
+<li>Low and asymmetric bandwidth, high latency, high error rate</li>
+<li>Greater variation in available bandwidth</li>
+<li>Increased security risks</li>
+</ul>
+</li>
+<li><strong>Mobility</strong>
+
+<ul>
+<li>Entities of mobility: physical (device), user (traveling people), process (mobile code)</li>
+<li>Modes: personal/service/session/application</li>
+<li>changes in physical/logical address &amp; system configuration (network topology)</li>
+<li>Location management problem: how does the network know where the intended recipient of a message is currently located?</li>
+</ul>
+</li>
+<li><strong>Mobile device</strong>
+
+<ul>
+<li>screen/storage/battery life/variance in design and usage/more frequent breakdown and shorter lifespan</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+
+<h2>Wireless networks</h2>
+
+<ul>
+<li>WSAN Wireless Sensor Area Network
+
+<ul>
+<li><strong>ZigBee</strong>: 250 kbit/s for embedded applications requiring <em>low data rates</em> and <em>low power consumption</em></li>
+<li><strong>RFID</strong></li>
+</ul>
+</li>
+<li>WPAN Wireless Personal Area Network    ~10m
+
+<ul>
+<li>Infrared Data Association (<strong>IrDA</strong>), ~1m, 875 nm wavelength, 9600 bps to 4 Mbps, require <em>line of sight</em></li>
+<li><strong>UWB</strong> Ultra-wide-band: 480Mbps ranging up to 30ft, for military radar systems</li>
+<li><strong>Bluetooth</strong>, ~10m, 720 Kbps, does not require <em>line of sight</em>
+
+<ul>
+<li>2400-2480 MHz</li>
+<li>FHSS frequency-hopping spread spectrum: transmit chunks of data on up to 79 bands (1 MHz each; centered from 2402 to 2480 MHz), usually performs 800 hops per second</li>
+<li>Bluetooth is a <strong>packet-based protocol</strong> with a <strong>master-slave structure</strong>. One master may communicate with <em>up to 7 slaves in a piconet</em>; all devices <em>share the master&rsquo;s clock</em>.</li>
+<li>1.2: data rate 1 Mbit/s, app throughput 0.7 Mbit/s</li>
+<li>2.0+EDR: data rate 3 Mbit/s, app throughput 2.1 Mbit/s</li>
+<li>3.0+HS; data rate 24 Mbit/s</li>
+<li>Device ID (48 bit MAC address, unique worldwide)</li>
+<li>master&rsquo;s clock (28 bit, 3.2 kHz, 24hr per cycle)</li>
+<li>all active device with <strong>3-bit</strong> active member address (AMA)</li>
+<li><strong>parked devices</strong> cannot actively participate in the piconet but are known and can be reactivated. <strong>8-bit</strong> parked member address (PMA). One slave has to switch to park mode if there are 7 active slaves and a parked device wants to communicate.</li>
+<li>stand-by devices don&rsquo;t participate</li>
+</ul>
+</li>
+<li>IEEE <strong>802.15</strong>: WPAN standards
+
+<ul>
+<li>aims at standardizing <strong>MAC</strong> and physical layer (<strong>PHY</strong>) specifications of bluetooth</li>
+<li>addresses <strong>coexistence</strong> with other wireless devices operating in unlicensed frequency bands</li>
+<li>framework enabling interoperable, stable, and scalable wireless mesh networking</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>WLAN Wireless Local Area Network    ~100m
+
+<ul>
+<li>802.11a,b,g,n (<strong>WiFi</strong>)</li>
+</ul>
+</li>
+<li>WMAN Wireless Metropolitan Area Network    ~15km
+
+<ul>
+<li>802.16a,d (<strong>WiMAX</strong>)</li>
+<li>Multimedia QoS: connection-oriented, not only connectionless based</li>
+</ul>
+</li>
+<li>WWAN Wireless Wide Area Network    national coverage</li>
+<li>Satellite    global coverage, 2.4kbps-2Mbps</li>
+<li><p>Mobility management</p>
+
+<ul>
+<li>Handoff management
+
+<ul>
+<li>Hard handover: break-before-make</li>
+<li>Soft handover: make-before-break
+
+<ul>
+<li>expensive hardware</li>
+<li>Substantial interference due to near-far effect in CDMA networks without soft handovers.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Location management</li>
+</ul>
+</li>
+<li><p>Cellular networks</p>
+
+<ul>
+<li>1G: analog, only voice comm. <strong>AMPS</strong>, <strong>TACS</strong>, <strong>NMT</strong></li>
+<li>2G: digital, basic data services (9.6~19.2kbps). <strong>DAMPS</strong>(TDMA), <strong>CDMA</strong>, <strong>GSM</strong>(most popular), <strong>PDC</strong></li>
+<li>1G and 2G are circuit-switched</li>
+<li>2.5G: packet-switch systems, speed up to 144kbps, efficient spectrum utilization, always-on but not paying by-the-minutes, only software update from 2G, foundation of 3G infrastructure. <strong>GPRS</strong> 115kbps (practical 40kbps), <strong>CDMA2000 1x</strong> 144kbps (practical 40~56kbps)</li>
+<li>3G: based on CDMA and IP, higher data rates 144kbps-2Mbps depending on the level of mobility, QoS. <strong>EDGE</strong> peak 384kbps, downlink 75-150kbps, <strong>CDMA2000 1x EV</strong> peak 2.4Mbps(EV-DO) 3Mbps(EV-DV), <strong>WCDMA</strong> 144kbps/384kbps/2Mbps for diff mobility. <strong>IMT 2000</strong> industrial standard.</li>
+<li>4G: 50-100Mbps, IPv6, QoS. 3GPP <strong>LTE</strong>: OFDM for downlink, adaptive modulation and coding, MIMO, all-IP, 100M down 50M up in 20 MHz spectrum, 5km~30km~100km coverage, up to 200 active users per cell (5 MHz), optimized for 0-15km/h but support high mobility, latency 5 ms user 50 ms control plane</li>
+</ul>
+</li>
+<li><p>Mobile Ad Hoc Network (MANET)</p>
+
+<ul>
+<li>for low setup time, no infrastructure, pairwise connection of devices nearby</li>
+<li>Characteristics: Lack of a centralized entity. Network topology changes frequently and unpredictably.</li>
+</ul>
+</li>
+</ul>
+
+
+<h2>Mobile computing models</h2>
+
+<ul>
+<li>Mobile Client/Server
+
+<ul>
+<li>Simple C/S</li>
+<li>Client/Agent/Server
+
+<ul>
+<li>complex client requests can be managed by agent with only the final result transmitted back to the client</li>
+<li>server can offload some activities to agent (e.g. compression)</li>
+<li>agent can cache results to improve performance</li>
+<li>need to change client code to comm with agent</li>
+<li>increased system overhead</li>
+</ul>
+</li>
+<li>Client/Intercept/Server</li>
+<li>Think client: mostly for online access to web content; server side plays the main functional role; limited UI and capabilities on client side.</li>
+<li>Smart client: allows working in occasionally connected env with offline access and resynchronization upon reconnection; both c/s have good capabilities; client incorporated mobile db tech for persistent data storage.</li>
+</ul>
+</li>
+<li>Mobile Peer-to-Peer. Hosts play the same role and cooperate to
+
+<ul>
+<li>Discover peers and resources</li>
+<li>Route every requests</li>
+<li>Perform specified tasks</li>
+</ul>
+</li>
+<li>Mobile Agent
+
+<ul>
+<li>Code mobility (with computation, data and state)</li>
+<li>Autonomous and asynchronous</li>
+</ul>
+</li>
+<li>WAP Push
+
+<ul>
+<li>Push initiator, provides <em>domain of Push Proxy Gateway</em> and <em>client address</em>, comm with PPG using Push Access Protocol (on top of HTTP)</li>
+<li>PPG uses OTA protocol (on top of HTTP or Wireless Session Protocol) to deliver content to WAP client, store the message, maintain status of each message, respond to PI using XML result notification indicating result of delivery</li>
+<li>Service loading (URI to content to be cached, indicate whether content be exec immediately or just cached), service indication (message info or URI to it) and cache operation (remove obj from cache). SI and CO are optional.</li>
+</ul>
+</li>
+<li>Android is a <em>software platform</em> and <em>operating system</em> for <em>mobile devices</em>, based on the <em>Linux kernel</em>, developed by <em>Google</em> and later the <em>Open Handset Alliance</em>.</li>
+</ul>
+
+
+<h2>Mobile data management</h2>
+
+<ul>
+<li>Objectives
+
+<ul>
+<li>reducing the amount of data transmitted over wireless networks</li>
+<li>reducing the response time of accessing data via wireless networks</li>
+<li>providing data caching on mobile hosts</li>
+<li>maintaining consistency of data and transactions</li>
+</ul>
+</li>
+<li>requirements for mobile databases: access to accurate &amp; up-to-date information with constraints
+
+<ul>
+<li>some apps can tolerate bounded inconsistency sacrificing strict <strong>ACID</strong> (atomicity, consistency, isolation, durability) and allowing weaker consistent models</li>
+<li>long disconnection should not constraint availability</li>
+</ul>
+</li>
+<li>Data aggregation in WSN
+
+<ul>
+<li>Center at Nearest Source</li>
+<li>Shortest Path Tree</li>
+<li>Greedy Incremental Tree</li>
+</ul>
+</li>
+</ul>
+
+
+<h2>Mobile data dissemination</h2>
+
+<ul>
+<li>Goals
+
+<ul>
+<li>reduce access delay</li>
+<li>minimizing energy consumption at client</li>
+<li>maximize capacity of servers</li>
+</ul>
+</li>
+<li>approaches
+
+<ul>
+<li>pull-based (on-demand mode)
+
+<ul>
+<li><strong>not scalable</strong>, limited by bandwidth for <em>parallel</em> pull requests</li>
+</ul>
+</li>
+<li>push-based (publish-subscribe mode)
+
+<ul>
+<li><strong>scalable</strong> due to <em>sequential</em> access, so <strong>latency</strong> degrades with data volume</li>
+</ul>
+</li>
+<li>hybrid</li>
+</ul>
+</li>
+<li><strong>access time</strong>: time interval between <strong>request</strong> from the device and <strong>reception</strong> of interested data item from broadcasting or data pushing or responding system. Dependent on <em>number</em> and <em>size</em> of the records to be broadcast.</li>
+<li>Tuning time: time interval between the <strong>mobile unit gets ready</strong> and a <strong>desired record is broadcast</strong>, i.e., the time MU spent listening actively to the channel. Power consumption proportional to t_tune.</li>
+<li>broadcast disk
+
+<ul>
+<li>item-based program is expensive to generate with large # of items</li>
+<li>collect items of similar access probability into partitions (disks)</li>
+<li>objectives
+
+<ul>
+<li>allow mobile users to access broadcast data with optimal <strong>access time</strong> and <strong>power consumption</strong></li>
+<li>determine how to organize the data items and schedule the time of broadcast</li>
+<li>determine how MUs should retrieve and process the broadcast data items on air</li>
+</ul>
+</li>
+<li><strong>Flat disk model</strong>: round-robin, equal priority, no consideration on # of subscription to a particular record. 012301230123</li>
+<li><strong>Circular multi-disk model</strong>: block of records is pushed with a repetition rate proportional to its hierarchical level, disks with same rotation speed, higher level disks with less number of records repeated more times.</li>
+<li><strong>Multi-disk model with repetition rate proportional to priority</strong>: still same rotation speed but repetition rate of a record is proportional to its priority level, popular records are assigned to multiple levels. 010102010102</li>
+<li><strong>Skewed disk model</strong>: block of records are repeated as per their priorities for pushing, thus entailing consecutive repeated transmission of a record block followed by consecutive transmission of another block. 000112000112</li>
+</ul>
+</li>
+<li>Selective tuning
+
+<ul>
+<li>MU activates only when the data arrives, saving power</li>
+<li>with the help of <strong>directory</strong> or <strong>index</strong>
+
+<ul>
+<li>Directory: overhead at beginning of each cycle, consisting of <strong>start sign</strong>, <strong>pointers to records</strong> and <strong>end sign</strong>. A device wait for directory before it can get tuned.</li>
+<li>index: can be broadcast interleaved with data records. Relatively small containing only key names. <em>offset</em> maps to the beginning of next index</li>
+<li>(1,m) indexing: broadcast the index every fraction 1/m of the data items; all data items have an offset to the beginning of the next indexed data item</li>
+<li>Distributed indexing: replicate not the whole index but only those immediately follow the index segment. 2 levels, repeated and unrepeated.</li>
+</ul>
+</li>
+<li>extends broadcast cycle and increase t_access</li>
+</ul>
+</li>
+</ul>
+
+
+<h2>Mobile data caching</h2>
+
+<ul>
+<li>Goal: Cache the most probable data item for <strong>best future use</strong>, given <em>limited</em> amount of cache <em>storage</em> and potential <em>changes</em> in data item values.</li>
+<li>Performance: hit ratio, access response time, energy cost</li>
+<li>Correctness: consistency</li>
+<li>Cache invalidation:
+
+<ul>
+<li>When? <strong>synchronous</strong> or <strong>asynchronous</strong></li>
+<li>To whom? <strong>stateful</strong> or <strong>stateless</strong> servers</li>
+<li>What? <strong>invalidation</strong> with only an update notification or <strong>propagation</strong> with the new values or <strong>aggregated information/views</strong></li>
+</ul>
+</li>
+<li>Polling (client-initiated)
+
+<ul>
+<li>TTL: polls after TTL expiration. TTL=0 equivalent to polling</li>
+</ul>
+</li>
+<li>Pushing (server-initiated)
+
+<ul>
+<li>Stateless asynchronous
+
+<ul>
+<li>no frequent unnecessary reports, more bandwidth efficient</li>
+<li>clients get the report regardless of its requirement, client mistaken invalid data as valid if a report is missing</li>
+</ul>
+</li>
+<li>Stateless synchronous (client requests if no report in a period)
+
+<ul>
+<li>greater reliability, better consistency</li>
+<li>unnecessary transfers of invalidation reports periodically, potential inconsistent data between two reports</li>
+</ul>
+</li>
+<li>Stateful asynchronous
+
+<ul>
+<li>only affected clients receive reports</li>
+<li>client still presume that as long as there is no invalidation report, the copy is valid, leading to invalid data</li>
+</ul>
+</li>
+<li>Stateful synchronous
+
+<ul>
+<li>timely synchronization</li>
+<li>high bandwidth requirement</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Cooperative caching in multi-hop wireless internet access
+
+<ul>
+<li>challenges
+
+<ul>
+<li>Multi-hop reachability from data source</li>
+<li>Bandwidth constraints</li>
+<li>Disconnection</li>
+<li>Topology changes and peer dynamism</li>
+<li>Resource constraints on mobile nodes</li>
+</ul>
+</li>
+<li>issues: cache <em>placement</em>, <em>discovery</em> and <em>consistency</em></li>
+</ul>
+</li>
+<li>Weak consistency: best-effort guarantee</li>
+<li>Delta consistency: deviation in values or time bounded by \delta</li>
+<li>Probabilistic consistency: guarantee given consistency level with specified probability p</li>
+</ul>
+
+
+<h2>Disconnected operations</h2>
+
+<ul>
+<li>A mode of operation that enables a client to continue accessing <strong>critical data</strong> maintained at the server during temporary interruption of network connection</li>
+<li>the extreme of weakly connected operation (low radio signal, intermittent connectivity, noisy channel), can be <em>involuntary</em> or <em>voluntary</em></li>
+<li>Why? battery life, network charge, radio silence (vital for military applications)</li>
+<li>objectives
+
+<ul>
+<li>ensure <strong>data availability</strong> even under disconnection</li>
+<li>tradeoff between <em>data consistency</em> and <em>autonomy of client</em></li>
+</ul>
+</li>
+<li>How? <strong>Caching</strong>, <strong>Prefetching</strong>: cache items that may be useful in future but not currently needed, utilizing the otherwise idle processing power or bandwidth, <strong>Hoarding</strong>: prefetching to prepare for disconnection</li>
+<li>Client states: <strong>connected</strong> (request satisfied from either local cache or server), <strong>disconnected</strong> (all requests must be satisfied from local cache) and <strong>reintegration</strong> (update related info, deal with conflicts)</li>
+<li>consistency
+
+<ul>
+<li><strong>strong consistency</strong> requires atomic updates, which is difficult to achieve in mobile environments</li>
+<li><strong>weak consistency</strong> tolerates occasional inconsistencies</li>
+</ul>
+</li>
+<li>transparency of replication
+
+<ul>
+<li>transparent replication: allowing systems that were developed to run on a <em>central server</em> to operate <strong>unchanged</strong> on top of a <em>strongly-consistent replicated data storage</em>. Oceanstore</li>
+<li>Non-transparent replication: allowing systems to be developed assuming a relaxed consistency model. Therefore <strong>applications are involved</strong> in <em>conflict detection</em> and <em>resolution</em>. The challenge is to provide the right interface to support cooperation between apps and their data managers.
+
+<ul>
+<li><strong>Bayou</strong>: a replicated weakly consistent storage system designed for mobile computing environment. User can read and write any accessible replica. Application-specific conflict detection and resolution method. <strong>Dependency check</strong> and <strong>merge procedure</strong> on <em>write</em> operation. <strong>Eventual consistency</strong> due to 1 writes are performed at all servers in the same order; 2 conflict detection and merge procedures are deterministic. <strong>Anti-entropy protocol</strong> for propagating writes among servers (pairwise propagation, all replicas receive all updates).</li>
+<li><strong>Coda</strong> filesystem from CMU: providing <em>constant availability</em> through <em>replication</em>; introducing a <em>disconnected mode</em> for portable computers (which makes Coda different from AFS).
+
+<ul>
+<li>cache whole file whenever possible, callback based</li>
+<li>automate the portable computer model, auto-syn feature</li>
+<li>Use server replication to improve scalability, read from any server, write to all servers.</li>
+<li>disconnected mode: Venus emulates the server, logs updates locally in Client Modification Log</li>
+<li>hoarding to let users keep important files in their hoard database</li>
+<li>Upon reconnection: enters <strong>data reintegration state</strong>, Venus integrates locally changed files to servers. Does not prevent inconsistent updates but guarantees that inconsistent updates will always be detected and then apply user conflict resolution.</li>
+</ul>
+</li>
+<li>Andrew File System (<strong>AFS</strong>): adopts upload/download model; whole file transferred to and cached in client sites. <strong>callback promise</strong> token. Write-on-close. Only final close operation retain all updates it makes. AFS servers are <strong>stateful</strong>.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+
+<h2>Location-dependent index and query</h2>
+
+<ul>
+<li>3 key elements of location-dependent applications
+
+<ol>
+<li> location-dependent queries: result depend on the location of the <strong>origin of the query</strong> or the <strong>object being queried for</strong></li>
+<li> locations: obtained by mobile positioning tech, maintained by spatial databases</li>
+<li> location-dependent database</li>
+</ol>
+</li>
+<li>location representation: <strong>geometric</strong> (n-dimension coordinate) or <strong>symbolic</strong> (logical real-world description)</li>
+<li>spatial data: data <em>representing</em> (location of a road) or <em>associated</em> with locations (name or speed limit of that road)
+
+<ul>
+<li><em>discrete</em> or <em>continuous</em></li>
+<li><strong>vector data model</strong> using points as basis to model lines, areas and so on or <strong>raster data model</strong> using grid to represent spatial feature. Generalized raster model called <strong>tessellation</strong> model, in which elements can be of <em>arbitrary shapes</em>.</li>
+</ul>
+</li>
+<li>spatial queries
+
+<ul>
+<li><strong>new operators</strong>: containment, <em>overlap</em>, <em>neighbor</em>, <em>spatial relationship</em> (to the left of, etc.), <em>spatial join</em></li>
+<li>typical queries: <em>range query</em> for objects with an area, <em>nearest neighbor</em>, <em>k-nearest neighbors</em></li>
+</ul>
+</li>
+<li>location-dependent queries (what&rsquo;s more than spatial queries)
+
+<ul>
+<li>client may move and be part of the query, result depend on direction of movement</li>
+<li>may not directly contain location info but may have multiple values corresponding to different locations</li>
+<li>temporal features (gas stations in the next 20 min)</li>
+</ul>
+</li>
+<li>indexing
+
+<ul>
+<li>allow direct access to tuples satisfying the condition</li>
+<li>mostly based on hash-table (for point query) and B-tree/B^+-tree</li>
+<li>In practice, B^+-trees, allowing sequential access to range data by chaining together leaf nodes.</li>
+</ul>
+</li>
+<li>indexing spatial data
+
+<ul>
+<li>partition the set of objects into subsets according to their locations</li>
+<li>R-tree, R^*-tree, R^+-tree (2-D equivalence of B-trees)</li>
+<li>R-tree: minimum bounding box, mbb can <em>overlap</em>
+
+<ul>
+<li>for point(range) search, check the mbb of each branch, if the mbb contains(intersects with) the query, search recursively down the sub-branches</li>
+<li>complicated insertion</li>
+</ul>
+</li>
+<li>R^*-tree with some optimizations for insertion</li>
+<li>R^+ tree
+
+<ul>
+<li>mbb at the <em>same level</em> do <strong>not overlap</strong></li>
+<li>object may have to be duplicated</li>
+<li>higher storage overhead, more complicated insertion, faster searching</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>moving object database
+
+<ul>
+<li>costly insertion, even worse for moving objects</li>
+<li>trade-off: precision v.s. update efficiency</li>
+</ul>
+</li>
+<li>indexing time dimension
+
+<ul>
+<li>3D-R-tree for historical trajectories as 3d minimum bounding rectangle (MBR), simple but not scalable, no efficient query support</li>
+<li>multi-version: nodes unchanged are linked</li>
+</ul>
+</li>
+<li>Continuous query. Caching and prediction are useful.</li>
+</ul>
+
+</body>
+</html>

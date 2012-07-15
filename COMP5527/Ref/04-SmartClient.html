@@ -1,0 +1,1372 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0048)http://blogs.msdn.com/dphill/articles/66300.aspx -->
+<HTML><HEAD><TITLE>David Hill's WebLog : What is a Smart Client anyway?</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<META content="Smart Clients" name=keywords>
+<META 
+content="And what makes it so smart? Well, the term Smart Client was coined to highlight the differences between the typical rich client applications of yesteryear and the next generation of client applications. This article looks at these differences and explains" 
+name=description>
+<META content="MSHTML 6.00.2900.2802" name=GENERATOR><LINK 
+href="http://blogs.msdn.com/pingback.aspx" rel=pingback><LINK media=screen 
+href="David Hill's WebLog  What is a Smart Client anyway_files/style.css" 
+type=text/css rel=stylesheet><LINK media=print 
+href="David Hill's WebLog  What is a Smart Client anyway_files/print.css" 
+type=text/css rel=stylesheet><LINK media=screen 
+
+href="David Hill's WebLog  What is a Smart Client anyway_files/blue%20right%20sidebar.css" 
+type=text/css rel=stylesheet><LINK href="/favicon.ico" type=image/ico 
+rel="shortcut icon"><LINK title="David Hill's WebLog (RSS 2.0)" 
+href="http://blogs.msdn.com/dphill/rss.aspx" type=application/rss+xml 
+rel=alternate><LINK title="David Hill's WebLog (Atom 1.0)" 
+href="http://blogs.msdn.com/dphill/atom.aspx" type=application/atom+xml 
+rel=alternate><LINK title="What is a Smart Client anyway? Comment RSS (RSS 2.0)" 
+href="http://blogs.msdn.com/dphill/commentrss.aspx?PostID=66300" 
+type=application/rss+xml rel=alternate>
+<SCRIPT src="David Hill's WebLog  What is a Smart Client anyway_files/global.js" 
+type=text/javascript></SCRIPT>
+</HEAD>
+<BODY>
+<FORM id=__aspnetForm name=__aspnetForm action=/dphill/articles/66300.aspx 
+method=post><INPUT type=hidden name=__EVENTTARGET> <INPUT type=hidden 
+name=__EVENTARGUMENT> <INPUT type=hidden 
+value=dDwxOTEyODEyMTQ3OztsPF9jdGwwOl86X2N0bDA6XzpCbG9nU2lkZUJhcjE6Xzp3czpfOlNlYXJjaEJveDs+Pr2d3peWrIESEUZCRSG5ly/G19rJ 
+name=__VIEWSTATE>
+<SCRIPT language=javascript type=text/javascript>
+<!--
+	function __doPostBack(eventTarget, eventArgument) {
+		var theform;
+		if (window.navigator.appName.toLowerCase().indexOf("microsoft") > -1) {
+			theform = document.__aspnetForm;
+		}
+		else {
+			theform = document.forms["__aspnetForm"];
+		}
+		theform.__EVENTTARGET.value = eventTarget.split("$").join(":");
+		theform.__EVENTARGUMENT.value = eventArgument;
+		theform.submit();
+
+	}
+// -->
+</SCRIPT>
+
+<SCRIPT language=javascript type=text/javascript>
+var RatingControlAJAX = {
+
+"SaveRating": function(id, rating, clientCallBack) {
+	return Ajax_CallBack('CommunityServer.Blogs.Controls.BlogRatePost', id, 'SaveRating', [rating], clientCallBack, false, false, false, true,'/dphill/articles/66300.aspx?Ajax_CallBack=true');
+}
+
+};
+</SCRIPT>
+ 
+<DIV id=masthead>
+<DIV id=welcome align=right>Welcome to MSDN Blogs <A 
+id=_ctl0____ctl0___duw1_ac1___Login 
+href="http://blogs.msdn.com/login.aspx?ReturnUrl=/dphill/articles/66300.aspx">Sign 
+in</A> | <A id=_ctl0____ctl0___duw1_ac1___Register 
+href="http://blogs.msdn.com/user/CreateUser.aspx?ReturnUrl=/dphill/articles/66300.aspx">Join</A> 
+| <A id=_ctl0____ctl0___duw1_Faq1 
+href="http://blogs.msdn.com/languages/en-US/docs/faq.aspx">Help</A> </DIV></DIV>
+<DIV id=wrapper>
+<DIV id=container>
+<DIV id=header>
+<DIV id=title>
+<H1><A class=headermaintitle id=_ctl0____ctl0___BlogTitleHeader1___BlogTitle 
+href="http://blogs.msdn.com/dphill/default.aspx">David Hill's WebLog</A></H1>
+<P id=tagline>Iblogyoublogweblog</P></DIV></DIV>
+<DIV id=contentwrapper>
+<DIV id=sidebar-a>
+<DIV id=WeblogLinks>
+<H3>This Blog</H3>
+<UL>
+  <LI><A href="http://blogs.msdn.com/dphill/about.aspx">About</A> 
+  <LI><A href="http://blogs.msdn.com/dphill/contact.aspx">Email</A> 
+</LI></UL></DIV>
+<H3>Calendar</H3>
+<DIV id=Cal align=center>
+<UL>
+  <LI>
+  <TABLE class=Calendar id=PostCalendar cellSpacing=0 cellPadding=2 border=0>
+    <TBODY>
+    <TR>
+      <TD colSpan=7>
+        <TABLE class=CalendarTitle cellSpacing=0 border=0>
+          <TBODY>
+          <TR>
+            <TD class=CalendarNextPrev align=middle><A style="COLOR: black" 
+              href="javascript:__doPostBack('_ctl0$_$_ctl0$_$BlogSideBar1$_$Cal$_$PostCalendar','V2223')">Feb</A></TD>
+            <TD align=middle>March 2006</TD>
+            <TD class=CalendarNextPrev align=right><A style="COLOR: black" 
+              href="javascript:__doPostBack('_ctl0$_$_ctl0$_$BlogSideBar1$_$Cal$_$PostCalendar','V2282')">Apr</A></TD></TR></TBODY></TABLE></TD></TR>
+    <TR>
+      <TD class=CalendarDayHeader align=middle>S</TD>
+      <TD class=CalendarDayHeader align=middle>M</TD>
+      <TD class=CalendarDayHeader align=middle>T</TD>
+      <TD class=CalendarDayHeader align=middle>W</TD>
+      <TD class=CalendarDayHeader align=middle>T</TD>
+      <TD class=CalendarDayHeader align=middle>F</TD>
+      <TD class=CalendarDayHeader align=middle>S</TD></TR>
+    <TR>
+      <TD class=CalendarOtherMonth align=middle>26</TD>
+      <TD class=CalendarOtherMonth align=middle>27</TD>
+      <TD class=CalendarOtherMonth align=middle>28</TD>
+      <TD align=middle>1</TD>
+      <TD align=middle>2</TD>
+      <TD align=middle>3</TD>
+      <TD class=CalendarWeekend align=middle>4</TD></TR>
+    <TR>
+      <TD class=CalendarWeekend align=middle>5</TD>
+      <TD align=middle>6</TD>
+      <TD align=middle>7</TD>
+      <TD align=middle>8</TD>
+      <TD align=middle>9</TD>
+      <TD align=middle>10</TD>
+      <TD class=CalendarWeekend align=middle>11</TD></TR>
+    <TR>
+      <TD class=CalendarWeekend align=middle>12</TD>
+      <TD align=middle>13</TD>
+      <TD align=middle>14</TD>
+      <TD align=middle>15</TD>
+      <TD align=middle>16</TD>
+      <TD align=middle>17</TD>
+      <TD class=CalendarWeekend align=middle>18</TD></TR>
+    <TR>
+      <TD class=CalendarWeekend align=middle>19</TD>
+      <TD align=middle>20</TD>
+      <TD align=middle>21</TD>
+      <TD align=middle>22</TD>
+      <TD align=middle>23</TD>
+      <TD align=middle>24</TD>
+      <TD class=CalendarWeekend align=middle>25</TD></TR>
+    <TR>
+      <TD class=CalendarWeekend align=middle>26</TD>
+      <TD align=middle>27</TD>
+      <TD align=middle>28</TD>
+      <TD align=middle>29</TD>
+      <TD align=middle>30</TD>
+      <TD align=middle>31</TD>
+      <TD class=CalendarOtherMonth align=middle>1</TD></TR>
+    <TR>
+      <TD class=CalendarOtherMonth align=middle>2</TD>
+      <TD class=CalendarOtherMonth align=middle>3</TD>
+      <TD class=CalendarOtherMonth align=middle>4</TD>
+      <TD class=CalendarOtherMonth align=middle>5</TD>
+      <TD class=CalendarOtherMonth align=middle>6</TD>
+      <TD class=CalendarOtherMonth align=middle>7</TD>
+      <TD class=CalendarOtherMonth 
+align=middle>8</TD></TR></TBODY></TABLE></LI></UL></DIV>
+<H3>Search</H3>
+<DIV id=Search>
+<UL>
+  <LI><INPUT class=searchBox id=_ctl0____ctl0___BlogSideBar1___ws___SearchBox 
+  onkeydown=KeyDownHandler_ctl0____ctl0___BlogSideBar1___ws___SearchButton(event); 
+  name=_ctl0:_:_ctl0:_:BlogSideBar1:_:ws:_:SearchBox> <A 
+  id=_ctl0____ctl0___BlogSideBar1___ws___SearchButton 
+  href="javascript:__doPostBack('_ctl0$_$_ctl0$_$BlogSideBar1$_$ws$_$SearchButton','')">Go</A> 
+  </LI></UL></DIV>
+<DIV id=Subscriptions>
+<H3>Syndication</H3>
+<UL>
+  <LI><A href="http://blogs.msdn.com/dphill/rss.aspx">RSS 2.0</A> 
+  <LI><A href="http://blogs.msdn.com/dphill/atom.aspx">Atom 1.0</A> 
+</LI></UL></DIV>
+<H3>Archives</H3>
+<UL>
+  <LI><A href="http://blogs.msdn.com/dphill/archive/2006/01.aspx">January 2006 
+  (2)</A> 
+  <LI><A href="http://blogs.msdn.com/dphill/archive/2005/12.aspx">December 2005 
+  (2)</A> 
+  <LI><A href="http://blogs.msdn.com/dphill/archive/2005/07.aspx">July 2005 
+  (1)</A> 
+  <LI><A href="http://blogs.msdn.com/dphill/archive/2005/06.aspx">June 2005 
+  (3)</A> 
+  <LI><A href="http://blogs.msdn.com/dphill/archive/2005/05.aspx">May 2005 
+  (2)</A> 
+  <LI><A href="http://blogs.msdn.com/dphill/archive/2005/03.aspx">March 2005 
+  (1)</A> 
+  <LI><A href="http://blogs.msdn.com/dphill/archive/2005/02.aspx">February 2005 
+  (4)</A> 
+  <LI><A href="http://blogs.msdn.com/dphill/archive/2004/12.aspx">December 2004 
+  (1)</A> 
+  <LI><A href="http://blogs.msdn.com/dphill/archive/2004/11.aspx">November 2004 
+  (1)</A> 
+  <LI><A href="http://blogs.msdn.com/dphill/archive/2004/07.aspx">July 2004 
+  (5)</A> 
+  <LI><A href="http://blogs.msdn.com/dphill/archive/2004/06.aspx">June 2004 
+  (3)</A> 
+  <LI><A href="http://blogs.msdn.com/dphill/archive/2004/05.aspx">May 2004 
+  (1)</A> 
+  <LI><A href="http://blogs.msdn.com/dphill/archive/2004/04.aspx">April 2004 
+  (7)</A> 
+  <LI><A href="http://blogs.msdn.com/dphill/archive/2004/03.aspx">March 2004 
+  (2)</A> 
+  <LI><A href="http://blogs.msdn.com/dphill/archive/2004/02.aspx">February 2004 
+  (9)</A> 
+  <LI><A href="http://blogs.msdn.com/dphill/archive/2004/01.aspx">January 2004 
+  (1)</A> 
+  <LI><A href="http://blogs.msdn.com/dphill/archive/2003/12.aspx">December 2003 
+  (2)</A> </LI></UL>
+<H3>Navigation</H3>
+<DIV id=headertab>
+<UL>
+  <LI id=_ctl0____ctl0___BlogSideBar1____ctl2___Menu__ctl0_listItem><A 
+  id=_ctl0____ctl0___BlogSideBar1____ctl2___Menu__ctl0_MenuItem 
+  href="http://blogs.msdn.com/">Home</A> 
+  <LI id=_ctl0____ctl0___BlogSideBar1____ctl2___Menu__ctl1_listItem><A 
+  id=_ctl0____ctl0___BlogSideBar1____ctl2___Menu__ctl1_MenuItem 
+  href="http://blogs.msdn.com/photos/default.aspx">Photos</A> </LI></UL></DIV>
+<H3>Post Categories</H3>
+<UL>
+  <LI><A href="http://blogs.msdn.com/dphill/archive/category/2263.aspx">Random 
+  Blather (6)</A> 
+  <LI><A href="http://blogs.msdn.com/dphill/archive/category/2264.aspx">Smart 
+  Clients (43)</A> </LI></UL>
+<H3>Disclaimer</H3>
+<UL>
+  <LI><A 
+  id=_ctl0____ctl0___BlogSideBar1___lcl___Categories__ctl0_Links__ctl1_Link 
+  href="http://weblogs.asp.net/dphill/articles/49231.aspx">View Disclaimer</A> 
+  </LI></UL>
+<H3>Fellow Bloggers</H3>
+<UL>
+  <LI><A 
+  id=_ctl0____ctl0___BlogSideBar1___lcl___Categories__ctl1_Links__ctl1_Link 
+  href="http://weblogs.asp.net/smguest">Simon Guest</A> 
+  <LI><A 
+  id=_ctl0____ctl0___BlogSideBar1___lcl___Categories__ctl1_Links__ctl2_Link 
+  href="http://weblogs.asp.net/mfussell/">Mark Fussell</A> 
+  <LI><A 
+  id=_ctl0____ctl0___BlogSideBar1___lcl___Categories__ctl1_Links__ctl3_Link 
+  href="http://weblogs.asp.net/cbrumme/">Chris Brumme</A> 
+  <LI><A 
+  id=_ctl0____ctl0___BlogSideBar1___lcl___Categories__ctl1_Links__ctl4_Link 
+  href="http://www.simplegeek.com/">Chris Anderson</A> 
+  <LI><A 
+
+  id=_ctl0____ctl0___BlogSideBar1___lcl___Categories__ctl1_Links__ctl5_Link 
+  href="http://weblogs.asp.net/dweller/">David Weller</A> 
+  <LI><A 
+  id=_ctl0____ctl0___BlogSideBar1___lcl___Categories__ctl1_Links__ctl6_Link 
+  href="http://www.longhornblogs.com/">Longhorn Blogs</A> 
+  <LI><A 
+  id=_ctl0____ctl0___BlogSideBar1___lcl___Categories__ctl1_Links__ctl7_Link 
+  href="http://www.sellsbrothers.com/">Chris Sells</A> 
+  <LI><A 
+  id=_ctl0____ctl0___BlogSideBar1___lcl___Categories__ctl1_Links__ctl8_Link 
+  href="http://www.eightypercent.net/">Joe Beda</A> 
+  <LI><A 
+  id=_ctl0____ctl0___BlogSideBar1___lcl___Categories__ctl1_Links__ctl9_Link 
+  href="http://blogs.msdn.com/rprabhu/">Raghavendra Prabhu</A> 
+  <LI><A 
+  id=_ctl0____ctl0___BlogSideBar1___lcl___Categories__ctl1_Links__ctl10_Link 
+  href="http://blogs.msdn.com/eugeniop">Eugenio Pace</A> 
+  <LI><A 
+  id=_ctl0____ctl0___BlogSideBar1___lcl___Categories__ctl1_Links__ctl11_Link 
+  href="http://blogs.msdn.com/onoj/">Jono's Blog</A> </LI></UL></DIV>
+<DIV id=content>
+<DIV class=post>
+<DIV class=postview>
+<H2>What is a Smart Client anyway?</H2>
+<P>And what makes it so smart?</P>
+<P>The term Smart Client was coined to highlight the differences between the 
+typical "Rich Client" applications of yesteryear and the next generation of 
+client applications. To understand these differences, and to understand how they 
+are likely to change the face of client-side computing, it is useful to take a 
+trip down memory lane...</P>
+<P></P>
+<P><B>Client Applications: Then and Now 
+<P></P></B>
+<P></P>
+<P>In the dim and distant past (that is, the mid 1990's) there was a dramatic 
+increase in the number of client applications being developed for the Microsoft® 
+Windows® platform. This increase occurred in large part due to the availability 
+of high-quality developer tools and frameworks (such as Microsoft® Visual 
+Basic®, Microsoft Visual Studio®, MFC, and so on) and because of the 
+availability of a feature-rich client platform. Ah, developer heaven.</P>
+<P></P>
+<P>The majority of these applications were standalone and operated on the client 
+machine with no regard to the environment in which they operated, both with 
+respect to the other machines and services on the network, and with respect to 
+the other applications on the user's machine. Very often, integration between 
+applications was limited to using the cut-copy-paste features provided by 
+Windows to transfer small amounts of data between applications. On the whole, 
+though, users were pleased with the increasingly useful functionality that these 
+applications now provided.</P>
+<P></P>
+<P>After a while, two-tier applications started to appear; these allowed 
+multiple users to access common data that resided on the network. Shortly 
+thereafter, DCOM allowed applications to become more distributed, with logic and 
+state no longer tied to the client machine. Both of these developments were 
+important and enabled a whole host of new scenarios and better 
+functionality.</P>
+<P></P>
+<P>All of this increased flexibility and functionality, however, came at a 
+price. Perhaps the biggest problem with rich client applications was that of 
+deployment. As the complexity of the applications and the client platform had 
+increased, so had the difficulty associated with deploying the application to 
+the client machine in a reliable and secure way. One of the biggest problems was 
+that of "DLL Hell," where one application could break another application by 
+deploying an incompatible shared component or library.</P>
+<P></P>
+<P>In addition, the increasingly connected nature of applications brought with 
+it many other problems. Connected applications were considerably more complex to 
+develop, despite the availability of developer tools and frameworks. And as the 
+size and complexity of these distributed applications grew, the tight coupling 
+between the client application and the services it consumed became increasingly 
+difficult to maintain, which in turn exacerbated the deployment and maintenance 
+problems.</P>
+<P></P>
+<P>So, while rich clients typically provided a great user experience and had 
+good developer support, they were still just too difficult to deploy and 
+maintain.</P>
+<P></P>
+<P>Around this time, the Internet came along.</P>
+<P></P>
+<P>The Internet had very little effect on rich client applications. Some 
+applications provided the ability to notify the user of available updates, or 
+allowed additional content or features to be downloaded and installed, but on 
+the whole, the Internet had little influence on how client applications were 
+developed, deployed, and maintained.</P>
+<P></P>
+<P>The Internet did provide an alternative to the traditional rich client model, 
+however, one which promised to solve all of the problems associated with 
+application deployment and maintenance. Thin client browser-based applications 
+allowed applications to be deployed and updated centrally, thereby reducing the 
+problems (and therefore the cost) associated with deploying and maintaining an 
+application. Also, thin client applications allowed companies to expose their 
+applications to a large and diverse external audience.</P>
+<P></P>
+<P>Unfortunately, this brave new world was not without disadvantages.</P>
+<P></P>
+<P>Thin client applications at that time often represented the best way to 
+expose a company's information and services to an external user base. But in 
+many cases, internal applications that would have traditionally been implemented 
+using a rich client application were also moved to the thin client model. While 
+this movement had advantages in reducing deployment complexity, it did so at the 
+cost of the user experience.</P>
+<P></P>
+<P>The usability of the applications was often much reduced and common features 
+that the user had grown accustomed to, such as drag-and-drop, undo-redo, context 
+sensitive help, and so on, were no longer available. Furthermore, the 
+responsiveness of the application was diminished, especially for business 
+applications, such as those in customer call centers, which demanded heavy data 
+entry and navigation across multiple screens.</P>
+<P></P>
+<P>And of course, the browser was entirely dependent on having a network 
+connection at all times. This meant that mobile workers had no access to the 
+applications at all, requiring them to re-enter data when they returned to the 
+office. And even when a connection was available, low bandwidth or high latency 
+connections caused performance problems and a reduction in user efficiency.</P>
+<P></P>
+<P>Developers, too, suffered in the early days of thin clients. Tool support was 
+lacking, and developers had to move from the cozy world of component-based 
+development, with type safety and object-oriented design principles, to the 
+harsh and unforgiving world of script and HTML. Only now can Web developers 
+claim to have anything approaching the same level of support as client 
+developers enjoyed 4 or 5 years ago. Even now, drag-and-drop, undo-redo, context 
+sensitive help, and other common client-side features are still extremely 
+challenging.</P>
+<P></P>
+<P>Despite these drawbacks, the deployment and management problems associated 
+with rich clients were so big that the tradeoff seemed worth it. As a result, 
+the thin client browser-based application model has dominated in recent 
+years.</P>
+<P></P>
+<P><B>Client Applications: The Next Generation 
+<P></P></B>
+<P></P>
+<P>Today we live in an information-based economy. In order to thrive in this 
+hyper-competitive market, users must access and borrow information from many 
+sources, including customers, partners, and suppliers. And users are now 
+demanding more from their applications: they want to be empowered to act, plan, 
+analyze, visualize, and explore the data, not just to read it.</P>
+<P></P>
+<P>Such concerns are not limited to a company's internal workforce. Leading 
+companies are increasingly becoming aware that they have to build a digital 
+relationship with their customers and partners, allowing them to provide faster 
+and more accurate responses to customer requests and giving them easy access to 
+purchasing, inventory, and shipping-status information. These users also need to 
+be able to work with the data within their own applications.</P>
+<P></P>
+<P>Without question, the complexity of applications is increasing, and with it 
+the expectations of the user. The thin client model is no longer able to provide 
+the required levels of functionality, performance, flexibility, and integration. 
+Users are now demanding fast and responsive applications to perform their daily 
+work in a flexible and efficient manner. Add this to the explosion of devices 
+and the increasing mobility of the workforce and it is clear that a new category 
+
+of client application is required.</P>
+<P></P>
+<P>So, the pendulum has begun to swing back towards the rich client model. But 
+what about application deployment and update? The TCO of an application is still 
+as important as it ever was, probably more so. Do you sacrifice manageability 
+for usability, or vice versa?</P>
+<P></P>
+<P><SPAN>Happily, you don't need to sacrifice either. Key capabilities now exist 
+which mean that we can take full advantage of the rich client model, providing 
+the user with an excellent user experience, while at the same time reaping the 
+benefits of centralized deployment and update. In short, this new generation of 
+client applications, the so-called "smart" clients, provides the best of both 
+worlds and adds the intelligence to manage data and connectivity to produce an 
+extremely compelling user experience.</SPAN></P>
+<P><SPAN></SPAN>W<SPAN>hile smart clients provide the benefits of a rich client 
+model with thin client manageability, they also provide much more flexibility 
+than the traditional rich client applications. For example, smart clients need 
+not be designed as monolithic desktop applications. Smart client solutions can 
+be developed that are composed of functionality from more than one client 
+application, with each application collaborating with the others to provide just 
+the right functionality to the user. Such "composite" applications integrate 
+client-side software resources into a coherent solution, or extend the 
+functionality of an existing application to provide smart client features.</P>
+<P></P>
+<P>In addition, the client platform has moved on in the past few years and now 
+includes many different types of client devices, not just desktop PCs. Such 
+devices include PDA's, SmartPhones, Tablet PCs, Laptops, set-top boxes, 
+automotive devices, retail terminals, and so on. Smart client applications can 
+be built to take maximum advantage of the features provided by the host device 
+and tuned to provide the best user experience for the typical users of these 
+devices.</P>
+<P></P>
+<P><B>Smart Client Check List 
+<P></P></B>
+<P></P>
+<P>Because of the high degree of flexibility and somewhat ambiguous nature of 
+smart client applications, it is often useful to talk about the key 
+characteristics of a smart client. These characteristics serve as a guide to the 
+features typically provided by smart clients over and above those provided by 
+traditional rich client applications. If a client application displays these 
+characteristics, then it can be said to be smart:</P>
+<P></P>
+<UL type=disc>
+  <LI><B>Utilizes Local Resources</B><BR>A smart client application always has 
+  code artifacts on the client that enable local resources to be utilized. What 
+  do we mean by local resources? We mean everything from hardware to software 
+  resources. A smart client may take advantage of the local CPU or GPU, local 
+  memory or disk, or any local devices connected to the client, such as a 
+  telephone, bar-code/RFID reader, and so on. But it may also take advantage of 
+  local software, such as Microsoft Office applications, or any installed 
+  line-of-business (LOB) applications that interact with it.<BR><BR>
+  <LI><B>Connected</B><BR>Smart client applications are never standalone and 
+
+  always form part of a larger distributed solution. This could mean that the 
+  application interacts with a number of Web services that provide access to 
+  data or an LOB application. Very often, the application has access to specific 
+  services that help maintain the application and provide deployment and update 
+  services.<BR><BR>
+  <LI><B>Offline Capable<BR></B>Because they are running on the local machine, 
+  one of the key benefits that smart client applications offer is that they can 
+  be made to work even when the user is not connected. For applications running 
+  in occasional or intermittent connectivity situations, such as those used by 
+  traveling workers or even those running on laptops, tablets, PDA's, and so on, 
+  where connectivity cannot be guaranteed at all times, being able to work while 
+  disconnected is essential. Even when the client is connected, the smart client 
+  application can improve performance and usability by caching data and managing 
+  the connection in an intelligent way.<BR><BR><B>
+  <P></P></B>
+  <LI><B>Intelligent Install and Update<BR></B>Smart client applications manage 
+  their deployment and update in a much<B> </B>more intelligent way than 
+  traditional rich client applications. The .NET framework enables application 
+  artifacts to be deployed using a variety of techniques, including simple file 
+  copy or download over HTTP. Applications can be updated while running and can 
+  be deployed on demand by clicking on a URL. The Microsoft® .NET Framework 
+  provides a powerful security mechanism that guarantees the integrity of the 
+  application and its related assemblies. Assemblies can be given limited 
+  permissions in order to restrict their functionality in semi-trusted 
+  scenarios.<B><BR><BR>
+  <P></P></B>
+  <LI><B>Client Device Flexibility<BR></B>The .NET Framework together with the 
+  .NET Compact Framework provides a common platform upon which smart client 
+  applications can be built. Often, there will be multiple versions of the smart 
+  client application, each targeting a specific device type and taking advantage 
+  of the devices unique features and providing functionality appropriate to its 
+  usage.</LI></UL>
+<P></P>
+<P><B>Smart Clients and the .NET Framework 
+<P></P></B>
+<P></P>
+<P>So how does the .NET Framework enable all of these smart client benefits?</P>
+<P></P>
+<P>The .NET Framework provides a number of fundamental capabilities, which means 
+that we no longer have to face the difficult usability versus manageability 
+tradeoff. Let's look at some of the more important features...</P>
+<P></P>
+<P>The .NET Framework has very effectively solved the problem of version 
+conflicts between assemblies shared by more than one application. A .NET 
+application or assembly has a strong coupling to the assemblies and components 
+they depend on. Assemblies are annotated with meta-data, which specifies both 
+their exact version and the versions of all dependent assemblies. Multiple 
+versions of the same assembly can be installed side-by-side so that all 
+applications can be run with the exact same version of the assembly that they 
+were built and tested against.</P>
+<P></P>
+<P>This assembly binding mechanism also provides important security safeguards. 
+Assemblies can be cryptographically signed to prevent malicious code being run 
+inadvertently, either through tampering or through luring attacks. In addition, 
+.NET Code Access Security (CAS) allows assemblies to be granted specific 
+permissions so that they can be used in semi-trusted scenarios. The .NET runtime 
+ensures that assemblies can only carry out operations for which they have been 
+granted permissions. The .NET Framework defines a flexible evidence based 
+infrastructure for determining which permissions to grant an application or 
+assembly.</P>
+<P></P>
+<P>These features effectively address application stability and predictability, 
+but what about deployment? Assemblies do not need to be registered on the local 
+machine so they can simply be copied to the machine before they are run. This 
+greatly simplifies the deployment of the application. Alternatively, assemblies 
+can be downloaded from a central server, either at install or at run time.</P>
+<P></P>
+<P>.NET also provides a deployment feature called No-Touch Deployment, which 
+allows applications to be run on a URL. When the user clicks on the URL, the 
+runtime automatically downloads the application, and all related assemblies, to 
+a special download cache. This mechanism also checks for version updates so that 
+the user never has to worry about whether they are running the latest version of 
+the application or not.</P>
+<P></P>
+<P>Applications deployed in this way are only granted a very limited amount of 
+permissions by default and are unable to access the local hard disk or access 
+any network services, apart from the service from where they were downloaded. 
+Additional permissions can be granted at the user, machine, or enterprise level 
+if required.</P>
+<P></P>
+<P>Of course, the .NET Framework provides quite a few other features that affect 
+how smart client applications can be designed and built. Of particular important 
+are the Microsoft® .NET Windows Forms classes. These classes provide very rich 
+user interface controls and give developers in all languages a common UI 
+framework to work against, making development and testing much easier. The .NET 
+Framework also provides many facilities for connecting to network services, such 
+as SOAP-based Web services, and provides comprehensive XML support.</P>
+<P></P>
+<P><B>Smart Client Architecture 
+<P></P></B>
+<P></P>
+<P>As .NET provides a number of key features that make the development of smart 
+client applications easier, what are the architectural implications of all of 
+these new features? It turns out that .NET goes beyond solving the problems that 
+plagued rich clients and enables a whole host of new possibilities. The client 
+platform now includes many different types of client device, and .NET supports 
+them through the full and compact frameworks, but that's just the start.</P>
+<P></P>
+<P>The flexible binding, deployment, and security models provided by .NET allow 
+smart client applications to be designed in much more interesting ways than 
+traditional rich clients. For example, .NET provides a lot of flexibility in how 
+the application can be "hosted": applications can be run as a traditional 
+desktop application, or can be hosted within Microsoft® Office or Microsoft® 
+Internet Explorer. Many combinations are possible. For instance, a Windows Forms 
+application can host Internet Explorer or Office components and any host can 
+subsume any other.</P>
+<P></P>
+<P>Application logic that is volatile, for example business rules governing 
+volume order discounts, can be factored into assemblies that are downloaded on 
+demand over HTTP, obviating the need to frequently "update" the client 
+application in the traditional sense. Additional (or infrequently used) 
+application features can adopt the same model so that initial application size 
+is kept to a minimum with additional features installed on an as-needed 
+basis.</P>
+<P></P>
+<P>Another popular model is the Composite Application model, where many 
+applications combine to form a coherent solution. Such solutions can be formed 
+by coupling together desktop applications, or by providing a generic "shell" 
+application that houses multiple lightweight applications combining to form the 
+solution.</P>
+<P></P>
+<P>The latter model has proven to be extremely useful in situations where the 
+user has to deal with many applications to do their work. For example, customer 
+service agents in call centers typically have to deal with many LOB 
+applications, including desktop, browser-based, and terminal-based applications. 
+All such LOB applications can be hosted within a generic Windows Forms 
+application that provides integration between them, greatly simplifying the 
+user's job and, most importantly, reducing the time spent on a particular 
+call.</P>
+<P></P>
+<P>By providing a generic shell to host these LOB applications, common 
+infrastructure features, such as security, deployment, window management, 
+application integration, auditing, and so on, can be developed, tested, and 
+re-used across different solutions, leaving the developers of the LOB 
+applications to focus on business functionality.</P>
+<P></P>
+<P>Perhaps the most compelling example of a composite smart client application 
+is Microsoft Office. Microsoft Office applications can be extended using 
+SmartTags, SmartDocuments, or with Microsoft® Visual Studio® Tools for Office 
+enabling powerful smart client solutions to be built.</P>
+<P></P>
+<P>Office smart client solutions can become an integral part of an 
+organization's information infrastructure, accessing corporate data and services 
+and providing a powerful and familiar working environment. Of course, Web 
+services provide a natural way for companies to expose data and services, and 
+smart client applications are the ultimate consumers of these Web services. And 
+since Microsoft Office also provides XML support, data can easily be shared 
+between both client and server and between the user's desktop applications.</P>
+<P></P>
+<P>Office smart client applications are capable of integrating data and services 
+provided by multiple line-of-business (LOB) applications, each accessed through 
+separate Web services. Such smart client applications can provide valuable 
+Business Intelligence functionality, providing the user with access to critical 
+business data in powerful desktop applications, such as Microsoft® Excel, where 
+they can visualize, pivot, and analyze the data as much as required.</P>
+<P></P>
+<P>And finally, the advent of service-oriented architectures (SOA) means that 
+there are huge opportunities for client applications to take advantage of the 
+many and varied services available to them. All such services are provided in an 
+industry standard way, which provides huge benefits in terms of 
+interoperability, developer tool support, and the ease with which new features 
+can be built into the smart client application.</P>
+<P></P>
+<P><B>Next Up: Whidbey and Longhorn 
+<P></P></B>
+<P></P>
+<P>The above discussion focuses on the benefits that .NET currently brings to 
+the area of smart clients. What about the future? The next release of the 
+Microsoft .NET Framework, code-named "Whidbey," will bring a whole set of new 
+features that build on the .NET Framework and make smart clients even more 
+compelling: richer and more flexible user interface components, easier thread 
+management, better tools, and a new deployment feature called click-once, which 
+builds on the no-touch deployment mechanism described above.</P>
+<P></P>
+<P>Microsoft Windows, code-named "Longhorn," will take smart clients to a whole 
+new level, with features like the presentation subsystem in Longhorn (code-named 
+"Avalon") providing next generation meta-data driven user interfaces, and the 
+storage subsystem in Longhorn (code-named "WinFS") providing huge integration 
+opportunities between applications. Check out the Longhorn smart client demo for 
+commercial real estate at <A 
+title=http://msdn.microsoft.com/Longhorn/productinfo/default.aspx 
+href="http://msdn.microsoft.com/Longhorn/productinfo/default.aspx">http://msdn.microsoft.com/Longhorn/productinfo/default.aspx</A> 
+for a glimpse of the Longhorn smart client vision.</P>
+<P></P>
+<P>Many analysts have been predicting for a while now that the pendulum has 
+swung back towards rich clients and away from browser-based applications. With 
+.NET, and especially with Whidbey and Longhorn, it looks like the time of the 
+smart client is well and truly upon us.</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P class=MsoNormal style="MARGIN: 0in 0in 0pt">Copyright © David Hill, 
+2004.<BR><FONT color=#000000>THIS CODE AND INFORMATION ARE PROVIDED "AS IS" 
+WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT 
+LIMITED TO THE IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A 
+PARTICULAR PURPOSE.</P>
+<P>&nbsp;</P></FONT></SPAN>
+<DIV class=postfoot>Published Monday, February 02, 2004 12:23 PM by <A 
+id=_ctl0____ctl0____ctl1___Entry___AuthorLink 
+href="http://blogs.msdn.com/user/Profile.aspx?UserID=2942">dphill</A> <BR>Filed 
+Under: <A id=_ctl0____ctl0____ctl1___Entry___Tags___Categories__ctl1_Link 
+href="http://blogs.msdn.com/dphill/archive/category/2264.aspx" rel=tag>Smart 
+Clients</A> </DIV></DIV></DIV>
+<H3>Comments </H3>
+<DIV id=comments>
+<DIV class=comment>
+<H4><A id=_ctl0____ctl0____ctl1___Comments___Comments__ctl0_PermaLink 
+title=permalink 
+href="http://blogs.msdn.com/dphill/articles/66300.aspx#66929">#</A> <SPAN>David 
+Hill Answers <A name=66929></A></SPAN></H4>
+<DIV class=commentsbody>David Hill has written a nice article that may be useful 
+as an introduction to /explanation of the idea of Smart Clients. I like to keep 
+documentation like this around so that I can use it to get my ideas across to 
+C-levels, non-techs, etc. Getting people to read is extremely hard at times but 
+these types of articles still work as good crib sheets and/or allow me to help 
+organize my thoughts on the subjects. </DIV>
+<DIV class=commentssubhead><SPAN class=commentspan></SPAN>Tuesday, February 03, 
+2004 6:45 PM by <A id=_ctl0____ctl0____ctl1___Comments___Comments__ctl0_NameLink 
+title=TrackBack 
+href="http://blogs.msdn.com/utility/Redirect.aspx?U=http%3a%2f%2fhdconsultants.us%2farchive%2f2004%2f02%2f03%2f426.aspx" 
+target=_blank rel=nofollow>Sirsha Development Resources Blog</A> </DIV></DIV>
+<DIV class=altcomment>
+<H4><A id=_ctl0____ctl0____ctl1___Comments___Comments__ctl1_PermaLink 
+title=permalink 
+href="http://blogs.msdn.com/dphill/articles/66300.aspx#66995">#</A> <SPAN>What 
+is a Smart Client anyway? <A name=66995></A></SPAN></H4>
+<DIV class=commentsbody></DIV>
+<DIV class=commentssubhead><SPAN class=commentspan></SPAN>Tuesday, February 03, 
+2004 10:00 PM by <A 
+id=_ctl0____ctl0____ctl1___Comments___Comments__ctl1_NameLink title=TrackBack 
+href="http://blogs.msdn.com/utility/Redirect.aspx?U=http%3a%2f%2fblogs.msdn.com%2ffrankarr%2farchive%2f2004%2f02%2f04%2f66993.aspx" 
+target=_blank rel=nofollow>frankarr's place</A> </DIV></DIV>
+<DIV class=comment>
+<H4><A id=_ctl0____ctl0____ctl1___Comments___Comments__ctl2_PermaLink 
+title=permalink 
+href="http://blogs.msdn.com/dphill/articles/66300.aspx#67015">#</A> <SPAN>re: 
+What is a Smart Client anyway?<A name=67015></A></SPAN> </H4>
+<DIV class=commentsbody>Excellent article! </DIV>
+<DIV class=commentssubhead><SPAN class=commentspan></SPAN>Tuesday, February 03, 
+2004 7:58 PM by <A id=_ctl0____ctl0____ctl1___Comments___Comments__ctl2_NameLink 
+title="Doug Reilly" 
+href="http://blogs.msdn.com/utility/Redirect.aspx?U=http%3a%2f%2fblog.mobilizedsoftware.com%2farchives%2fcat_doug_reilly.html" 
+target=_blank rel=nofollow>Doug Reilly</A> </DIV></DIV>
+<DIV class=altcomment>
+<H4><A id=_ctl0____ctl0____ctl1___Comments___Comments__ctl3_PermaLink 
+title=permalink 
+href="http://blogs.msdn.com/dphill/articles/66300.aspx#67036">#</A> <SPAN>re: 
+What is a Smart Client anyway?<A name=67036></A></SPAN> </H4>
+<DIV class=commentsbody>Thank you!!!!! Good job! </DIV>
+<DIV class=commentssubhead><SPAN class=commentspan></SPAN>Tuesday, February 03, 
+2004 9:03 PM by <A id=_ctl0____ctl0____ctl1___Comments___Comments__ctl3_NameLink 
+title="Woo Seok Seo" href="http://blogs.msdn.com/user/Profile.aspx?UserID=1001" 
+target=_blank>Woo Seok Seo</A> </DIV></DIV>
+<DIV class=comment>
+<H4><A id=_ctl0____ctl0____ctl1___Comments___Comments__ctl4_PermaLink 
+title=permalink 
+href="http://blogs.msdn.com/dphill/articles/66300.aspx#67210">#</A> <SPAN>David 
+Hill explains and discusses <A name=67210></A></SPAN></H4>
+<DIV class=commentsbody></DIV>
+<DIV class=commentssubhead><SPAN class=commentspan></SPAN>Wednesday, February 
+04, 2004 2:19 AM by <A 
+id=_ctl0____ctl0____ctl1___Comments___Comments__ctl4_NameLink title=TrackBack 
+href="http://blogs.msdn.com/utility/Redirect.aspx?U=http%3a%2f%2fweblogs.asp.net%2fduncanma%2farchive%2f2004%2f02%2f03%2f67209.aspx" 
+target=_blank rel=nofollow>Code/Tea/Etc...</A> </DIV></DIV>
+<DIV class=altcomment>
+<H4><A id=_ctl0____ctl0____ctl1___Comments___Comments__ctl5_PermaLink 
+title=permalink 
+href="http://blogs.msdn.com/dphill/articles/66300.aspx#67506">#</A> <SPAN>re: 
+What is a Smart Client anyway?<A name=67506></A></SPAN> </H4>
+<DIV class=commentsbody>&lt;David&gt; <BR>Even now, drag-and-drop, undo-redo, 
+context sensitive help, and other common client-side features are still 
+extremely challenging <BR>&lt;/David&gt; <BR>IE support all these features and 
+beyond...(databinding/XML datasources/AOP=attached behaviors/expando properties 
+exists in IE for ages) <BR>I'm more close to admit that web client is more 
+feature rich(=flexible,powerful etc.) than windows client at present 
+time(remember SVG/SMIL or gradients(filters) coming from?),it just another kind. 
+<BR>Seems Microsoft agreed with me because it expand her browser BOM to support 
+.NET (Longhorn XAML=custom/extended HTML+.NET capabilities) <BR>So smart client 
+is simple hosted application-office or IE dosen't matter IMHO,more powerful host 
+environment-more powerful application-that's all ;-) </DIV>
+<DIV class=commentssubhead><SPAN class=commentspan></SPAN>Wednesday, February 
+04, 2004 10:22 AM by <A 
+id=_ctl0____ctl0____ctl1___Comments___Comments__ctl5_NameLink title=Andrew 
+href="http://blogs.msdn.com/user/Profile.aspx?UserID=1001" 
+target=_blank>Andrew</A> </DIV></DIV>
+<DIV class=comment>
+
+<H4><A id=_ctl0____ctl0____ctl1___Comments___Comments__ctl6_PermaLink 
+title=permalink 
+href="http://blogs.msdn.com/dphill/articles/66300.aspx#67658">#</A> <SPAN>David 
+Hill explains and discusses <A name=67658></A></SPAN></H4>
+<DIV class=commentsbody></DIV>
+<DIV class=commentssubhead><SPAN class=commentspan></SPAN>Wednesday, February 
+04, 2004 7:01 PM by <A 
+id=_ctl0____ctl0____ctl1___Comments___Comments__ctl6_NameLink title=TrackBack 
+href="http://blogs.msdn.com/utility/Redirect.aspx?U=http%3a%2f%2fweblogs.asp.net%2fduncanma%2farchive%2f0001%2f01%2f01%2f67209.aspx" 
+target=_blank rel=nofollow>Code/Tea/Etc...</A> </DIV></DIV>
+<DIV class=altcomment>
+<H4><A id=_ctl0____ctl0____ctl1___Comments___Comments__ctl7_PermaLink 
+title=permalink 
+href="http://blogs.msdn.com/dphill/articles/66300.aspx#68022">#</A> <SPAN>What 
+is a Smart Client anyway?<A name=68022></A></SPAN> </H4>
+<DIV class=commentsbody>What is a Smart Client anyway?... </DIV>
+<DIV class=commentssubhead><SPAN class=commentspan></SPAN>Thursday, February 05, 
+2004 10:07 AM by <A 
+id=_ctl0____ctl0____ctl1___Comments___Comments__ctl7_NameLink title=TrackBack 
+href="http://blogs.msdn.com/utility/Redirect.aspx?U=http%3a%2f%2fwww.kegz.net%2fblog%2fcodetips%2farchives%2f001298.html" 
+target=_blank rel=nofollow>Coding tips I need to write down</A> </DIV></DIV>
+<DIV class=comment>
+<H4><A id=_ctl0____ctl0____ctl1___Comments___Comments__ctl8_PermaLink 
+title=permalink 
+href="http://blogs.msdn.com/dphill/articles/66300.aspx#68889">#</A> <SPAN>What 
+is a Smart Client anyway?<A name=68889></A></SPAN> </H4>
+<DIV class=commentsbody></DIV>
+<DIV class=commentssubhead><SPAN class=commentspan></SPAN>Friday, February 06, 
+2004 3:17 PM by <A id=_ctl0____ctl0____ctl1___Comments___Comments__ctl8_NameLink 
+title=TrackBack 
+href="http://blogs.msdn.com/utility/Redirect.aspx?U=http%3a%2f%2fweblogs.univa.mx%2fnazul%2farchive%2f2004%2f02%2f06%2f885.aspx" 
+target=_blank rel=nofollow>Nazul's Weblog</A> </DIV></DIV>
+<DIV class=altcomment>
+<H4><A id=_ctl0____ctl0____ctl1___Comments___Comments__ctl9_PermaLink 
+title=permalink 
+href="http://blogs.msdn.com/dphill/articles/66300.aspx#68895">#</A> <SPAN>What 
+is a Smart Client anyway?<A name=68895></A></SPAN> </H4>
+<DIV class=commentsbody></DIV>
+<DIV class=commentssubhead><SPAN class=commentspan></SPAN>Friday, February 06, 
+2004 3:21 PM by <A id=_ctl0____ctl0____ctl1___Comments___Comments__ctl9_NameLink 
+title=TrackBack 
+href="http://blogs.msdn.com/utility/Redirect.aspx?U=http%3a%2f%2fwww.nazul.net%2fblog%2farchive%2f0001%2f01%2f01%2f741.aspx" 
+target=_blank rel=nofollow>Nazul's Weblog</A> </DIV></DIV>
+<DIV class=comment>
+<H4><A id=_ctl0____ctl0____ctl1___Comments___Comments__ctl10_PermaLink 
+title=permalink 
+href="http://blogs.msdn.com/dphill/articles/66300.aspx#68898">#</A> <SPAN>What 
+is a Smart Client anyway?<A name=68898></A></SPAN> </H4>
+<DIV class=commentsbody></DIV>
+<DIV class=commentssubhead><SPAN class=commentspan></SPAN>Friday, February 06, 
+2004 3:22 PM by <A 
+id=_ctl0____ctl0____ctl1___Comments___Comments__ctl10_NameLink title=TrackBack 
+href="http://blogs.msdn.com/utility/Redirect.aspx?U=http%3a%2f%2fweblogs.univa.mx%2fnazul%2farchive%2f0001%2f01%2f01%2f885.aspx" 
+target=_blank rel=nofollow>Nazul's Weblog</A> </DIV></DIV>
+<DIV class=altcomment>
+<H4><A id=_ctl0____ctl0____ctl1___Comments___Comments__ctl11_PermaLink 
+title=permalink 
+href="http://blogs.msdn.com/dphill/articles/66300.aspx#70406">#</A> <SPAN>Good 
+article about smart clients<A name=70406></A></SPAN> </H4>
+<DIV class=commentsbody></DIV>
+<DIV class=commentssubhead><SPAN class=commentspan></SPAN>Monday, February 09, 
+2004 11:59 PM by <A 
+id=_ctl0____ctl0____ctl1___Comments___Comments__ctl11_NameLink title=TrackBack 
+href="http://blogs.msdn.com/utility/Redirect.aspx?U=http%3a%2f%2fblog.markaolson.com%2farchive%2f2004%2f02%2f09%2f156.aspx" 
+target=_blank rel=nofollow>Mark Olson's blog</A> </DIV></DIV>
+<DIV class=comment>
+<H4><A id=_ctl0____ctl0____ctl1___Comments___Comments__ctl12_PermaLink 
+title=permalink 
+href="http://blogs.msdn.com/dphill/articles/66300.aspx#70432">#</A> <SPAN>Good 
+article about smart clients<A name=70432></A></SPAN> </H4>
+<DIV class=commentsbody></DIV>
+<DIV class=commentssubhead><SPAN class=commentspan></SPAN>Tuesday, February 10, 
+2004 12:44 AM by <A 
+id=_ctl0____ctl0____ctl1___Comments___Comments__ctl12_NameLink title=TrackBack 
+href="http://blogs.msdn.com/utility/Redirect.aspx?U=http%3a%2f%2fblog.markaolson.com%2farchive%2f0001%2f01%2f01%2f156.aspx" 
+target=_blank rel=nofollow>Mark Olson's blog</A> </DIV></DIV>
+<DIV class=altcomment>
+<H4><A id=_ctl0____ctl0____ctl1___Comments___Comments__ctl13_PermaLink 
+title=permalink 
+href="http://blogs.msdn.com/dphill/articles/66300.aspx#71262">#</A> <SPAN>re: 
+What is a Smart Client anyway?<A name=71262></A></SPAN> </H4>
+<DIV class=commentsbody>Hi David! <BR>Thank you for this very good introduction 
+into smart clients! <BR>i have a question concerning the check list: would you 
+call a client, that fulfills all points, but communicates with .net remoting 
+instead of web services, as a smart client, too? <BR>Thanks for your reply! 
+<BR>Bye, Christoph <BR><BR></DIV>
+<DIV class=commentssubhead><SPAN class=commentspan></SPAN>Wednesday, February 
+11, 2004 4:57 AM by <A 
+id=_ctl0____ctl0____ctl1___Comments___Comments__ctl13_NameLink 
+title="Christoph Hanser" 
+href="http://blogs.msdn.com/utility/Redirect.aspx?U=http%3a%2f%2fchristoph.usegroup.de" 
+target=_blank rel=nofollow>Christoph Hanser</A> </DIV></DIV>
+<DIV class=comment>
+<H4><A id=_ctl0____ctl0____ctl1___Comments___Comments__ctl14_PermaLink 
+title=permalink 
+href="http://blogs.msdn.com/dphill/articles/66300.aspx#82711">#</A> <SPAN>Smart 
+Client Offline Application Block<A name=82711></A></SPAN> </H4>
+<DIV class=commentsbody>Last month Microsoft released a new application block. 
+This application block of re-usable code and samples, can be used to model your 
+own applications to allow them to detect the presence or absence of a network 
+connection, cache data for use while offline, and re-synchronize data and tasks 
+with the network once the application goes online. </DIV>
+<DIV class=commentssubhead><SPAN class=commentspan></SPAN>Tuesday, March 02, 
+2004 11:47 AM by <A 
+id=_ctl0____ctl0____ctl1___Comments___Comments__ctl14_NameLink title=TrackBack 
+href="http://blogs.msdn.com/utility/Redirect.aspx?U=http%3a%2f%2fwww2.ryanfarley.com%3a82%2fblog%2fposts%2f393.aspx" 
+target=_blank rel=nofollow>{ public virtual blog; }</A> </DIV></DIV>
+<DIV class=altcomment>
+<H4><A id=_ctl0____ctl0____ctl1___Comments___Comments__ctl15_PermaLink 
+title=permalink 
+href="http://blogs.msdn.com/dphill/articles/66300.aspx#90058">#</A> <SPAN>re: 
+What is a Smart Client anyway?<A name=90058></A></SPAN> </H4>
+<DIV class=commentsbody>Any thoughts on these two? <BR><BR>Macromedia Flex 
+<BR><A href="http://www.macromedia.com/software/flex/" 
+target=_new>http://www.macromedia.com/software/flex/</A> <BR><BR>Curl <BR><A 
+href="http://www.curl.com/" target=_new>http://www.curl.com/</A> <BR></DIV>
+<DIV class=commentssubhead><SPAN class=commentspan></SPAN>Monday, March 15, 2004 
+3:29 PM by <A id=_ctl0____ctl0____ctl1___Comments___Comments__ctl15_NameLink 
+title="Flex and Curl too" 
+href="http://blogs.msdn.com/user/Profile.aspx?UserID=1001" target=_blank>Flex 
+and Curl too</A> </DIV></DIV>
+<DIV class=comment>
+<H4><A id=_ctl0____ctl0____ctl1___Comments___Comments__ctl16_PermaLink 
+title=permalink 
+href="http://blogs.msdn.com/dphill/articles/66300.aspx#94618">#</A> <SPAN>re: 
+What is a Smart Client anyway?<A name=94618></A></SPAN> </H4>
+<DIV class=commentsbody>An excellent article on smart clients. Do you have any 
+idea how many enterprises are considering using smart client apps instead of 
+browser-baseed apps? We are finding that many of the enterprises we talk to 
+still mandate browser based solutions even for applications running behind 
+firewalls. <BR><BR></DIV>
+<DIV class=commentssubhead><SPAN class=commentspan></SPAN>Tuesday, March 23, 
+2004 10:12 AM by <A 
+id=_ctl0____ctl0____ctl1___Comments___Comments__ctl16_NameLink title="Tom Bason" 
+href="http://blogs.msdn.com/utility/Redirect.aspx?U=http%3a%2f%2fwww.sysmanagement.com" 
+target=_blank rel=nofollow>Tom Bason</A> </DIV></DIV>
+<DIV class=altcomment>
+<H4><A id=_ctl0____ctl0____ctl1___Comments___Comments__ctl17_PermaLink 
+title=permalink 
+href="http://blogs.msdn.com/dphill/articles/66300.aspx#102197">#</A> <SPAN>re: 
+What is a Smart Client anyway?<A name=102197></A></SPAN> </H4>
+<DIV class=commentsbody>some screen shots of smart client application would have 
+made it much better. Anyway excellent! and thanks. </DIV>
+<DIV class=commentssubhead><SPAN class=commentspan></SPAN>Monday, March 29, 2004 
+10:48 PM by <A id=_ctl0____ctl0____ctl1___Comments___Comments__ctl17_NameLink 
+title=karthikpaandian 
+href="http://blogs.msdn.com/utility/Redirect.aspx?U=http%3a%2f%2fkarthik%40brijdatalink.com" 
+target=_blank rel=nofollow>karthikpaandian</A> </DIV></DIV>
+<DIV class=comment>
+<H4><A id=_ctl0____ctl0____ctl1___Comments___Comments__ctl18_PermaLink 
+title=permalink 
+href="http://blogs.msdn.com/dphill/articles/66300.aspx#114719">#</A> <SPAN>re: 
+What is a Smart Client anyway?<A name=114719></A></SPAN> </H4>
+<DIV class=commentsbody>Christoph, since you haven't got an answer to you 
+question, this is what I think (and I don't claim to be an expert here). I think 
+that a smart client is alright if its getting its data through remoting instead 
+of web services, what matters (data-wise) I suggest is that it is able to adapt 
+to online and offline scenarios (by caching operations) and allow the users to 
+work seamlessly 100% of the time. </DIV>
+<DIV class=commentssubhead><SPAN class=commentspan></SPAN>Friday, April 16, 2004 
+10:22 AM by <A id=_ctl0____ctl0____ctl1___Comments___Comments__ctl18_NameLink 
+title="Christian Amelinckx" 
+href="http://blogs.msdn.com/user/Profile.aspx?UserID=1001" 
+target=_blank>Christian Amelinckx</A> </DIV></DIV>
+<DIV class=altcomment>
+<H4><A id=_ctl0____ctl0____ctl1___Comments___Comments__ctl19_PermaLink 
+title=permalink 
+href="http://blogs.msdn.com/dphill/articles/66300.aspx#129710">#</A> <SPAN>re: 
+What is a Smart Client anyway?<A name=129710></A></SPAN> </H4>
+<DIV class=commentsbody>Davuid, <BR><BR>What have you tested of Utopia ideas of 
+Microsoft. No touch deployment in Microsoft envrironment has always been 
+promisses, but never delivered. Why do I always have to restart my PC after a 
+Patch download....? <BR>I can imagine the .Net frame provided more descent 
+software distribution features, but 'No touch' cann't be done with this 
+technology. </DIV>
+<DIV class=commentssubhead><SPAN class=commentspan></SPAN>Tuesday, May 11, 2004 
+5:11 AM by <A id=_ctl0____ctl0____ctl1___Comments___Comments__ctl19_NameLink 
+title=Guillem href="http://blogs.msdn.com/user/Profile.aspx?UserID=1001" 
+target=_blank>Guillem</A> </DIV></DIV>
+<DIV class=comment>
+<H4><A id=_ctl0____ctl0____ctl1___Comments___Comments__ctl20_PermaLink 
+title=permalink 
+href="http://blogs.msdn.com/dphill/articles/66300.aspx#132319">#</A> <SPAN>Can 
+you be too rich or too thin? How about too smart?<A name=132319></A></SPAN> 
+</H4>
+<DIV class=commentsbody></DIV>
+<DIV class=commentssubhead><SPAN class=commentspan></SPAN>Friday, May 14, 2004 
+6:58 PM by <A id=_ctl0____ctl0____ctl1___Comments___Comments__ctl20_NameLink 
+title=TrackBack 
+href="http://blogs.msdn.com/utility/Redirect.aspx?U=http%3a%2f%2f217.45.146.189%2farchive%2f2004%2f05%2f15%2f171.aspx" 
+target=_blank rel=nofollow>Notes2Self.net</A> </DIV></DIV>
+<DIV class=altcomment>
+<H4><A id=_ctl0____ctl0____ctl1___Comments___Comments__ctl21_PermaLink 
+title=permalink 
+href="http://blogs.msdn.com/dphill/articles/66300.aspx#132321">#</A> <SPAN>Can 
+you be too rich or too thin? How about too smart?<A name=132321></A></SPAN> 
+</H4>
+<DIV class=commentsbody></DIV>
+<DIV class=commentssubhead><SPAN class=commentspan></SPAN>Friday, May 14, 2004 
+7:01 PM by <A id=_ctl0____ctl0____ctl1___Comments___Comments__ctl21_NameLink 
+title=TrackBack 
+href="http://blogs.msdn.com/utility/Redirect.aspx?U=http%3a%2f%2f217.45.146.189%2farchive%2f0001%2f01%2f01%2f171.aspx" 
+target=_blank rel=nofollow>Notes2Self.net</A> </DIV></DIV>
+<DIV class=comment>
+<H4><A id=_ctl0____ctl0____ctl1___Comments___Comments__ctl22_PermaLink 
+title=permalink 
+href="http://blogs.msdn.com/dphill/articles/66300.aspx#141455">#</A> <SPAN>re: 
+What is a Smart Client anyway?<A name=141455></A></SPAN> </H4>
+<DIV class=commentsbody>It's a very good introduction into smart clients. Could 
+you tell me where I can get an example code? </DIV>
+<DIV class=commentssubhead><SPAN class=commentspan></SPAN>Tuesday, May 25, 2004 
+10:07 AM by <A id=_ctl0____ctl0____ctl1___Comments___Comments__ctl22_NameLink 
+title=Jerry href="http://blogs.msdn.com/user/Profile.aspx?UserID=1001" 
+target=_blank>Jerry</A> </DIV></DIV>
+<DIV class=altcomment>
+<H4><A id=_ctl0____ctl0____ctl1___Comments___Comments__ctl23_PermaLink 
+title=permalink 
+href="http://blogs.msdn.com/dphill/articles/66300.aspx#141984">#</A> <SPAN>re: 
+What is a Smart Client anyway?<A name=141984></A></SPAN> </H4>
+<DIV class=commentsbody>I am new to smart client and just attended David Hill's 
+session. I am trying to understand the server side of the smart client. Why does 
+it have to be a web server? Why does the client access web services? In other 
+words, why can the client be accessing data via normal object instanciation on a 
+normal WIN 2003 server, possibly running SQL server? I don't get the advantages 
+of the web services? Thank you. </DIV>
+<DIV class=commentssubhead><SPAN class=commentspan></SPAN>Tuesday, May 25, 2004 
+9:35 PM by <A id=_ctl0____ctl0____ctl1___Comments___Comments__ctl23_NameLink 
+title=Warren href="http://blogs.msdn.com/user/Profile.aspx?UserID=1001" 
+target=_blank>Warren</A> </DIV></DIV>
+<DIV class=comment>
+<H4><A id=_ctl0____ctl0____ctl1___Comments___Comments__ctl24_PermaLink 
+title=permalink 
+href="http://blogs.msdn.com/dphill/articles/66300.aspx#144386">#</A> <SPAN>re: 
+What is a Smart Client anyway?<A name=144386></A></SPAN> </H4>
+<DIV class=commentsbody>Hi! <BR><BR>i'v a little query... is there a way to run 
+smart client without a .net framework ... i mean if .net CLR not installed on a 
+client machine ..is there a way that smart client automatically detects it and 
+downloaad CLR automatically.. this is very crucial for my app.. as my 
+requirements are perfectly matched by SmartCLient but my client dont wana 
+dowload anythng... so i'm considering to move towards ActiveX. <BR><BR>ur quick 
+comments needed <BR><BR>Faraz </DIV>
+<DIV class=commentssubhead><SPAN class=commentspan></SPAN>Saturday, May 29, 2004 
+7:54 AM by <A id=_ctl0____ctl0____ctl1___Comments___Comments__ctl24_NameLink 
+title=Faraz href="http://blogs.msdn.com/user/Profile.aspx?UserID=1001" 
+target=_blank>Faraz</A> </DIV></DIV>
+<DIV class=altcomment>
+<H4><A id=_ctl0____ctl0____ctl1___Comments___Comments__ctl25_PermaLink 
+title=permalink 
+href="http://blogs.msdn.com/dphill/articles/66300.aspx#146492">#</A> <SPAN>re: 
+What is a Smart Client anyway?<A name=146492></A></SPAN> </H4>
+<DIV class=commentsbody>To detect if CLR runtime is installed on client machine, 
+u can print value of <BR><BR>Request.Browser.ClrVersion.ToString() <BR><BR>and 
+for download instructions check the link, <BR><BR><A 
+href="http://msdn.microsoft.com/netframework/using/building/windows/analystreports/smartclient.aspx" 
+target=_new>http://msdn.microsoft.com/netframework/using/building/windows/analystreports/smartclient.aspx</A> 
+<BR></DIV>
+<DIV class=commentssubhead><SPAN class=commentspan></SPAN>Wednesday, June 02, 
+2004 4:43 AM by <A 
+id=_ctl0____ctl0____ctl1___Comments___Comments__ctl25_NameLink title=rahulm 
+href="http://blogs.msdn.com/user/Profile.aspx?UserID=1001" 
+target=_blank>rahulm</A> </DIV></DIV>
+<DIV class=comment>
+<H4><A id=_ctl0____ctl0____ctl1___Comments___Comments__ctl26_PermaLink 
+title=permalink 
+href="http://blogs.msdn.com/dphill/articles/66300.aspx#153613">#</A> <SPAN>David 
+Hill's Smart Client discussion<A name=153613></A></SPAN> </H4>
+<DIV class=commentsbody></DIV>
+<DIV class=commentssubhead><SPAN class=commentspan></SPAN>Friday, June 11, 2004 
+12:01 PM by <A id=_ctl0____ctl0____ctl1___Comments___Comments__ctl26_NameLink 
+title=TrackBack 
+href="http://blogs.msdn.com/utility/Redirect.aspx?U=http%3a%2f%2fmtaulty.com%2fblog%2farchive%2f2004%2f06%2f11%2f478.aspx" 
+target=_blank rel=nofollow>Mike Taulty's Weblog</A> </DIV></DIV>
+<DIV class=altcomment>
+<H4><A id=_ctl0____ctl0____ctl1___Comments___Comments__ctl27_PermaLink 
+title=permalink 
+href="http://blogs.msdn.com/dphill/articles/66300.aspx#155956">#</A> <SPAN>Dick 
+ist wieder schick<A name=155956></A></SPAN> </H4>
+<DIV class=commentsbody>Seit Jahren schon rennen weite Teile der IT-Branche 
+gegen das PC-Konzept an: Die bisher zumeist mit Windows ausgestatteten Fat 
+Client-Desktops gelten als teuer, kompliziert und schwer zu administrieren. Doch 
+mit dem lange gehypten Gegenentwurf, dem abgespeckten Thin Client auf 
+Terminal-... </DIV>
+<DIV class=commentssubhead><SPAN class=commentspan></SPAN>Tuesday, June 15, 2004 
+8:09 AM by <A id=_ctl0____ctl0____ctl1___Comments___Comments__ctl27_NameLink 
+title=TrackBack 
+href="http://blogs.msdn.com/utility/Redirect.aspx?U=http%3a%2f%2fwww.cydome.de%2fwmiedl%2farchives%2f000400.shtml" 
+target=_blank rel=nofollow>Wolfgang Miedl</A> </DIV></DIV>
+<DIV class=comment>
+<H4><A id=_ctl0____ctl0____ctl1___Comments___Comments__ctl28_PermaLink 
+title=permalink 
+href="http://blogs.msdn.com/dphill/articles/66300.aspx#175807">#</A> <SPAN>I 
+still dont understand !<A name=175807></A></SPAN> </H4>
+<DIV class=commentsbody>lets say i'm planning an information system with a 
+database. <BR>i'm doing a web application project, so where is the DB located ? 
+<BR>if its located at the server, how come a client can work offline and still 
+update the main DB ? </DIV>
+<DIV class=commentssubhead><SPAN class=commentspan></SPAN>Wednesday, July 07, 
+2004 3:49 PM by <A 
+id=_ctl0____ctl0____ctl1___Comments___Comments__ctl28_NameLink title=Eran 
+href="http://blogs.msdn.com/user/Profile.aspx?UserID=1001" 
+target=_blank>Eran</A> </DIV></DIV>
+<DIV class=altcomment>
+<H4><A id=_ctl0____ctl0____ctl1___Comments___Comments__ctl29_PermaLink 
+title=permalink 
+href="http://blogs.msdn.com/dphill/articles/66300.aspx#176672">#</A> <SPAN>re: I 
+still dont understand !<A name=176672></A></SPAN> </H4>
+<DIV class=commentsbody>With a thin client application the database would be 
+located at the server side and the user interface is provided by a browser. You 
+would not be able to access the application at all when offline. This is a 
+fundamental limitation of the thin client model. <BR><BR>With a smart client 
+application, the client part of the application can be run when the user is 
+offline. You provide some form of client side storage for the data and then 
+synchronize this with the main database on the server when the user goes back 
+online. </DIV>
+<DIV class=commentssubhead><SPAN class=commentspan></SPAN>Thursday, July 08, 
+2004 2:09 AM by <A 
+id=_ctl0____ctl0____ctl1___Comments___Comments__ctl29_NameLink 
+title="David Hill" 
+href="http://blogs.msdn.com/utility/Redirect.aspx?U=http%3a%2f%2fweblogs.asp.net%2fdphill%2f" 
+target=_blank rel=nofollow>David Hill</A> </DIV></DIV>
+<DIV class=comment>
+<H4><A id=_ctl0____ctl0____ctl1___Comments___Comments__ctl30_PermaLink 
+title=permalink 
+href="http://blogs.msdn.com/dphill/articles/66300.aspx#176685">#</A> <SPAN>re: I 
+still dont understand !<A name=176685></A></SPAN> </H4>
+<DIV class=commentsbody>With a thin client application the database would be 
+located at the server side and the user interface is provided by a browser. You 
+would not be able to access the application at all when offline. This is a 
+fundamental limitation of the thin client model. <BR><BR>With a smart client 
+application, the client part of the application can be run when the user is 
+offline. You provide some form of client side storage for the data and then 
+synchronize this with the main database on the server when the user goes back 
+online. </DIV>
+<DIV class=commentssubhead><SPAN class=commentspan></SPAN>Thursday, July 08, 
+2004 2:09 AM by <A 
+id=_ctl0____ctl0____ctl1___Comments___Comments__ctl30_NameLink 
+title="David Hill" 
+href="http://blogs.msdn.com/utility/Redirect.aspx?U=http%3a%2f%2fweblogs.asp.net%2fdphill%2f" 
+target=_blank rel=nofollow>David Hill</A> </DIV></DIV>
+<DIV class=altcomment>
+<H4><A id=_ctl0____ctl0____ctl1___Comments___Comments__ctl31_PermaLink 
+title=permalink 
+href="http://blogs.msdn.com/dphill/articles/66300.aspx#190112">#</A> <SPAN>re: 
+What is a Smart Client anyway?<A name=190112></A></SPAN> </H4>
+<DIV class=commentsbody>Smart client, it seems intersting , but the problem will 
+arise in the corruption of local data storage ,unless we use Oracle or SQL 
+Server DB at teh client , and even if we assume we fixed the DB problem , we 
+have another issue which the time needed to synchronize local Data with server 
+data. </DIV>
+<DIV class=commentssubhead><SPAN class=commentspan></SPAN>Wednesday, July 21, 
+2004 11:58 AM by <A 
+id=_ctl0____ctl0____ctl1___Comments___Comments__ctl31_NameLink title=Hassan 
+href="http://blogs.msdn.com/utility/Redirect.aspx?U=http%3a%2f%2fwww.geocities.com%2fhassona" 
+target=_blank rel=nofollow>Hassan</A> </DIV></DIV>
+<DIV class=comment>
+<H4><A id=_ctl0____ctl0____ctl1___Comments___Comments__ctl32_PermaLink 
+title=permalink 
+href="http://blogs.msdn.com/dphill/articles/66300.aspx#191196">#</A> <SPAN>What 
+is a Smart Client anyway? <A name=191196></A></SPAN></H4>
+<DIV class=commentsbody></DIV>
+<DIV class=commentssubhead><SPAN class=commentspan></SPAN>Thursday, July 22, 
+2004 11:02 AM by <A 
+id=_ctl0____ctl0____ctl1___Comments___Comments__ctl32_NameLink title=TrackBack 
+href="http://blogs.msdn.com/utility/Redirect.aspx?U=http%3a%2f%2fbillshen.ath.cx%2fBlog%2farchive%2f2004%2f07%2f22%2f194.aspx" 
+target=_blank rel=nofollow>Bill Shen's Blog</A> </DIV></DIV>
+<DIV class=altcomment>
+<H4><A id=_ctl0____ctl0____ctl1___Comments___Comments__ctl33_PermaLink 
+title=permalink 
+href="http://blogs.msdn.com/dphill/articles/66300.aspx#191559">#</A> <SPAN>re: 
+What is a Smart Client anyway?<A name=191559></A></SPAN> </H4>
+<DIV class=commentsbody>Maintaining data consistency on the client can be a 
+problem if you need to account for reliability situations - such as power 
+failures, application crashes etc. In these cases it is best to employ a local 
+database and write to it using a local transaction. In this way, the data 
+remains consistent even in the case of failure. You can use SQL Server, MSDE, 
+SQL CE on the client for this. Local consistency is not usually such a problem - 
+maintaining consistency of data between the client and server is more 
+challenging. <BR><BR>With regard to the time taken to synchronize data, the key 
+is to only synchronize data that has changed. This applies to data going to the 
+client (for example, cached data) and data going to the server (data that the 
+client has changed). There is rarely any need to send all of the data either 
+way. And of course, the time taken to synchronize depends on the communication 
+mechanism and network connection quality as well as the amount of data. 
+<BR><BR>If you need to enable offline use, and expect that data synchronization 
+will take a long time, say because of the volume of data or the speed of the 
+connection, then the data should be synchronized in the background so that the 
+user can carry on working. <BR></DIV>
+<DIV class=commentssubhead><SPAN class=commentspan></SPAN>Thursday, July 22, 
+2004 1:09 PM by <A 
+id=_ctl0____ctl0____ctl1___Comments___Comments__ctl33_NameLink 
+title="David Hill" 
+href="http://blogs.msdn.com/utility/Redirect.aspx?U=http%3a%2f%2fblogs.msdn.com%2fdphill" 
+target=_blank rel=nofollow>David Hill</A> </DIV></DIV>
+<DIV class=comment>
+<H4><A id=_ctl0____ctl0____ctl1___Comments___Comments__ctl34_PermaLink 
+title=permalink 
+href="http://blogs.msdn.com/dphill/articles/66300.aspx#197938">#</A> <SPAN>re: 
+What is a Smart Client anyway?<A name=197938></A></SPAN> </H4>
+<DIV class=commentsbody>Excellent article explaining smart clients and their 
+differences with rich and thin Clients! <BR>Thanks you David. </DIV>
+<DIV class=commentssubhead><SPAN class=commentspan></SPAN>Tuesday, July 27, 2004 
+12:34 AM by <A id=_ctl0____ctl0____ctl1___Comments___Comments__ctl34_NameLink 
+title="Ratan Sen" href="http://blogs.msdn.com/user/Profile.aspx?UserID=1001" 
+target=_blank>Ratan Sen</A> </DIV></DIV>
+<DIV class=altcomment>
+<H4><A id=_ctl0____ctl0____ctl1___Comments___Comments__ctl35_PermaLink 
+title=permalink 
+href="http://blogs.msdn.com/dphill/articles/66300.aspx#202876">#</A> <SPAN>Thin, 
+thick or just everywhere?<A name=202876></A></SPAN> </H4>
+<DIV class=commentsbody>Dare Obasanjo </DIV>
+<DIV class=commentssubhead><SPAN class=commentspan></SPAN>Saturday, July 31, 
+2004 6:29 AM by <A 
+id=_ctl0____ctl0____ctl1___Comments___Comments__ctl35_NameLink title=TrackBack 
+href="http://blogs.msdn.com/utility/Redirect.aspx?U=http%3a%2f%2fo3.indiatimes.com%2fthreeos%2farchive%2f2004%2f07%2f31%2f388.aspx" 
+target=_blank rel=nofollow>The Three Os</A> </DIV></DIV>
+<DIV class=comment>
+<H4><A id=_ctl0____ctl0____ctl1___Comments___Comments__ctl36_PermaLink 
+title=permalink 
+href="http://blogs.msdn.com/dphill/articles/66300.aspx#202880">#</A> <SPAN>Thin, 
+thick or just everywhere?<A name=202880></A></SPAN> </H4>
+<DIV class=commentsbody>Dare Obasanjo </DIV>
+<DIV class=commentssubhead><SPAN class=commentspan></SPAN>Saturday, July 31, 
+2004 6:36 AM by <A 
+id=_ctl0____ctl0____ctl1___Comments___Comments__ctl36_NameLink title=TrackBack 
+href="http://blogs.msdn.com/utility/Redirect.aspx?U=http%3a%2f%2fo3.indiatimes.com%2fthreeos%2farchive%2f0001%2f01%2f01%2f388.aspx" 
+target=_blank rel=nofollow>The Three Os</A> </DIV></DIV>
+<DIV class=altcomment>
+<H4><A id=_ctl0____ctl0____ctl1___Comments___Comments__ctl37_PermaLink 
+title=permalink 
+href="http://blogs.msdn.com/dphill/articles/66300.aspx#220109">#</A> <SPAN>David 
+Hill explains and discusses <A name=220109></A></SPAN></H4>
+<DIV class=commentsbody></DIV>
+
+<DIV class=commentssubhead><SPAN class=commentspan></SPAN>Wednesday, August 25, 
+2004 6:15 AM by <A 
+id=_ctl0____ctl0____ctl1___Comments___Comments__ctl37_NameLink title=TrackBack 
+href="http://blogs.msdn.com/utility/Redirect.aspx?U=http%3a%2f%2fblogs.duncanmackenzie.net%2fduncanma%2farchive%2f2004%2f02%2f04%2f379.aspx" 
+target=_blank rel=nofollow>Code/Tea/Etc.</A> </DIV></DIV>
+<DIV class=comment>
+<H4><A id=_ctl0____ctl0____ctl1___Comments___Comments__ctl38_PermaLink 
+title=permalink 
+href="http://blogs.msdn.com/dphill/articles/66300.aspx#224420">#</A> 
+<SPAN>Offline Application Block<A name=224420></A></SPAN> </H4>
+<DIV class=commentsbody></DIV>
+<DIV class=commentssubhead><SPAN class=commentspan></SPAN>Wednesday, September 
+01, 2004 10:41 PM by <A 
+id=_ctl0____ctl0____ctl1___Comments___Comments__ctl38_NameLink title=TrackBack 
+href="http://blogs.msdn.com/utility/Redirect.aspx?U=http%3a%2f%2fthinkingit.net%2fweblog%2farchive%2f0001%2f01%2f01%2f175.aspx" 
+target=_blank rel=nofollow>ThinkingIT.net, el weblog de Matias Owsianik</A> 
+</DIV></DIV>
+<DIV class=altcomment>
+<H4><A id=_ctl0____ctl0____ctl1___Comments___Comments__ctl39_PermaLink 
+title=permalink 
+href="http://blogs.msdn.com/dphill/articles/66300.aspx#241204">#</A> <SPAN>re: 
+Nasa's Smart Client Application (World Wind 1.2)<A name=241204></A></SPAN> </H4>
+<DIV class=commentsbody></DIV>
+<DIV class=commentssubhead><SPAN class=commentspan></SPAN>Tuesday, October 12, 
+2004 8:49 AM by <A 
+id=_ctl0____ctl0____ctl1___Comments___Comments__ctl39_NameLink title=TrackBack 
+href="http://blogs.msdn.com/utility/Redirect.aspx?U=http%3a%2f%2fweblogs.asp.net%2fssadasivuni%2farchive%2f2004%2f10%2f12%2f241203.aspx" 
+target=_blank rel=nofollow>Dev Notes</A> </DIV></DIV>
+<DIV class=comment>
+<H4><A id=_ctl0____ctl0____ctl1___Comments___Comments__ctl40_PermaLink 
+title=permalink 
+href="http://blogs.msdn.com/dphill/articles/66300.aspx#241205">#</A> <SPAN>re: 
+Nasa's Smart Client Application (World Wind 1.2)<A name=241205></A></SPAN> </H4>
+<DIV class=commentsbody></DIV>
+<DIV class=commentssubhead><SPAN class=commentspan></SPAN>Tuesday, October 12, 
+2004 8:49 AM by <A 
+id=_ctl0____ctl0____ctl1___Comments___Comments__ctl40_NameLink title=TrackBack 
+href="http://blogs.msdn.com/utility/Redirect.aspx?U=http%3a%2f%2fweblogs.asp.net%2fssadasivuni%2farticles%2f241203.aspx" 
+target=_blank rel=nofollow>Dev Notes</A> </DIV></DIV>
+<DIV class=altcomment>
+<H4><A id=_ctl0____ctl0____ctl1___Comments___Comments__ctl41_PermaLink 
+title=permalink 
+href="http://blogs.msdn.com/dphill/articles/66300.aspx#241207">#</A> <SPAN>re: 
+Nasa's Smart Client Application (World Wind 1.2)<A name=241207></A></SPAN> </H4>
+<DIV class=commentsbody></DIV>
+<DIV class=commentssubhead><SPAN class=commentspan></SPAN>Tuesday, October 12, 
+2004 8:51 AM by <A 
+id=_ctl0____ctl0____ctl1___Comments___Comments__ctl41_NameLink title=TrackBack 
+href="http://blogs.msdn.com/utility/Redirect.aspx?U=http%3a%2f%2fweblogs.asp.net%2fssadasivuni%2farchive%2f2004%2f10%2f12%2f241206.aspx" 
+target=_blank rel=nofollow>Dev Notes</A> </DIV></DIV>
+<DIV class=comment>
+<H4><A id=_ctl0____ctl0____ctl1___Comments___Comments__ctl42_PermaLink 
+title=permalink 
+href="http://blogs.msdn.com/dphill/articles/66300.aspx#241208">#</A> <SPAN>re: 
+Nasa's Smart Client Application (World Wind 1.2)<A name=241208></A></SPAN> </H4>
+<DIV class=commentsbody></DIV>
+<DIV class=commentssubhead><SPAN class=commentspan></SPAN>Tuesday, October 12, 
+2004 8:51 AM by <A 
+id=_ctl0____ctl0____ctl1___Comments___Comments__ctl42_NameLink title=TrackBack 
+href="http://blogs.msdn.com/utility/Redirect.aspx?U=http%3a%2f%2fweblogs.asp.net%2fssadasivuni%2farticles%2f241206.aspx" 
+target=_blank rel=nofollow>Dev Notes</A> </DIV></DIV>
+<DIV class=altcomment>
+<H4><A id=_ctl0____ctl0____ctl1___Comments___Comments__ctl43_PermaLink 
+title=permalink 
+href="http://blogs.msdn.com/dphill/articles/66300.aspx#241720">#</A> 
+<SPAN>Worldwind<A name=241720></A></SPAN> </H4>
+<DIV class=commentsbody>&lt;p&gt;<BR>Worldwind is a live, 3D Earth globe with 
+satellite and topographic data, backed by an extensive place names database. The 
+zooming and panning effects are pretty neat on my laptop; tonight I'll hook it 
+up to the projector and show the boys.<BR>&lt;/p&gt; </DIV>
+<DIV class=commentssubhead><SPAN class=commentspan></SPAN>Wednesday, October 13, 
+2004 9:51 AM by <A 
+id=_ctl0____ctl0____ctl1___Comments___Comments__ctl43_NameLink title=TrackBack 
+href="http://blogs.msdn.com/utility/Redirect.aspx?U=http%3a%2f%2fwww.robichaux.net%2farchives%2f000960.php" 
+target=_blank rel=nofollow>Paul's Down-Home Page</A> </DIV></DIV>
+<DIV class=comment>
+<H4><A id=_ctl0____ctl0____ctl1___Comments___Comments__ctl44_PermaLink 
+title=permalink 
+href="http://blogs.msdn.com/dphill/articles/66300.aspx#249002">#</A> <SPAN>Smart 
+Client Architecture and Design Guide Released <A name=249002></A></SPAN></H4>
+<DIV class=commentsbody>Smart Client Architecture and Design Guide Released 
+</DIV>
+<DIV class=commentssubhead><SPAN class=commentspan></SPAN>Thursday, October 28, 
+2004 8:08 AM by <A 
+id=_ctl0____ctl0____ctl1___Comments___Comments__ctl44_NameLink title=TrackBack 
+href="http://blogs.msdn.com/utility/Redirect.aspx?U=http%3a%2f%2fdotnetjunkies.com%2fWebLog%2fmahalax%2farchive%2f2004%2f10%2f28%2f30131.aspx" 
+target=_blank rel=nofollow>Rays of Thoughts</A> </DIV></DIV>
+<DIV class=altcomment>
+<H4><A id=_ctl0____ctl0____ctl1___Comments___Comments__ctl45_PermaLink 
+title=permalink 
+href="http://blogs.msdn.com/dphill/articles/66300.aspx#249532">#</A> <SPAN>Smart 
+Client Architecture and Design Guide Released <A name=249532></A></SPAN></H4>
+<DIV class=commentsbody></DIV>
+<DIV class=commentssubhead><SPAN class=commentspan></SPAN>Friday, October 29, 
+2004 8:43 AM by <A 
+id=_ctl0____ctl0____ctl1___Comments___Comments__ctl45_NameLink title=TrackBack 
+href="http://blogs.msdn.com/utility/Redirect.aspx?U=http%3a%2f%2fgibbensfamily.net%2fblogs%2fdotrob%2farchive%2f2004%2f10%2f29%2f537.aspx" 
+target=_blank rel=nofollow>dotRob</A> </DIV></DIV>
+<DIV class=comment>
+
+<H4><A id=_ctl0____ctl0____ctl1___Comments___Comments__ctl46_PermaLink 
+title=permalink 
+href="http://blogs.msdn.com/dphill/articles/66300.aspx#254323">#</A> <SPAN>Smart 
+Clients: Combining the Power of the PC with the Reach of the Web<A 
+name=254323></A></SPAN> </H4>
+<DIV class=commentsbody></DIV>
+<DIV class=commentssubhead><SPAN class=commentspan></SPAN>Tuesday, November 09, 
+2004 3:08 AM by <A 
+id=_ctl0____ctl0____ctl1___Comments___Comments__ctl46_NameLink title=TrackBack 
+href="http://blogs.msdn.com/utility/Redirect.aspx?U=http%3a%2f%2fblogs.ugidotnet.org%2falessage%2farchive%2f2004%2f11%2f09%2f5301.aspx" 
+target=_blank rel=nofollow>Alessage</A> </DIV></DIV>
+<DIV class=altcomment>
+<H4><A id=_ctl0____ctl0____ctl1___Comments___Comments__ctl47_PermaLink 
+title=permalink 
+href="http://blogs.msdn.com/dphill/articles/66300.aspx#257158">#</A> <SPAN>Dick 
+ist wieder schick<A name=257158></A></SPAN> </H4>
+<DIV class=commentsbody>Seit Jahren schon rennen weite Teile der IT-Branche 
+gegen das PC-Konzept an: Die bisher zumeist mit Windows ausgestatteten 
+&amp;iquest;Fat Client&amp;iquest;-Desktops gelten als teuer, kompliziert und 
+schwer zu administrieren. Doch mit dem lange gehypten Gegenentwurf, dem 
+abgespeckten Thin Client auf Terminal-... </DIV>
+<DIV class=commentssubhead><SPAN class=commentspan></SPAN>Sunday, November 14, 
+2004 8:12 AM by <A 
+id=_ctl0____ctl0____ctl1___Comments___Comments__ctl47_NameLink title=TrackBack 
+href="http://blogs.msdn.com/utility/Redirect.aspx?U=http%3a%2f%2fwww.miedl.net%2farchives%2f2004%2f05%2fdick_ist_wieder.html" 
+target=_blank rel=nofollow>Wolfgang Miedl</A> </DIV></DIV>
+<DIV class=comment>
+<H4><A id=_ctl0____ctl0____ctl1___Comments___Comments__ctl48_PermaLink 
+title=permalink 
+href="http://blogs.msdn.com/dphill/articles/66300.aspx#345052">#</A> 
+<SPAN>Providing Context Sensitive help for .net applications.<A 
+name=345052></A></SPAN> </H4>
+<DIV class=commentsbody></DIV>
+<DIV class=commentssubhead><SPAN class=commentspan></SPAN>Friday, December 31, 
+2004 6:57 PM by <A 
+id=_ctl0____ctl0____ctl1___Comments___Comments__ctl48_NameLink title=TrackBack 
+href="http://blogs.msdn.com/utility/Redirect.aspx?U=http%3a%2f%2fwww.geekswithblogs.net%2fansari%2farchive%2f2004%2f12%2f31%2f18938.aspx" 
+target=_blank rel=nofollow>Teucer's Quiver</A> </DIV></DIV>
+<DIV class=altcomment>
+<H4><A id=_ctl0____ctl0____ctl1___Comments___Comments__ctl49_PermaLink 
+title=permalink 
+href="http://blogs.msdn.com/dphill/articles/66300.aspx#345053">#</A> 
+<SPAN>Providing Context Sensitive help for .net applications.<A 
+name=345053></A></SPAN> </H4>
+<DIV class=commentsbody></DIV>
+<DIV class=commentssubhead><SPAN class=commentspan></SPAN>Friday, December 31, 
+2004 6:58 PM by <A 
+id=_ctl0____ctl0____ctl1___Comments___Comments__ctl49_NameLink title=TrackBack 
+href="http://blogs.msdn.com/utility/Redirect.aspx?U=http%3a%2f%2fwww.geekswithblogs.net%2fansari%2farchive%2f0001%2f01%2f01%2f18938.aspx" 
+target=_blank rel=nofollow>Teucer's Quiver</A> </DIV></DIV>
+<DIV class=comment>
+
+<H4><A id=_ctl0____ctl0____ctl1___Comments___Comments__ctl50_PermaLink 
+title=permalink 
+href="http://blogs.msdn.com/dphill/articles/66300.aspx#402692">#</A> 
+<SPAN>Getting Started with the Offline Application Block for Smart Clients<A 
+name=402692></A></SPAN> </H4>
+<DIV class=commentsbody>Getting Started with the Offline Application Block for 
+Smart Clients </DIV>
+<DIV class=commentssubhead><SPAN class=commentspan></SPAN>Sunday, March 27, 2005 
+12:16 PM by <A id=_ctl0____ctl0____ctl1___Comments___Comments__ctl50_NameLink 
+title=TrackBack 
+href="http://blogs.msdn.com/utility/Redirect.aspx?U=http%3a%2f%2fdotnetjunkies.com%2fWebLog%2fdavetrux%2farchive%2f2005%2f03%2f27%2f61489.aspx" 
+target=_blank rel=nofollow>David Truxall</A> </DIV></DIV>
+<DIV class=altcomment>
+<H4><A id=_ctl0____ctl0____ctl1___Comments___Comments__ctl51_PermaLink 
+title=permalink 
+href="http://blogs.msdn.com/dphill/articles/66300.aspx#422322">#</A> <SPAN>Smart 
+Clients is cool<A name=422322></A></SPAN> </H4>
+<DIV class=commentsbody></DIV>
+<DIV class=commentssubhead><SPAN class=commentspan></SPAN>Thursday, May 26, 2005 
+5:58 PM by <A id=_ctl0____ctl0____ctl1___Comments___Comments__ctl51_NameLink 
+title=TrackBack 
+href="http://blogs.msdn.com/utility/Redirect.aspx?U=http%3a%2f%2finthrill.com%2fweblogs%2fbunmi%2farchive%2f0001%2f01%2f01%2f949.aspx" 
+target=_blank rel=nofollow>Bunmi Akinyemiju's blog</A> 
+</DIV></DIV></ASP:REPEATER></DIV><EM>Anonymous comments are disabled</EM> </DIV>
+<DIV id=contentfooter>&nbsp;</DIV></DIV>
+<DIV id=footer></DIV></DIV></DIV>
+<SCRIPT language=javascript type=text/javascript>
+<!--
+function KeyDownHandler_ctl0____ctl0___BlogSideBar1___ws___SearchButton(event)
+{
+	if (event.keyCode == 13)
+	{
+		event.returnValue = false;
+		event.cancel = true;
+     __doPostBack('_ctl0:_:_ctl0:_:BlogSideBar1:_:ws:_:SearchButton','')	}
+}
+
+//-->
+</SCRIPT>
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+xmlns:dc="http://purl.org/dc/elements/1.1/"
+xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+<rdf:Description
+rdf:about="http://blogs.msdn.com/dphill/articles/66300.aspx"
+dc:identifier="http://blogs.msdn.com/dphill/articles/66300.aspx"
+dc:title="What is a Smart Client anyway?"
+trackback:ping="http://blogs.msdn.com/trackback.aspx?PostID=66300" />
+</rdf:RDF>
+--></FORM></BODY></HTML>
